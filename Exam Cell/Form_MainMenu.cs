@@ -16,29 +16,26 @@ namespace Exam_Cell
         {
             InitializeComponent();
         }
-
-        private void Label_Copyright_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://arifmohammed.netlify.app/");
-        }
+        
+        // Menu Strip customize
         public class TestColorTable : ProfessionalColorTable
         {
-            public override Color MenuBorder  // for changing the menu border
+            public override Color MenuBorder  //added for changing the menu border
             {
-                get { return Color.FromArgb(36, 33, 50); }
+                get { return Color.FromArgb(36,33,50); }
             }
 
-            public override Color MenuItemBorder  // for changing the menu items hover border
+            public override Color MenuItemBorder  //added for changing the menu items hover border
             {
-                get { return Color.FromArgb(36, 33, 50); }
+                get { return Color.FromArgb(36,33,50); }
             }
 
-            public override Color ToolStripDropDownBackground  // for changing the menu dropdown border
+            public override Color ToolStripDropDownBackground  //added for changing the menu dropdown border
             {
-                get { return Color.FromArgb(36, 33, 50); }
+                get { return Color.FromArgb(36,33,50); }
             }
 
-            // for changing the menu items hover (Gradient)
+            //added for changing the menu items hover
             public override Color MenuItemSelectedGradientBegin
             {
                 get { return Color.FromArgb(37, 34, 51); }
@@ -49,26 +46,32 @@ namespace Exam_Cell
                 get { return Color.FromArgb(16, 13, 30); }
             }
 
-            // for changing the menu items clicked state (Gradient)
+            //added for changing the menu items clicked state
             public override Color MenuItemPressedGradientBegin
             {
-                get { return Color.FromArgb(37, 34, 51); }
+                get { return Color.FromArgb(26, 23, 40); }
             }
             public override Color MenuItemPressedGradientEnd
             {
                 get { return Color.FromArgb(26, 23, 40); }
             }
 
-            // for changing the menu dropdown items hover
+            //added for changing the menu dropdown items hover
             public override Color MenuItemSelected
             {
                 get { return Color.FromArgb(16, 13, 30); }
             }
         }
+
         private void Form_MainMenu_Load(object sender, EventArgs e)
         {
-            // render custom colors
             MenuStrip.Renderer = new ToolStripProfessionalRenderer(new TestColorTable());
+        }
+
+        private void Menu_item_timetable_Click(object sender, EventArgs e)
+        {
+            Form_Timetable form_Timetable = new Form_Timetable();
+            form_Timetable.ShowDialog();
         }
     }
 }

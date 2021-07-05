@@ -8,6 +8,10 @@ namespace Exam_Cell
 {
     static class Program
     {
+        // Custom Globals
+
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
