@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Exam_Cell
 {
-    public partial class Form_Database_Mgmt_Student : Form
+    public partial class Form_Database_Management : Form
     {
-        public Form_Database_Mgmt_Student()
+        public Form_Database_Management()
         {
             InitializeComponent();
         }

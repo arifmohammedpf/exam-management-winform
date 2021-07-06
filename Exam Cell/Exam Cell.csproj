@@ -76,17 +76,11 @@
     <Compile Include="Form_Credits.Designer.cs">
       <DependentUpon>Form_Credits.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Database_Mgmt_ClassBranch.cs">
+    <Compile Include="Form_Database_Management.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Database_Mgmt_ClassBranch.Designer.cs">
-      <DependentUpon>Form_Database_Mgmt_ClassBranch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_Database_Mgmt_Student.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Database_Mgmt_Student.Designer.cs">
-      <DependentUpon>Form_Database_Mgmt_Student.cs</DependentUpon>
+    <Compile Include="Form_Database_Management.Designer.cs">
+      <DependentUpon>Form_Database_Management.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_MainMenu.cs">
       <SubType>Form</SubType>
@@ -135,11 +129,8 @@
     <EmbeddedResource Include="Form_Credits.resx">
       <DependentUpon>Form_Credits.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Database_Mgmt_ClassBranch.resx">
-      <DependentUpon>Form_Database_Mgmt_ClassBranch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_Database_Mgmt_Student.resx">
-      <DependentUpon>Form_Database_Mgmt_Student.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Database_Management.resx">
+      <DependentUpon>Form_Database_Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_MainMenu.resx">
       <DependentUpon>Form_MainMenu.cs</DependentUpon>

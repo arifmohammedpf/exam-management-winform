@@ -16,5 +16,10 @@ namespace Exam_Cell
         {
             InitializeComponent();
         }
+
+        private void Form_Reg_Student_Mgmt_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
