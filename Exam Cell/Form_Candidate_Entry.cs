@@ -16,5 +16,23 @@ namespace Exam_Cell
         {
             InitializeComponent();
         }
+
+        private void Form_Candidate_Entry_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            TabControl.TabPages.Insert(0, Tab_Excel_Import);
+            this.Tab_Excel_Import.Show();
+            TabControl.SelectedTab = Tab_Excel_Import;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            TabControl.TabPages.Remove(Tab_Excel_Import);
+            this.Tab_Excel_Import.Hide();
+
+        }
     }
 }
