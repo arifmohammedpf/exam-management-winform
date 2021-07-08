@@ -16,5 +16,10 @@ namespace Exam_Cell
         {
             InitializeComponent();            
         }
+
+        private void Button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -28,45 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Panel_Header = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Button_Close = new System.Windows.Forms.Button();
-            this.Panel_Header.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // Panel_Header
+            // pictureBox1
             // 
-            this.Panel_Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
-            this.Panel_Header.Controls.Add(this.Button_Close);
-            this.Panel_Header.Controls.Add(this.label1);
-            this.Panel_Header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel_Header.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Header.Name = "Panel_Header";
-            this.Panel_Header.Size = new System.Drawing.Size(900, 55);
-            this.Panel_Header.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 13.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(11, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Credits";
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::Exam_Cell.Properties.Resources.Credits;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(900, 562);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // Button_Close
             // 
+            this.Button_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(125)))), ((int)(((byte)(128)))));
             this.Button_Close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_Close.FlatAppearance.BorderSize = 0;
             this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Close.Image = global::Exam_Cell.Properties.Resources.cancel;
-            this.Button_Close.Location = new System.Drawing.Point(848, 9);
+            this.Button_Close.Location = new System.Drawing.Point(848, 12);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(40, 37);
             this.Button_Close.TabIndex = 5;
-            this.Button_Close.UseVisualStyleBackColor = true;
+            this.Button_Close.UseVisualStyleBackColor = false;
+            this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
             // Form_Credits
             // 
@@ -74,23 +64,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(900, 562);
-            this.Controls.Add(this.Panel_Header);
+            this.Controls.Add(this.Button_Close);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form_Credits";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Credits";
-            this.Panel_Header.ResumeLayout(false);
-            this.Panel_Header.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel Panel_Header;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Button_Close;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

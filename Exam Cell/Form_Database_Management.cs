@@ -15,6 +15,11 @@ namespace Exam_Cell
         public Form_Database_Management()
         {
             InitializeComponent();
-        }       
+        }
+
+        private void Button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

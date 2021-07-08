@@ -34,5 +34,10 @@ namespace Exam_Cell
             this.Tab_Excel_Import.Hide();
 
         }
+
+        private void Button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

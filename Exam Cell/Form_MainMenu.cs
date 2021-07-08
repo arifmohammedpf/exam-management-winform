@@ -73,5 +73,58 @@ namespace Exam_Cell
             Form_Timetable form_Timetable = new Form_Timetable();
             form_Timetable.ShowDialog();
         }
+
+        private void Menu_item_candidate_entry_Click(object sender, EventArgs e)
+        {
+            Form_Candidate_Entry form_Candidate_Entry = new Form_Candidate_Entry();
+            form_Candidate_Entry.ShowDialog();
+        }
+
+        private void Menu_item_room_Click(object sender, EventArgs e)
+        {
+            Form_Room form_Room = new Form_Room();
+            form_Room.ShowDialog();
+        }
+
+        private void Menu_item_reg_stud_mgmt_Click(object sender, EventArgs e)
+        {
+            Form_Reg_Student_Mgmt form_Reg_Student_Mgmt = new Form_Reg_Student_Mgmt();
+            form_Reg_Student_Mgmt.ShowDialog();
+        }
+
+        private void Menu_item_allotment_Click(object sender, EventArgs e)
+        {
+            Form_Allotment form_Allotment = new Form_Allotment();
+            form_Allotment.ShowDialog();
+        }
+
+        private void Menu_item_absentees_Click(object sender, EventArgs e)
+        {
+            Form_Absentees form_Absentees = new Form_Absentees();
+            form_Absentees.ShowDialog();
+        }
+
+        private void Menu_item_postponement_Click(object sender, EventArgs e)
+        {
+            Form_Postponement form_Postponement = new Form_Postponement();
+            form_Postponement.ShowDialog();
+        }
+
+        private void Menu_item_database_mgmt_Click(object sender, EventArgs e)
+        {
+            Form_Database_Management form_Database_Management = new Form_Database_Management();
+            form_Database_Management.ShowDialog();
+        }
+
+        private void Menu_item_credits_Click(object sender, EventArgs e)
+        {
+            Form_Credits form_Credits = new Form_Credits();
+            form_Credits.ShowDialog();
+        }
+
+        private void Label_Copyright_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://arifmohammed.netlify.app/");
+        }
     }
 }
