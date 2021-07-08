@@ -35,8 +35,6 @@
             this.Menu_item_reg_stud_mgmt = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_item_allotment = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_item_absentees = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_dropitem_absentees_marking = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_dropitem_absentees_statement = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_item_postponement = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_item_database_mgmt = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_dropitem_database_mgmt_student = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,31 +113,10 @@
             // Menu_item_absentees
             // 
             this.Menu_item_absentees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(33)))), ((int)(((byte)(50)))));
-            this.Menu_item_absentees.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_dropitem_absentees_marking,
-            this.Menu_dropitem_absentees_statement});
             this.Menu_item_absentees.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Menu_item_absentees.Name = "Menu_item_absentees";
             this.Menu_item_absentees.Size = new System.Drawing.Size(119, 46);
             this.Menu_item_absentees.Text = "Absentees";
-            // 
-            // Menu_dropitem_absentees_marking
-            // 
-            this.Menu_dropitem_absentees_marking.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(33)))), ((int)(((byte)(50)))));
-            this.Menu_dropitem_absentees_marking.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Menu_dropitem_absentees_marking.Name = "Menu_dropitem_absentees_marking";
-            this.Menu_dropitem_absentees_marking.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.Menu_dropitem_absentees_marking.Size = new System.Drawing.Size(182, 44);
-            this.Menu_dropitem_absentees_marking.Text = "Marking";
-            // 
-            // Menu_dropitem_absentees_statement
-            // 
-            this.Menu_dropitem_absentees_statement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(33)))), ((int)(((byte)(50)))));
-            this.Menu_dropitem_absentees_statement.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Menu_dropitem_absentees_statement.Name = "Menu_dropitem_absentees_statement";
-            this.Menu_dropitem_absentees_statement.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.Menu_dropitem_absentees_statement.Size = new System.Drawing.Size(182, 44);
-            this.Menu_dropitem_absentees_statement.Text = "Statement";
             // 
             // Menu_item_postponement
             // 
@@ -228,8 +205,6 @@
         public System.Windows.Forms.ToolStripMenuItem Menu_item_reg_stud_mgmt;
         public System.Windows.Forms.ToolStripMenuItem Menu_item_allotment;
         public System.Windows.Forms.ToolStripMenuItem Menu_item_absentees;
-        public System.Windows.Forms.ToolStripMenuItem Menu_dropitem_absentees_marking;
-        public System.Windows.Forms.ToolStripMenuItem Menu_dropitem_absentees_statement;
         public System.Windows.Forms.ToolStripMenuItem Menu_item_postponement;
         public System.Windows.Forms.ToolStripMenuItem Menu_item_database_mgmt;
         public System.Windows.Forms.ToolStripMenuItem Menu_dropitem_database_mgmt_student;

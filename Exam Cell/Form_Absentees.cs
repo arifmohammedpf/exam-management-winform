@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Exam_Cell
 {
-    public partial class Form_Absentees_Statement : Form
+    public partial class Form_Absentees : Form
     {
-        public Form_Absentees_Statement()
+        public Form_Absentees()
         {
             InitializeComponent();
         }

@@ -46,17 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form_Absentees_Marking.cs">
+    <Compile Include="Form_Absentees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Absentees_Marking.Designer.cs">
-      <DependentUpon>Form_Absentees_Marking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_Absentees_Statement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Absentees_Statement.Designer.cs">
-      <DependentUpon>Form_Absentees_Statement.cs</DependentUpon>
+    <Compile Include="Form_Absentees.Designer.cs">
+      <DependentUpon>Form_Absentees.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Allotment.cs">
       <SubType>Form</SubType>
@@ -114,11 +108,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form_Absentees_Marking.resx">
-      <DependentUpon>Form_Absentees_Marking.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_Absentees_Statement.resx">
-      <DependentUpon>Form_Absentees_Statement.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Absentees.resx">
+      <DependentUpon>Form_Absentees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Allotment.resx">
       <DependentUpon>Form_Allotment.cs</DependentUpon>
