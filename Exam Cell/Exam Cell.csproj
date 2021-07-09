@@ -100,6 +100,12 @@
     <Compile Include="Form_Room.Designer.cs">
       <DependentUpon>Form_Room.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SplashScreen.Designer.cs">
+      <DependentUpon>Form_SplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Timetable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Room.resx">
       <DependentUpon>Form_Room.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SplashScreen.resx">
+      <DependentUpon>Form_SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Timetable.resx">
       <DependentUpon>Form_Timetable.cs</DependentUpon>

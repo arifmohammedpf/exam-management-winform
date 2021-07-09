@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_MainMenu));
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.Menu_item_timetable = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_item_candidate_entry = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,16 +39,14 @@
             this.Menu_item_postponement = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_item_database_mgmt = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_item_credits = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Label_Copyright = new System.Windows.Forms.Label();
             this.MenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuStrip
             // 
             this.MenuStrip.AutoSize = false;
-            this.MenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(33)))), ((int)(((byte)(50)))));
+            this.MenuStrip.BackColor = System.Drawing.Color.Transparent;
             this.MenuStrip.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -115,7 +114,7 @@
             // 
             // Menu_item_absentees
             // 
-            this.Menu_item_absentees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(33)))), ((int)(((byte)(50)))));
+            this.Menu_item_absentees.BackColor = System.Drawing.Color.Transparent;
             this.Menu_item_absentees.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Menu_item_absentees.Name = "Menu_item_absentees";
             this.Menu_item_absentees.Size = new System.Drawing.Size(119, 46);
@@ -149,24 +148,11 @@
             this.Menu_item_credits.Text = "Credits";
             this.Menu_item_credits.Click += new System.EventHandler(this.Menu_item_credits_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Exam_Cell.Properties.Resources.Kmea_Bg;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1605, 678);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
             // Label_Copyright
             // 
             this.Label_Copyright.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Copyright.AutoSize = true;
-            this.Label_Copyright.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(33)))), ((int)(((byte)(50)))));
+            this.Label_Copyright.BackColor = System.Drawing.Color.Transparent;
             this.Label_Copyright.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Label_Copyright.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Label_Copyright.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -182,20 +168,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1605, 678);
             this.Controls.Add(this.Label_Copyright);
             this.Controls.Add(this.MenuStrip);
-            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form_MainMenu";
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_MainMenu_FormClosed);
             this.Load += new System.EventHandler(this.Form_MainMenu_Load);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,7 +199,6 @@
         public System.Windows.Forms.ToolStripMenuItem Menu_item_postponement;
         public System.Windows.Forms.ToolStripMenuItem Menu_item_database_mgmt;
         public System.Windows.Forms.ToolStripMenuItem Menu_item_credits;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label Label_Copyright;
     }
 }
