@@ -105,7 +105,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(11, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 25);
+            this.label1.Size = new System.Drawing.Size(105, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Absentees";
             // 
@@ -133,10 +133,10 @@
             this.Tab_Marking.Controls.Add(this.label16);
             this.Tab_Marking.Controls.Add(this.button4);
             this.Tab_Marking.Controls.Add(this.dataGridView2);
-            this.Tab_Marking.Location = new System.Drawing.Point(4, 29);
+            this.Tab_Marking.Location = new System.Drawing.Point(4, 26);
             this.Tab_Marking.Name = "Tab_Marking";
             this.Tab_Marking.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Marking.Size = new System.Drawing.Size(892, 474);
+            this.Tab_Marking.Size = new System.Drawing.Size(892, 477);
             this.Tab_Marking.TabIndex = 0;
             this.Tab_Marking.Text = "Marking";
             this.Tab_Marking.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(206, 34);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 24);
+            this.radioButton2.Size = new System.Drawing.Size(61, 21);
             this.radioButton2.TabIndex = 5;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Series";
@@ -168,7 +168,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(53, 34);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(100, 24);
+            this.radioButton1.Size = new System.Drawing.Size(83, 21);
             this.radioButton1.TabIndex = 5;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "University";
@@ -216,7 +216,7 @@
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Location = new System.Drawing.Point(113, 174);
             this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(240, 28);
+            this.comboBox5.Size = new System.Drawing.Size(240, 25);
             this.comboBox5.TabIndex = 38;
             // 
             // comboBox6
@@ -224,7 +224,7 @@
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Location = new System.Drawing.Point(113, 209);
             this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(240, 28);
+            this.comboBox6.Size = new System.Drawing.Size(240, 25);
             this.comboBox6.TabIndex = 39;
             // 
             // comboBox7
@@ -232,7 +232,7 @@
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Location = new System.Drawing.Point(113, 139);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(240, 28);
+            this.comboBox7.Size = new System.Drawing.Size(240, 25);
             this.comboBox7.TabIndex = 40;
             // 
             // label13
@@ -240,7 +240,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(23, 143);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 20);
+            this.label13.Size = new System.Drawing.Size(44, 17);
             this.label13.TabIndex = 37;
             this.label13.Text = "Date :";
             // 
@@ -249,7 +249,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(23, 178);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(68, 20);
+            this.label14.Size = new System.Drawing.Size(57, 17);
             this.label14.TabIndex = 36;
             this.label14.Text = "Session :";
             // 
@@ -258,7 +258,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(23, 213);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(84, 20);
+            this.label16.Size = new System.Drawing.Size(68, 17);
             this.label16.TabIndex = 35;
             this.label16.Text = "Room No :";
             // 
@@ -290,7 +290,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(385, 3);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(504, 468);
+            this.dataGridView2.Size = new System.Drawing.Size(504, 471);
             this.dataGridView2.TabIndex = 33;
             // 
             // Tab_Statement
@@ -300,10 +300,10 @@
             this.Tab_Statement.Controls.Add(this.groupBox1);
             this.Tab_Statement.Controls.Add(this.textBox1);
             this.Tab_Statement.Controls.Add(this.label6);
-            this.Tab_Statement.Location = new System.Drawing.Point(4, 29);
+            this.Tab_Statement.Location = new System.Drawing.Point(4, 26);
             this.Tab_Statement.Name = "Tab_Statement";
             this.Tab_Statement.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Statement.Size = new System.Drawing.Size(892, 474);
+            this.Tab_Statement.Size = new System.Drawing.Size(892, 477);
             this.Tab_Statement.TabIndex = 1;
             this.Tab_Statement.Text = "Statement";
             this.Tab_Statement.UseVisualStyleBackColor = true;
@@ -336,7 +336,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(385, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(504, 468);
+            this.dataGridView1.Size = new System.Drawing.Size(504, 471);
             this.dataGridView1.TabIndex = 16;
             // 
             // groupBox1
@@ -365,7 +365,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(198, 287);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(140, 20);
+            this.label9.Size = new System.Drawing.Size(115, 17);
             this.label9.TabIndex = 31;
             this.label9.Text = "No of Absent : 000";
             // 
@@ -374,7 +374,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(195, 262);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(143, 20);
+            this.label8.Size = new System.Drawing.Size(117, 17);
             this.label8.TabIndex = 32;
             this.label8.Text = "No of Present : 000";
             // 
@@ -383,7 +383,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(164, 237);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(174, 20);
+            this.label7.Size = new System.Drawing.Size(142, 17);
             this.label7.TabIndex = 33;
             this.label7.Text = "No of Candidates : 000";
             // 
@@ -410,7 +410,7 @@
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(127, 72);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(240, 28);
+            this.comboBox4.Size = new System.Drawing.Size(240, 25);
             this.comboBox4.TabIndex = 14;
             // 
             // comboBox3
@@ -418,7 +418,7 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(127, 146);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(240, 28);
+            this.comboBox3.Size = new System.Drawing.Size(240, 25);
             this.comboBox3.TabIndex = 14;
             // 
             // comboBox2
@@ -426,7 +426,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(127, 35);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(240, 28);
+            this.comboBox2.Size = new System.Drawing.Size(240, 25);
             this.comboBox2.TabIndex = 14;
             // 
             // comboBox1
@@ -434,7 +434,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(127, 109);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(240, 28);
+            this.comboBox1.Size = new System.Drawing.Size(240, 25);
             this.comboBox1.TabIndex = 14;
             // 
             // label2
@@ -442,7 +442,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(8, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 20);
+            this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 12;
             this.label2.Text = "Date :";
             // 
@@ -451,7 +451,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(8, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 20);
+            this.label3.Size = new System.Drawing.Size(57, 17);
             this.label3.TabIndex = 11;
             this.label3.Text = "Session :";
             // 
@@ -460,7 +460,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 113);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 20);
+            this.label4.Size = new System.Drawing.Size(90, 17);
             this.label4.TabIndex = 10;
             this.label4.Text = "Branch/Class :";
             // 
@@ -469,7 +469,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(8, 150);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 20);
+            this.label5.Size = new System.Drawing.Size(81, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Exam Code :";
             // 
@@ -477,7 +477,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(18, 369);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(355, 26);
+            this.textBox1.Size = new System.Drawing.Size(355, 22);
             this.textBox1.TabIndex = 13;
             // 
             // label6
@@ -485,14 +485,14 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(14, 346);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(171, 20);
+            this.label6.Size = new System.Drawing.Size(140, 17);
             this.label6.TabIndex = 8;
             this.label6.Text = "Name of Examination :";
             // 
             // Form_Absentees
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(900, 562);
             this.Controls.Add(this.tabControl1);

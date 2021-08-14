@@ -82,6 +82,12 @@
     <Compile Include="Form_MainMenu.Designer.cs">
       <DependentUpon>Form_MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Message_Box.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Message_Box.Designer.cs">
+      <DependentUpon>Form_Message_Box.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Postponement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_MainMenu.resx">
       <DependentUpon>Form_MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Message_Box.resx">
+      <DependentUpon>Form_Message_Box.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Postponement.resx">
       <DependentUpon>Form_Postponement.cs</DependentUpon>

@@ -84,7 +84,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(11, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(365, 25);
+            this.label1.Size = new System.Drawing.Size(311, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registered Student Management";
             // 
@@ -104,7 +104,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(153, 36);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 24);
+            this.radioButton2.Size = new System.Drawing.Size(61, 21);
             this.radioButton2.TabIndex = 5;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Series";
@@ -115,7 +115,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(10, 36);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(100, 24);
+            this.radioButton1.Size = new System.Drawing.Size(83, 21);
             this.radioButton1.TabIndex = 5;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "University";
@@ -137,7 +137,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(153, 36);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(71, 24);
+            this.radioButton3.Size = new System.Drawing.Size(61, 21);
             this.radioButton3.TabIndex = 5;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Series";
@@ -148,7 +148,7 @@
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(10, 36);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(100, 24);
+            this.radioButton4.Size = new System.Drawing.Size(83, 21);
             this.radioButton4.TabIndex = 5;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "University";
@@ -171,7 +171,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(8, 214);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 20);
+            this.label2.Size = new System.Drawing.Size(101, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "No of Students :";
             // 
@@ -179,7 +179,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(95, 40);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 26);
+            this.textBox1.Size = new System.Drawing.Size(257, 22);
             this.textBox1.TabIndex = 7;
             // 
             // label3
@@ -187,7 +187,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 43);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.Size = new System.Drawing.Size(54, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "RegNo :";
             // 
@@ -196,7 +196,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(95, 80);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(257, 28);
+            this.comboBox1.Size = new System.Drawing.Size(257, 25);
             this.comboBox1.TabIndex = 8;
             // 
             // comboBox2
@@ -204,7 +204,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(95, 119);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(257, 28);
+            this.comboBox2.Size = new System.Drawing.Size(257, 25);
             this.comboBox2.TabIndex = 8;
             // 
             // label4
@@ -212,7 +212,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 84);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 20);
+            this.label4.Size = new System.Drawing.Size(55, 17);
             this.label4.TabIndex = 6;
             this.label4.Text = "Branch :";
             // 
@@ -221,7 +221,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 123);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 20);
+            this.label5.Size = new System.Drawing.Size(70, 17);
             this.label5.TabIndex = 6;
             this.label5.Text = "Semester :";
             // 
@@ -242,8 +242,8 @@
             // 
             // Form_Reg_Student_Mgmt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(908, 666);
             this.Controls.Add(this.groupBox3);

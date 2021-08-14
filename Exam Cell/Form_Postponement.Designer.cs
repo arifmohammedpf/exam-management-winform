@@ -87,7 +87,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(11, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 25);
+            this.label1.Size = new System.Drawing.Size(196, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Exam Postponement";
             // 
@@ -167,7 +167,7 @@
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(115, 47);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(284, 26);
+            this.dateTimePicker2.Size = new System.Drawing.Size(284, 22);
             this.dateTimePicker2.TabIndex = 9;
             // 
             // comboBox3
@@ -175,7 +175,7 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(115, 84);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(284, 28);
+            this.comboBox3.Size = new System.Drawing.Size(284, 25);
             this.comboBox3.TabIndex = 8;
             // 
             // label8
@@ -183,7 +183,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 50);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 20);
+            this.label8.Size = new System.Drawing.Size(74, 17);
             this.label8.TabIndex = 6;
             this.label8.Text = "New Date :";
             // 
@@ -192,7 +192,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 88);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 20);
+            this.label9.Size = new System.Drawing.Size(87, 17);
             this.label9.TabIndex = 6;
             this.label9.Text = "New Session :";
             // 
@@ -217,14 +217,14 @@
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(113, 158);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(284, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(284, 22);
             this.dateTimePicker1.TabIndex = 9;
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(113, 40);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(284, 26);
+            this.textBox1.Size = new System.Drawing.Size(284, 22);
             this.textBox1.TabIndex = 7;
             // 
             // comboBox2
@@ -232,7 +232,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(113, 118);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(284, 28);
+            this.comboBox2.Size = new System.Drawing.Size(284, 25);
             this.comboBox2.TabIndex = 8;
             // 
             // label3
@@ -240,7 +240,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 43);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 20);
+            this.label3.Size = new System.Drawing.Size(81, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Exam Code :";
             // 
@@ -249,7 +249,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(113, 78);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(284, 28);
+            this.comboBox1.Size = new System.Drawing.Size(284, 25);
             this.comboBox1.TabIndex = 8;
             // 
             // label4
@@ -257,7 +257,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 82);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 20);
+            this.label4.Size = new System.Drawing.Size(55, 17);
             this.label4.TabIndex = 6;
             this.label4.Text = "Branch :";
             // 
@@ -266,7 +266,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 161);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 20);
+            this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Date :";
             // 
@@ -275,14 +275,14 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 122);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 20);
+            this.label5.Size = new System.Drawing.Size(70, 17);
             this.label5.TabIndex = 6;
             this.label5.Text = "Semester :";
             // 
             // Form_Postponement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(937, 562);
             this.Controls.Add(this.panel1);
