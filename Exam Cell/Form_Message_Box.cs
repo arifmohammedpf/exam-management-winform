@@ -22,6 +22,14 @@ namespace Exam_Cell
         //messageBox.ShowMessageBox("Message", "Title", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Error);
         //var result = messageBox.UserChoice;
 
+        public enum MessageBoxButtons
+        {
+            OK = 0, YesNo = 1
+        };
+        public enum MessageBoxIcon
+        {
+            Information = 0, Warning = 1, Error = 2, Question = 3
+        };
         public string UserChoice { get; set; }
         public void ShowMessageBox(string message, string title, MessageBoxButtons button, MessageBoxIcon icon)
         {
