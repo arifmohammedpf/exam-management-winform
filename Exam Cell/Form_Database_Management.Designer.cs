@@ -86,6 +86,8 @@
             this.ProgressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HeaderCheckbox = new System.Windows.Forms.CheckBox();
             this.Panel_Header.SuspendLayout();
             this.TabPanel.SuspendLayout();
             this.Tab_Add.SuspendLayout();
@@ -334,6 +336,7 @@
             // 
             // Tab_Update_Student
             // 
+            this.Tab_Update_Student.Controls.Add(this.HeaderCheckbox);
             this.Tab_Update_Student.Controls.Add(this.groupBox4);
             this.Tab_Update_Student.Controls.Add(this.Dgv_Student);
             this.Tab_Update_Student.Controls.Add(this.groupBox2);
@@ -398,12 +401,15 @@
             this.Dgv_Student.AllowUserToDeleteRows = false;
             this.Dgv_Student.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Student.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBoxColumn});
             this.Dgv_Student.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Dgv_Student.Location = new System.Drawing.Point(3, 205);
             this.Dgv_Student.Name = "Dgv_Student";
             this.Dgv_Student.RowTemplate.Height = 24;
             this.Dgv_Student.Size = new System.Drawing.Size(961, 372);
             this.Dgv_Student.TabIndex = 28;
+            this.Dgv_Student.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Student_RowHeaderMouseDoubleClick);
             // 
             // groupBox2
             // 
@@ -454,6 +460,7 @@
             this.Button_Clear_updateStudentTab.TabIndex = 25;
             this.Button_Clear_updateStudentTab.Text = "Clear";
             this.Button_Clear_updateStudentTab.UseVisualStyleBackColor = false;
+            this.Button_Clear_updateStudentTab.Click += new System.EventHandler(this.Button_Clear_updateStudentTab_Click);
             // 
             // Textbox_Name
             // 
@@ -479,6 +486,7 @@
             this.Button_Search_updateStudentTab.TabIndex = 25;
             this.Button_Search_updateStudentTab.Text = "Search";
             this.Button_Search_updateStudentTab.UseVisualStyleBackColor = false;
+            this.Button_Search_updateStudentTab.Click += new System.EventHandler(this.Button_Search_updateStudentTab_Click);
             // 
             // Textbox_Regno
             // 
@@ -504,6 +512,7 @@
             this.Button_Update_updateStudentTab.TabIndex = 26;
             this.Button_Update_updateStudentTab.Text = "Update";
             this.Button_Update_updateStudentTab.UseVisualStyleBackColor = false;
+            this.Button_Update_updateStudentTab.Click += new System.EventHandler(this.Button_Update_updateStudentTab_Click);
             // 
             // Combobox_Class
             // 
@@ -543,6 +552,7 @@
             this.Button_Delete_Selected_updateStudentTab.TabIndex = 24;
             this.Button_Delete_Selected_updateStudentTab.Text = "Delete Selected";
             this.Button_Delete_Selected_updateStudentTab.UseVisualStyleBackColor = false;
+            this.Button_Delete_Selected_updateStudentTab.Click += new System.EventHandler(this.Button_Delete_Selected_updateStudentTab_Click);
             // 
             // label3
             // 
@@ -848,6 +858,22 @@
             this.label12.Text = "Please Wait !";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // CheckBoxColumn
+            // 
+            this.CheckBoxColumn.HeaderText = "";
+            this.CheckBoxColumn.Name = "CheckBoxColumn";
+            this.CheckBoxColumn.Width = 35;
+            // 
+            // HeaderCheckbox
+            // 
+            this.HeaderCheckbox.AutoSize = true;
+            this.HeaderCheckbox.Location = new System.Drawing.Point(55, 208);
+            this.HeaderCheckbox.Name = "HeaderCheckbox";
+            this.HeaderCheckbox.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckbox.TabIndex = 30;
+            this.HeaderCheckbox.UseVisualStyleBackColor = true;
+            this.HeaderCheckbox.CheckedChanged += new System.EventHandler(this.HeaderCheckbox_CheckedChanged);
+            // 
             // Form_Database_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -873,6 +899,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.Tab_Update_Student.ResumeLayout(false);
+            this.Tab_Update_Student.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Student)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -945,5 +972,7 @@
         private System.Windows.Forms.Timer ProgressBarTimer;
         private System.Windows.Forms.Panel Panel_ProgressBar;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn;
+        private System.Windows.Forms.CheckBox HeaderCheckbox;
     }
 }
