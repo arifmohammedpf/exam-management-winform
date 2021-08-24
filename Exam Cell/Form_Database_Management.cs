@@ -538,6 +538,47 @@ namespace Exam_Cell
             }
         }
 
+        void Promote_or_Demote_Students(string query)
+        {
+            try
+            {
+                SetLoading(true);
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                    command.ExecuteNonQuery();
+                }                
+                ResetAllFormDatas();
+                CustomMessageBox.ShowMessageBox("All Students semester updated   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                ResetAllFormDatas();
+            }
+        }
+        private void Button_Promote_Click(object sender, EventArgs e)
+        {
+            CustomMessageBox.ShowMessageBox("Do you really want to Promote every students semester ?", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                string query = string.Format("Update Students set Semester = Semester + 1");
+                Promote_or_Demote_Students(query);                
+            }
+        }
+
+        private void Button_Demote_Click(object sender, EventArgs e)
+        {
+            CustomMessageBox.ShowMessageBox("Do you really want to Demote every students semester ?", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                string query = string.Format("Update Students set Semester = Semester - 1");
+                Promote_or_Demote_Students(query);
+            }
+        }
+
         // // // // // // // // // // // // // "Update Student" Tab - End // // // // // // // // // // // // //
 
 
@@ -548,6 +589,8 @@ namespace Exam_Cell
 }
 
 // // // // // // // // // // // FOR TESTING // // // // // // // // // // // //
+// *** try make an error in try-catch which have function only.. eg: Search or Promote event ***
+
 // 1. Branch combobox in all the tabs since we gave same datatable as DataSource of combobox
 // 2. open update student tab and try search without filling form and,
 //  click dgv cell to auto fill and try update button to check whether dgv cell click selectedItem in combobox changes the selectedIndex.

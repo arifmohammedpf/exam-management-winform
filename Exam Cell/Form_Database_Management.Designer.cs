@@ -376,6 +376,7 @@
             this.Button_Promote.TabIndex = 28;
             this.Button_Promote.Text = "Promote";
             this.Button_Promote.UseVisualStyleBackColor = false;
+            this.Button_Promote.Click += new System.EventHandler(this.Button_Promote_Click);
             // 
             // Button_Demote
             // 
@@ -394,6 +395,7 @@
             this.Button_Demote.TabIndex = 25;
             this.Button_Demote.Text = "Demote";
             this.Button_Demote.UseVisualStyleBackColor = false;
+            this.Button_Demote.Click += new System.EventHandler(this.Button_Demote_Click);
             // 
             // Dgv_Student
             // 
