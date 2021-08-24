@@ -700,6 +700,7 @@
             this.Button_Search_updateCourseTab.TabIndex = 65;
             this.Button_Search_updateCourseTab.Text = "Search";
             this.Button_Search_updateCourseTab.UseVisualStyleBackColor = false;
+            this.Button_Search_updateCourseTab.Click += new System.EventHandler(this.Button_Search_updateCourseTab_Click);
             // 
             // Button_Update_updateCourseTab
             // 
@@ -718,6 +719,7 @@
             this.Button_Update_updateCourseTab.TabIndex = 66;
             this.Button_Update_updateCourseTab.Text = "Update";
             this.Button_Update_updateCourseTab.UseVisualStyleBackColor = false;
+            this.Button_Update_updateCourseTab.Click += new System.EventHandler(this.Button_Update_updateCourseTab_Click);
             // 
             // Button_DeleteBranch_updateCourseTab
             // 

@@ -584,13 +584,69 @@ namespace Exam_Cell
 
         // // // // // // // // // // // // // "Update Course" Tab - Start // // // // // // // // // // // // //
 
+        private void Button_Search_updateCourseTab_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SetLoading(true);
+                string branch = Combobox_Branch_updateCourseTab.SelectedItem.ToString();
+                string subcode = Textbox_SubCode.Text;
+                string subname = Textbox_SubName.Text;
+                string acode = Textbox_ACode.Text;
+                Dgv_Course.DataSource = null;
+
+                string searchRecord = "";        // string for sql statements to be written
+                
+                if (branch != "-Select-")
+                {
+                    searchRecord = string.Format("Branch Like '%{0}%'", branch);   //Put sql statement in searchRecord string
+                }
+                if (subcode != "")
+                {
+                    if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
+                    searchRecord += string.Format("Sub_Code Like '%{0}%'", subcode);   //Put sql statement in searchRecord string
+                }
+                if (subname != "")
+                {
+                    if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
+                    searchRecord += string.Format("Sub_Name Like '%{0}%'", subname);   //Put sql statement in searchRecord string
+                }
+                if (acode != "")
+                {
+                    if (searchRecord.Length > 0) searchRecord += " AND ";
+                    searchRecord += string.Format("Acode Like '%{0}%'", acode);
+                }
+
+                string query = "Select * from Students where " + searchRecord;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                    DataTable branchRecord = new DataTable();
+                    dataAdapter.Fill(branchRecord);
+                    Dgv_Course.DataSource = branchRecord;
+                }
+                SetLoading(false);
+            }
+            catch (Exception ex)
+            {
+                ResetAllFormDatas();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void Button_Update_updateCourseTab_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         // // // // // // // // // // // // // "Update Course" Tab - End // // // // // // // // // // // // //
     }
 }
 
 // // // // // // // // // // // FOR TESTING // // // // // // // // // // // //
-// *** try make an error in try-catch which have function only.. eg: Search or Promote event ***
-
+// *** try make an error in try-catch which have function only.. eg: Search event in update student tab ***
+// *** is timer needed ? ***
 // 1. Branch combobox in all the tabs since we gave same datatable as DataSource of combobox
 // 2. open update student tab and try search without filling form and,
 //  click dgv cell to auto fill and try update button to check whether dgv cell click selectedItem in combobox changes the selectedIndex.
