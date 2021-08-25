@@ -88,6 +88,8 @@
             this.ProgressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.Combobox_Semester_updateCourse = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.Panel_Header.SuspendLayout();
             this.TabPanel.SuspendLayout();
             this.Tab_Add.SuspendLayout();
@@ -653,6 +655,7 @@
             this.Tab_Update_Course.Controls.Add(this.Button_Update_updateCourseTab);
             this.Tab_Update_Course.Controls.Add(this.Button_DeleteBranch_updateCourseTab);
             this.Tab_Update_Course.Controls.Add(this.Button_Delete_updateCourseTab);
+            this.Tab_Update_Course.Controls.Add(this.label13);
             this.Tab_Update_Course.Controls.Add(this.label11);
             this.Tab_Update_Course.Controls.Add(this.Combobox_Branch_updateCourseTab);
             this.Tab_Update_Course.Controls.Add(this.Textbox_ACode);
@@ -661,6 +664,7 @@
             this.Tab_Update_Course.Controls.Add(this.label6);
             this.Tab_Update_Course.Controls.Add(this.label7);
             this.Tab_Update_Course.Controls.Add(this.label10);
+            this.Tab_Update_Course.Controls.Add(this.Combobox_Semester_updateCourse);
             this.Tab_Update_Course.Location = new System.Drawing.Point(4, 26);
             this.Tab_Update_Course.Name = "Tab_Update_Course";
             this.Tab_Update_Course.Size = new System.Drawing.Size(967, 580);
@@ -780,7 +784,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(131, 27);
+            this.label11.Location = new System.Drawing.Point(84, 27);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 17);
@@ -791,28 +795,28 @@
             // 
             this.Combobox_Branch_updateCourseTab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch_updateCourseTab.FormattingEnabled = true;
-            this.Combobox_Branch_updateCourseTab.Location = new System.Drawing.Point(208, 23);
+            this.Combobox_Branch_updateCourseTab.Location = new System.Drawing.Point(161, 23);
             this.Combobox_Branch_updateCourseTab.Name = "Combobox_Branch_updateCourseTab";
             this.Combobox_Branch_updateCourseTab.Size = new System.Drawing.Size(270, 25);
             this.Combobox_Branch_updateCourseTab.TabIndex = 61;
             // 
             // Textbox_ACode
             // 
-            this.Textbox_ACode.Location = new System.Drawing.Point(594, 57);
+            this.Textbox_ACode.Location = new System.Drawing.Point(787, 60);
             this.Textbox_ACode.Name = "Textbox_ACode";
-            this.Textbox_ACode.Size = new System.Drawing.Size(195, 22);
+            this.Textbox_ACode.Size = new System.Drawing.Size(68, 22);
             this.Textbox_ACode.TabIndex = 57;
             // 
             // Textbox_SubCode
             // 
-            this.Textbox_SubCode.Location = new System.Drawing.Point(594, 23);
+            this.Textbox_SubCode.Location = new System.Drawing.Point(516, 60);
             this.Textbox_SubCode.Name = "Textbox_SubCode";
             this.Textbox_SubCode.Size = new System.Drawing.Size(195, 22);
             this.Textbox_SubCode.TabIndex = 58;
             // 
             // Textbox_SubName
             // 
-            this.Textbox_SubName.Location = new System.Drawing.Point(208, 57);
+            this.Textbox_SubName.Location = new System.Drawing.Point(161, 60);
             this.Textbox_SubName.Name = "Textbox_SubName";
             this.Textbox_SubName.Size = new System.Drawing.Size(270, 22);
             this.Textbox_SubName.TabIndex = 59;
@@ -821,7 +825,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(486, 60);
+            this.label6.Location = new System.Drawing.Point(721, 63);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 17);
@@ -832,7 +836,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(486, 26);
+            this.label7.Location = new System.Drawing.Point(439, 63);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 17);
@@ -843,7 +847,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(131, 60);
+            this.label10.Location = new System.Drawing.Point(84, 63);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 17);
@@ -878,6 +882,26 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Please Wait !";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Combobox_Semester_updateCourse
+            // 
+            this.Combobox_Semester_updateCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Combobox_Semester_updateCourse.FormattingEnabled = true;
+            this.Combobox_Semester_updateCourse.Location = new System.Drawing.Point(516, 23);
+            this.Combobox_Semester_updateCourse.Name = "Combobox_Semester_updateCourse";
+            this.Combobox_Semester_updateCourse.Size = new System.Drawing.Size(195, 25);
+            this.Combobox_Semester_updateCourse.TabIndex = 61;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(439, 27);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(70, 17);
+            this.label13.TabIndex = 60;
+            this.label13.Text = "Semester :";
             // 
             // Form_Database_Management
             // 
@@ -979,5 +1003,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn;
         private System.Windows.Forms.CheckBox HeaderCheckbox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox Combobox_Semester_updateCourse;
     }
 }
