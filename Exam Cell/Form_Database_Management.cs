@@ -65,6 +65,13 @@ namespace Exam_Cell
             // disable add buttons
             Button_Add_BranchExcel.Enabled = false;
             Button_Add_StudExcel.Enabled = false;
+            // clear selected record variables
+            selectedRegNo = "";
+            selectedName = "";
+            selectedYoa = "";
+            selectedSemester = "";
+            selectedBranch = "";
+            selectedClass = "";
             // set loading to false
             SetLoading(false);
         }
@@ -76,6 +83,10 @@ namespace Exam_Cell
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     // Branch combobox
+                    Combobox_Branch.DataSource = null;
+                    Combobox_Branch_updateStudTab.DataSource = null;
+                    Combobox_Branch_updateCourseTab.DataSource = null;
+
                     string branchQuery = string.Format("Select Branch from Branch_Priority where Branch is not null");
                     SQLiteCommand branchCommand = new SQLiteCommand(branchQuery, dbConnection);
                     SQLiteDataAdapter branchAdapter = new SQLiteDataAdapter(branchCommand);
@@ -84,20 +95,22 @@ namespace Exam_Cell
                     DataRow branchTop = branchDT.NewRow();
                     branchTop[0] = "-Select-";
                     branchDT.Rows.InsertAt(branchTop, 0);
-
+                    
                     Combobox_Branch.DataSource = branchDT;
                     Combobox_Branch.DisplayMember = "Branch";
                     Combobox_Branch.ValueMember = "Branch";
-
+                    
                     Combobox_Branch_updateStudTab.DataSource = branchDT;
                     Combobox_Branch_updateStudTab.DisplayMember = "Branch";
                     Combobox_Branch_updateStudTab.ValueMember = "Branch";
-
+                    
                     Combobox_Branch_updateCourseTab.DataSource = branchDT;
                     Combobox_Branch_updateCourseTab.DisplayMember = "Branch";
                     Combobox_Branch_updateCourseTab.ValueMember = "Branch";
 
                     // Class combobox
+                    Combobox_Class.DataSource = null;
+
                     string classQuery = string.Format("Select distinct Class from Students where Class is not null");
                     SQLiteCommand classCommand = new SQLiteCommand(classQuery, dbConnection);
                     SQLiteDataAdapter classAdapter = new SQLiteDataAdapter(classCommand);
@@ -448,39 +461,48 @@ namespace Exam_Cell
 
         private void Button_Update_updateStudentTab_Click(object sender, EventArgs e)
         {
-            if(Textbox_Regno.Text == "" || Textbox_Name.Text == "" || Textbox_Yoa.Text == "" || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please fill all info of student to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-            else
+            try
             {
-                string messageText = string.Format("Do you want to update record of '%{0}%' - '%{1}%' ?   ", selectedRegNo, selectedName);
-                CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
-                string result = CustomMessageBox.UserChoice;
-                if (result == "Yes")
+                if (selectedRegNo == "" || Textbox_Regno.Text == "" || Textbox_Name.Text == "" || Textbox_Yoa.Text == "" || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of student to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                else
                 {
-                    int recordsAffected;
-                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    string messageText = string.Format("Do you want to update record of '%{0}%' - '%{1}%' ?   ", selectedRegNo, selectedName);
+                    CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+                    string result = CustomMessageBox.UserChoice;
+                    if (result == "Yes")
                     {
-                        string query = string.Format("Update Students set Reg_No=@Reg_No,Name=@Name,YOA=@YOA,Branch=@Branch,Semester=@Semester,Class=@Class where Reg_No=@SelectedReg_No and Name=@SelectedName and YOA=@SelectedYOA and Branch=@SelectedBranch and Semester=@SelectedSemester and Class=@SelectedClass");
-                        SQLiteCommand command = new SQLiteCommand(query,dbConnection);
-                        command.Parameters.AddWithValue("@Reg_No", Textbox_Regno.Text);
-                        command.Parameters.AddWithValue("@Name", Textbox_Name.Text);
-                        command.Parameters.AddWithValue("@YOA", Textbox_Yoa.Text);
-                        command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateStudTab.SelectedItem.ToString());
-                        command.Parameters.AddWithValue("@Semester", Combobox_Semester.SelectedItem.ToString());
-                        command.Parameters.AddWithValue("@Class", Combobox_Class.SelectedItem.ToString());
-                        command.Parameters.AddWithValue("@SelectedReg_No", selectedRegNo);
-                        command.Parameters.AddWithValue("@SelectedName", selectedName);
-                        command.Parameters.AddWithValue("@SelectedYOA", selectedYoa);
-                        command.Parameters.AddWithValue("@SelectedBranch", selectedBranch);
-                        command.Parameters.AddWithValue("@SelectedSemester", selectedSemester);
-                        command.Parameters.AddWithValue("@SelectedClass", selectedClass);
-                        recordsAffected = command.ExecuteNonQuery();
+                        int recordsAffected;
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            string query = string.Format("Update Students set Reg_No=@Reg_No,Name=@Name,YOA=@YOA,Branch=@Branch,Semester=@Semester,Class=@Class where Reg_No=@SelectedReg_No and Name=@SelectedName and YOA=@SelectedYOA and Branch=@SelectedBranch and Semester=@SelectedSemester and Class=@SelectedClass");
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            command.Parameters.AddWithValue("@Reg_No", Textbox_Regno.Text);
+                            command.Parameters.AddWithValue("@Name", Textbox_Name.Text);
+                            command.Parameters.AddWithValue("@YOA", Textbox_Yoa.Text);
+                            command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateStudTab.SelectedItem.ToString());
+                            command.Parameters.AddWithValue("@Semester", Combobox_Semester.SelectedItem.ToString());
+                            command.Parameters.AddWithValue("@Class", Combobox_Class.SelectedItem.ToString());
+                            command.Parameters.AddWithValue("@SelectedReg_No", selectedRegNo);
+                            command.Parameters.AddWithValue("@SelectedName", selectedName);
+                            command.Parameters.AddWithValue("@SelectedYOA", selectedYoa);
+                            command.Parameters.AddWithValue("@SelectedBranch", selectedBranch);
+                            command.Parameters.AddWithValue("@SelectedSemester", selectedSemester);
+                            command.Parameters.AddWithValue("@SelectedClass", selectedClass);
+                            recordsAffected = command.ExecuteNonQuery();
+                        }
+                        if (recordsAffected == 0)
+                        {
+                            messageText = string.Format("'%{0}%' - '%{1}%' does not exist, Try again    ", selectedRegNo, selectedName);
+                            CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                        }
                     }
-                    if (recordsAffected == 0)
-                    {
-                        messageText = string.Format("'%{0}%' - '%{1}%' does not exist, Try again    ", selectedRegNo, selectedName);
-                        CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-                    }
+                    ComboboxesFill();
+                    ResetAllFormDatas();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -540,6 +562,7 @@ namespace Exam_Cell
                     }
                     if (deletedFlag)
                     {
+                        ComboboxesFill();
                         ResetAllFormDatas();
                         CustomMessageBox.ShowMessageBox("Selected student records deleted   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                     }
@@ -551,8 +574,9 @@ namespace Exam_Cell
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    ComboboxesFill();
                     ResetAllFormDatas();
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
