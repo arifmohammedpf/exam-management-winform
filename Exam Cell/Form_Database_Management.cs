@@ -72,6 +72,10 @@ namespace Exam_Cell
             selectedSemester = "";
             selectedBranch = "";
             selectedClass = "";
+            selectedSubCode = "";
+            selectedSubName = "";
+            selectedAcode = "";
+            selectedBranch_Course = "";
             // set loading to false
             SetLoading(false);
         }
@@ -579,7 +583,7 @@ namespace Exam_Cell
                     MessageBox.Show(ex.ToString());
                 }
             }
-        }
+        }        
 
         void Promote_or_Demote_Students(string query)
         {
@@ -678,9 +682,63 @@ namespace Exam_Cell
             }
         }
 
+        string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course;
+        private void Dgv_Course_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // fill the form
+            Textbox_SubCode.Text = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Code"].Value.ToString();
+            Textbox_SubName.Text = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Name"].Value.ToString();
+            Textbox_ACode.Text = Dgv_Course.Rows[e.RowIndex].Cells["Acode"].Value.ToString();
+            Combobox_Branch_updateCourseTab.SelectedItem = Dgv_Course.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
+
+            // selected branch/course record to be updated
+            selectedSubCode = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Code"].Value.ToString();
+            selectedSubName = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Name"].Value.ToString();
+            selectedAcode = Dgv_Course.Rows[e.RowIndex].Cells["Acode"].Value.ToString();
+            selectedBranch_Course = Dgv_Course.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
+        }
+
         private void Button_Update_updateCourseTab_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                if (selectedSubCode == "" || Textbox_SubCode.Text == "" || Textbox_SubName.Text == "" || Textbox_ACode.Text == "" || Combobox_Branch_updateCourseTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of Branch/Course to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                else
+                {
+                    string messageText = string.Format("Do you want to update '%{0}%' - '%{1}%' ?   ", selectedSubCode, selectedSubName);
+                    CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+                    string result = CustomMessageBox.UserChoice;
+                    if (result == "Yes")
+                    {
+                        int recordsAffected;
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            string query = string.Format("Update Students set Sub_Code=@Sub_Code,Sub_Name=@Sub_Name,Acode=@Acode,Branch=@Branch where Sub_Code=@SelectedSub_Code and Sub_Name=@SelectedSub_Name and Acode=@SelectedAcode and Branch=@SelectedBranch");
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            command.Parameters.AddWithValue("@Sub_Code", Textbox_SubCode.Text);
+                            command.Parameters.AddWithValue("@Sub_Name", Textbox_Name.Text);
+                            command.Parameters.AddWithValue("@Acode", Textbox_ACode.Text);
+                            command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateCourseTab.SelectedItem.ToString());
+                            command.Parameters.AddWithValue("@SelectedSub_Code", selectedSubCode);
+                            command.Parameters.AddWithValue("@SelectedSub_Name", selectedName);
+                            command.Parameters.AddWithValue("@SelectedAcode", selectedAcode);
+                            command.Parameters.AddWithValue("@SelectedBranch", selectedBranch_Course);
+                            recordsAffected = command.ExecuteNonQuery();
+                        }
+                        if (recordsAffected == 0)
+                        {
+                            messageText = string.Format("'%{0}%' - '%{1}%' does not exist, Try again    ", selectedSubCode, selectedSubName);
+                            CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                        }
+                    }
+                    ComboboxesFill();
+                    ResetAllFormDatas();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         // // // // // // // // // // // // // "Update Course" Tab - End // // // // // // // // // // // // //
@@ -695,3 +753,4 @@ namespace Exam_Cell
 //  click dgv cell to auto fill and try update button to check whether dgv cell click selectedItem in combobox changes the selectedIndex.
 // 3. update student with incorrect reg No
 // 4. headerCheckbox
+// 5. try update without selecting dgv first time opening form for both student and course.

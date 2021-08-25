@@ -47,10 +47,12 @@
             this.Combobox_Branch = new System.Windows.Forms.ComboBox();
             this.Combobox_StudSheets = new System.Windows.Forms.ComboBox();
             this.Tab_Update_Student = new System.Windows.Forms.TabPage();
+            this.HeaderCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Button_Promote = new System.Windows.Forms.Button();
             this.Button_Demote = new System.Windows.Forms.Button();
             this.Dgv_Student = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Textbox_Yoa = new System.Windows.Forms.TextBox();
             this.Button_Clear_updateStudentTab = new System.Windows.Forms.Button();
@@ -86,8 +88,6 @@
             this.ProgressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.HeaderCheckbox = new System.Windows.Forms.CheckBox();
             this.Panel_Header.SuspendLayout();
             this.TabPanel.SuspendLayout();
             this.Tab_Add.SuspendLayout();
@@ -348,6 +348,16 @@
             this.Tab_Update_Student.Text = "Update Student";
             this.Tab_Update_Student.UseVisualStyleBackColor = true;
             // 
+            // HeaderCheckbox
+            // 
+            this.HeaderCheckbox.AutoSize = true;
+            this.HeaderCheckbox.Location = new System.Drawing.Point(55, 208);
+            this.HeaderCheckbox.Name = "HeaderCheckbox";
+            this.HeaderCheckbox.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckbox.TabIndex = 30;
+            this.HeaderCheckbox.UseVisualStyleBackColor = true;
+            this.HeaderCheckbox.CheckedChanged += new System.EventHandler(this.HeaderCheckbox_CheckedChanged);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.Button_Promote);
@@ -412,6 +422,12 @@
             this.Dgv_Student.Size = new System.Drawing.Size(961, 372);
             this.Dgv_Student.TabIndex = 28;
             this.Dgv_Student.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Student_RowHeaderMouseDoubleClick);
+            // 
+            // CheckBoxColumn
+            // 
+            this.CheckBoxColumn.HeaderText = "";
+            this.CheckBoxColumn.Name = "CheckBoxColumn";
+            this.CheckBoxColumn.Width = 35;
             // 
             // groupBox2
             // 
@@ -664,6 +680,7 @@
             this.Dgv_Course.RowTemplate.Height = 24;
             this.Dgv_Course.Size = new System.Drawing.Size(967, 420);
             this.Dgv_Course.TabIndex = 67;
+            this.Dgv_Course.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Course_RowHeaderMouseDoubleClick);
             // 
             // Button_Clear_updateCourseTab
             // 
@@ -861,22 +878,6 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Please Wait !";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // CheckBoxColumn
-            // 
-            this.CheckBoxColumn.HeaderText = "";
-            this.CheckBoxColumn.Name = "CheckBoxColumn";
-            this.CheckBoxColumn.Width = 35;
-            // 
-            // HeaderCheckbox
-            // 
-            this.HeaderCheckbox.AutoSize = true;
-            this.HeaderCheckbox.Location = new System.Drawing.Point(55, 208);
-            this.HeaderCheckbox.Name = "HeaderCheckbox";
-            this.HeaderCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckbox.TabIndex = 30;
-            this.HeaderCheckbox.UseVisualStyleBackColor = true;
-            this.HeaderCheckbox.CheckedChanged += new System.EventHandler(this.HeaderCheckbox_CheckedChanged);
             // 
             // Form_Database_Management
             // 
