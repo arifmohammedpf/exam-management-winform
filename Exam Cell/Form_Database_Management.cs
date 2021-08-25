@@ -614,7 +614,7 @@ namespace Exam_Cell
                 string query = string.Format("Update Students set Semester = Semester + 1");
                 Promote_or_Demote_Students(query);                
             }
-        }
+        }        
 
         private void Button_Demote_Click(object sender, EventArgs e)
         {
@@ -625,7 +625,7 @@ namespace Exam_Cell
                 string query = string.Format("Update Students set Semester = Semester - 1");
                 Promote_or_Demote_Students(query);
             }
-        }
+        }        
 
         // // // // // // // // // // // // // "Update Student" Tab - End // // // // // // // // // // // // //
 
@@ -671,7 +671,7 @@ namespace Exam_Cell
                     searchRecord += string.Format("Acode Like '%{0}%'", acode);
                 }
 
-                string query = "Select * from Students where " + searchRecord;
+                string query = "Select * from Scheme where " + searchRecord;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     SQLiteCommand command = new SQLiteCommand(query, dbConnection);
@@ -687,9 +687,9 @@ namespace Exam_Cell
                 ResetAllFormDatas();
                 MessageBox.Show(ex.ToString());
             }
-        }
+        }        
 
-        string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;
+        string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;        
         private void Dgv_Course_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // fill the form
@@ -722,7 +722,7 @@ namespace Exam_Cell
                         int recordsAffected;
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
-                            string query = string.Format("Update Students set Sub_Code=@Sub_Code,Sub_Name=@Sub_Name,Acode=@Acode,Branch=@Branch,Semester=@Semester where Sub_Code=@SelectedSub_Code and Sub_Name=@SelectedSub_Name and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
+                            string query = string.Format("Update Scheme set Sub_Code=@Sub_Code,Sub_Name=@Sub_Name,Acode=@Acode,Branch=@Branch,Semester=@Semester where Sub_Code=@SelectedSub_Code and Sub_Name=@SelectedSub_Name and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             command.Parameters.AddWithValue("@Sub_Code", Textbox_SubCode.Text);
                             command.Parameters.AddWithValue("@Sub_Name", Textbox_Name.Text);
@@ -752,6 +752,80 @@ namespace Exam_Cell
             }
         }
 
+        private void HeaderCheckbox_CourseDgv_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HeaderCheckbox_CourseDgv.Checked)
+            {
+                foreach (DataGridViewRow row in Dgv_Course.Rows)
+                {
+                    row.Cells["CheckboxColumn_CourseDgv"].Value = true;
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in Dgv_Course.Rows)
+                {
+                    row.Cells["CheckboxColumn_CourseDgv"].Value = false;
+                }
+            }
+        }
+
+        private void Button_Delete_updateCourseTab_Click(object sender, EventArgs e)
+        {
+            CustomMessageBox.ShowMessageBox("Do you really want to delete selected Courses ?", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                try
+                {
+                    SetLoading(true);
+                    bool deletedFlag = false;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        // delete selected courses
+                        foreach (DataGridViewRow dr in Dgv_Course.Rows)
+                        {
+                            bool isSelected = Convert.ToBoolean(dr.Cells["CheckboxColumn_CourseDgv"].Value);
+                            if (isSelected)
+                            {
+                                string query = string.Format("Delete from Scheme where Sub_Code=@SelectedSub_Code and Sub_Name=@SelectedSub_Name and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
+                                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                                command.Parameters.AddWithValue("@SelectedSub_Code", dr.Cells["Sub_Code"].Value.ToString());
+                                command.Parameters.AddWithValue("@SelectedSub_Name", dr.Cells["Sub_Name"].Value.ToString());
+                                command.Parameters.AddWithValue("@SelectedAcode", dr.Cells["Acode"].Value.ToString());
+                                command.Parameters.AddWithValue("@SelectedBranch", dr.Cells["Branch"].Value.ToString());
+                                command.Parameters.AddWithValue("@SelectedSemester", dr.Cells["Semester"].Value.ToString());
+                                command.ExecuteNonQuery();
+                                deletedFlag = true;
+                            }
+                        }
+                    }
+                    if (deletedFlag)
+                    {
+                        ComboboxesFill();
+                        ResetAllFormDatas();
+                        CustomMessageBox.ShowMessageBox("Selected Courses deleted   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        SetLoading(false);
+                        CustomMessageBox.ShowMessageBox("Select any Course to delete   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ComboboxesFill();
+                    ResetAllFormDatas();
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void Button_Clear_updateCourseTab_Click(object sender, EventArgs e)
+        {
+            ResetAllFormDatas();
+        }
+
         // // // // // // // // // // // // // "Update Course" Tab - End // // // // // // // // // // // // //
     }
 }
@@ -759,6 +833,9 @@ namespace Exam_Cell
 // // // // // // // // // // // FOR TESTING // // // // // // // // // // // //
 // *** try make an error in try-catch which have function only.. eg: Search event in update student tab ***
 // *** is timer needed ? ***
+// *** fill semester combobox of Course tab as "1 & 2" or "1 and 2" whatever... ***
+// *** newBranches is not used in Add Branches event. newBranches is to add to branch priority table in db.
+//     (make sure branch going to insert does'nt exist in branch priority table) ***
 // 1. Branch combobox in all the tabs since we gave same datatable as DataSource of combobox
 // 2. open update student tab and try search without filling form and,
 //  click dgv cell to auto fill and try update button to check whether dgv cell click selectedItem in combobox changes the selectedIndex.

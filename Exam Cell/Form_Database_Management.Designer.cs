@@ -75,7 +75,6 @@
             this.Button_Clear_updateCourseTab = new System.Windows.Forms.Button();
             this.Button_Search_updateCourseTab = new System.Windows.Forms.Button();
             this.Button_Update_updateCourseTab = new System.Windows.Forms.Button();
-            this.Button_DeleteBranch_updateCourseTab = new System.Windows.Forms.Button();
             this.Button_Delete_updateCourseTab = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.Combobox_Branch_updateCourseTab = new System.Windows.Forms.ComboBox();
@@ -90,6 +89,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.Combobox_Semester_updateCourse = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.CheckboxColumn_CourseDgv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HeaderCheckbox_CourseDgv = new System.Windows.Forms.CheckBox();
             this.Panel_Header.SuspendLayout();
             this.TabPanel.SuspendLayout();
             this.Tab_Add.SuspendLayout();
@@ -649,11 +650,11 @@
             // 
             // Tab_Update_Course
             // 
+            this.Tab_Update_Course.Controls.Add(this.HeaderCheckbox_CourseDgv);
             this.Tab_Update_Course.Controls.Add(this.Dgv_Course);
             this.Tab_Update_Course.Controls.Add(this.Button_Clear_updateCourseTab);
             this.Tab_Update_Course.Controls.Add(this.Button_Search_updateCourseTab);
             this.Tab_Update_Course.Controls.Add(this.Button_Update_updateCourseTab);
-            this.Tab_Update_Course.Controls.Add(this.Button_DeleteBranch_updateCourseTab);
             this.Tab_Update_Course.Controls.Add(this.Button_Delete_updateCourseTab);
             this.Tab_Update_Course.Controls.Add(this.label13);
             this.Tab_Update_Course.Controls.Add(this.label11);
@@ -678,6 +679,8 @@
             this.Dgv_Course.AllowUserToDeleteRows = false;
             this.Dgv_Course.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Course.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckboxColumn_CourseDgv});
             this.Dgv_Course.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Dgv_Course.Location = new System.Drawing.Point(0, 160);
             this.Dgv_Course.Name = "Dgv_Course";
@@ -696,13 +699,14 @@
             this.Button_Clear_updateCourseTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Clear_updateCourseTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Clear_updateCourseTab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_Clear_updateCourseTab.Location = new System.Drawing.Point(529, 99);
+            this.Button_Clear_updateCourseTab.Location = new System.Drawing.Point(586, 99);
             this.Button_Clear_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Clear_updateCourseTab.Name = "Button_Clear_updateCourseTab";
             this.Button_Clear_updateCourseTab.Size = new System.Drawing.Size(100, 40);
             this.Button_Clear_updateCourseTab.TabIndex = 64;
             this.Button_Clear_updateCourseTab.Text = "Clear";
             this.Button_Clear_updateCourseTab.UseVisualStyleBackColor = false;
+            this.Button_Clear_updateCourseTab.Click += new System.EventHandler(this.Button_Clear_updateCourseTab_Click);
             // 
             // Button_Search_updateCourseTab
             // 
@@ -714,7 +718,7 @@
             this.Button_Search_updateCourseTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Search_updateCourseTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Search_updateCourseTab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_Search_updateCourseTab.Location = new System.Drawing.Point(211, 99);
+            this.Button_Search_updateCourseTab.Location = new System.Drawing.Point(222, 99);
             this.Button_Search_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Search_updateCourseTab.Name = "Button_Search_updateCourseTab";
             this.Button_Search_updateCourseTab.Size = new System.Drawing.Size(100, 40);
@@ -733,7 +737,7 @@
             this.Button_Update_updateCourseTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Update_updateCourseTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Update_updateCourseTab.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Update_updateCourseTab.Location = new System.Drawing.Point(317, 99);
+            this.Button_Update_updateCourseTab.Location = new System.Drawing.Point(332, 99);
             this.Button_Update_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Update_updateCourseTab.Name = "Button_Update_updateCourseTab";
             this.Button_Update_updateCourseTab.Size = new System.Drawing.Size(100, 40);
@@ -741,25 +745,6 @@
             this.Button_Update_updateCourseTab.Text = "Update";
             this.Button_Update_updateCourseTab.UseVisualStyleBackColor = false;
             this.Button_Update_updateCourseTab.Click += new System.EventHandler(this.Button_Update_updateCourseTab_Click);
-            // 
-            // Button_DeleteBranch_updateCourseTab
-            // 
-            this.Button_DeleteBranch_updateCourseTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.Button_DeleteBranch_updateCourseTab.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_DeleteBranch_updateCourseTab.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.Button_DeleteBranch_updateCourseTab.FlatAppearance.BorderSize = 0;
-            this.Button_DeleteBranch_updateCourseTab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.Button_DeleteBranch_updateCourseTab.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(51)))), ((int)(((byte)(120)))));
-            this.Button_DeleteBranch_updateCourseTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_DeleteBranch_updateCourseTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_DeleteBranch_updateCourseTab.ForeColor = System.Drawing.Color.White;
-            this.Button_DeleteBranch_updateCourseTab.Location = new System.Drawing.Point(635, 99);
-            this.Button_DeleteBranch_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Button_DeleteBranch_updateCourseTab.Name = "Button_DeleteBranch_updateCourseTab";
-            this.Button_DeleteBranch_updateCourseTab.Size = new System.Drawing.Size(145, 40);
-            this.Button_DeleteBranch_updateCourseTab.TabIndex = 62;
-            this.Button_DeleteBranch_updateCourseTab.Text = "Delete Branch";
-            this.Button_DeleteBranch_updateCourseTab.UseVisualStyleBackColor = false;
             // 
             // Button_Delete_updateCourseTab
             // 
@@ -772,13 +757,14 @@
             this.Button_Delete_updateCourseTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Delete_updateCourseTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Delete_updateCourseTab.ForeColor = System.Drawing.Color.White;
-            this.Button_Delete_updateCourseTab.Location = new System.Drawing.Point(423, 99);
+            this.Button_Delete_updateCourseTab.Location = new System.Drawing.Point(442, 99);
             this.Button_Delete_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Delete_updateCourseTab.Name = "Button_Delete_updateCourseTab";
-            this.Button_Delete_updateCourseTab.Size = new System.Drawing.Size(100, 40);
+            this.Button_Delete_updateCourseTab.Size = new System.Drawing.Size(134, 40);
             this.Button_Delete_updateCourseTab.TabIndex = 63;
-            this.Button_Delete_updateCourseTab.Text = "Delete";
+            this.Button_Delete_updateCourseTab.Text = "Delete Selected";
             this.Button_Delete_updateCourseTab.UseVisualStyleBackColor = false;
+            this.Button_Delete_updateCourseTab.Click += new System.EventHandler(this.Button_Delete_updateCourseTab_Click);
             // 
             // label11
             // 
@@ -903,6 +889,22 @@
             this.label13.TabIndex = 60;
             this.label13.Text = "Semester :";
             // 
+            // CheckboxColumn_CourseDgv
+            // 
+            this.CheckboxColumn_CourseDgv.HeaderText = "";
+            this.CheckboxColumn_CourseDgv.Name = "CheckboxColumn_CourseDgv";
+            this.CheckboxColumn_CourseDgv.Width = 35;
+            // 
+            // HeaderCheckbox_CourseDgv
+            // 
+            this.HeaderCheckbox_CourseDgv.AutoSize = true;
+            this.HeaderCheckbox_CourseDgv.Location = new System.Drawing.Point(52, 163);
+            this.HeaderCheckbox_CourseDgv.Name = "HeaderCheckbox_CourseDgv";
+            this.HeaderCheckbox_CourseDgv.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckbox_CourseDgv.TabIndex = 68;
+            this.HeaderCheckbox_CourseDgv.UseVisualStyleBackColor = true;
+            this.HeaderCheckbox_CourseDgv.CheckedChanged += new System.EventHandler(this.HeaderCheckbox_CourseDgv_CheckedChanged);
+            // 
             // Form_Database_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -985,7 +987,6 @@
         private System.Windows.Forms.Button Button_Clear_updateCourseTab;
         private System.Windows.Forms.Button Button_Search_updateCourseTab;
         private System.Windows.Forms.Button Button_Update_updateCourseTab;
-        private System.Windows.Forms.Button Button_DeleteBranch_updateCourseTab;
         private System.Windows.Forms.Button Button_Delete_updateCourseTab;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox Combobox_Branch_updateCourseTab;
@@ -1005,5 +1006,7 @@
         private System.Windows.Forms.CheckBox HeaderCheckbox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox Combobox_Semester_updateCourse;
+        private System.Windows.Forms.CheckBox HeaderCheckbox_CourseDgv;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckboxColumn_CourseDgv;
     }
 }
