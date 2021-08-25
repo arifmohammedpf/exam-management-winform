@@ -425,7 +425,8 @@ namespace Exam_Cell
                 MessageBox.Show(ex.ToString());
             }
         }
-
+        
+        string selectedRegNo, selectedName, selectedYoa, selectedSemester, selectedBranch, selectedClass;
         private void Dgv_Student_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // fill the form
@@ -435,6 +436,14 @@ namespace Exam_Cell
             Combobox_Semester.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
             Combobox_Branch_updateStudTab.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
             Combobox_Class.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Class"].Value.ToString();
+
+            // selected student record to be updated
+            selectedRegNo = Dgv_Student.Rows[e.RowIndex].Cells["Reg_No"].Value.ToString();
+            selectedName = Dgv_Student.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+            selectedYoa = Dgv_Student.Rows[e.RowIndex].Cells["YOA"].Value.ToString();
+            selectedSemester = Dgv_Student.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
+            selectedBranch = Dgv_Student.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
+            selectedClass = Dgv_Student.Rows[e.RowIndex].Cells["Class"].Value.ToString();
         }
 
         private void Button_Update_updateStudentTab_Click(object sender, EventArgs e)
@@ -442,7 +451,7 @@ namespace Exam_Cell
             if(Textbox_Regno.Text == "" || Textbox_Name.Text == "" || Textbox_Yoa.Text == "" || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please fill all info of student to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
             else
             {
-                string messageText = string.Format("Do you want to update record of '%{0}%' ?   ", Textbox_Regno.Text);
+                string messageText = string.Format("Do you want to update record of '%{0}%' - '%{1}%' ?   ", selectedRegNo, selectedName);
                 CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
                 string result = CustomMessageBox.UserChoice;
                 if (result == "Yes")
@@ -450,7 +459,7 @@ namespace Exam_Cell
                     int recordsAffected;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
-                        string query = string.Format("Update Students set Name=@Name,YOA=@YOA,Branch=@Branch,Semester=@Semester,Class=@Class where Reg_No=@Reg_No");
+                        string query = string.Format("Update Students set Reg_No=@Reg_No,Name=@Name,YOA=@YOA,Branch=@Branch,Semester=@Semester,Class=@Class where Reg_No=@SelectedReg_No and Name=@SelectedName and YOA=@SelectedYOA and Branch=@SelectedBranch and Semester=@SelectedSemester and Class=@SelectedClass");
                         SQLiteCommand command = new SQLiteCommand(query,dbConnection);
                         command.Parameters.AddWithValue("@Reg_No", Textbox_Regno.Text);
                         command.Parameters.AddWithValue("@Name", Textbox_Name.Text);
@@ -458,9 +467,19 @@ namespace Exam_Cell
                         command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateStudTab.SelectedItem.ToString());
                         command.Parameters.AddWithValue("@Semester", Combobox_Semester.SelectedItem.ToString());
                         command.Parameters.AddWithValue("@Class", Combobox_Class.SelectedItem.ToString());
+                        command.Parameters.AddWithValue("@SelectedReg_No", selectedRegNo);
+                        command.Parameters.AddWithValue("@SelectedName", selectedName);
+                        command.Parameters.AddWithValue("@SelectedYOA", selectedYoa);
+                        command.Parameters.AddWithValue("@SelectedBranch", selectedBranch);
+                        command.Parameters.AddWithValue("@SelectedSemester", selectedSemester);
+                        command.Parameters.AddWithValue("@SelectedClass", selectedClass);
                         recordsAffected = command.ExecuteNonQuery();
                     }
-                    if (recordsAffected == 0) CustomMessageBox.ShowMessageBox("Given Reg_No does not exist, Try again  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                    if (recordsAffected == 0)
+                    {
+                        messageText = string.Format("'%{0}%' - '%{1}%' does not exist, Try again    ", selectedRegNo, selectedName);
+                        CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                    }
                 }
             }
         }
