@@ -32,27 +32,29 @@
             this.Button_Close = new System.Windows.Forms.Button();
             this.Panel_Header = new System.Windows.Forms.Label();
             this.Panel_Body = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.Add_btn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Dgv_Rooms = new System.Windows.Forms.DataGridView();
+            this.Dgv_BranchPriority = new System.Windows.Forms.DataGridView();
+            this.Button_Update = new System.Windows.Forms.Button();
+            this.Button_Add = new System.Windows.Forms.Button();
+            this.Button_Delete = new System.Windows.Forms.Button();
+            this.Numeric_B_Series = new System.Windows.Forms.NumericUpDown();
+            this.Numeric_A_Series = new System.Windows.Forms.NumericUpDown();
+            this.Textbox_TotalRoom = new System.Windows.Forms.TextBox();
+            this.Textbox_TotalCapacity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Label_TotalCapacity = new System.Windows.Forms.Label();
+            this.Label_TotalRooms = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Textbox_RoomNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
+            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.Panel_Body.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Rooms)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_BranchPriority)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Numeric_B_Series)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Numeric_A_Series)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -92,20 +94,21 @@
             // 
             // Panel_Body
             // 
-            this.Panel_Body.Controls.Add(this.dataGridView2);
-            this.Panel_Body.Controls.Add(this.dataGridView1);
-            this.Panel_Body.Controls.Add(this.button3);
-            this.Panel_Body.Controls.Add(this.Add_btn);
-            this.Panel_Body.Controls.Add(this.button2);
-            this.Panel_Body.Controls.Add(this.numericUpDown2);
-            this.Panel_Body.Controls.Add(this.numericUpDown1);
-            this.Panel_Body.Controls.Add(this.textBox2);
-            this.Panel_Body.Controls.Add(this.textBox3);
+            this.Panel_Body.Controls.Add(this.HeaderCheckBox);
+            this.Panel_Body.Controls.Add(this.Dgv_Rooms);
+            this.Panel_Body.Controls.Add(this.Dgv_BranchPriority);
+            this.Panel_Body.Controls.Add(this.Button_Update);
+            this.Panel_Body.Controls.Add(this.Button_Add);
+            this.Panel_Body.Controls.Add(this.Button_Delete);
+            this.Panel_Body.Controls.Add(this.Numeric_B_Series);
+            this.Panel_Body.Controls.Add(this.Numeric_A_Series);
+            this.Panel_Body.Controls.Add(this.Textbox_TotalRoom);
+            this.Panel_Body.Controls.Add(this.Textbox_TotalCapacity);
             this.Panel_Body.Controls.Add(this.label3);
-            this.Panel_Body.Controls.Add(this.label4);
-            this.Panel_Body.Controls.Add(this.label2);
+            this.Panel_Body.Controls.Add(this.Label_TotalCapacity);
+            this.Panel_Body.Controls.Add(this.Label_TotalRooms);
             this.Panel_Body.Controls.Add(this.label1);
-            this.Panel_Body.Controls.Add(this.textBox1);
+            this.Panel_Body.Controls.Add(this.Textbox_RoomNo);
             this.Panel_Body.Controls.Add(this.label5);
             this.Panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Body.Location = new System.Drawing.Point(0, 55);
@@ -113,170 +116,194 @@
             this.Panel_Body.Size = new System.Drawing.Size(989, 436);
             this.Panel_Body.TabIndex = 4;
             // 
-            // dataGridView2
+            // Dgv_Rooms
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(567, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(419, 429);
-            this.dataGridView2.TabIndex = 29;
+            this.Dgv_Rooms.AllowUserToAddRows = false;
+            this.Dgv_Rooms.AllowUserToDeleteRows = false;
+            this.Dgv_Rooms.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Rooms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBoxColumn});
+            this.Dgv_Rooms.Location = new System.Drawing.Point(567, 3);
+            this.Dgv_Rooms.Name = "Dgv_Rooms";
+            this.Dgv_Rooms.RowTemplate.Height = 24;
+            this.Dgv_Rooms.Size = new System.Drawing.Size(419, 429);
+            this.Dgv_Rooms.TabIndex = 29;
             // 
-            // dataGridView1
+            // Dgv_BranchPriority
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 134);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(563, 298);
-            this.dataGridView1.TabIndex = 29;
+            this.Dgv_BranchPriority.AllowUserToAddRows = false;
+            this.Dgv_BranchPriority.AllowUserToDeleteRows = false;
+            this.Dgv_BranchPriority.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_BranchPriority.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_BranchPriority.Location = new System.Drawing.Point(3, 134);
+            this.Dgv_BranchPriority.Name = "Dgv_BranchPriority";
+            this.Dgv_BranchPriority.RowTemplate.Height = 24;
+            this.Dgv_BranchPriority.Size = new System.Drawing.Size(563, 298);
+            this.Dgv_BranchPriority.TabIndex = 29;
             // 
-            // button3
+            // Button_Update
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button3.Location = new System.Drawing.Point(172, 84);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 40);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = false;
+            this.Button_Update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_Update.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Update.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Update.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_Update.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_Update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Update.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Update.Location = new System.Drawing.Point(172, 84);
+            this.Button_Update.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Update.Name = "Button_Update";
+            this.Button_Update.Size = new System.Drawing.Size(100, 40);
+            this.Button_Update.TabIndex = 27;
+            this.Button_Update.Text = "Update";
+            this.Button_Update.UseVisualStyleBackColor = false;
             // 
-            // Add_btn
+            // Button_Add
             // 
-            this.Add_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Add_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Add_btn.FlatAppearance.BorderSize = 0;
-            this.Add_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.Add_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.Add_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Add_btn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_btn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Add_btn.Location = new System.Drawing.Point(66, 84);
-            this.Add_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.Size = new System.Drawing.Size(100, 40);
-            this.Add_btn.TabIndex = 28;
-            this.Add_btn.Text = "Add";
-            this.Add_btn.UseVisualStyleBackColor = false;
+            this.Button_Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Add.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Add.FlatAppearance.BorderSize = 0;
+            this.Button_Add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_Add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Add.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Add.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_Add.Location = new System.Drawing.Point(66, 84);
+            this.Button_Add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Add.Name = "Button_Add";
+            this.Button_Add.Size = new System.Drawing.Size(100, 40);
+            this.Button_Add.TabIndex = 28;
+            this.Button_Add.Text = "Add";
+            this.Button_Add.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // Button_Delete
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(51)))), ((int)(((byte)(120)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(278, 84);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 40);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Button_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
+            this.Button_Delete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Delete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
+            this.Button_Delete.FlatAppearance.BorderSize = 0;
+            this.Button_Delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
+            this.Button_Delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(51)))), ((int)(((byte)(120)))));
+            this.Button_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Delete.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Delete.ForeColor = System.Drawing.Color.White;
+            this.Button_Delete.Location = new System.Drawing.Point(278, 84);
+            this.Button_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Delete.Name = "Button_Delete";
+            this.Button_Delete.Size = new System.Drawing.Size(100, 40);
+            this.Button_Delete.TabIndex = 26;
+            this.Button_Delete.Text = "Delete";
+            this.Button_Delete.UseVisualStyleBackColor = false;
             // 
-            // numericUpDown2
+            // Numeric_B_Series
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(266, 41);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(63, 22);
-            this.numericUpDown2.TabIndex = 25;
+            this.Numeric_B_Series.Location = new System.Drawing.Point(266, 39);
+            this.Numeric_B_Series.Name = "Numeric_B_Series";
+            this.Numeric_B_Series.Size = new System.Drawing.Size(63, 22);
+            this.Numeric_B_Series.TabIndex = 25;
             // 
-            // numericUpDown1
+            // Numeric_A_Series
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(95, 39);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(63, 22);
-            this.numericUpDown1.TabIndex = 25;
+            this.Numeric_A_Series.Location = new System.Drawing.Point(95, 39);
+            this.Numeric_A_Series.Name = "Numeric_A_Series";
+            this.Numeric_A_Series.Size = new System.Drawing.Size(63, 22);
+            this.Numeric_A_Series.TabIndex = 25;
             // 
-            // textBox2
+            // Textbox_TotalRoom
             // 
-            this.textBox2.Location = new System.Drawing.Point(520, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(41, 22);
-            this.textBox2.TabIndex = 24;
+            this.Textbox_TotalRoom.Location = new System.Drawing.Point(426, 40);
+            this.Textbox_TotalRoom.Name = "Textbox_TotalRoom";
+            this.Textbox_TotalRoom.ReadOnly = true;
+            this.Textbox_TotalRoom.Size = new System.Drawing.Size(135, 22);
+            this.Textbox_TotalRoom.TabIndex = 24;
             // 
-            // textBox3
+            // Textbox_TotalCapacity
             // 
-            this.textBox3.Location = new System.Drawing.Point(520, 75);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(41, 22);
-            this.textBox3.TabIndex = 24;
+            this.Textbox_TotalCapacity.Location = new System.Drawing.Point(426, 88);
+            this.Textbox_TotalCapacity.Name = "Textbox_TotalCapacity";
+            this.Textbox_TotalCapacity.ReadOnly = true;
+            this.Textbox_TotalCapacity.Size = new System.Drawing.Size(135, 22);
+            this.Textbox_TotalCapacity.TabIndex = 24;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(176, 43);
+            this.label3.Location = new System.Drawing.Point(188, 41);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 17);
             this.label3.TabIndex = 22;
             this.label3.Text = "B Series :";
             // 
-            // label4
+            // Label_TotalCapacity
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(391, 78);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 17);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Total Capacity :";
+            this.Label_TotalCapacity.AutoSize = true;
+            this.Label_TotalCapacity.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_TotalCapacity.Location = new System.Drawing.Point(423, 68);
+            this.Label_TotalCapacity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label_TotalCapacity.Name = "Label_TotalCapacity";
+            this.Label_TotalCapacity.Size = new System.Drawing.Size(101, 17);
+            this.Label_TotalCapacity.TabIndex = 22;
+            this.Label_TotalCapacity.Text = "Total Capacity :";
             // 
-            // label2
+            // Label_TotalRooms
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(407, 46);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 17);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Total Room :";
+            this.Label_TotalRooms.AutoSize = true;
+            this.Label_TotalRooms.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_TotalRooms.Location = new System.Drawing.Point(423, 20);
+            this.Label_TotalRooms.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label_TotalRooms.Name = "Label_TotalRooms";
+            this.Label_TotalRooms.Size = new System.Drawing.Size(80, 17);
+            this.Label_TotalRooms.TabIndex = 22;
+            this.Label_TotalRooms.Text = "Total Room :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 41);
+            this.label1.Location = new System.Drawing.Point(11, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 22;
             this.label1.Text = "A Series :";
             // 
-            // textBox1
+            // Textbox_RoomNo
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(234, 22);
-            this.textBox1.TabIndex = 24;
+            this.Textbox_RoomNo.Location = new System.Drawing.Point(95, 6);
+            this.Textbox_RoomNo.Name = "Textbox_RoomNo";
+            this.Textbox_RoomNo.Size = new System.Drawing.Size(234, 22);
+            this.Textbox_RoomNo.TabIndex = 24;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 9);
+            this.label5.Location = new System.Drawing.Point(9, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 22;
             this.label5.Text = "Room No :";
+            // 
+            // HeaderCheckBox
+            // 
+            this.HeaderCheckBox.AutoSize = true;
+            this.HeaderCheckBox.Location = new System.Drawing.Point(620, 6);
+            this.HeaderCheckBox.Name = "HeaderCheckBox";
+            this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckBox.TabIndex = 31;
+            this.HeaderCheckBox.UseVisualStyleBackColor = true;
+            this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
+            // 
+            // CheckBoxColumn
+            // 
+            this.CheckBoxColumn.HeaderText = "";
+            this.CheckBoxColumn.Name = "CheckBoxColumn";
+            this.CheckBoxColumn.Width = 35;
             // 
             // Form_Room
             // 
@@ -286,20 +313,22 @@
             this.ClientSize = new System.Drawing.Size(989, 491);
             this.Controls.Add(this.Panel_Body);
             this.Controls.Add(this.panel1);
+            this.Enabled = false;
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form_Room";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Room";
+            this.Load += new System.EventHandler(this.Form_Room_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.Panel_Body.ResumeLayout(false);
             this.Panel_Body.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Rooms)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_BranchPriority)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Numeric_B_Series)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Numeric_A_Series)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -309,20 +338,22 @@
         private System.Windows.Forms.Label Panel_Header;
         private System.Windows.Forms.Button Button_Close;
         private System.Windows.Forms.Panel Panel_Body;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.NumericUpDown Numeric_B_Series;
+        private System.Windows.Forms.NumericUpDown Numeric_A_Series;
+        private System.Windows.Forms.TextBox Textbox_TotalCapacity;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Label_TotalRooms;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Textbox_RoomNo;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button Add_btn;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox Textbox_TotalRoom;
+        private System.Windows.Forms.Label Label_TotalCapacity;
+        private System.Windows.Forms.Button Button_Update;
+        private System.Windows.Forms.Button Button_Add;
+        private System.Windows.Forms.Button Button_Delete;
+        private System.Windows.Forms.DataGridView Dgv_Rooms;
+        private System.Windows.Forms.DataGridView Dgv_BranchPriority;
+        private System.Windows.Forms.CheckBox HeaderCheckBox;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn;
     }
 }
