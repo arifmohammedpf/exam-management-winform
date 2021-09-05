@@ -31,42 +31,34 @@ namespace Exam_Cell
             this.Close();
         }
 
+        DataTable RoomsRecord, BranchRecord;
         void DgvFill()
         {
             Dgv_BranchPriority.DataSource = null;
-            Dgv_Rooms.DataSource = null;
-            HeaderCheckBox.Checked = false; // will this bring error ???
+            Dgv_Rooms.DataSource = null;            
 
-            string Rooms_query = "Select * from Rooms";
-            string Branch_query = "Select * from Branch_Priority";
-            string A_Series_Capacity, B_Series_Capacity;
+            string Rooms_query = "Select * from Rooms order by Priority";
+            string Branch_query = "Select * from Branch_Priority order by Priority";
+            
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
-                SQLiteCommand Roomscommand, Branchcommand, ASeriesCommand, BSeriesCommand;
+                SQLiteCommand Roomscommand, Branchcommand;
                 // Rooms
                 Roomscommand = new SQLiteCommand(Rooms_query, dbConnection);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(Roomscommand);
-                DataTable RoomsRecord = new DataTable();
+                RoomsRecord = new DataTable();
                 dataAdapter.Fill(RoomsRecord);
                 Dgv_Rooms.DataSource = RoomsRecord;
 
                 // Branch Priority
                 Branchcommand = new SQLiteCommand(Branch_query, dbConnection);
                 SQLiteDataAdapter BranchdataAdapter = new SQLiteDataAdapter(Branchcommand);
-                DataTable BranchRecord = new DataTable();
+                BranchRecord = new DataTable();
                 BranchdataAdapter.Fill(BranchRecord);
                 Dgv_BranchPriority.DataSource = BranchRecord;
-
-                // A_Series Capacity Fill
-                ASeriesCommand = new SQLiteCommand("Select Sum(A_Series) from Rooms",dbConnection);
-                A_Series_Capacity = ASeriesCommand.ExecuteScalar().ToString();
-                // B_Series Capacity Fill
-                BSeriesCommand = new SQLiteCommand("Select Sum(B_Series) from Rooms", dbConnection);
-                B_Series_Capacity = BSeriesCommand.ExecuteScalar().ToString();
             }
 
-            Label_TotalRooms.Text = "Rooms : " + Dgv_Rooms.Rows.Count.ToString();
-            Label_TotalCapacity.Text = "Capacity : A - " + A_Series_Capacity + " B - " + B_Series_Capacity;
+            HeaderCheckBox.Checked = false;
             // try testing msgbox here for checking tryCatch
         }
         void ResetForm()
@@ -92,6 +84,26 @@ namespace Exam_Cell
             }
         }
 
+        void Fill_Full_Room_capacity()
+        {
+            string A_Series_Capacity, B_Series_Capacity;
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                SQLiteCommand ASeriesCommand, BSeriesCommand;
+
+                // A_Series Capacity Fill
+                ASeriesCommand = new SQLiteCommand("Select Sum(A_Series) from Rooms", dbConnection);
+                A_Series_Capacity = ASeriesCommand.ExecuteScalar().ToString();
+
+                // B_Series Capacity Fill
+                BSeriesCommand = new SQLiteCommand("Select Sum(B_Series) from Rooms", dbConnection);
+                B_Series_Capacity = BSeriesCommand.ExecuteScalar().ToString();
+            }
+            Label_TotalRooms.Text = "Rooms : " + Dgv_Rooms.Rows.Count.ToString();
+            Label_TotalCapacity.Text = "Capacity : A - " + A_Series_Capacity + " B - " + B_Series_Capacity;
+        }
+
+        bool isCheckBoxColumn_ClickedEvent = false;
         private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (HeaderCheckBox.Checked)
@@ -108,9 +120,185 @@ namespace Exam_Cell
                     row.Cells["CheckBoxColumn"].Value = false;
                 }
             }
+
+            // no need to fill full capacity for dgv checkboxColumn click event
+            if(!isCheckBoxColumn_ClickedEvent)
+                Fill_Full_Room_capacity();
+            isCheckBoxColumn_ClickedEvent = false;
         }
+
+        // Events to Update capacity when checkbox is clicked --- Start
+        void Fill_Selected_Room_capacity()
+        {
+            if (HeaderCheckBox.Checked)
+            {
+                isCheckBoxColumn_ClickedEvent = true;
+                HeaderCheckBox.Checked = false;
+            }
+
+            int a, b, A_Series_Capacity = 0, B_Series_Capacity = 0, Room_count = 0;
+            foreach (DataGridViewRow dr in Dgv_Rooms.Rows)
+            {
+                bool chckselected = Convert.ToBoolean(dr.Cells["CheckBoxColumn"].Value);
+                if (chckselected)
+                {
+                    Room_count += 1;
+                    a = int.Parse(dr.Cells["A_Series"].Value.ToString());
+                    b = int.Parse(dr.Cells["B_Series"].Value.ToString());
+                    A_Series_Capacity += a;
+                    B_Series_Capacity += b;
+                }
+            }
+
+            Label_TotalRooms.Text = "Rooms : " + Room_count.ToString();
+            Label_TotalCapacity.Text = "Capacity : A - " + A_Series_Capacity + " B - " + B_Series_Capacity;
+        }
+
+        private void Dgv_Rooms_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Rooms.Columns["CheckBoxColumn"].Index)
+                Dgv_Rooms.EndEdit();
+        }
+
+        private void Dgv_Rooms_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Rooms.Columns["CheckBoxColumn"].Index)
+                Fill_Selected_Room_capacity();
+        }
+        // Events to Update capacity when checkbox is clicked --- End
+
+        private void Dgv_Rooms_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Textbox_RoomNo.Text = Dgv_Rooms.CurrentRow.Cells["Room_No"].Value.ToString();
+            Numeric_A_Series.Value = int.Parse(Dgv_Rooms.CurrentRow.Cells["A_Series"].Value.ToString());
+            Numeric_B_Series.Value = int.Parse(Dgv_Rooms.CurrentRow.Cells["B_Series"].Value.ToString());
+        }
+
+        // Drag and Drop rows event to change Room priority --- Start
+        private Rectangle dragBoxFromMouseDown_Room;
+        private int rowIndexFromMouseDown_Room;
+        private int rowIndexOfItemUnderMouseToDrop_Room = 0;
+        private void Dgv_Rooms_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Get the index of the item the mouse is below.
+            rowIndexFromMouseDown_Room = Dgv_Rooms.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndexFromMouseDown_Room != -1)
+            {
+                // Remember the point where the mouse down occurred.
+                // The DragSize indicates the size that the mouse can move
+                // before a drag event should be started.               
+                Size dragSize = SystemInformation.DragSize;
+
+                // Create a rectangle using the DragSize, with the mouse position being
+                // at the center of the rectangle.
+                dragBoxFromMouseDown_Room = new Rectangle(new Point(e.X - (dragSize.Width / 2), e.Y - (dragSize.Height / 2)), dragSize);
+            }
+            else
+            {
+                // Reset the rectangle if the mouse is not over an item in the ListBox.
+                dragBoxFromMouseDown_Room = Rectangle.Empty;
+            }
+        }
+
+        private void Dgv_Rooms_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                // If the mouse moves outside the rectangle, start the drag.
+                if (dragBoxFromMouseDown_Room != Rectangle.Empty && !dragBoxFromMouseDown_Room.Contains(e.X, e.Y))
+                {
+                    // Proceed with the drag and drop, passing in the list item.                   
+                    DragDropEffects dropEffect = Dgv_Rooms.DoDragDrop(Dgv_Rooms.Rows[rowIndexFromMouseDown_Room], DragDropEffects.Move);
+                }
+            }
+        }
+
+        private void Dgv_Rooms_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+            //autoScroll
+            if (e.Y <= PointToScreen(new Point(Dgv_Rooms.Location.X, Dgv_Rooms.Location.Y)).Y + 50)
+                if (Dgv_Rooms.FirstDisplayedScrollingRowIndex != 0)
+                {
+                    Dgv_Rooms.FirstDisplayedScrollingRowIndex -= 1;
+                }
+            if (e.Y >= PointToScreen(new Point(Dgv_Rooms.Location.X + Dgv_Rooms.Width, Dgv_Rooms.Location.Y + Dgv_Rooms.Height)).Y - 5)
+                Dgv_Rooms.FirstDisplayedScrollingRowIndex += 1;
+        }
+
+        private void Dgv_Rooms_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                // The mouse locations are relative to the screen, so they must be
+                // converted to client coordinates.
+                Point clientPoint = Dgv_Rooms.PointToClient(new Point(e.X, e.Y));
+
+                // Get the row index of the item the mouse is below.
+                rowIndexOfItemUnderMouseToDrop_Room = Dgv_Rooms.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+                // If the drag operation was a move then remove and insert the row.
+                if (e.Effect == DragDropEffects.Move)
+                {
+                    if (rowIndexOfItemUnderMouseToDrop_Room != -1)
+                    {
+                        DataGridViewRow rowToMove = e.Data.GetData(typeof(DataGridViewRow)) as DataGridViewRow;
+                        // find the row to move in the datasource:
+                        DataRow oldrow = ((DataRowView)rowToMove.DataBoundItem).Row;
+                        // clone it:
+                        DataRow newrow = RoomsRecord.NewRow();
+                        newrow.ItemArray = oldrow.ItemArray;
+
+                        RoomsRecord.Rows.Remove(oldrow);
+                        RoomsRecord.Rows.InsertAt(newrow, rowIndexOfItemUnderMouseToDrop_Room);
+
+                        //if (rowToMove.Index < 0)
+                        //{
+                        //    return;
+                        //}
+                        //if (rowIndexFromMouseDown_Room < rowIndexOfItemUnderMouseToDrop_Room)
+                        //{
+                        //    table_roomPriority.Rows.InsertAt(newrow, rowIndexOfItemUnderMouseToDrop_Room - 1);
+                        //    table_roomPriority.Rows.Remove(oldrow);
+                        //}
+                        //else if (rowIndexFromMouseDown_Room > rowIndexOfItemUnderMouseToDrop_Room)
+                        //{
+                        //    table_roomPriority.Rows.InsertAt(newrow, rowIndexOfItemUnderMouseToDrop_Room);
+                        //    table_roomPriority.Rows.Remove(oldrow);
+                        //}
+
+                        //loop through dgv and set priority manually
+                        int set_priority = 1;
+                        foreach (DataGridViewRow row in Dgv_Rooms.Rows)
+                        {
+                            row.Cells["Priority"].Value = set_priority;
+                            set_priority++;
+                        }
+
+                        // save to db
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            //RoomsRecord.AcceptChanges();      // do we need this???
+                            SQLiteCommand command = new SQLiteCommand("Select * from Rooms", dbConnection);
+                            SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                            //adapter.AcceptChangesDuringUpdate = true;     // do we need this???
+                            SQLiteCommandBuilder builder = new SQLiteCommandBuilder(adapter);
+                            adapter.Update(RoomsRecord);                            
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        // Drag and Drop rows event to change Room priority --- End
     }
 }
 
 // // // TESTING // // //
 // * make error in ResetForm function to check if tryCatch work and exit Form Load function... use msgbox in each function
+// * autofill when row double click
+// * dragdrop feature have to be tested as last comment from https://social.msdn.microsoft.com/Forums/en-US/16b0a44e-35a0-4bc8-9ccd-ec2c62c95a55/select-and-drag-a-datagridview-row-with-a-single-click?forum=winforms
+// * saving to DB while drag and drop priority...

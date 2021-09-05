@@ -32,7 +32,9 @@
             this.Button_Close = new System.Windows.Forms.Button();
             this.Panel_Header = new System.Windows.Forms.Label();
             this.Panel_Body = new System.Windows.Forms.Panel();
+            this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
             this.Dgv_Rooms = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Dgv_BranchPriority = new System.Windows.Forms.DataGridView();
             this.Button_Update = new System.Windows.Forms.Button();
             this.Button_Add = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Textbox_RoomNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
-            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Rooms)).BeginInit();
@@ -94,6 +94,7 @@
             // 
             // Panel_Body
             // 
+            this.Panel_Body.AllowDrop = true;
             this.Panel_Body.Controls.Add(this.HeaderCheckBox);
             this.Panel_Body.Controls.Add(this.Dgv_Rooms);
             this.Panel_Body.Controls.Add(this.Dgv_BranchPriority);
@@ -116,6 +117,16 @@
             this.Panel_Body.Size = new System.Drawing.Size(989, 436);
             this.Panel_Body.TabIndex = 4;
             // 
+            // HeaderCheckBox
+            // 
+            this.HeaderCheckBox.AutoSize = true;
+            this.HeaderCheckBox.Location = new System.Drawing.Point(620, 6);
+            this.HeaderCheckBox.Name = "HeaderCheckBox";
+            this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckBox.TabIndex = 31;
+            this.HeaderCheckBox.UseVisualStyleBackColor = true;
+            this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
+            // 
             // Dgv_Rooms
             // 
             this.Dgv_Rooms.AllowUserToAddRows = false;
@@ -129,9 +140,23 @@
             this.Dgv_Rooms.RowTemplate.Height = 24;
             this.Dgv_Rooms.Size = new System.Drawing.Size(419, 429);
             this.Dgv_Rooms.TabIndex = 29;
+            this.Dgv_Rooms.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Rooms_CellEndEdit);
+            this.Dgv_Rooms.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Rooms_CellMouseUp);
+            this.Dgv_Rooms.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Rooms_RowHeaderMouseDoubleClick);
+            this.Dgv_Rooms.DragDrop += new System.Windows.Forms.DragEventHandler(this.Dgv_Rooms_DragDrop);
+            this.Dgv_Rooms.DragOver += new System.Windows.Forms.DragEventHandler(this.Dgv_Rooms_DragOver);
+            this.Dgv_Rooms.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dgv_Rooms_MouseDown);
+            this.Dgv_Rooms.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dgv_Rooms_MouseMove);
+            // 
+            // CheckBoxColumn
+            // 
+            this.CheckBoxColumn.HeaderText = "";
+            this.CheckBoxColumn.Name = "CheckBoxColumn";
+            this.CheckBoxColumn.Width = 35;
             // 
             // Dgv_BranchPriority
             // 
+            this.Dgv_BranchPriority.AllowDrop = true;
             this.Dgv_BranchPriority.AllowUserToAddRows = false;
             this.Dgv_BranchPriority.AllowUserToDeleteRows = false;
             this.Dgv_BranchPriority.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
@@ -288,22 +313,6 @@
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 22;
             this.label5.Text = "Room No :";
-            // 
-            // HeaderCheckBox
-            // 
-            this.HeaderCheckBox.AutoSize = true;
-            this.HeaderCheckBox.Location = new System.Drawing.Point(620, 6);
-            this.HeaderCheckBox.Name = "HeaderCheckBox";
-            this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckBox.TabIndex = 31;
-            this.HeaderCheckBox.UseVisualStyleBackColor = true;
-            this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
-            // 
-            // CheckBoxColumn
-            // 
-            this.CheckBoxColumn.HeaderText = "";
-            this.CheckBoxColumn.Name = "CheckBoxColumn";
-            this.CheckBoxColumn.Width = 35;
             // 
             // Form_Room
             // 
