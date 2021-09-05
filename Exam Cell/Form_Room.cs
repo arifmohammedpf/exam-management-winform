@@ -224,7 +224,7 @@ namespace Exam_Cell
                 }
             if (e.Y >= PointToScreen(new Point(Dgv_Rooms.Location.X + Dgv_Rooms.Width, Dgv_Rooms.Location.Y + Dgv_Rooms.Height)).Y - 5)
                 Dgv_Rooms.FirstDisplayedScrollingRowIndex += 1;
-        }
+        }        
 
         private void Dgv_Rooms_DragDrop(object sender, DragEventArgs e)
         {
@@ -294,6 +294,127 @@ namespace Exam_Cell
             }
         }
         // Drag and Drop rows event to change Room priority --- End
+
+        // Drag and Drop rows event to change Branch priority --- Start
+        private Rectangle dragBoxFromMouseDown_BranchPriority;
+        private int rowIndexFromMouseDown_BranchPriority;
+        private int rowIndexOfItemUnderMouseToDrop_BranchPriority= 0;
+        private void Dgv_BranchPriority_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Get the index of the item the mouse is below.
+            rowIndexFromMouseDown_BranchPriority= Dgv_BranchPriority.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndexFromMouseDown_BranchPriority!= -1)
+            {
+                // Remember the point where the mouse down occurred.
+                // The DragSize indicates the size that the mouse can move
+                // before a drag event should be started.               
+                Size dragSize = SystemInformation.DragSize;
+
+                // Create a rectangle using the DragSize, with the mouse position being
+                // at the center of the rectangle.
+                dragBoxFromMouseDown_BranchPriority= new Rectangle(new Point(e.X - (dragSize.Width / 2), e.Y - (dragSize.Height / 2)), dragSize);
+            }
+            else
+            {
+                // Reset the rectangle if the mouse is not over an item in the ListBox.
+                dragBoxFromMouseDown_BranchPriority= Rectangle.Empty;
+            }
+        }
+
+        private void Dgv_BranchPriority_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                // If the mouse moves outside the rectangle, start the drag.
+                if (dragBoxFromMouseDown_BranchPriority!= Rectangle.Empty && !dragBoxFromMouseDown_BranchPriority.Contains(e.X, e.Y))
+                {
+                    // Proceed with the drag and drop, passing in the list item.                   
+                    DragDropEffects dropEffect = Dgv_BranchPriority.DoDragDrop(Dgv_BranchPriority.Rows[rowIndexFromMouseDown_BranchPriority], DragDropEffects.Move);
+                }
+            }
+        }
+
+        private void Dgv_BranchPriority_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+            //autoScroll
+            if (e.Y <= PointToScreen(new Point(Dgv_BranchPriority.Location.X, Dgv_BranchPriority.Location.Y)).Y + 50)
+                if (Dgv_BranchPriority.FirstDisplayedScrollingRowIndex != 0)
+                {
+                    Dgv_BranchPriority.FirstDisplayedScrollingRowIndex -= 1;
+                }
+            if (e.Y >= PointToScreen(new Point(Dgv_BranchPriority.Location.X + Dgv_BranchPriority.Width, Dgv_BranchPriority.Location.Y + Dgv_BranchPriority.Height)).Y - 5)
+                Dgv_BranchPriority.FirstDisplayedScrollingRowIndex += 1;
+        }
+
+        private void Dgv_BranchPriority_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                // The mouse locations are relative to the screen, so they must be
+                // converted to client coordinates.
+                Point clientPoint = Dgv_BranchPriority.PointToClient(new Point(e.X, e.Y));
+
+                // Get the row index of the item the mouse is below.
+                rowIndexOfItemUnderMouseToDrop_BranchPriority= Dgv_BranchPriority.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+                // If the drag operation was a move then remove and insert the row.
+                if (e.Effect == DragDropEffects.Move)
+                {
+                    if (rowIndexOfItemUnderMouseToDrop_BranchPriority!= -1)
+                    {
+                        DataGridViewRow rowToMove = e.Data.GetData(typeof(DataGridViewRow)) as DataGridViewRow;
+                        // find the row to move in the datasource:
+                        DataRow oldrow = ((DataRowView)rowToMove.DataBoundItem).Row;
+                        // clone it:
+                        DataRow newrow = BranchRecord.NewRow();
+                        newrow.ItemArray = oldrow.ItemArray;
+
+                        BranchRecord.Rows.Remove(oldrow);
+                        BranchRecord.Rows.InsertAt(newrow, rowIndexOfItemUnderMouseToDrop_BranchPriority);
+
+                        //if (rowToMove.Index < 0)
+                        //{
+                        //    return;
+                        //}
+                        //if (rowIndexFromMouseDown_Room < rowIndexOfItemUnderMouseToDrop_Room)
+                        //{
+                        //    table_roomPriority.Rows.InsertAt(newrow, rowIndexOfItemUnderMouseToDrop_Room - 1);
+                        //    table_roomPriority.Rows.Remove(oldrow);
+                        //}
+                        //else if (rowIndexFromMouseDown_Room > rowIndexOfItemUnderMouseToDrop_Room)
+                        //{
+                        //    table_roomPriority.Rows.InsertAt(newrow, rowIndexOfItemUnderMouseToDrop_Room);
+                        //    table_roomPriority.Rows.Remove(oldrow);
+                        //}
+
+                        //loop through dgv and set priority manually
+                        int set_priority = 1;
+                        foreach (DataGridViewRow row in Dgv_BranchPriority.Rows)
+                        {
+                            row.Cells["Priority"].Value = set_priority;
+                            set_priority++;
+                        }
+
+                        // save to db
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            //RoomsRecord.AcceptChanges();      // do we need this???
+                            SQLiteCommand command = new SQLiteCommand("Select * from Branch_Priority", dbConnection);
+                            SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                            //adapter.AcceptChangesDuringUpdate = true;     // do we need this???
+                            SQLiteCommandBuilder builder = new SQLiteCommandBuilder(adapter);
+                            adapter.Update(BranchRecord);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        // Drag and Drop rows event to change Branch priority --- End
     }
 }
 

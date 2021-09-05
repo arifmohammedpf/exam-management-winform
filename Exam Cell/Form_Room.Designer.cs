@@ -166,6 +166,10 @@
             this.Dgv_BranchPriority.RowTemplate.Height = 24;
             this.Dgv_BranchPriority.Size = new System.Drawing.Size(563, 298);
             this.Dgv_BranchPriority.TabIndex = 29;
+            this.Dgv_BranchPriority.DragDrop += new System.Windows.Forms.DragEventHandler(this.Dgv_BranchPriority_DragDrop);
+            this.Dgv_BranchPriority.DragOver += new System.Windows.Forms.DragEventHandler(this.Dgv_BranchPriority_DragOver);
+            this.Dgv_BranchPriority.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dgv_BranchPriority_MouseDown);
+            this.Dgv_BranchPriority.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dgv_BranchPriority_MouseMove);
             // 
             // Button_Update
             // 
