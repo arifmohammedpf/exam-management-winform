@@ -415,6 +415,53 @@ namespace Exam_Cell
             }
         }
         // Drag and Drop rows event to change Branch priority --- End
+
+        private void Button_Add_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(Textbox_RoomNo.Text == "" || Numeric_A_Series.Value == 0 || Numeric_B_Series.Value == 0) CustomMessageBox.ShowMessageBox("Please fill the Room info ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                else
+                {
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        int recordsAffected;
+                        string queryCheckRoomExist = string.Format("Select Room_No where Room_No=@Room_No");
+                        SQLiteCommand command = new SQLiteCommand(queryCheckRoomExist, dbConnection);
+                        command.Parameters.AddWithValue("@Room_No", Textbox_RoomNo.Text);
+                        recordsAffected = command.ExecuteNonQuery();
+
+                        if(recordsAffected == 0) CustomMessageBox.ShowMessageBox("Room already exist, you may update existing or select new Room No", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                        else
+                        {
+                            string queryAddRoom = string.Format("Insert into Rooms(Room_No,Priority,A_Series,B_Series)Values(" + "@RoomNo,@Priority,@A_series,@B_series)");
+                            SQLiteCommand commandAddRoom = new SQLiteCommand(queryAddRoom, dbConnection);
+                            commandAddRoom.Parameters.AddWithValue("@Room_No", Textbox_RoomNo.Text);
+                            commandAddRoom.Parameters.AddWithValue("@Priority", Dgv_Rooms.Rows.Count.ToString());
+                            commandAddRoom.Parameters.AddWithValue("@A_series", Numeric_A_Series.Value.ToString());
+                            commandAddRoom.Parameters.AddWithValue("@B_series", Numeric_B_Series.Value.ToString());
+                            commandAddRoom.ExecuteNonQuery();
+                            ResetForm();
+                            CustomMessageBox.ShowMessageBox("New Room Added  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void Button_Update_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_Delete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
@@ -423,3 +470,8 @@ namespace Exam_Cell
 // * autofill when row double click
 // * dragdrop feature have to be tested as last comment from https://social.msdn.microsoft.com/Forums/en-US/16b0a44e-35a0-4bc8-9ccd-ec2c62c95a55/select-and-drag-a-datagridview-row-with-a-single-click?forum=winforms
 // * saving to DB while drag and drop priority...
+
+
+
+    // FIX needed for Form Database Mgmt //
+// give isCheckBoxColumn_ClickedEvent (line 125) to uncheck headerCheckbox and Need to add success msg for all events

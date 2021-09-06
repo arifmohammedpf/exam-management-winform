@@ -188,6 +188,7 @@
             this.Button_Update.TabIndex = 27;
             this.Button_Update.Text = "Update";
             this.Button_Update.UseVisualStyleBackColor = false;
+            this.Button_Update.Click += new System.EventHandler(this.Button_Update_Click);
             // 
             // Button_Add
             // 
@@ -206,6 +207,7 @@
             this.Button_Add.TabIndex = 28;
             this.Button_Add.Text = "Add";
             this.Button_Add.UseVisualStyleBackColor = false;
+            this.Button_Add.Click += new System.EventHandler(this.Button_Add_Click);
             // 
             // Button_Delete
             // 
@@ -225,6 +227,7 @@
             this.Button_Delete.TabIndex = 26;
             this.Button_Delete.Text = "Delete";
             this.Button_Delete.UseVisualStyleBackColor = false;
+            this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
             // 
             // Numeric_B_Series
             // 
