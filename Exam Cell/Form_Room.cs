@@ -67,6 +67,7 @@ namespace Exam_Cell
             Textbox_RoomNo.Clear();
             Numeric_A_Series.ResetText();
             Numeric_B_Series.ResetText();
+            selectedRoomNo = "";
             this.Enabled = true; // enabling Form
             // try testing msgbox here for checking tryCatch
         }
@@ -167,11 +168,16 @@ namespace Exam_Cell
         }
         // Events to Update capacity when checkbox is clicked --- End
 
+        string selectedRoomNo;
         private void Dgv_Rooms_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            // fill the form
             Textbox_RoomNo.Text = Dgv_Rooms.CurrentRow.Cells["Room_No"].Value.ToString();
             Numeric_A_Series.Value = int.Parse(Dgv_Rooms.CurrentRow.Cells["A_Series"].Value.ToString());
             Numeric_B_Series.Value = int.Parse(Dgv_Rooms.CurrentRow.Cells["B_Series"].Value.ToString());
+
+            // selected Room to be updated
+            selectedRoomNo= Dgv_Rooms.CurrentRow.Cells["Room_No"].Value.ToString();
         }
 
         // Drag and Drop rows event to change Room priority --- Start
@@ -420,7 +426,7 @@ namespace Exam_Cell
         {
             try
             {
-                if(Textbox_RoomNo.Text == "" || Numeric_A_Series.Value == 0 || Numeric_B_Series.Value == 0) CustomMessageBox.ShowMessageBox("Please fill the Room info ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                if(Textbox_RoomNo.Text == "") CustomMessageBox.ShowMessageBox("Please fill the Room No ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
@@ -431,20 +437,25 @@ namespace Exam_Cell
                         command.Parameters.AddWithValue("@Room_No", Textbox_RoomNo.Text);
                         recordsAffected = command.ExecuteNonQuery();
 
-                        if(recordsAffected == 0) CustomMessageBox.ShowMessageBox("Room already exist, you may update existing or select new Room No", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                        if(recordsAffected == 0)
+                        {
+                            CustomMessageBox.ShowMessageBox("Room already exist, you may update existing or select new Room No", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                            return;
+                        }
                         else
                         {
+                            int setPriority = Dgv_Rooms.Rows.Count + 1;
                             string queryAddRoom = string.Format("Insert into Rooms(Room_No,Priority,A_Series,B_Series)Values(" + "@RoomNo,@Priority,@A_series,@B_series)");
                             SQLiteCommand commandAddRoom = new SQLiteCommand(queryAddRoom, dbConnection);
                             commandAddRoom.Parameters.AddWithValue("@Room_No", Textbox_RoomNo.Text);
-                            commandAddRoom.Parameters.AddWithValue("@Priority", Dgv_Rooms.Rows.Count.ToString());
+                            commandAddRoom.Parameters.AddWithValue("@Priority", setPriority.ToString());
                             commandAddRoom.Parameters.AddWithValue("@A_series", Numeric_A_Series.Value.ToString());
                             commandAddRoom.Parameters.AddWithValue("@B_series", Numeric_B_Series.Value.ToString());
-                            commandAddRoom.ExecuteNonQuery();
-                            ResetForm();
-                            CustomMessageBox.ShowMessageBox("New Room Added  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                            commandAddRoom.ExecuteNonQuery();                            
                         }
                     }
+                    ResetForm();
+                    CustomMessageBox.ShowMessageBox("New Room Added  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -455,7 +466,35 @@ namespace Exam_Cell
 
         private void Button_Update_Click(object sender, EventArgs e)
         {
-
+            if(selectedRoomNo == "" || Textbox_RoomNo.Text == "") CustomMessageBox.ShowMessageBox("Please select and fill Room No to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            else
+            {
+                string messageText = string.Format("Do you want to update Room '%{0}%' ?   ", selectedRoomNo);
+                CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+                string result = CustomMessageBox.UserChoice;
+                if(result == "Yes")
+                {
+                    int recordsAffected;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        string query = string.Format("Update Rooms set Room_No=@Room_No, A_Series=@A_Series, B_Series=@B_Series where Room_No=@SelectedRoomNo");
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                        command.Parameters.AddWithValue("@Room_No", Textbox_RoomNo.Text);
+                        command.Parameters.AddWithValue("@A_Series", Numeric_A_Series.Value.ToString());
+                        command.Parameters.AddWithValue("@B_Series", Numeric_B_Series.Value.ToString());
+                        command.Parameters.AddWithValue("@SelectedRoomNo", selectedRoomNo);
+                        recordsAffected = command.ExecuteNonQuery();
+                    }
+                    if (recordsAffected == 0)
+                    {
+                        messageText = string.Format("Room '%{0}%' does not exist, Try again    ", selectedRoomNo);
+                        CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                        return;
+                    }
+                    ResetForm();
+                    CustomMessageBox.ShowMessageBox("Room Updated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);                    
+                }
+            }
         }
 
         private void Button_Delete_Click(object sender, EventArgs e)
@@ -470,8 +509,9 @@ namespace Exam_Cell
 // * autofill when row double click
 // * dragdrop feature have to be tested as last comment from https://social.msdn.microsoft.com/Forums/en-US/16b0a44e-35a0-4bc8-9ccd-ec2c62c95a55/select-and-drag-a-datagridview-row-with-a-single-click?forum=winforms
 // * saving to DB while drag and drop priority...
-
-
+// * if rowHeader doubleClick not working properly(line 171), change code as given in Form Database Mgmt(line 448)
+// * Add existing room to chek whether return statement works fine
 
     // FIX needed for Form Database Mgmt //
 // give isCheckBoxColumn_ClickedEvent (line 125) to uncheck headerCheckbox and Need to add success msg for all events
+// give return statement if rowAffected is 0 in line 500
