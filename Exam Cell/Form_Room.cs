@@ -499,7 +499,45 @@ namespace Exam_Cell
 
         private void Button_Delete_Click(object sender, EventArgs e)
         {
-
+            CustomMessageBox.ShowMessageBox("Do you really want to delete selected Rooms ?", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                try
+                {
+                    bool deletedFlag = false;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        // delete selected rooms
+                        foreach (DataGridViewRow dr in Dgv_Rooms.Rows)
+                        {
+                            bool isSelected = Convert.ToBoolean(dr.Cells["CheckBoxColumn"].Value);
+                            if (isSelected)
+                            {
+                                string query = string.Format("Delete from Rooms where Room_No=@Room_No");
+                                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                                command.Parameters.AddWithValue("@Room_No", dr.Cells["Room_No"].Value.ToString());
+                                command.ExecuteNonQuery();
+                                deletedFlag = true;
+                            }
+                        }
+                    }
+                    if (deletedFlag)
+                    {
+                        ResetForm();
+                        CustomMessageBox.ShowMessageBox("Selected Rooms deleted   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        CustomMessageBox.ShowMessageBox("Select any Room to delete   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ResetForm();
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
     }
 }
