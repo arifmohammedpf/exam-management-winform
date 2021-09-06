@@ -104,27 +104,30 @@ namespace Exam_Cell
             Label_TotalCapacity.Text = "Capacity : A - " + A_Series_Capacity + " B - " + B_Series_Capacity;
         }
 
+        // when headerCheckbox state change event triggers we need to make sure it is not triggered from Dgv CheckBox Click event
         bool isCheckBoxColumn_ClickedEvent = false;
         private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (HeaderCheckBox.Checked)
+            // no need to fill full capacity and check/uncheck all checkboxes for 'dgv checkBoxColumn click event'
+            if (!isCheckBoxColumn_ClickedEvent)
             {
-                foreach (DataGridViewRow row in Dgv_Rooms.Rows)
+                if (HeaderCheckBox.Checked)
                 {
-                    row.Cells["CheckBoxColumn"].Value = true;
+                    foreach (DataGridViewRow row in Dgv_Rooms.Rows)
+                    {
+                        row.Cells["CheckBoxColumn"].Value = true;
+                    }
                 }
-            }
-            else
-            {
-                foreach (DataGridViewRow row in Dgv_Rooms.Rows)
+                else
                 {
-                    row.Cells["CheckBoxColumn"].Value = false;
+                    foreach (DataGridViewRow row in Dgv_Rooms.Rows)
+                    {
+                        row.Cells["CheckBoxColumn"].Value = false;
+                    }
                 }
-            }
-
-            // no need to fill full capacity for dgv checkboxColumn click event
-            if(!isCheckBoxColumn_ClickedEvent)
                 Fill_Full_Room_capacity();
+            }                
+
             isCheckBoxColumn_ClickedEvent = false;
         }
 

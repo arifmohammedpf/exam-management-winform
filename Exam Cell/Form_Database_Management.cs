@@ -499,10 +499,12 @@ namespace Exam_Cell
                         {
                             messageText = string.Format("'%{0}%' - '%{1}%' does not exist, Try again    ", selectedRegNo, selectedName);
                             CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                            return;
                         }
-                    }
-                    ComboboxesFill();
-                    ResetAllFormDatas();
+                        ComboboxesFill();
+                        ResetAllFormDatas();
+                        CustomMessageBox.ShowMessageBox("Student record updated   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -516,22 +518,47 @@ namespace Exam_Cell
             ResetAllFormDatas();
         }
 
+        // when headerCheckbox state change event triggers, we need to make sure it is not triggered from Dgv CheckBox Click event
+        bool isCheckBoxColumn_ClickedEvent = false;
+        private void Dgv_Student_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Student.Columns["CheckBoxColumn"].Index)
+                Dgv_Student.EndEdit();
+        }
+
+        private void Dgv_Student_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Student.Columns["CheckBoxColumn"].Index)
+            {
+                if (HeaderCheckbox.Checked)
+                {
+                    isCheckBoxColumn_ClickedEvent = true;
+                    HeaderCheckbox.Checked = false;
+                }
+            }
+        }
+
         private void HeaderCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (HeaderCheckbox.Checked)
+            if (!isCheckBoxColumn_ClickedEvent)
             {
-                foreach (DataGridViewRow row in Dgv_Student.Rows)
+                if (HeaderCheckbox.Checked)
                 {
-                    row.Cells["CheckBoxColumn"].Value = true;
+                    foreach (DataGridViewRow row in Dgv_Student.Rows)
+                    {
+                        row.Cells["CheckBoxColumn"].Value = true;
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in Dgv_Student.Rows)
+                    {
+                        row.Cells["CheckBoxColumn"].Value = false;
+                    }
                 }
             }
-            else
-            {
-                foreach (DataGridViewRow row in Dgv_Student.Rows)
-                {
-                    row.Cells["CheckBoxColumn"].Value = false;
-                }
-            }
+
+            isCheckBoxColumn_ClickedEvent = false;
         }
 
         private void Button_Delete_Selected_updateStudentTab_Click(object sender, EventArgs e)
@@ -689,7 +716,7 @@ namespace Exam_Cell
             }
         }        
 
-        string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;        
+        string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;       
         private void Dgv_Course_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // fill the form
@@ -741,9 +768,10 @@ namespace Exam_Cell
                             messageText = string.Format("'%{0}%' - '%{1}%' of Semester '%{2}%' does not exist, Try again ", selectedSubCode, selectedSubName,selectedSemester_Course);
                             CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                         }
+                        ComboboxesFill();
+                        ResetAllFormDatas();
+                        CustomMessageBox.ShowMessageBox("Branch/Course updated   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                     }
-                    ComboboxesFill();
-                    ResetAllFormDatas();
                 }
             }
             catch (Exception ex)
@@ -752,22 +780,45 @@ namespace Exam_Cell
             }
         }
 
+        bool isCourseDgvChekboxColumn_ClickedEvent = false;
+        private void Dgv_Course_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Course.Columns["CheckboxColumn_CourseDgv"].Index)
+                Dgv_Course.EndEdit();
+        }
+
+        private void Dgv_Course_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Course.Columns["CheckboxColumn_CourseDgv"].Index)
+            {
+                if (HeaderCheckbox_CourseDgv.Checked)
+                {
+                    isCourseDgvChekboxColumn_ClickedEvent = true;
+                    HeaderCheckbox_CourseDgv.Checked = false;
+                }
+            }
+        }
+
         private void HeaderCheckbox_CourseDgv_CheckedChanged(object sender, EventArgs e)
         {
-            if (HeaderCheckbox_CourseDgv.Checked)
+            if (!isCourseDgvChekboxColumn_ClickedEvent)
             {
-                foreach (DataGridViewRow row in Dgv_Course.Rows)
+                if (HeaderCheckbox_CourseDgv.Checked)
                 {
-                    row.Cells["CheckboxColumn_CourseDgv"].Value = true;
+                    foreach (DataGridViewRow row in Dgv_Course.Rows)
+                    {
+                        row.Cells["CheckboxColumn_CourseDgv"].Value = true;
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in Dgv_Course.Rows)
+                    {
+                        row.Cells["CheckboxColumn_CourseDgv"].Value = false;
+                    }
                 }
             }
-            else
-            {
-                foreach (DataGridViewRow row in Dgv_Course.Rows)
-                {
-                    row.Cells["CheckboxColumn_CourseDgv"].Value = false;
-                }
-            }
+            isCourseDgvChekboxColumn_ClickedEvent = false;
         }
 
         private void Button_Delete_updateCourseTab_Click(object sender, EventArgs e)
@@ -842,4 +893,4 @@ namespace Exam_Cell
 // 3. update student with incorrect reg No
 // 4. headerCheckbox
 // 5. update without selecting dgv first time opening form for both student and course.
-// 6. select long sub_name and semester to check the Custom Message Box in Update Course Tab. 
+// 6. select long sub_name and semester to check the Custom Message Box in Update Course Tab.

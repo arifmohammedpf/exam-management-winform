@@ -71,11 +71,14 @@
             this.Combobox_Branch_updateStudTab = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Tab_Update_Course = new System.Windows.Forms.TabPage();
+            this.HeaderCheckbox_CourseDgv = new System.Windows.Forms.CheckBox();
             this.Dgv_Course = new System.Windows.Forms.DataGridView();
+            this.CheckboxColumn_CourseDgv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Button_Clear_updateCourseTab = new System.Windows.Forms.Button();
             this.Button_Search_updateCourseTab = new System.Windows.Forms.Button();
             this.Button_Update_updateCourseTab = new System.Windows.Forms.Button();
             this.Button_Delete_updateCourseTab = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.Combobox_Branch_updateCourseTab = new System.Windows.Forms.ComboBox();
             this.Textbox_ACode = new System.Windows.Forms.TextBox();
@@ -84,13 +87,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.Combobox_Semester_updateCourse = new System.Windows.Forms.ComboBox();
             this.ProgressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.Combobox_Semester_updateCourse = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.CheckboxColumn_CourseDgv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.HeaderCheckbox_CourseDgv = new System.Windows.Forms.CheckBox();
             this.Panel_Header.SuspendLayout();
             this.TabPanel.SuspendLayout();
             this.Tab_Add.SuspendLayout();
@@ -424,6 +424,8 @@
             this.Dgv_Student.RowTemplate.Height = 24;
             this.Dgv_Student.Size = new System.Drawing.Size(961, 372);
             this.Dgv_Student.TabIndex = 28;
+            this.Dgv_Student.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Student_CellEndEdit);
+            this.Dgv_Student.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Student_CellMouseUp);
             this.Dgv_Student.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Student_RowHeaderMouseDoubleClick);
             // 
             // CheckBoxColumn
@@ -673,6 +675,16 @@
             this.Tab_Update_Course.Text = "Update Course";
             this.Tab_Update_Course.UseVisualStyleBackColor = true;
             // 
+            // HeaderCheckbox_CourseDgv
+            // 
+            this.HeaderCheckbox_CourseDgv.AutoSize = true;
+            this.HeaderCheckbox_CourseDgv.Location = new System.Drawing.Point(52, 163);
+            this.HeaderCheckbox_CourseDgv.Name = "HeaderCheckbox_CourseDgv";
+            this.HeaderCheckbox_CourseDgv.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckbox_CourseDgv.TabIndex = 68;
+            this.HeaderCheckbox_CourseDgv.UseVisualStyleBackColor = true;
+            this.HeaderCheckbox_CourseDgv.CheckedChanged += new System.EventHandler(this.HeaderCheckbox_CourseDgv_CheckedChanged);
+            // 
             // Dgv_Course
             // 
             this.Dgv_Course.AllowUserToAddRows = false;
@@ -687,7 +699,15 @@
             this.Dgv_Course.RowTemplate.Height = 24;
             this.Dgv_Course.Size = new System.Drawing.Size(967, 420);
             this.Dgv_Course.TabIndex = 67;
+            this.Dgv_Course.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Course_CellEndEdit);
+            this.Dgv_Course.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Course_CellMouseUp);
             this.Dgv_Course.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Course_RowHeaderMouseDoubleClick);
+            // 
+            // CheckboxColumn_CourseDgv
+            // 
+            this.CheckboxColumn_CourseDgv.HeaderText = "";
+            this.CheckboxColumn_CourseDgv.Name = "CheckboxColumn_CourseDgv";
+            this.CheckboxColumn_CourseDgv.Width = 35;
             // 
             // Button_Clear_updateCourseTab
             // 
@@ -766,6 +786,17 @@
             this.Button_Delete_updateCourseTab.UseVisualStyleBackColor = false;
             this.Button_Delete_updateCourseTab.Click += new System.EventHandler(this.Button_Delete_updateCourseTab_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(439, 27);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(70, 17);
+            this.label13.TabIndex = 60;
+            this.label13.Text = "Semester :";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -840,6 +871,15 @@
             this.label10.TabIndex = 56;
             this.label10.Text = "SubName :";
             // 
+            // Combobox_Semester_updateCourse
+            // 
+            this.Combobox_Semester_updateCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Combobox_Semester_updateCourse.FormattingEnabled = true;
+            this.Combobox_Semester_updateCourse.Location = new System.Drawing.Point(516, 23);
+            this.Combobox_Semester_updateCourse.Name = "Combobox_Semester_updateCourse";
+            this.Combobox_Semester_updateCourse.Size = new System.Drawing.Size(195, 25);
+            this.Combobox_Semester_updateCourse.TabIndex = 61;
+            // 
             // ProgressBarTimer
             // 
             this.ProgressBarTimer.Interval = 50;
@@ -868,42 +908,6 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Please Wait !";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Combobox_Semester_updateCourse
-            // 
-            this.Combobox_Semester_updateCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Combobox_Semester_updateCourse.FormattingEnabled = true;
-            this.Combobox_Semester_updateCourse.Location = new System.Drawing.Point(516, 23);
-            this.Combobox_Semester_updateCourse.Name = "Combobox_Semester_updateCourse";
-            this.Combobox_Semester_updateCourse.Size = new System.Drawing.Size(195, 25);
-            this.Combobox_Semester_updateCourse.TabIndex = 61;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(439, 27);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(70, 17);
-            this.label13.TabIndex = 60;
-            this.label13.Text = "Semester :";
-            // 
-            // CheckboxColumn_CourseDgv
-            // 
-            this.CheckboxColumn_CourseDgv.HeaderText = "";
-            this.CheckboxColumn_CourseDgv.Name = "CheckboxColumn_CourseDgv";
-            this.CheckboxColumn_CourseDgv.Width = 35;
-            // 
-            // HeaderCheckbox_CourseDgv
-            // 
-            this.HeaderCheckbox_CourseDgv.AutoSize = true;
-            this.HeaderCheckbox_CourseDgv.Location = new System.Drawing.Point(52, 163);
-            this.HeaderCheckbox_CourseDgv.Name = "HeaderCheckbox_CourseDgv";
-            this.HeaderCheckbox_CourseDgv.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckbox_CourseDgv.TabIndex = 68;
-            this.HeaderCheckbox_CourseDgv.UseVisualStyleBackColor = true;
-            this.HeaderCheckbox_CourseDgv.CheckedChanged += new System.EventHandler(this.HeaderCheckbox_CourseDgv_CheckedChanged);
             // 
             // Form_Database_Management
             // 
