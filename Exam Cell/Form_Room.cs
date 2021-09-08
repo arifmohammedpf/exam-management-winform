@@ -552,7 +552,3 @@ namespace Exam_Cell
 // * saving to DB while drag and drop priority...
 // * if rowHeader doubleClick not working properly(line 171), change code as given in Form Database Mgmt(line 448)
 // * Add existing room to chek whether return statement works fine
-
-    // FIX needed for Form Database Mgmt //
-// give isCheckBoxColumn_ClickedEvent (line 125) to uncheck headerCheckbox and Need to add success msg for all events
-// give return statement if rowAffected is 0 in line 500

@@ -33,37 +33,40 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Panel_Body = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.Textbox_ExamCode_Search_Timetable = new System.Windows.Forms.TextBox();
+            this.Radio_DateWiseSearch = new System.Windows.Forms.RadioButton();
+            this.Combobox_Branch_Search_Timetable = new System.Windows.Forms.ComboBox();
+            this.Radio_BranchWiseSearch = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.Button_Delete = new System.Windows.Forms.Button();
+            this.DateTimePicker_Search_Timetable = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.Combobox_Session = new System.Windows.Forms.ComboBox();
+            this.DateTimePicker_Add_Timetable = new System.Windows.Forms.DateTimePicker();
             this.GroupBox_Exam_Mode = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.Textbox_ExamCode_Search_Course = new System.Windows.Forms.TextBox();
+            this.Combobox_Semester = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.Combobox_Branch_Search_Course = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Add_btn = new System.Windows.Forms.Button();
+            this.Button_Undo = new System.Windows.Forms.Button();
+            this.Button_Clear = new System.Windows.Forms.Button();
+            this.Button_Add = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.Dgv_Courses = new System.Windows.Forms.DataGridView();
+            this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
+            this.Dgv_Timetable = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Timetable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.GroupBox_Exam_Mode.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Courses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Timetable)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Header
@@ -105,15 +108,16 @@
             // 
             // Panel_Body
             // 
+            this.Panel_Body.Controls.Add(this.HeaderCheckBox);
+            this.Panel_Body.Controls.Add(this.Dgv_Timetable);
+            this.Panel_Body.Controls.Add(this.Dgv_Courses);
             this.Panel_Body.Controls.Add(this.groupBox1);
-            this.Panel_Body.Controls.Add(this.dataGridView2);
-            this.Panel_Body.Controls.Add(this.dataGridView1);
-            this.Panel_Body.Controls.Add(this.comboBox1);
-            this.Panel_Body.Controls.Add(this.dateTimePicker1);
+            this.Panel_Body.Controls.Add(this.Combobox_Session);
+            this.Panel_Body.Controls.Add(this.DateTimePicker_Add_Timetable);
             this.Panel_Body.Controls.Add(this.GroupBox_Exam_Mode);
-            this.Panel_Body.Controls.Add(this.button3);
-            this.Panel_Body.Controls.Add(this.button1);
-            this.Panel_Body.Controls.Add(this.Add_btn);
+            this.Panel_Body.Controls.Add(this.Button_Undo);
+            this.Panel_Body.Controls.Add(this.Button_Clear);
+            this.Panel_Body.Controls.Add(this.Button_Add);
             this.Panel_Body.Controls.Add(this.label2);
             this.Panel_Body.Controls.Add(this.label6);
             this.Panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -125,13 +129,13 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.Textbox_ExamCode_Search_Timetable);
+            this.groupBox1.Controls.Add(this.Radio_DateWiseSearch);
+            this.groupBox1.Controls.Add(this.Combobox_Branch_Search_Timetable);
+            this.groupBox1.Controls.Add(this.Radio_BranchWiseSearch);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.Button_Delete);
+            this.groupBox1.Controls.Add(this.DateTimePicker_Search_Timetable);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,42 +148,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search Scheduled Timetable";
             // 
-            // textBox1
+            // Textbox_ExamCode_Search_Timetable
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 204);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(223, 22);
-            this.textBox1.TabIndex = 20;
+            this.Textbox_ExamCode_Search_Timetable.Enabled = false;
+            this.Textbox_ExamCode_Search_Timetable.Location = new System.Drawing.Point(122, 204);
+            this.Textbox_ExamCode_Search_Timetable.Name = "Textbox_ExamCode_Search_Timetable";
+            this.Textbox_ExamCode_Search_Timetable.Size = new System.Drawing.Size(223, 22);
+            this.Textbox_ExamCode_Search_Timetable.TabIndex = 20;
             // 
-            // radioButton2
+            // Radio_DateWiseSearch
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 45);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(133, 21);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Date Wise Search";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Radio_DateWiseSearch.AutoSize = true;
+            this.Radio_DateWiseSearch.Location = new System.Drawing.Point(9, 45);
+            this.Radio_DateWiseSearch.Name = "Radio_DateWiseSearch";
+            this.Radio_DateWiseSearch.Size = new System.Drawing.Size(133, 21);
+            this.Radio_DateWiseSearch.TabIndex = 0;
+            this.Radio_DateWiseSearch.TabStop = true;
+            this.Radio_DateWiseSearch.Text = "Date Wise Search";
+            this.Radio_DateWiseSearch.UseVisualStyleBackColor = true;
+            this.Radio_DateWiseSearch.CheckedChanged += new System.EventHandler(this.Radio_DateWiseSearch_CheckedChanged);
             // 
-            // comboBox2
+            // Combobox_Branch_Search_Timetable
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(122, 170);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(223, 25);
-            this.comboBox2.TabIndex = 19;
+            this.Combobox_Branch_Search_Timetable.Enabled = false;
+            this.Combobox_Branch_Search_Timetable.FormattingEnabled = true;
+            this.Combobox_Branch_Search_Timetable.Location = new System.Drawing.Point(122, 170);
+            this.Combobox_Branch_Search_Timetable.Name = "Combobox_Branch_Search_Timetable";
+            this.Combobox_Branch_Search_Timetable.Size = new System.Drawing.Size(223, 25);
+            this.Combobox_Branch_Search_Timetable.TabIndex = 19;
             // 
-            // radioButton1
+            // Radio_BranchWiseSearch
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 135);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(144, 21);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Branch Wise Search";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.Radio_BranchWiseSearch.AutoSize = true;
+            this.Radio_BranchWiseSearch.Location = new System.Drawing.Point(9, 135);
+            this.Radio_BranchWiseSearch.Name = "Radio_BranchWiseSearch";
+            this.Radio_BranchWiseSearch.Size = new System.Drawing.Size(144, 21);
+            this.Radio_BranchWiseSearch.TabIndex = 0;
+            this.Radio_BranchWiseSearch.TabStop = true;
+            this.Radio_BranchWiseSearch.Text = "Branch Wise Search";
+            this.Radio_BranchWiseSearch.UseVisualStyleBackColor = true;
+            this.Radio_BranchWiseSearch.CheckedChanged += new System.EventHandler(this.Radio_BranchWiseSearch_CheckedChanged);
             // 
             // label3
             // 
@@ -192,31 +200,32 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Branch :";
             // 
-            // button2
+            // Button_Delete
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(51)))), ((int)(((byte)(120)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(9, 288);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 40);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Button_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
+            this.Button_Delete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Delete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
+            this.Button_Delete.FlatAppearance.BorderSize = 0;
+            this.Button_Delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
+            this.Button_Delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(51)))), ((int)(((byte)(120)))));
+            this.Button_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Delete.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Delete.ForeColor = System.Drawing.Color.White;
+            this.Button_Delete.Location = new System.Drawing.Point(9, 288);
+            this.Button_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Delete.Name = "Button_Delete";
+            this.Button_Delete.Size = new System.Drawing.Size(100, 40);
+            this.Button_Delete.TabIndex = 14;
+            this.Button_Delete.Text = "Delete";
+            this.Button_Delete.UseVisualStyleBackColor = false;
             // 
-            // dateTimePicker2
+            // DateTimePicker_Search_Timetable
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(122, 79);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(223, 22);
-            this.dateTimePicker2.TabIndex = 18;
+            this.DateTimePicker_Search_Timetable.Enabled = false;
+            this.DateTimePicker_Search_Timetable.Location = new System.Drawing.Point(122, 79);
+            this.DateTimePicker_Search_Timetable.Name = "DateTimePicker_Search_Timetable";
+            this.DateTimePicker_Search_Timetable.Size = new System.Drawing.Size(223, 22);
+            this.DateTimePicker_Search_Timetable.TabIndex = 18;
             // 
             // label7
             // 
@@ -240,53 +249,34 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Exam Code :";
             // 
-            // dataGridView2
+            // Combobox_Session
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 348);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(905, 344);
-            this.dataGridView2.TabIndex = 20;
+            this.Combobox_Session.FormattingEnabled = true;
+            this.Combobox_Session.Items.AddRange(new object[] {
+            "Forenoon",
+            "Afternoon"});
+            this.Combobox_Session.Location = new System.Drawing.Point(94, 77);
+            this.Combobox_Session.Name = "Combobox_Session";
+            this.Combobox_Session.Size = new System.Drawing.Size(259, 25);
+            this.Combobox_Session.TabIndex = 19;
             // 
-            // dataGridView1
+            // DateTimePicker_Add_Timetable
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(377, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(897, 347);
-            this.dataGridView1.TabIndex = 20;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(94, 83);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(259, 25);
-            this.comboBox1.TabIndex = 19;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(94, 41);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(259, 22);
-            this.dateTimePicker1.TabIndex = 18;
+            this.DateTimePicker_Add_Timetable.Location = new System.Drawing.Point(94, 35);
+            this.DateTimePicker_Add_Timetable.Name = "DateTimePicker_Add_Timetable";
+            this.DateTimePicker_Add_Timetable.Size = new System.Drawing.Size(259, 22);
+            this.DateTimePicker_Add_Timetable.TabIndex = 18;
             // 
             // GroupBox_Exam_Mode
             // 
-            this.GroupBox_Exam_Mode.Controls.Add(this.textBox2);
-            this.GroupBox_Exam_Mode.Controls.Add(this.comboBox3);
+            this.GroupBox_Exam_Mode.Controls.Add(this.Textbox_ExamCode_Search_Course);
+            this.GroupBox_Exam_Mode.Controls.Add(this.Combobox_Semester);
             this.GroupBox_Exam_Mode.Controls.Add(this.label4);
             this.GroupBox_Exam_Mode.Controls.Add(this.label9);
-            this.GroupBox_Exam_Mode.Controls.Add(this.comboBox4);
+            this.GroupBox_Exam_Mode.Controls.Add(this.Combobox_Branch_Search_Course);
             this.GroupBox_Exam_Mode.Controls.Add(this.label8);
             this.GroupBox_Exam_Mode.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GroupBox_Exam_Mode.Location = new System.Drawing.Point(12, 139);
+            this.GroupBox_Exam_Mode.Location = new System.Drawing.Point(12, 133);
             this.GroupBox_Exam_Mode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GroupBox_Exam_Mode.Name = "GroupBox_Exam_Mode";
             this.GroupBox_Exam_Mode.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -295,20 +285,32 @@
             this.GroupBox_Exam_Mode.TabStop = false;
             this.GroupBox_Exam_Mode.Text = "Search Courses";
             // 
-            // textBox2
+            // Textbox_ExamCode_Search_Course
             // 
-            this.textBox2.Location = new System.Drawing.Point(113, 99);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(228, 22);
-            this.textBox2.TabIndex = 20;
+            this.Textbox_ExamCode_Search_Course.Location = new System.Drawing.Point(113, 99);
+            this.Textbox_ExamCode_Search_Course.Name = "Textbox_ExamCode_Search_Course";
+            this.Textbox_ExamCode_Search_Course.Size = new System.Drawing.Size(228, 22);
+            this.Textbox_ExamCode_Search_Course.TabIndex = 20;
+            this.Textbox_ExamCode_Search_Course.TextChanged += new System.EventHandler(this.Textbox_ExamCode_Search_Course_TextChanged);
             // 
-            // comboBox3
+            // Combobox_Semester
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(113, 64);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(228, 25);
-            this.comboBox3.TabIndex = 19;
+            this.Combobox_Semester.FormattingEnabled = true;
+            this.Combobox_Semester.Items.AddRange(new object[] {
+            "-Select-",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.Combobox_Semester.Location = new System.Drawing.Point(113, 64);
+            this.Combobox_Semester.Name = "Combobox_Semester";
+            this.Combobox_Semester.Size = new System.Drawing.Size(228, 25);
+            this.Combobox_Semester.TabIndex = 19;
+            this.Combobox_Semester.SelectedIndexChanged += new System.EventHandler(this.Combobox_Semester_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -332,13 +334,14 @@
             this.label9.TabIndex = 11;
             this.label9.Text = "Branch :";
             // 
-            // comboBox4
+            // Combobox_Branch_Search_Course
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(113, 30);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(228, 25);
-            this.comboBox4.TabIndex = 19;
+            this.Combobox_Branch_Search_Course.FormattingEnabled = true;
+            this.Combobox_Branch_Search_Course.Location = new System.Drawing.Point(113, 30);
+            this.Combobox_Branch_Search_Course.Name = "Combobox_Branch_Search_Course";
+            this.Combobox_Branch_Search_Course.Size = new System.Drawing.Size(228, 25);
+            this.Combobox_Branch_Search_Course.TabIndex = 19;
+            this.Combobox_Branch_Search_Course.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_Search_Course_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -351,65 +354,65 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "Exam Code :";
             // 
-            // button3
+            // Button_Undo
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button3.Location = new System.Drawing.Point(136, 291);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 40);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Undo Add";
-            this.button3.UseVisualStyleBackColor = false;
+            this.Button_Undo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_Undo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Undo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Undo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_Undo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_Undo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Undo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Undo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Undo.Location = new System.Drawing.Point(136, 286);
+            this.Button_Undo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Undo.Name = "Button_Undo";
+            this.Button_Undo.Size = new System.Drawing.Size(100, 40);
+            this.Button_Undo.TabIndex = 15;
+            this.Button_Undo.Text = "Undo Add";
+            this.Button_Undo.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // Button_Clear
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button1.Location = new System.Drawing.Point(244, 291);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 40);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Clear Inputs";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Button_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_Clear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Clear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Clear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_Clear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Clear.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Clear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Clear.Location = new System.Drawing.Point(244, 286);
+            this.Button_Clear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Clear.Name = "Button_Clear";
+            this.Button_Clear.Size = new System.Drawing.Size(115, 40);
+            this.Button_Clear.TabIndex = 15;
+            this.Button_Clear.Text = "Clear Inputs";
+            this.Button_Clear.UseVisualStyleBackColor = false;
             // 
-            // Add_btn
+            // Button_Add
             // 
-            this.Add_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Add_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Add_btn.FlatAppearance.BorderSize = 0;
-            this.Add_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.Add_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.Add_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Add_btn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_btn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Add_btn.Location = new System.Drawing.Point(28, 291);
-            this.Add_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.Size = new System.Drawing.Size(100, 40);
-            this.Add_btn.TabIndex = 16;
-            this.Add_btn.Text = "Add";
-            this.Add_btn.UseVisualStyleBackColor = false;
+            this.Button_Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Add.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Add.FlatAppearance.BorderSize = 0;
+            this.Button_Add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_Add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Add.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Add.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_Add.Location = new System.Drawing.Point(28, 286);
+            this.Button_Add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Add.Name = "Button_Add";
+            this.Button_Add.Size = new System.Drawing.Size(100, 40);
+            this.Button_Add.TabIndex = 16;
+            this.Button_Add.Text = "Add";
+            this.Button_Add.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 87);
+            this.label2.Location = new System.Drawing.Point(19, 81);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 17);
@@ -420,12 +423,63 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(19, 44);
+            this.label6.Location = new System.Drawing.Point(19, 38);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 17);
             this.label6.TabIndex = 9;
             this.label6.Text = "Date :";
+            // 
+            // Dgv_Courses
+            // 
+            this.Dgv_Courses.AllowUserToAddRows = false;
+            this.Dgv_Courses.AllowUserToDeleteRows = false;
+            this.Dgv_Courses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Courses.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Courses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Courses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBoxColumn_Course});
+            this.Dgv_Courses.Location = new System.Drawing.Point(377, 3);
+            this.Dgv_Courses.Name = "Dgv_Courses";
+            this.Dgv_Courses.RowTemplate.Height = 24;
+            this.Dgv_Courses.Size = new System.Drawing.Size(896, 344);
+            this.Dgv_Courses.TabIndex = 31;
+            // 
+            // HeaderCheckBox
+            // 
+            this.HeaderCheckBox.AutoSize = true;
+            this.HeaderCheckBox.Location = new System.Drawing.Point(56, 351);
+            this.HeaderCheckBox.Name = "HeaderCheckBox";
+            this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckBox.TabIndex = 34;
+            this.HeaderCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // Dgv_Timetable
+            // 
+            this.Dgv_Timetable.AllowUserToAddRows = false;
+            this.Dgv_Timetable.AllowUserToDeleteRows = false;
+            this.Dgv_Timetable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Dgv_Timetable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBoxColumn_Timetable});
+            this.Dgv_Timetable.Location = new System.Drawing.Point(3, 348);
+            this.Dgv_Timetable.Name = "Dgv_Timetable";
+            this.Dgv_Timetable.RowTemplate.Height = 24;
+            this.Dgv_Timetable.Size = new System.Drawing.Size(905, 344);
+            this.Dgv_Timetable.TabIndex = 33;
+            // 
+            // CheckBoxColumn_Timetable
+            // 
+            this.CheckBoxColumn_Timetable.HeaderText = "";
+            this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
+            this.CheckBoxColumn_Timetable.Width = 35;
+            // 
+            // CheckBoxColumn_Course
+            // 
+            this.CheckBoxColumn_Course.HeaderText = "";
+            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
+            this.CheckBoxColumn_Course.Width = 35;
             // 
             // Form_Timetable
             // 
@@ -441,16 +495,17 @@
             this.Name = "Form_Timetable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Timetable";
+            this.Load += new System.EventHandler(this.Form_Timetable_Load);
             this.Panel_Header.ResumeLayout(false);
             this.Panel_Header.PerformLayout();
             this.Panel_Body.ResumeLayout(false);
             this.Panel_Body.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.GroupBox_Exam_Mode.ResumeLayout(false);
             this.GroupBox_Exam_Mode.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Courses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Timetable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -465,26 +520,29 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button Add_btn;
+        private System.Windows.Forms.Button Button_Delete;
+        private System.Windows.Forms.Button Button_Undo;
+        private System.Windows.Forms.Button Button_Clear;
+        private System.Windows.Forms.Button Button_Add;
         private System.Windows.Forms.GroupBox GroupBox_Exam_Mode;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox Combobox_Session;
+        private System.Windows.Forms.DateTimePicker DateTimePicker_Add_Timetable;
+        private System.Windows.Forms.TextBox Textbox_ExamCode_Search_Timetable;
+        private System.Windows.Forms.ComboBox Combobox_Semester;
+        private System.Windows.Forms.ComboBox Combobox_Branch_Search_Timetable;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.RadioButton Radio_DateWiseSearch;
+        private System.Windows.Forms.RadioButton Radio_BranchWiseSearch;
+        private System.Windows.Forms.DateTimePicker DateTimePicker_Search_Timetable;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Textbox_ExamCode_Search_Course;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox Combobox_Branch_Search_Course;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox HeaderCheckBox;
+        private System.Windows.Forms.DataGridView Dgv_Timetable;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Timetable;
+        private System.Windows.Forms.DataGridView Dgv_Courses;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Course;
     }
 }
