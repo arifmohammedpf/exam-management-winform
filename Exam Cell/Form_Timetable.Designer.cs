@@ -155,6 +155,7 @@
             this.Textbox_ExamCode_Search_Timetable.Name = "Textbox_ExamCode_Search_Timetable";
             this.Textbox_ExamCode_Search_Timetable.Size = new System.Drawing.Size(223, 22);
             this.Textbox_ExamCode_Search_Timetable.TabIndex = 20;
+            this.Textbox_ExamCode_Search_Timetable.TextChanged += new System.EventHandler(this.Textbox_ExamCode_Search_Timetable_TextChanged);
             // 
             // Radio_DateWiseSearch
             // 
@@ -176,6 +177,7 @@
             this.Combobox_Branch_Search_Timetable.Name = "Combobox_Branch_Search_Timetable";
             this.Combobox_Branch_Search_Timetable.Size = new System.Drawing.Size(223, 25);
             this.Combobox_Branch_Search_Timetable.TabIndex = 19;
+            this.Combobox_Branch_Search_Timetable.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_Search_Timetable_SelectedIndexChanged);
             // 
             // Radio_BranchWiseSearch
             // 
@@ -218,6 +220,7 @@
             this.Button_Delete.TabIndex = 14;
             this.Button_Delete.Text = "Delete";
             this.Button_Delete.UseVisualStyleBackColor = false;
+            this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
             // 
             // DateTimePicker_Search_Timetable
             // 
@@ -226,6 +229,7 @@
             this.DateTimePicker_Search_Timetable.Name = "DateTimePicker_Search_Timetable";
             this.DateTimePicker_Search_Timetable.Size = new System.Drawing.Size(223, 22);
             this.DateTimePicker_Search_Timetable.TabIndex = 18;
+            this.DateTimePicker_Search_Timetable.ValueChanged += new System.EventHandler(this.DateTimePicker_Search_Timetable_ValueChanged);
             // 
             // label7
             // 
@@ -358,6 +362,7 @@
             // 
             this.Button_Undo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
             this.Button_Undo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Undo.Enabled = false;
             this.Button_Undo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
             this.Button_Undo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
             this.Button_Undo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
@@ -371,6 +376,7 @@
             this.Button_Undo.TabIndex = 15;
             this.Button_Undo.Text = "Undo Add";
             this.Button_Undo.UseVisualStyleBackColor = false;
+            this.Button_Undo.Click += new System.EventHandler(this.Button_Undo_Click);
             // 
             // Button_Clear
             // 
@@ -389,6 +395,7 @@
             this.Button_Clear.TabIndex = 15;
             this.Button_Clear.Text = "Clear Inputs";
             this.Button_Clear.UseVisualStyleBackColor = false;
+            this.Button_Clear.Click += new System.EventHandler(this.Button_Clear_Click);
             // 
             // Button_Add
             // 
@@ -407,6 +414,7 @@
             this.Button_Add.TabIndex = 16;
             this.Button_Add.Text = "Add";
             this.Button_Add.UseVisualStyleBackColor = false;
+            this.Button_Add.Click += new System.EventHandler(this.Button_Add_Click);
             // 
             // label2
             // 
