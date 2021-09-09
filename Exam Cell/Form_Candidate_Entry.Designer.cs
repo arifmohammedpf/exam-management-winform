@@ -32,51 +32,57 @@
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.Combobox_Semester = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.Combobox_Scheme = new System.Windows.Forms.ComboBox();
+            this.Combobox_Branch_SchemeSearch = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Button_ExtraCand_Register = new System.Windows.Forms.Button();
+            this.Textbox_ExtraCand_Name = new System.Windows.Forms.TextBox();
+            this.Textbox_ExtraCand_RegNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.Tab_Excel_Import = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.Add_btn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.Tab_Search = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.Button_Select_ExcelFile = new System.Windows.Forms.Button();
+            this.Button_Register_ExcelSheet = new System.Windows.Forms.Button();
+            this.Textbox_ExcelFilepath = new System.Windows.Forms.TextBox();
+            this.Combobox_ExcelSheets = new System.Windows.Forms.ComboBox();
+            this.Tab_Univeristy_Search = new System.Windows.Forms.TabPage();
+            this.Button_Register_University = new System.Windows.Forms.Button();
+            this.Textbox_Yoa_SearchCand = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.Combobox_Branch_Cand_Register = new System.Windows.Forms.ComboBox();
             this.Tab_Series_Search = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Button_Register_Series = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.Combobox_Class = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.Radio_Series = new System.Windows.Forms.RadioButton();
+            this.Radio_University = new System.Windows.Forms.RadioButton();
+            this.Panel_ProgressBar = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
+            this.Dgv_Students = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Students = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Dgv_Course = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Timetable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.Tab_Excel_Import.SuspendLayout();
-            this.Tab_Search.SuspendLayout();
+            this.Tab_Univeristy_Search.SuspendLayout();
             this.Tab_Series_Search.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.Panel_ProgressBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Students)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Course)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Header
@@ -116,8 +122,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dataGridView2);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.Dgv_Course);
+            this.panel1.Controls.Add(this.HeaderCheckBox);
+            this.panel1.Controls.Add(this.Dgv_Students);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.TabControl);
@@ -128,38 +135,14 @@
             this.panel1.Size = new System.Drawing.Size(1191, 684);
             this.panel1.TabIndex = 4;
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(543, 268);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(647, 411);
-            this.dataGridView2.TabIndex = 15;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 268);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(537, 411);
-            this.dataGridView1.TabIndex = 16;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.comboBox3);
+            this.groupBox3.Controls.Add(this.Combobox_Semester);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.comboBox6);
+            this.groupBox3.Controls.Add(this.Combobox_Scheme);
+            this.groupBox3.Controls.Add(this.Combobox_Branch_SchemeSearch);
             this.groupBox3.Location = new System.Drawing.Point(671, 95);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(395, 167);
@@ -167,13 +150,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search Course";
             // 
-            // comboBox3
+            // Combobox_Semester
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(107, 108);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(270, 25);
-            this.comboBox3.TabIndex = 42;
+            this.Combobox_Semester.FormattingEnabled = true;
+            this.Combobox_Semester.Location = new System.Drawing.Point(107, 108);
+            this.Combobox_Semester.Name = "Combobox_Semester";
+            this.Combobox_Semester.Size = new System.Drawing.Size(270, 25);
+            this.Combobox_Semester.TabIndex = 42;
+            this.Combobox_Semester.SelectedIndexChanged += new System.EventHandler(this.Combobox_Semester_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -208,27 +192,29 @@
             this.label8.TabIndex = 40;
             this.label8.Text = "Branch :";
             // 
-            // comboBox5
+            // Combobox_Scheme
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(107, 40);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(270, 25);
-            this.comboBox5.TabIndex = 43;
+            this.Combobox_Scheme.FormattingEnabled = true;
+            this.Combobox_Scheme.Location = new System.Drawing.Point(107, 40);
+            this.Combobox_Scheme.Name = "Combobox_Scheme";
+            this.Combobox_Scheme.Size = new System.Drawing.Size(270, 25);
+            this.Combobox_Scheme.TabIndex = 43;
+            this.Combobox_Scheme.SelectedIndexChanged += new System.EventHandler(this.Combobox_Scheme_SelectedIndexChanged);
             // 
-            // comboBox6
+            // Combobox_Branch_SchemeSearch
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(107, 74);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(270, 25);
-            this.comboBox6.TabIndex = 44;
+            this.Combobox_Branch_SchemeSearch.FormattingEnabled = true;
+            this.Combobox_Branch_SchemeSearch.Location = new System.Drawing.Point(107, 74);
+            this.Combobox_Branch_SchemeSearch.Name = "Combobox_Branch_SchemeSearch";
+            this.Combobox_Branch_SchemeSearch.Size = new System.Drawing.Size(270, 25);
+            this.Combobox_Branch_SchemeSearch.TabIndex = 44;
+            this.Combobox_Branch_SchemeSearch.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_SchemeSearch_SelectedIndexChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.Button_ExtraCand_Register);
+            this.groupBox2.Controls.Add(this.Textbox_ExtraCand_Name);
+            this.groupBox2.Controls.Add(this.Textbox_ExtraCand_RegNo);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(313, 6);
@@ -238,37 +224,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Extra Candidate Registration";
             // 
-            // button4
+            // Button_ExtraCand_Register
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button4.Location = new System.Drawing.Point(715, 23);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(130, 40);
-            this.button4.TabIndex = 46;
-            this.button4.Text = "Register";
-            this.button4.UseVisualStyleBackColor = false;
+            this.Button_ExtraCand_Register.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_ExtraCand_Register.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_ExtraCand_Register.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_ExtraCand_Register.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_ExtraCand_Register.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_ExtraCand_Register.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_ExtraCand_Register.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_ExtraCand_Register.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_ExtraCand_Register.Location = new System.Drawing.Point(715, 23);
+            this.Button_ExtraCand_Register.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_ExtraCand_Register.Name = "Button_ExtraCand_Register";
+            this.Button_ExtraCand_Register.Size = new System.Drawing.Size(130, 40);
+            this.Button_ExtraCand_Register.TabIndex = 46;
+            this.Button_ExtraCand_Register.Text = "Register";
+            this.Button_ExtraCand_Register.UseVisualStyleBackColor = false;
             // 
-            // textBox3
+            // Textbox_ExtraCand_Name
             // 
-            this.textBox3.Location = new System.Drawing.Point(431, 30);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(270, 22);
-            this.textBox3.TabIndex = 45;
+            this.Textbox_ExtraCand_Name.Location = new System.Drawing.Point(431, 30);
+            this.Textbox_ExtraCand_Name.Name = "Textbox_ExtraCand_Name";
+            this.Textbox_ExtraCand_Name.Size = new System.Drawing.Size(270, 22);
+            this.Textbox_ExtraCand_Name.TabIndex = 45;
             // 
-            // textBox2
+            // Textbox_ExtraCand_RegNo
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(270, 22);
-            this.textBox2.TabIndex = 45;
+            this.Textbox_ExtraCand_RegNo.Location = new System.Drawing.Point(87, 30);
+            this.Textbox_ExtraCand_RegNo.Name = "Textbox_ExtraCand_RegNo";
+            this.Textbox_ExtraCand_RegNo.Size = new System.Drawing.Size(270, 22);
+            this.Textbox_ExtraCand_RegNo.TabIndex = 45;
             // 
             // label5
             // 
@@ -295,7 +281,7 @@
             // TabControl
             // 
             this.TabControl.Controls.Add(this.Tab_Excel_Import);
-            this.TabControl.Controls.Add(this.Tab_Search);
+            this.TabControl.Controls.Add(this.Tab_Univeristy_Search);
             this.TabControl.Controls.Add(this.Tab_Series_Search);
             this.TabControl.Location = new System.Drawing.Point(38, 95);
             this.TabControl.Name = "TabControl";
@@ -305,10 +291,10 @@
             // 
             // Tab_Excel_Import
             // 
-            this.Tab_Excel_Import.Controls.Add(this.button3);
-            this.Tab_Excel_Import.Controls.Add(this.Add_btn);
-            this.Tab_Excel_Import.Controls.Add(this.textBox1);
-            this.Tab_Excel_Import.Controls.Add(this.comboBox1);
+            this.Tab_Excel_Import.Controls.Add(this.Button_Select_ExcelFile);
+            this.Tab_Excel_Import.Controls.Add(this.Button_Register_ExcelSheet);
+            this.Tab_Excel_Import.Controls.Add(this.Textbox_ExcelFilepath);
+            this.Tab_Excel_Import.Controls.Add(this.Combobox_ExcelSheets);
             this.Tab_Excel_Import.Location = new System.Drawing.Point(4, 26);
             this.Tab_Excel_Import.Name = "Tab_Excel_Import";
             this.Tab_Excel_Import.Padding = new System.Windows.Forms.Padding(3);
@@ -317,96 +303,96 @@
             this.Tab_Excel_Import.Text = "Import from Excel";
             this.Tab_Excel_Import.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Button_Select_ExcelFile
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button3.Location = new System.Drawing.Point(305, 24);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(130, 40);
-            this.button3.TabIndex = 33;
-            this.button3.Text = "Select Excel";
-            this.button3.UseVisualStyleBackColor = false;
+            this.Button_Select_ExcelFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_Select_ExcelFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Select_ExcelFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Select_ExcelFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_Select_ExcelFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_Select_ExcelFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Select_ExcelFile.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Select_ExcelFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Select_ExcelFile.Location = new System.Drawing.Point(305, 24);
+            this.Button_Select_ExcelFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Select_ExcelFile.Name = "Button_Select_ExcelFile";
+            this.Button_Select_ExcelFile.Size = new System.Drawing.Size(130, 40);
+            this.Button_Select_ExcelFile.TabIndex = 33;
+            this.Button_Select_ExcelFile.Text = "Select Excel";
+            this.Button_Select_ExcelFile.UseVisualStyleBackColor = false;
             // 
-            // Add_btn
+            // Button_Register_ExcelSheet
             // 
-            this.Add_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Add_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Add_btn.FlatAppearance.BorderSize = 0;
-            this.Add_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.Add_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.Add_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Add_btn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_btn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Add_btn.Location = new System.Drawing.Point(305, 72);
-            this.Add_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.Size = new System.Drawing.Size(130, 40);
-            this.Add_btn.TabIndex = 34;
-            this.Add_btn.Text = "Register";
-            this.Add_btn.UseVisualStyleBackColor = false;
+            this.Button_Register_ExcelSheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Register_ExcelSheet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Register_ExcelSheet.FlatAppearance.BorderSize = 0;
+            this.Button_Register_ExcelSheet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_Register_ExcelSheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_Register_ExcelSheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Register_ExcelSheet.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Register_ExcelSheet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_Register_ExcelSheet.Location = new System.Drawing.Point(305, 72);
+            this.Button_Register_ExcelSheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Register_ExcelSheet.Name = "Button_Register_ExcelSheet";
+            this.Button_Register_ExcelSheet.Size = new System.Drawing.Size(130, 40);
+            this.Button_Register_ExcelSheet.TabIndex = 34;
+            this.Button_Register_ExcelSheet.Text = "Register";
+            this.Button_Register_ExcelSheet.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // Textbox_ExcelFilepath
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(284, 22);
-            this.textBox1.TabIndex = 31;
+            this.Textbox_ExcelFilepath.Location = new System.Drawing.Point(13, 31);
+            this.Textbox_ExcelFilepath.Name = "Textbox_ExcelFilepath";
+            this.Textbox_ExcelFilepath.Size = new System.Drawing.Size(284, 22);
+            this.Textbox_ExcelFilepath.TabIndex = 31;
             // 
-            // comboBox1
+            // Combobox_ExcelSheets
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(13, 78);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(284, 25);
-            this.comboBox1.TabIndex = 32;
+            this.Combobox_ExcelSheets.FormattingEnabled = true;
+            this.Combobox_ExcelSheets.Location = new System.Drawing.Point(13, 78);
+            this.Combobox_ExcelSheets.Name = "Combobox_ExcelSheets";
+            this.Combobox_ExcelSheets.Size = new System.Drawing.Size(284, 25);
+            this.Combobox_ExcelSheets.TabIndex = 32;
             // 
-            // Tab_Search
+            // Tab_Univeristy_Search
             // 
-            this.Tab_Search.Controls.Add(this.button1);
-            this.Tab_Search.Controls.Add(this.textBox5);
-            this.Tab_Search.Controls.Add(this.label3);
-            this.Tab_Search.Controls.Add(this.label9);
-            this.Tab_Search.Controls.Add(this.comboBox4);
-            this.Tab_Search.Location = new System.Drawing.Point(4, 26);
-            this.Tab_Search.Name = "Tab_Search";
-            this.Tab_Search.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Search.Size = new System.Drawing.Size(453, 137);
-            this.Tab_Search.TabIndex = 0;
-            this.Tab_Search.Text = "Search Students";
-            this.Tab_Search.UseVisualStyleBackColor = true;
+            this.Tab_Univeristy_Search.Controls.Add(this.Button_Register_University);
+            this.Tab_Univeristy_Search.Controls.Add(this.Textbox_Yoa_SearchCand);
+            this.Tab_Univeristy_Search.Controls.Add(this.label3);
+            this.Tab_Univeristy_Search.Controls.Add(this.label9);
+            this.Tab_Univeristy_Search.Controls.Add(this.Combobox_Branch_Cand_Register);
+            this.Tab_Univeristy_Search.Location = new System.Drawing.Point(4, 26);
+            this.Tab_Univeristy_Search.Name = "Tab_Univeristy_Search";
+            this.Tab_Univeristy_Search.Padding = new System.Windows.Forms.Padding(3);
+            this.Tab_Univeristy_Search.Size = new System.Drawing.Size(453, 137);
+            this.Tab_Univeristy_Search.TabIndex = 0;
+            this.Tab_Univeristy_Search.Text = "Search Students";
+            this.Tab_Univeristy_Search.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // Button_Register_University
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(161, 83);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 40);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "Register";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Button_Register_University.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Register_University.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Register_University.FlatAppearance.BorderSize = 0;
+            this.Button_Register_University.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_Register_University.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_Register_University.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Register_University.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Register_University.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_Register_University.Location = new System.Drawing.Point(161, 83);
+            this.Button_Register_University.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Register_University.Name = "Button_Register_University";
+            this.Button_Register_University.Size = new System.Drawing.Size(130, 40);
+            this.Button_Register_University.TabIndex = 44;
+            this.Button_Register_University.Text = "Register";
+            this.Button_Register_University.UseVisualStyleBackColor = false;
             // 
-            // textBox5
+            // Textbox_Yoa_SearchCand
             // 
-            this.textBox5.Location = new System.Drawing.Point(109, 51);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(270, 22);
-            this.textBox5.TabIndex = 43;
+            this.Textbox_Yoa_SearchCand.Location = new System.Drawing.Point(109, 51);
+            this.Textbox_Yoa_SearchCand.Name = "Textbox_Yoa_SearchCand";
+            this.Textbox_Yoa_SearchCand.Size = new System.Drawing.Size(270, 22);
+            this.Textbox_Yoa_SearchCand.TabIndex = 43;
             // 
             // label3
             // 
@@ -430,19 +416,19 @@
             this.label9.TabIndex = 40;
             this.label9.Text = "Branch :";
             // 
-            // comboBox4
+            // Combobox_Branch_Cand_Register
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(109, 17);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(270, 25);
-            this.comboBox4.TabIndex = 42;
+            this.Combobox_Branch_Cand_Register.FormattingEnabled = true;
+            this.Combobox_Branch_Cand_Register.Location = new System.Drawing.Point(109, 17);
+            this.Combobox_Branch_Cand_Register.Name = "Combobox_Branch_Cand_Register";
+            this.Combobox_Branch_Cand_Register.Size = new System.Drawing.Size(270, 25);
+            this.Combobox_Branch_Cand_Register.TabIndex = 42;
             // 
             // Tab_Series_Search
             // 
-            this.Tab_Series_Search.Controls.Add(this.button2);
+            this.Tab_Series_Search.Controls.Add(this.Button_Register_Series);
             this.Tab_Series_Search.Controls.Add(this.label2);
-            this.Tab_Series_Search.Controls.Add(this.comboBox2);
+            this.Tab_Series_Search.Controls.Add(this.Combobox_Class);
             this.Tab_Series_Search.Location = new System.Drawing.Point(4, 26);
             this.Tab_Series_Search.Name = "Tab_Series_Search";
             this.Tab_Series_Search.Size = new System.Drawing.Size(453, 137);
@@ -450,23 +436,23 @@
             this.Tab_Series_Search.Text = "Search Students";
             this.Tab_Series_Search.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // Button_Register_Series
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(177, 73);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 40);
-            this.button2.TabIndex = 45;
-            this.button2.Text = "Register";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Button_Register_Series.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Register_Series.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Register_Series.FlatAppearance.BorderSize = 0;
+            this.Button_Register_Series.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_Register_Series.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_Register_Series.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Register_Series.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Register_Series.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_Register_Series.Location = new System.Drawing.Point(177, 73);
+            this.Button_Register_Series.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Register_Series.Name = "Button_Register_Series";
+            this.Button_Register_Series.Size = new System.Drawing.Size(130, 40);
+            this.Button_Register_Series.TabIndex = 45;
+            this.Button_Register_Series.Text = "Register";
+            this.Button_Register_Series.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -479,18 +465,18 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Class :";
             // 
-            // comboBox2
+            // Combobox_Class
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(120, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(270, 25);
-            this.comboBox2.TabIndex = 44;
+            this.Combobox_Class.FormattingEnabled = true;
+            this.Combobox_Class.Location = new System.Drawing.Point(120, 36);
+            this.Combobox_Class.Name = "Combobox_Class";
+            this.Combobox_Class.Size = new System.Drawing.Size(270, 25);
+            this.Combobox_Class.TabIndex = 44;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.Radio_Series);
+            this.groupBox1.Controls.Add(this.Radio_University);
             this.groupBox1.Location = new System.Drawing.Point(15, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(272, 77);
@@ -498,27 +484,107 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Exam";
             // 
-            // radioButton2
+            // Radio_Series
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(165, 32);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(61, 21);
-            this.radioButton2.TabIndex = 5;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Series";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Radio_Series.AutoSize = true;
+            this.Radio_Series.Location = new System.Drawing.Point(165, 32);
+            this.Radio_Series.Name = "Radio_Series";
+            this.Radio_Series.Size = new System.Drawing.Size(61, 21);
+            this.Radio_Series.TabIndex = 5;
+            this.Radio_Series.TabStop = true;
+            this.Radio_Series.Text = "Series";
+            this.Radio_Series.UseVisualStyleBackColor = true;
+            this.Radio_Series.CheckedChanged += new System.EventHandler(this.Radio_Series_CheckedChanged);
             // 
-            // radioButton1
+            // Radio_University
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(31, 32);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(83, 21);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "University";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.Radio_University.AutoSize = true;
+            this.Radio_University.Location = new System.Drawing.Point(31, 32);
+            this.Radio_University.Name = "Radio_University";
+            this.Radio_University.Size = new System.Drawing.Size(83, 21);
+            this.Radio_University.TabIndex = 5;
+            this.Radio_University.TabStop = true;
+            this.Radio_University.Text = "University";
+            this.Radio_University.UseVisualStyleBackColor = true;
+            this.Radio_University.CheckedChanged += new System.EventHandler(this.Radio_University_CheckedChanged);
+            // 
+            // Panel_ProgressBar
+            // 
+            this.Panel_ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
+            this.Panel_ProgressBar.Controls.Add(this.label12);
+            this.Panel_ProgressBar.Location = new System.Drawing.Point(440, 334);
+            this.Panel_ProgressBar.Name = "Panel_ProgressBar";
+            this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 70);
+            this.Panel_ProgressBar.TabIndex = 18;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(98, 24);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(123, 22);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Please Wait !";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // HeaderCheckBox
+            // 
+            this.HeaderCheckBox.AutoSize = true;
+            this.HeaderCheckBox.Location = new System.Drawing.Point(53, 271);
+            this.HeaderCheckBox.Name = "HeaderCheckBox";
+            this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckBox.TabIndex = 38;
+            this.HeaderCheckBox.UseVisualStyleBackColor = true;
+            this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
+            // 
+            // Dgv_Students
+            // 
+            this.Dgv_Students.AllowUserToAddRows = false;
+            this.Dgv_Students.AllowUserToDeleteRows = false;
+            this.Dgv_Students.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Dgv_Students.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Students.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBoxColumn_Students});
+            this.Dgv_Students.Location = new System.Drawing.Point(0, 268);
+            this.Dgv_Students.Name = "Dgv_Students";
+            this.Dgv_Students.RowTemplate.Height = 24;
+            this.Dgv_Students.Size = new System.Drawing.Size(542, 413);
+            this.Dgv_Students.TabIndex = 37;
+            this.Dgv_Students.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Students_CellEndEdit);
+            this.Dgv_Students.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Students_CellMouseUp);
+            // 
+            // CheckBoxColumn_Students
+            // 
+            this.CheckBoxColumn_Students.HeaderText = "";
+            this.CheckBoxColumn_Students.Name = "CheckBoxColumn_Students";
+            this.CheckBoxColumn_Students.Width = 35;
+            // 
+            // Dgv_Course
+            // 
+            this.Dgv_Course.AllowUserToAddRows = false;
+            this.Dgv_Course.AllowUserToDeleteRows = false;
+            this.Dgv_Course.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Course.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Course.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBoxColumn_Timetable});
+            this.Dgv_Course.Location = new System.Drawing.Point(541, 268);
+            this.Dgv_Course.Name = "Dgv_Course";
+            this.Dgv_Course.RowTemplate.Height = 24;
+            this.Dgv_Course.Size = new System.Drawing.Size(649, 413);
+            this.Dgv_Course.TabIndex = 39;
+            // 
+            // CheckBoxColumn_Timetable
+            // 
+            this.CheckBoxColumn_Timetable.HeaderText = "";
+            this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
+            this.CheckBoxColumn_Timetable.Width = 35;
             // 
             // Form_Candidate_Entry
             // 
@@ -528,6 +594,7 @@
             this.ClientSize = new System.Drawing.Size(1191, 739);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Panel_Header);
+            this.Controls.Add(this.Panel_ProgressBar);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -538,8 +605,7 @@
             this.Panel_Header.ResumeLayout(false);
             this.Panel_Header.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -547,12 +613,16 @@
             this.TabControl.ResumeLayout(false);
             this.Tab_Excel_Import.ResumeLayout(false);
             this.Tab_Excel_Import.PerformLayout();
-            this.Tab_Search.ResumeLayout(false);
-            this.Tab_Search.PerformLayout();
+            this.Tab_Univeristy_Search.ResumeLayout(false);
+            this.Tab_Univeristy_Search.PerformLayout();
             this.Tab_Series_Search.ResumeLayout(false);
             this.Tab_Series_Search.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.Panel_ProgressBar.ResumeLayout(false);
+            this.Panel_ProgressBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Students)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Course)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -563,39 +633,44 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Button_Close;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox Combobox_Semester;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox Combobox_Scheme;
+        private System.Windows.Forms.ComboBox Combobox_Branch_SchemeSearch;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button Button_ExtraCand_Register;
+        private System.Windows.Forms.TextBox Textbox_ExtraCand_Name;
+        private System.Windows.Forms.TextBox Textbox_ExtraCand_RegNo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage Tab_Excel_Import;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button Add_btn;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TabPage Tab_Search;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button Button_Select_ExcelFile;
+        private System.Windows.Forms.Button Button_Register_ExcelSheet;
+        private System.Windows.Forms.TextBox Textbox_ExcelFilepath;
+        private System.Windows.Forms.ComboBox Combobox_ExcelSheets;
+        private System.Windows.Forms.TabPage Tab_Univeristy_Search;
+        private System.Windows.Forms.Button Button_Register_University;
+        private System.Windows.Forms.TextBox Textbox_Yoa_SearchCand;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox Combobox_Branch_Cand_Register;
         private System.Windows.Forms.TabPage Tab_Series_Search;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Button_Register_Series;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox Combobox_Class;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton Radio_Series;
+        private System.Windows.Forms.RadioButton Radio_University;
+        private System.Windows.Forms.Panel Panel_ProgressBar;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox HeaderCheckBox;
+        private System.Windows.Forms.DataGridView Dgv_Students;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Students;
+        private System.Windows.Forms.DataGridView Dgv_Course;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Timetable;
     }
 }

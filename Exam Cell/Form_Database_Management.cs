@@ -45,8 +45,6 @@ namespace Exam_Cell
 
         void ResetAllFormDatas()
         {
-            HeaderCheckbox.Checked = false;
-            HeaderCheckbox_CourseDgv.Checked = false;
             // all combobox set to 0th index
             Combobox_Branch.SelectedIndex = 0;
             Combobox_Branch_updateStudTab.SelectedIndex = 0;
@@ -79,6 +77,8 @@ namespace Exam_Cell
             selectedAcode = "";
             selectedBranch_Course = "";
             selectedSemester_Course = "";
+            HeaderCheckbox.Checked = false;
+            HeaderCheckbox_CourseDgv.Checked = false;
             // set loading to false
             SetLoading(false);
         }
@@ -885,6 +885,7 @@ namespace Exam_Cell
 }
 
 // // // // // // // // // // // FOR TESTING // // // // // // // // // // // //
+// *** check if we get error when reset form triggers, since headercheckbox = false is given last of resetForm function and dgv datasoure is null.
 // *** try make an error in try-catch which have function only.. eg: Search event in update student tab ***
 // *** is timer needed ? ***
 // *** fill semester combobox of Course tab as "1 & 2" or "1 and 2" whatever... ***

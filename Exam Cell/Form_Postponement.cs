@@ -213,6 +213,49 @@ namespace Exam_Cell
             DateTimePicker_NewDate.CustomFormat = "dd-MM-yyyy";
             DateTimePicker_NewDate.Value = DateTime.Now;
         }
+
+        // Checkbox click event
+        bool isCheckBoxColumn_ClickedEvent = false;
+        private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isCheckBoxColumn_ClickedEvent || !isFormReset)
+            {
+                if (HeaderCheckBox.Checked)
+                {
+                    foreach (DataGridViewRow row in Dgv_Timetable.Rows)
+                    {
+                        row.Cells["CheckBoxColumn_Timetable"].Value = true;
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in Dgv_Timetable.Rows)
+                    {
+                        row.Cells["CheckBoxColumn_Timetable"].Value = false;
+                    }
+                }
+            }
+
+            isCheckBoxColumn_ClickedEvent = false;
+        }
+
+        private void Dgv_Timetable_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Timetable.Columns["CheckBoxColumn_Timetable"].Index)
+                Dgv_Timetable.EndEdit();
+        }
+
+        private void Dgv_Timetable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Timetable.Columns["CheckBoxColumn_Timetable"].Index)
+            {
+                if (HeaderCheckBox.Checked)
+                {
+                    isCheckBoxColumn_ClickedEvent = true;
+                    HeaderCheckBox.Checked = false;
+                }
+            }
+        }
     }
 }
 

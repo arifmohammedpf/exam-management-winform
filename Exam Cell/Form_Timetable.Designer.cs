@@ -32,6 +32,11 @@
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Panel_Body = new System.Windows.Forms.Panel();
+            this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
+            this.Dgv_Timetable = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Timetable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Dgv_Courses = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Textbox_ExamCode_Search_Timetable = new System.Windows.Forms.TextBox();
             this.Radio_DateWiseSearch = new System.Windows.Forms.RadioButton();
@@ -56,17 +61,12 @@
             this.Button_Add = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Dgv_Courses = new System.Windows.Forms.DataGridView();
-            this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
-            this.Dgv_Timetable = new System.Windows.Forms.DataGridView();
-            this.CheckBoxColumn_Timetable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Timetable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Courses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.GroupBox_Exam_Mode.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Courses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Timetable)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Header
@@ -125,6 +125,60 @@
             this.Panel_Body.Name = "Panel_Body";
             this.Panel_Body.Size = new System.Drawing.Size(1277, 695);
             this.Panel_Body.TabIndex = 4;
+            // 
+            // HeaderCheckBox
+            // 
+            this.HeaderCheckBox.AutoSize = true;
+            this.HeaderCheckBox.Location = new System.Drawing.Point(56, 351);
+            this.HeaderCheckBox.Name = "HeaderCheckBox";
+            this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckBox.TabIndex = 34;
+            this.HeaderCheckBox.UseVisualStyleBackColor = true;
+            this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
+            // 
+            // Dgv_Timetable
+            // 
+            this.Dgv_Timetable.AllowUserToAddRows = false;
+            this.Dgv_Timetable.AllowUserToDeleteRows = false;
+            this.Dgv_Timetable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Dgv_Timetable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBoxColumn_Timetable});
+            this.Dgv_Timetable.Location = new System.Drawing.Point(3, 348);
+            this.Dgv_Timetable.Name = "Dgv_Timetable";
+            this.Dgv_Timetable.RowTemplate.Height = 24;
+            this.Dgv_Timetable.Size = new System.Drawing.Size(905, 344);
+            this.Dgv_Timetable.TabIndex = 33;
+            this.Dgv_Timetable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Timetable_CellEndEdit);
+            this.Dgv_Timetable.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Timetable_CellMouseUp);
+            // 
+            // CheckBoxColumn_Timetable
+            // 
+            this.CheckBoxColumn_Timetable.HeaderText = "";
+            this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
+            this.CheckBoxColumn_Timetable.Width = 35;
+            // 
+            // Dgv_Courses
+            // 
+            this.Dgv_Courses.AllowUserToAddRows = false;
+            this.Dgv_Courses.AllowUserToDeleteRows = false;
+            this.Dgv_Courses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Courses.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Courses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Courses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckBoxColumn_Course});
+            this.Dgv_Courses.Location = new System.Drawing.Point(377, 3);
+            this.Dgv_Courses.Name = "Dgv_Courses";
+            this.Dgv_Courses.RowTemplate.Height = 24;
+            this.Dgv_Courses.Size = new System.Drawing.Size(896, 344);
+            this.Dgv_Courses.TabIndex = 31;
+            // 
+            // CheckBoxColumn_Course
+            // 
+            this.CheckBoxColumn_Course.HeaderText = "";
+            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
+            this.CheckBoxColumn_Course.Width = 35;
             // 
             // groupBox1
             // 
@@ -438,57 +492,6 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Date :";
             // 
-            // Dgv_Courses
-            // 
-            this.Dgv_Courses.AllowUserToAddRows = false;
-            this.Dgv_Courses.AllowUserToDeleteRows = false;
-            this.Dgv_Courses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Dgv_Courses.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.Dgv_Courses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Courses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CheckBoxColumn_Course});
-            this.Dgv_Courses.Location = new System.Drawing.Point(377, 3);
-            this.Dgv_Courses.Name = "Dgv_Courses";
-            this.Dgv_Courses.RowTemplate.Height = 24;
-            this.Dgv_Courses.Size = new System.Drawing.Size(896, 344);
-            this.Dgv_Courses.TabIndex = 31;
-            // 
-            // HeaderCheckBox
-            // 
-            this.HeaderCheckBox.AutoSize = true;
-            this.HeaderCheckBox.Location = new System.Drawing.Point(56, 351);
-            this.HeaderCheckBox.Name = "HeaderCheckBox";
-            this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckBox.TabIndex = 34;
-            this.HeaderCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // Dgv_Timetable
-            // 
-            this.Dgv_Timetable.AllowUserToAddRows = false;
-            this.Dgv_Timetable.AllowUserToDeleteRows = false;
-            this.Dgv_Timetable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Dgv_Timetable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.Dgv_Timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CheckBoxColumn_Timetable});
-            this.Dgv_Timetable.Location = new System.Drawing.Point(3, 348);
-            this.Dgv_Timetable.Name = "Dgv_Timetable";
-            this.Dgv_Timetable.RowTemplate.Height = 24;
-            this.Dgv_Timetable.Size = new System.Drawing.Size(905, 344);
-            this.Dgv_Timetable.TabIndex = 33;
-            // 
-            // CheckBoxColumn_Timetable
-            // 
-            this.CheckBoxColumn_Timetable.HeaderText = "";
-            this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
-            this.CheckBoxColumn_Timetable.Width = 35;
-            // 
-            // CheckBoxColumn_Course
-            // 
-            this.CheckBoxColumn_Course.HeaderText = "";
-            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
-            this.CheckBoxColumn_Course.Width = 35;
-            // 
             // Form_Timetable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -508,12 +511,12 @@
             this.Panel_Header.PerformLayout();
             this.Panel_Body.ResumeLayout(false);
             this.Panel_Body.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Timetable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Courses)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.GroupBox_Exam_Mode.ResumeLayout(false);
             this.GroupBox_Exam_Mode.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Courses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Timetable)).EndInit();
             this.ResumeLayout(false);
 
         }

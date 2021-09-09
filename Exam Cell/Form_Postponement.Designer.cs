@@ -115,6 +115,7 @@
             this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
             this.HeaderCheckBox.TabIndex = 36;
             this.HeaderCheckBox.UseVisualStyleBackColor = true;
+            this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
             // 
             // Dgv_Timetable
             // 
@@ -130,6 +131,8 @@
             this.Dgv_Timetable.RowTemplate.Height = 24;
             this.Dgv_Timetable.Size = new System.Drawing.Size(937, 296);
             this.Dgv_Timetable.TabIndex = 35;
+            this.Dgv_Timetable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Timetable_CellEndEdit);
+            this.Dgv_Timetable.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Timetable_CellMouseUp);
             // 
             // CheckBoxColumn_Timetable
             // 

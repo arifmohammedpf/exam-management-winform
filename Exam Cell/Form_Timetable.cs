@@ -101,11 +101,11 @@ namespace Exam_Cell
         {
             if (!isFormReset)
             {
-                HeaderCheckBox.Checked = false;
                 string branch = Combobox_Branch_Search_Course.SelectedItem.ToString();
                 string examcode = Textbox_ExamCode_Search_Course.Text;
                 string semester = Combobox_Semester.SelectedItem.ToString();
                 Dgv_Courses.DataSource = null;
+                HeaderCheckBox.Checked = false;
 
                 string searchRecord = "";
 
@@ -385,11 +385,53 @@ namespace Exam_Cell
                 }
             }
         }
+
+        // checkbox click event
+        bool isCheckBoxColumn_ClickedEvent = false;
+        private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isCheckBoxColumn_ClickedEvent || !isFormReset)
+            {
+                if (HeaderCheckBox.Checked)
+                {
+                    foreach (DataGridViewRow row in Dgv_Timetable.Rows)
+                    {
+                        row.Cells["CheckBoxColumn_Timetable"].Value = true;
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in Dgv_Timetable.Rows)
+                    {
+                        row.Cells["CheckBoxColumn_Timetable"].Value = false;
+                    }
+                }
+            }
+        }
+
+        private void Dgv_Timetable_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Timetable.Columns["CheckBoxColumn_Timetable"].Index)
+                Dgv_Timetable.EndEdit();
+        }
+
+        private void Dgv_Timetable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Timetable.Columns["CheckBoxColumn_Timetable"].Index)
+            {
+                if (HeaderCheckBox.Checked)
+                {
+                    isCheckBoxColumn_ClickedEvent = true;
+                    HeaderCheckBox.Checked = false;
+                }
+            }
+        }
     }
 }
 
 // // // IN THE FINAL PROCESS OF THIS APPLICATION, TAB INDEX ALL THE FORMS  // // //
 // TESTING //
+// * headercheckbox is set to false in searchCourses after dgv set to null...check if it gives error....put it in tryCatch
 // * if ExamCode searching makes any error try to disable textbox before calling SearchFunction()
 // * in undo, do we have to include comm=new sqlCommand(..) inside forloop ? check if undoing works properly
 // * line 276, this.enabled should be before or after ifElse ?? check if works properly
