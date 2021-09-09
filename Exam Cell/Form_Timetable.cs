@@ -32,14 +32,21 @@ namespace Exam_Cell
             this.Close();
         }
 
+        bool isFormReset = false;
         void ResetForm()
         {
+            isFormReset = true;
             Combobox_Branch_Search_Course.SelectedIndex = 0;
             Combobox_Branch_Search_Timetable.SelectedIndex = 0;
             Combobox_Semester.SelectedIndex = 0;
             Combobox_Session.SelectedIndex = 0;
             Textbox_ExamCode_Search_Course.ResetText();
             Textbox_ExamCode_Search_Timetable.ResetText();
+            DateTimePicker_Search_Timetable.Value = DateTime.Now;
+            DateTimePicker_Add_Timetable.Value = DateTime.Now;
+            Dgv_Courses.DataSource = null;
+            Dgv_Timetable.DataSource = null;
+            isFormReset = false;
         }
 
         void Branch_Combobox_Fill()
@@ -91,37 +98,40 @@ namespace Exam_Cell
 
         void SearchCourses()
         {
-            string branch = Combobox_Branch_Search_Course.SelectedItem.ToString();
-            string examcode = Textbox_ExamCode_Search_Course.Text;
-            string semester = Combobox_Semester.SelectedItem.ToString();
-            Dgv_Courses.DataSource = null;
+            if (!isFormReset)
+            {
+                string branch = Combobox_Branch_Search_Course.SelectedItem.ToString();
+                string examcode = Textbox_ExamCode_Search_Course.Text;
+                string semester = Combobox_Semester.SelectedItem.ToString();
+                Dgv_Courses.DataSource = null;
 
-            string searchRecord = "";
+                string searchRecord = "";
 
-            if (branch != "-Select-")
-                searchRecord = string.Format("Branch like '%{0}%'", branch);
-            if (semester != "-Select-")
-            {
-                if (searchRecord.Length > 0) searchRecord += " AND ";
-                searchRecord += string.Format("Semester Like '%{0}%'", semester);
-            }
-            if (examcode != "")
-            {
-                if (searchRecord.Length > 0) searchRecord += " AND ";
-                searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
-            }
-            if(searchRecord != "")
-            {
-                string query = "Select * from Scheme where " + searchRecord;
-                DataTable courseTable;
-                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                if (branch != "-Select-")
+                    searchRecord = string.Format("Branch like '%{0}%'", branch);
+                if (semester != "-Select-")
                 {
-                    SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                    courseTable = new DataTable();
-                    dataAdapter.Fill(courseTable);
+                    if (searchRecord.Length > 0) searchRecord += " AND ";
+                    searchRecord += string.Format("Semester Like '%{0}%'", semester);
                 }
-                Dgv_Courses.DataSource = courseTable;
+                if (examcode != "")
+                {
+                    if (searchRecord.Length > 0) searchRecord += " AND ";
+                    searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
+                }
+                if (searchRecord != "")
+                {
+                    string query = "Select * from Scheme where " + searchRecord;
+                    DataTable courseTable;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                        SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                        courseTable = new DataTable();
+                        dataAdapter.Fill(courseTable);
+                    }
+                    Dgv_Courses.DataSource = courseTable;
+                }
             }
         }
 
@@ -142,39 +152,42 @@ namespace Exam_Cell
 
         void SearchTimetable()
         {
-            Dgv_Timetable.DataSource = null;
-            string searchRecord = "";
+            if (!isFormReset)
+            {
+                Dgv_Timetable.DataSource = null;
+                string searchRecord = "";
 
-            if (Radio_DateWiseSearch.Checked)
-            {
-                string date = DateTimePicker_Search_Timetable.Text;
-                searchRecord += string.Format("Date = '%{0}%'", date);
-            }
-            else
-            {
-                string branch = Combobox_Branch_Search_Timetable.SelectedItem.ToString();
-                string examcode = Textbox_ExamCode_Search_Timetable.Text;
-                if (branch != "-Select-")
-                    searchRecord = string.Format("Branch like '%{0}%'", branch);
-                if (examcode != "")
+                if (Radio_DateWiseSearch.Checked)
                 {
-                    if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
+                    string date = DateTimePicker_Search_Timetable.Text;
+                    searchRecord += string.Format("Date = '%{0}%'", date);
                 }
-            }
+                else
+                {
+                    string branch = Combobox_Branch_Search_Timetable.SelectedItem.ToString();
+                    string examcode = Textbox_ExamCode_Search_Timetable.Text;
+                    if (branch != "-Select-")
+                        searchRecord = string.Format("Branch like '%{0}%'", branch);
+                    if (examcode != "")
+                    {
+                        if (searchRecord.Length > 0) searchRecord += " AND ";
+                        searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
+                    }
+                }
 
-            if (searchRecord != "")
-            {
-                string query = "Select * from Timetable where " + searchRecord;
-                DataTable TimeTable;
-                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                if (searchRecord != "")
                 {
-                    SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                    TimeTable = new DataTable();
-                    dataAdapter.Fill(TimeTable);
+                    string query = "Select * from Timetable where " + searchRecord;
+                    DataTable TimeTable;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                        SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                        TimeTable = new DataTable();
+                        dataAdapter.Fill(TimeTable);
+                    }
+                    Dgv_Timetable.DataSource = TimeTable;
                 }
-                Dgv_Timetable.DataSource = TimeTable;
             }
         }
 
@@ -321,14 +334,7 @@ namespace Exam_Cell
 
         private void Button_Clear_Click(object sender, EventArgs e)
         {
-            DateTimePicker_Add_Timetable.Value = DateTime.Now;
-            Combobox_Session.SelectedIndex = 0;
-            Combobox_Branch_Search_Course.SelectedIndex = 0;
-            Combobox_Semester.SelectedIndex = 0;
-            Textbox_ExamCode_Search_Course.Text = "";
-            DateTimePicker_Search_Timetable.Value = DateTime.Now;
-            Combobox_Branch_Search_Timetable.SelectedIndex = 0;
-            Textbox_ExamCode_Search_Timetable.Text = "";
+            ResetForm();
         }
 
         private void Button_Delete_Click(object sender, EventArgs e)
@@ -385,12 +391,5 @@ namespace Exam_Cell
 // * if ExamCode searching makes any error try to disable textbox before calling SearchFunction()
 // * in undo, do we have to include comm=new sqlCommand(..) inside forloop ? check if undoing works properly
 // * line 276, this.enabled should be before or after ifElse ?? check if works properly
-// * clear inputs is lagging the app ??
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+// * clear inputs is lagging the app ??            
+// * chek if isresetform=true works by adding msg box inside search and click reset button to trigger event
