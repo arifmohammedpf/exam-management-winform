@@ -45,6 +45,8 @@ namespace Exam_Cell
 
         void ResetAllFormDatas()
         {
+            HeaderCheckbox.Checked = false;
+            HeaderCheckbox_CourseDgv.Checked = false;
             // all combobox set to 0th index
             Combobox_Branch.SelectedIndex = 0;
             Combobox_Branch_updateStudTab.SelectedIndex = 0;
@@ -382,6 +384,7 @@ namespace Exam_Cell
 
         void SearchStudentRecord()
         {
+            HeaderCheckbox.Checked = false;
             string regno = Textbox_Regno.Text;
             string name = Textbox_Name.Text;
             string branch = Combobox_Branch_updateStudTab.SelectedItem.ToString();

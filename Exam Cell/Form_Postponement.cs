@@ -42,6 +42,7 @@ namespace Exam_Cell
             Textbox_SubCode.ResetText();
             DateTimePicker_Date.Value = DateTime.Now;
             DateTimePicker_NewDate.Value = DateTime.Now;
+            HeaderCheckBox.Checked = false;
             Dgv_Timetable.DataSource = null;
             isFormReset = false;
         }
@@ -79,6 +80,7 @@ namespace Exam_Cell
         {
             if (!isFormReset)
             {
+                HeaderCheckBox.Checked = false;
                 Dgv_Timetable.DataSource = null;
                 string searchRecord = "";
                 string branch = Combobox_Branch.SelectedItem.ToString();
@@ -150,12 +152,75 @@ namespace Exam_Cell
         {
             ResetForm();
         }
+
+        private void Button_Postpone_Click(object sender, EventArgs e)
+        {
+            CustomMessageBox.ShowMessageBox("Are you sure to Postpone selected Exams ?  ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                try
+                {
+                    int flag = 0;
+                    bool isPostponWithSession = false;
+                    if (Combobox_NewSession.SelectedItem.ToString() != "-Optional-") isPostponWithSession = true;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        SQLiteCommand comm;
+                        string query = "";
+                        if (isPostponWithSession)
+                            query = string.Format("Update Timetable set Date=@NewDate,Session=@NewSession where Date=@Date and Session=@Session and Sub_Code=@Subcode and Branch=@Branch");
+                        else query = string.Format("Update Timetable set Date=@NewDate where Date=@Date and Session=@Session and Sub_Code=@Subcode and Branch=@Branch");
+                        comm = new SQLiteCommand(query, dbConnection);
+                        foreach (DataGridViewRow dr in Dgv_Timetable.Rows)
+                        {
+                            bool checkboxselected = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Timetable"].Value);
+                            if (checkboxselected)
+                            {
+                                flag = 1;                                
+                                
+                                comm.Parameters.AddWithValue("@NewDate", DateTimePicker_NewDate.Text);
+                                if (isPostponWithSession) comm.Parameters.AddWithValue("@NewSession", Combobox_NewSession.SelectedItem.ToString());
+                                comm.Parameters.AddWithValue("@Date", dr.Cells["Date"].Value.ToString());
+                                comm.Parameters.AddWithValue("@Session", dr.Cells["Session"].Value.ToString());
+                                comm.Parameters.AddWithValue("@Subcode", dr.Cells["Sub_Code"].Value.ToString());
+                                comm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
+                                comm.ExecuteNonQuery();
+                            }
+                        }
+                    }                        
+                    if (flag == 1)
+                    {
+                        SearchTimetable();
+                        CustomMessageBox.ShowMessageBox("Selected exams postponed  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }
+                    else CustomMessageBox.ShowMessageBox("Select any exam to postpone", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }                
+            }
+        }
+
+        private void Form_Postponement_Load(object sender, EventArgs e)
+        {
+            DateTimePicker_Date.Format = DateTimePickerFormat.Custom;
+            DateTimePicker_Date.CustomFormat = "dd-MM-yyyy";
+            DateTimePicker_Date.Value = DateTime.Now;
+
+            DateTimePicker_NewDate.Format = DateTimePickerFormat.Custom;
+            DateTimePicker_NewDate.CustomFormat = "dd-MM-yyyy";
+            DateTimePicker_NewDate.Value = DateTime.Now;
+        }
     }
 }
 
 // TESTING //
-// *
-
+// * check if DateTimePicker is formated in FormLoad in ALL the Forms....
+// * dont know if any error comes when comm.paramter.addValue is given inside loop without comm builder (line 177)...check all the forms...
+// // // // FINAL DO // // // //
+    // * in Dgv, set auto size rows as displayed cell in ALL the forms
 /*
             try
             {

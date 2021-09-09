@@ -44,6 +44,7 @@ namespace Exam_Cell
             Textbox_ExamCode_Search_Timetable.ResetText();
             DateTimePicker_Search_Timetable.Value = DateTime.Now;
             DateTimePicker_Add_Timetable.Value = DateTime.Now;
+            HeaderCheckBox.Checked = false;
             Dgv_Courses.DataSource = null;
             Dgv_Timetable.DataSource = null;
             isFormReset = false;
@@ -100,6 +101,7 @@ namespace Exam_Cell
         {
             if (!isFormReset)
             {
+                HeaderCheckBox.Checked = false;
                 string branch = Combobox_Branch_Search_Course.SelectedItem.ToString();
                 string examcode = Textbox_ExamCode_Search_Course.Text;
                 string semester = Combobox_Semester.SelectedItem.ToString();
