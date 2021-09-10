@@ -1,10 +1,12 @@
-﻿using System;
+﻿using ExcelDataReader;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,22 +78,34 @@ namespace Exam_Cell
             HeaderCheckBox.Checked = false;
             Textbox_ExtraCand_Name.ResetText();
             Textbox_ExtraCand_RegNo.ResetText();
-            Dgv_Course.DataSource = null;
             Dgv_Students.DataSource = null;
-            Combobox_Scheme.SelectedIndex = 0;
-            Combobox_Branch_SchemeSearch.SelectedIndex = 0;
-            Combobox_Semester.SelectedIndex = 0;
             if (Radio_University.Checked)
             {
                 Textbox_ExcelFilepath.ResetText();
-                Combobox_ExcelSheets.DataSource = null;
+                Combobox_ExcelSheets.SelectedItem = null;
+                Button_Register_University.Enabled = false;
                 Combobox_Branch_Cand_Register.SelectedIndex = 0;
                 Textbox_Yoa_SearchCand.ResetText();
             }
             else Combobox_Class.SelectedIndex = 0;
             isFormReset = false;
+            SetLoading(false);
         }
-                
+
+        void SetLoading(bool loading)
+        {
+            if (loading)
+            {
+                Panel_Body.Enabled = false;
+                Panel_ProgressBar.BringToFront();
+            }
+            else
+            {
+                Panel_Body.Enabled = true;
+                Panel_ProgressBar.SendToBack();
+            }
+        }
+
         // Checkbox click event
         bool isCheckBoxColumn_ClickedEvent = false;
         private void Dgv_Students_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -187,6 +201,97 @@ namespace Exam_Cell
         private void Combobox_Semester_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchCourses();
+        }
+
+        // Register from Excel Sheet event --- Start
+        DataTableCollection tableCollection;
+        private void Button_Select_ExcelFile_Click(object sender, EventArgs e)
+        {
+            CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n RegisterNo ,Name, Semester, Branch, Course  ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
+            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "Excel Files|*.xls|*xlsx|*.xlsm" })
+            {
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    Textbox_ExcelFilepath.Text = openFile.FileName;  //Filepath_textbox.Text --- filepath is displayed in textbox
+                    using (var stream = File.Open(openFile.FileName, FileMode.Open, FileAccess.Read))
+                    {
+                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                        {
+                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                            {
+                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                            });
+                            tableCollection = result.Tables;
+                            Combobox_ExcelSheets.Items.Clear();
+                            foreach (DataTable table in tableCollection)
+                                Combobox_ExcelSheets.Items.Add(table.TableName); //add sheets to combobox
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Combobox_ExcelSheets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(Combobox_ExcelSheets.SelectedItem != null)
+            {
+                DataTable dt = tableCollection[Combobox_ExcelSheets.SelectedItem.ToString()];
+                if (dt != null)
+                {
+                    List<Class_Reg_University_Students_Excel> excst = new List<Class_Reg_University_Students_Excel>(); //<--here ExcelStudents is class name
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        Class_Reg_University_Students_Excel excclass = new Class_Reg_University_Students_Excel();
+                        excclass.Name = dt.Rows[i]["Name"].ToString();  //have to give Excel column names inside the[""]
+                        excclass.Reg_No = dt.Rows[i]["RegisterNo"].ToString();
+                        excclass.Branch = dt.Rows[i]["Branch"].ToString();
+                        excclass.Semester = dt.Rows[i]["Semester"].ToString();
+                        excclass.Course = dt.Rows[i]["Course"].ToString();
+
+                        excst.Add(excclass);
+                    }
+                    Dgv_Students.DataSource = excst;
+                    Button_Register_University.Enabled = true;
+                }
+            }
+        }
+
+        void Register_University_Students_From_ExcelSheet()
+        {
+            CustomMessageBox.ShowMessageBox("Are you sure to Register Students from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                try
+                {
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
+                        SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
+                        foreach (DataGridViewRow dr in Dgv_Students.Rows)
+                        {
+                            sqlcomm.Parameters.AddWithValue("@Reg_No", dr.Cells["Reg_No"].Value.ToString());
+                            sqlcomm.Parameters.AddWithValue("@Name", dr.Cells["Name"].Value.ToString());
+                            sqlcomm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
+                            sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
+                            sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
+                            sqlcomm.ExecuteNonQuery();
+                        }
+                    }
+                    ResetForm();
+                    CustomMessageBox.ShowMessageBox("University candidates registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void Button_Register_ExcelSheet_Click(object sender, EventArgs e)
+        {
+            SetLoading(true);
+            Register_University_Students_From_ExcelSheet();
         }
     }
 }

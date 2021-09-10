@@ -31,7 +31,7 @@
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel_Body = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Combobox_Semester = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.Dgv_Course = new System.Windows.Forms.DataGridView();
             this.CheckBoxColumn_Timetable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.Panel_Body.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.TabControl.SuspendLayout();
@@ -120,20 +120,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Candidate Entry";
             // 
-            // panel1
+            // Panel_Body
             // 
-            this.panel1.Controls.Add(this.Dgv_Course);
-            this.panel1.Controls.Add(this.HeaderCheckBox);
-            this.panel1.Controls.Add(this.Dgv_Students);
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.TabControl);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 55);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1191, 684);
-            this.panel1.TabIndex = 4;
+            this.Panel_Body.Controls.Add(this.Dgv_Course);
+            this.Panel_Body.Controls.Add(this.HeaderCheckBox);
+            this.Panel_Body.Controls.Add(this.Dgv_Students);
+            this.Panel_Body.Controls.Add(this.groupBox3);
+            this.Panel_Body.Controls.Add(this.groupBox2);
+            this.Panel_Body.Controls.Add(this.TabControl);
+            this.Panel_Body.Controls.Add(this.groupBox1);
+            this.Panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel_Body.Location = new System.Drawing.Point(0, 55);
+            this.Panel_Body.Name = "Panel_Body";
+            this.Panel_Body.Size = new System.Drawing.Size(1191, 684);
+            this.Panel_Body.TabIndex = 4;
             // 
             // groupBox3
             // 
@@ -320,11 +320,13 @@
             this.Button_Select_ExcelFile.TabIndex = 33;
             this.Button_Select_ExcelFile.Text = "Select Excel";
             this.Button_Select_ExcelFile.UseVisualStyleBackColor = false;
+            this.Button_Select_ExcelFile.Click += new System.EventHandler(this.Button_Select_ExcelFile_Click);
             // 
             // Button_Register_ExcelSheet
             // 
             this.Button_Register_ExcelSheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
             this.Button_Register_ExcelSheet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Register_ExcelSheet.Enabled = false;
             this.Button_Register_ExcelSheet.FlatAppearance.BorderSize = 0;
             this.Button_Register_ExcelSheet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
             this.Button_Register_ExcelSheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
@@ -338,9 +340,11 @@
             this.Button_Register_ExcelSheet.TabIndex = 34;
             this.Button_Register_ExcelSheet.Text = "Register";
             this.Button_Register_ExcelSheet.UseVisualStyleBackColor = false;
+            this.Button_Register_ExcelSheet.Click += new System.EventHandler(this.Button_Register_ExcelSheet_Click);
             // 
             // Textbox_ExcelFilepath
             // 
+            this.Textbox_ExcelFilepath.Enabled = false;
             this.Textbox_ExcelFilepath.Location = new System.Drawing.Point(13, 31);
             this.Textbox_ExcelFilepath.Name = "Textbox_ExcelFilepath";
             this.Textbox_ExcelFilepath.Size = new System.Drawing.Size(284, 22);
@@ -353,6 +357,7 @@
             this.Combobox_ExcelSheets.Name = "Combobox_ExcelSheets";
             this.Combobox_ExcelSheets.Size = new System.Drawing.Size(284, 25);
             this.Combobox_ExcelSheets.TabIndex = 32;
+            this.Combobox_ExcelSheets.SelectedIndexChanged += new System.EventHandler(this.Combobox_ExcelSheets_SelectedIndexChanged);
             // 
             // Tab_Univeristy_Search
             // 
@@ -592,7 +597,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(1191, 739);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Panel_Body);
             this.Controls.Add(this.Panel_Header);
             this.Controls.Add(this.Panel_ProgressBar);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -604,8 +609,8 @@
             this.Load += new System.EventHandler(this.Form_Candidate_Entry_Load);
             this.Panel_Header.ResumeLayout(false);
             this.Panel_Header.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Panel_Body.ResumeLayout(false);
+            this.Panel_Body.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -632,7 +637,7 @@
         private System.Windows.Forms.Panel Panel_Header;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Button_Close;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Panel_Body;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox Combobox_Semester;
         private System.Windows.Forms.Label label6;

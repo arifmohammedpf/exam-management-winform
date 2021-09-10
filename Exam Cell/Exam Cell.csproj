@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Class_Add_New_Branch_Excel.cs" />
     <Compile Include="Class_Add_New_Student_Excel.cs" />
+    <Compile Include="Class_Reg_University_Students_Excel.cs" />
     <Compile Include="Form_Absentees.cs">
       <SubType>Form</SubType>
     </Compile>
