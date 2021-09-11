@@ -39,7 +39,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.Combobox_Scheme = new System.Windows.Forms.ComboBox();
             this.Combobox_Branch_SchemeSearch = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Groupbox_ExtraCandidateRegister = new System.Windows.Forms.GroupBox();
             this.Button_ExtraCand_Register = new System.Windows.Forms.Button();
             this.Textbox_ExtraCand_Name = new System.Windows.Forms.TextBox();
             this.Textbox_ExtraCand_RegNo = new System.Windows.Forms.TextBox();
@@ -70,11 +70,11 @@
             this.Dgv_Students = new System.Windows.Forms.DataGridView();
             this.CheckBoxColumn_Students = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Dgv_Course = new System.Windows.Forms.DataGridView();
-            this.CheckBoxColumn_Timetable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.Groupbox_ExtraCandidateRegister.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.Tab_Excel_Import.SuspendLayout();
             this.Tab_Univeristy_Search.SuspendLayout();
@@ -126,7 +126,7 @@
             this.Panel_Body.Controls.Add(this.HeaderCheckBox);
             this.Panel_Body.Controls.Add(this.Dgv_Students);
             this.Panel_Body.Controls.Add(this.groupBox3);
-            this.Panel_Body.Controls.Add(this.groupBox2);
+            this.Panel_Body.Controls.Add(this.Groupbox_ExtraCandidateRegister);
             this.Panel_Body.Controls.Add(this.TabControl);
             this.Panel_Body.Controls.Add(this.groupBox1);
             this.Panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -210,19 +210,20 @@
             this.Combobox_Branch_SchemeSearch.TabIndex = 44;
             this.Combobox_Branch_SchemeSearch.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_SchemeSearch_SelectedIndexChanged);
             // 
-            // groupBox2
+            // Groupbox_ExtraCandidateRegister
             // 
-            this.groupBox2.Controls.Add(this.Button_ExtraCand_Register);
-            this.groupBox2.Controls.Add(this.Textbox_ExtraCand_Name);
-            this.groupBox2.Controls.Add(this.Textbox_ExtraCand_RegNo);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(313, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(864, 77);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Extra Candidate Registration";
+            this.Groupbox_ExtraCandidateRegister.Controls.Add(this.Button_ExtraCand_Register);
+            this.Groupbox_ExtraCandidateRegister.Controls.Add(this.Textbox_ExtraCand_Name);
+            this.Groupbox_ExtraCandidateRegister.Controls.Add(this.Textbox_ExtraCand_RegNo);
+            this.Groupbox_ExtraCandidateRegister.Controls.Add(this.label5);
+            this.Groupbox_ExtraCandidateRegister.Controls.Add(this.label4);
+            this.Groupbox_ExtraCandidateRegister.Enabled = false;
+            this.Groupbox_ExtraCandidateRegister.Location = new System.Drawing.Point(313, 6);
+            this.Groupbox_ExtraCandidateRegister.Name = "Groupbox_ExtraCandidateRegister";
+            this.Groupbox_ExtraCandidateRegister.Size = new System.Drawing.Size(864, 77);
+            this.Groupbox_ExtraCandidateRegister.TabIndex = 13;
+            this.Groupbox_ExtraCandidateRegister.TabStop = false;
+            this.Groupbox_ExtraCandidateRegister.Text = "Extra Candidate Registration";
             // 
             // Button_ExtraCand_Register
             // 
@@ -241,6 +242,7 @@
             this.Button_ExtraCand_Register.TabIndex = 46;
             this.Button_ExtraCand_Register.Text = "Register";
             this.Button_ExtraCand_Register.UseVisualStyleBackColor = false;
+            this.Button_ExtraCand_Register.Click += new System.EventHandler(this.Button_ExtraCand_Register_Click);
             // 
             // Textbox_ExtraCand_Name
             // 
@@ -391,6 +393,7 @@
             this.Button_Register_University.TabIndex = 44;
             this.Button_Register_University.Text = "Register";
             this.Button_Register_University.UseVisualStyleBackColor = false;
+            this.Button_Register_University.Click += new System.EventHandler(this.Button_Register_University_Click);
             // 
             // Textbox_Yoa_SearchCand
             // 
@@ -398,6 +401,7 @@
             this.Textbox_Yoa_SearchCand.Name = "Textbox_Yoa_SearchCand";
             this.Textbox_Yoa_SearchCand.Size = new System.Drawing.Size(270, 22);
             this.Textbox_Yoa_SearchCand.TabIndex = 43;
+            this.Textbox_Yoa_SearchCand.TextChanged += new System.EventHandler(this.Textbox_Yoa_SearchCand_TextChanged);
             // 
             // label3
             // 
@@ -428,6 +432,7 @@
             this.Combobox_Branch_Cand_Register.Name = "Combobox_Branch_Cand_Register";
             this.Combobox_Branch_Cand_Register.Size = new System.Drawing.Size(270, 25);
             this.Combobox_Branch_Cand_Register.TabIndex = 42;
+            this.Combobox_Branch_Cand_Register.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_Cand_Register_SelectedIndexChanged);
             // 
             // Tab_Series_Search
             // 
@@ -458,6 +463,7 @@
             this.Button_Register_Series.TabIndex = 45;
             this.Button_Register_Series.Text = "Register";
             this.Button_Register_Series.UseVisualStyleBackColor = false;
+            this.Button_Register_Series.Click += new System.EventHandler(this.Button_Register_Series_Click);
             // 
             // label2
             // 
@@ -477,6 +483,7 @@
             this.Combobox_Class.Name = "Combobox_Class";
             this.Combobox_Class.Size = new System.Drawing.Size(270, 25);
             this.Combobox_Class.TabIndex = 44;
+            this.Combobox_Class.SelectedIndexChanged += new System.EventHandler(this.Combobox_Class_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -578,18 +585,18 @@
             this.Dgv_Course.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Course.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CheckBoxColumn_Timetable});
+            this.CheckBoxColumn_Course});
             this.Dgv_Course.Location = new System.Drawing.Point(541, 268);
             this.Dgv_Course.Name = "Dgv_Course";
             this.Dgv_Course.RowTemplate.Height = 24;
             this.Dgv_Course.Size = new System.Drawing.Size(649, 413);
             this.Dgv_Course.TabIndex = 39;
             // 
-            // CheckBoxColumn_Timetable
+            // CheckBoxColumn_Course
             // 
-            this.CheckBoxColumn_Timetable.HeaderText = "";
-            this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
-            this.CheckBoxColumn_Timetable.Width = 35;
+            this.CheckBoxColumn_Course.HeaderText = "";
+            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
+            this.CheckBoxColumn_Course.Width = 35;
             // 
             // Form_Candidate_Entry
             // 
@@ -613,8 +620,8 @@
             this.Panel_Body.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.Groupbox_ExtraCandidateRegister.ResumeLayout(false);
+            this.Groupbox_ExtraCandidateRegister.PerformLayout();
             this.TabControl.ResumeLayout(false);
             this.Tab_Excel_Import.ResumeLayout(false);
             this.Tab_Excel_Import.PerformLayout();
@@ -645,7 +652,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox Combobox_Scheme;
         private System.Windows.Forms.ComboBox Combobox_Branch_SchemeSearch;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox Groupbox_ExtraCandidateRegister;
         private System.Windows.Forms.Button Button_ExtraCand_Register;
         private System.Windows.Forms.TextBox Textbox_ExtraCand_Name;
         private System.Windows.Forms.TextBox Textbox_ExtraCand_RegNo;
@@ -676,6 +683,6 @@
         private System.Windows.Forms.DataGridView Dgv_Students;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Students;
         private System.Windows.Forms.DataGridView Dgv_Course;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Timetable;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Course;
     }
 }

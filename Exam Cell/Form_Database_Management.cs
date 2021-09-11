@@ -384,6 +384,7 @@ namespace Exam_Cell
 
         void SearchStudentRecord()
         {
+            Dgv_Student.DataSource = null;
             HeaderCheckbox.Checked = false;
             string regno = Textbox_Regno.Text;
             string name = Textbox_Name.Text;
@@ -391,7 +392,6 @@ namespace Exam_Cell
             string yoa = Textbox_Yoa.Text;
             string semester = Combobox_Semester.SelectedItem.ToString();
             string studentClass = Combobox_Class.SelectedItem.ToString();
-            Dgv_Student.DataSource = null;
 
             string searchRecord = "";        // string for sql statements to be written
             if (regno != "")

@@ -59,6 +59,7 @@ namespace Exam_Cell
             TabControl.TabPages.Insert(0, Tab_Excel_Import);
             TabControl.TabPages.Insert(1, Tab_Univeristy_Search);
             TabControl.SelectedTab = Tab_Excel_Import;
+            Groupbox_ExtraCandidateRegister.Enabled = true;
             ResetForm();
         }
 
@@ -68,6 +69,7 @@ namespace Exam_Cell
             TabControl.TabPages.Remove(Tab_Univeristy_Search);
             TabControl.TabPages.Insert(0,Tab_Series_Search);
             TabControl.SelectedTab = Tab_Series_Search;
+            Groupbox_ExtraCandidateRegister.Enabled = false;
             ResetForm();
         }
 
@@ -292,6 +294,224 @@ namespace Exam_Cell
         {
             SetLoading(true);
             Register_University_Students_From_ExcelSheet();
+        }
+
+        void SearchStudentRecord()
+        {
+            if (!isFormReset)
+            {
+                Dgv_Students.DataSource = null;
+                HeaderCheckBox.Checked = false;
+                string branch = Combobox_Branch_Cand_Register.SelectedItem.ToString();
+                string yoa = Textbox_Yoa_SearchCand.Text;
+
+                string searchRecord = "";
+
+                if (branch != "-Select-")
+                {
+                    searchRecord += string.Format("Branch Like '%{0}%'", branch);
+                }
+                if (yoa != "")
+                {
+                    if (searchRecord.Length > 0) searchRecord += " AND ";
+                    searchRecord += string.Format("YOA Like '%{0}%'", yoa);
+                }
+                if (searchRecord != "")
+                {
+                    string query = "Select * from Students where " + searchRecord;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                        SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                        DataTable studentRecord = new DataTable();
+                        dataAdapter.Fill(studentRecord);
+                        Dgv_Students.DataSource = studentRecord;
+                    }
+                }
+                //SetLoading(false);
+            }
+        }
+
+        private void Combobox_Branch_Cand_Register_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchStudentRecord();
+        }
+
+        private void Textbox_Yoa_SearchCand_TextChanged(object sender, EventArgs e)
+        {
+            SearchStudentRecord();
+        }
+
+        private void Button_Register_University_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SetLoading(true);
+                bool isAnySelectionMade = false;
+                string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
+                    //select checkbox from course dgv
+                    foreach (DataGridViewRow dr in Dgv_Course.Rows)
+                    {
+                        bool chkboxselected = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Course"].Value);
+                        if (chkboxselected)
+                        {
+                            //select checkbox from students dgv
+                            foreach (DataGridViewRow dr2 in Dgv_Students.Rows)
+                            {
+                                bool checkbox2selected = Convert.ToBoolean(dr2.Cells["CheckBoxColumn_Students"].Value);
+                                if (checkbox2selected)
+                                {
+                                    isAnySelectionMade = true;
+                                    sqlcomm.Parameters.AddWithValue("@Reg_No", dr2.Cells["Reg_No"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Name", dr2.Cells["Name"].Value).ToString();
+                                    sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Branch", dr2.Cells["Branch"].Value.ToString());
+                                    sqlcomm.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }                
+                if (isAnySelectionMade)
+                {
+                    ResetForm();
+                    CustomMessageBox.ShowMessageBox("University candidates registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                }
+                else
+                    CustomMessageBox.ShowMessageBox("Select any Student and Course to register  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        void SearchClassStudentRecord()
+        {
+            if (!isFormReset)
+            {
+                Dgv_Students.DataSource = null;
+                HeaderCheckBox.Checked = false;
+                string studentClass = Combobox_Class.SelectedItem.ToString();
+
+                string searchRecord = "";
+
+                if (studentClass != "-Select-")
+                    searchRecord += string.Format("Class Like '%{0}%'", studentClass);
+                if (searchRecord != "")
+                {
+                    string query = "Select * from Students where " + searchRecord;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                        SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                        DataTable studentRecord = new DataTable();
+                        dataAdapter.Fill(studentRecord);
+                        Dgv_Students.DataSource = studentRecord;
+                    }
+                }
+                //SetLoading(false);
+            }
+        }
+
+        private void Combobox_Class_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchClassStudentRecord();
+        }
+
+        private void Button_Register_Series_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SetLoading(true);
+                bool isAnySelectionMade = false;
+                string query = string.Format("Insert into Series_Candidates(Name,Reg_No,Class,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Class,@Branch,@Semester,@Course)");
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
+                    //select checkbox from course dgv
+                    foreach (DataGridViewRow dr in Dgv_Course.Rows)
+                    {
+                        bool chkboxselected = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Course"].Value);
+                        if (chkboxselected)
+                        {
+                            //select checkbox from students dgv
+                            foreach (DataGridViewRow dr2 in Dgv_Students.Rows)
+                            {
+                                bool checkbox2selected = Convert.ToBoolean(dr2.Cells["CheckBoxColumn_Students"].Value);
+                                if (checkbox2selected)
+                                {
+                                    isAnySelectionMade = true;
+                                    sqlcomm.Parameters.AddWithValue("@Reg_No", dr2.Cells["Reg_No"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Name", dr2.Cells["Name"].Value).ToString();
+                                    sqlcomm.Parameters.AddWithValue("@Class", dr2.Cells["Class"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Branch", dr2.Cells["Branch"].Value.ToString());
+                                    sqlcomm.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }
+                if (isAnySelectionMade)
+                {
+                    ResetForm();
+                    CustomMessageBox.ShowMessageBox("Series candidates registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                }
+                else
+                    CustomMessageBox.ShowMessageBox("Select any Student and Course to register  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void Button_ExtraCand_Register_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SetLoading(true);
+                bool isAnySelectionMade = false;
+                string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
+                    //select checkbox from course dgv
+                    foreach (DataGridViewRow dr in Dgv_Course.Rows)
+                    {
+                        bool chkboxselected = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Course"].Value);
+                        if (chkboxselected)
+                        {
+                            isAnySelectionMade = true;
+                            sqlcomm.Parameters.AddWithValue("@Reg_No", Textbox_ExtraCand_RegNo.Text);
+                            sqlcomm.Parameters.AddWithValue("@Name", Textbox_ExtraCand_Name.Text);
+                            sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
+                            sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
+                            sqlcomm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
+                            sqlcomm.ExecuteNonQuery();
+                        }
+                    }
+                }
+                if (isAnySelectionMade)
+                {
+                    Textbox_ExtraCand_Name.ResetText();
+                    Textbox_ExtraCand_RegNo.ResetText();
+                    SetLoading(false);
+                    CustomMessageBox.ShowMessageBox("Extra Candidate for University exam registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                }
+                else
+                    CustomMessageBox.ShowMessageBox("Select any Course to register  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
