@@ -656,6 +656,7 @@
             this.Combobox_Alloted_Rooms.Name = "Combobox_Alloted_Rooms";
             this.Combobox_Alloted_Rooms.Size = new System.Drawing.Size(199, 25);
             this.Combobox_Alloted_Rooms.TabIndex = 31;
+            this.Combobox_Alloted_Rooms.SelectedIndexChanged += new System.EventHandler(this.Combobox_Alloted_Rooms_SelectedIndexChanged);
             // 
             // Textbox_Filepath
             // 
