@@ -258,12 +258,12 @@ namespace Exam_Cell
                         if (checkboxselect)
                         {
                             flag = 1;
-                            string query = string.Format("Insert into Timetable(Date,Session,Sub_Code,Sub_Name,Semester,Branch)Values(" + "@Date,@Session,@Sub_Code,@Sub_Name,@Semester,@Branch)");
+                            string query = string.Format("Insert into Timetable(Date,Session,Sub_Code,Course,Semester,Branch)Values(" + "@Date,@Session,@Sub_Code,@Course,@Semester,@Branch)");
                             SQLiteCommand comm = new SQLiteCommand(query,dbConnection);
                             comm.Parameters.AddWithValue("@Date", DateTimePicker_Add_Timetable.Text);
                             comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
                             comm.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
-                            comm.Parameters.AddWithValue("@Sub_Name", dr.Cells["Sub_Name"].Value.ToString());
+                            comm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
                             comm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
                             comm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
                             comm.ExecuteNonQuery();
@@ -272,7 +272,7 @@ namespace Exam_Cell
                             DateList.Add(DateTimePicker_Add_Timetable.Text);
                             SessionList.Add(Combobox_Session.SelectedItem.ToString());
                             SubCodeList.Add(dr.Cells["Sub_Code"].Value.ToString());
-                            SubNameList.Add(dr.Cells["Sub_Name"].Value.ToString());
+                            SubNameList.Add(dr.Cells["Course"].Value.ToString());
                             SemesterList.Add(dr.Cells["Semester"].Value.ToString());
                             BranchList.Add(dr.Cells["Branch"].Value.ToString());
 
@@ -308,14 +308,14 @@ namespace Exam_Cell
                     this.Enabled = false;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
-                        string query = string.Format("Delete from Timetable where Date=@Date and Session=@Session and Sub_Name=@Sub_Name and Sub_Code=@Sub_Code and Semester=@Semester and Branch=@Branch");
+                        string query = string.Format("Delete from Timetable where Date=@Date and Session=@Session and Course=@Course and Sub_Code=@Sub_Code and Semester=@Semester and Branch=@Branch");
                         SQLiteCommand comm = new SQLiteCommand(query,dbConnection);
                         for (int i = 0; i < DateList.Count; i++)
                         {
                             comm.Parameters.AddWithValue("@Date", DateList[i]);
                             comm.Parameters.AddWithValue("@Session", SessionList[i]);
                             comm.Parameters.AddWithValue("@Sub_Code", SubCodeList[i]);
-                            comm.Parameters.AddWithValue("@Sub_Name", SubNameList[i]);
+                            comm.Parameters.AddWithValue("@Course", SubNameList[i]);
                             comm.Parameters.AddWithValue("@Semester", SemesterList[i]);
                             comm.Parameters.AddWithValue("@Branch", BranchList[i]);
                             comm.ExecuteNonQuery();
@@ -351,7 +351,7 @@ namespace Exam_Cell
                     int flag = 0;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
-                        string query = string.Format("Delete from Timetable where Date=@Date and Session=@Session and Sub_Name=@Sub_Name and Sub_Code=@Sub_Code and Semester=@Semester and Branch=@Branch");
+                        string query = string.Format("Delete from Timetable where Date=@Date and Session=@Session and Course=@Course and Sub_Code=@Sub_Code and Semester=@Semester and Branch=@Branch");
                         SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                         foreach(DataGridViewRow dr in Dgv_Timetable.Rows)
                         {
@@ -362,7 +362,7 @@ namespace Exam_Cell
                                 comm.Parameters.AddWithValue("@Date", dr.Cells["Date"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Session", dr.Cells["Session"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
-                                comm.Parameters.AddWithValue("@Sub_Name", dr.Cells["Sub_Name"].Value.ToString());
+                                comm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
                                 comm.ExecuteNonQuery();

@@ -32,59 +32,64 @@
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.Radio_Series = new System.Windows.Forms.RadioButton();
+            this.Radio_University = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Tab_Allot = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Dgv_RegCourseWise_Count = new System.Windows.Forms.DataGridView();
+            this.Dgv_Alloted_Rooms = new System.Windows.Forms.DataGridView();
+            this.Dgv_RegCandidates_List = new System.Windows.Forms.DataGridView();
+            this.Label_NoOfStudents_Registered = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.Combobox_Session = new System.Windows.Forms.ComboBox();
+            this.DateTimePicker_Date = new System.Windows.Forms.DateTimePicker();
             this.Tab_ExcelSheet = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Button_RoomSheet = new System.Windows.Forms.Button();
+            this.Button_DisplaySheet = new System.Windows.Forms.Button();
+            this.Button_SignatureSheet = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Textbox_ExamName = new System.Windows.Forms.TextBox();
             this.Tab_ShiftSwap = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.Add_btn = new System.Windows.Forms.Button();
+            this.Button_Shift = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.Combobox_To_RoomNo = new System.Windows.Forms.ComboBox();
+            this.Combobox_To_SeriesAB = new System.Windows.Forms.ComboBox();
+            this.Textbox_To_StartSeat = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Combobox_From_RoomNo = new System.Windows.Forms.ComboBox();
+            this.Combobox_From_SeriesAB = new System.Windows.Forms.ComboBox();
+            this.Textbox_From_EndSeat = new System.Windows.Forms.TextBox();
+            this.Textbox_From_StartSeat = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.Button_MultiAllot = new System.Windows.Forms.Button();
+            this.Button_SingleAllot = new System.Windows.Forms.Button();
+            this.Button_Swap = new System.Windows.Forms.Button();
+            this.Button_SummarySheet = new System.Windows.Forms.Button();
+            this.Dgv_Cand_in_AllotedRooms = new System.Windows.Forms.DataGridView();
+            this.Label_NoOfStudents = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Combobox_Alloted_Rooms = new System.Windows.Forms.ComboBox();
+            this.Textbox_Filepath = new System.Windows.Forms.TextBox();
+            this.Button_FilepathChange = new System.Windows.Forms.Button();
             this.Panel_Header.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Tab_Allot.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_RegCourseWise_Count)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Alloted_Rooms)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_RegCandidates_List)).BeginInit();
             this.Tab_ExcelSheet.SuspendLayout();
             this.Tab_ShiftSwap.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Cand_in_AllotedRooms)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Header
@@ -124,8 +129,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.Radio_Series);
+            this.groupBox1.Controls.Add(this.Radio_University);
             this.groupBox1.Location = new System.Drawing.Point(9, 62);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(272, 77);
@@ -133,27 +138,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Exam";
             // 
-            // radioButton2
+            // Radio_Series
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(165, 32);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(61, 21);
-            this.radioButton2.TabIndex = 5;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Series";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Radio_Series.AutoSize = true;
+            this.Radio_Series.Location = new System.Drawing.Point(165, 32);
+            this.Radio_Series.Name = "Radio_Series";
+            this.Radio_Series.Size = new System.Drawing.Size(61, 21);
+            this.Radio_Series.TabIndex = 5;
+            this.Radio_Series.TabStop = true;
+            this.Radio_Series.Text = "Series";
+            this.Radio_Series.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // Radio_University
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(31, 32);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(83, 21);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "University";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.Radio_University.AutoSize = true;
+            this.Radio_University.Location = new System.Drawing.Point(31, 32);
+            this.Radio_University.Name = "Radio_University";
+            this.Radio_University.Size = new System.Drawing.Size(83, 21);
+            this.Radio_University.TabIndex = 5;
+            this.Radio_University.TabStop = true;
+            this.Radio_University.Text = "University";
+            this.Radio_University.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -169,18 +174,20 @@
             // 
             // Tab_Allot
             // 
-            this.Tab_Allot.Controls.Add(this.dataGridView2);
-            this.Tab_Allot.Controls.Add(this.dataGridView4);
-            this.Tab_Allot.Controls.Add(this.dataGridView3);
-            this.Tab_Allot.Controls.Add(this.dataGridView1);
-            this.Tab_Allot.Controls.Add(this.label6);
-            this.Tab_Allot.Controls.Add(this.label4);
+            this.Tab_Allot.Controls.Add(this.Dgv_Cand_in_AllotedRooms);
+            this.Tab_Allot.Controls.Add(this.Label_NoOfStudents);
             this.Tab_Allot.Controls.Add(this.label5);
+            this.Tab_Allot.Controls.Add(this.Combobox_Alloted_Rooms);
+            this.Tab_Allot.Controls.Add(this.Button_MultiAllot);
+            this.Tab_Allot.Controls.Add(this.Button_SingleAllot);
+            this.Tab_Allot.Controls.Add(this.Dgv_RegCourseWise_Count);
+            this.Tab_Allot.Controls.Add(this.Dgv_Alloted_Rooms);
+            this.Tab_Allot.Controls.Add(this.Dgv_RegCandidates_List);
+            this.Tab_Allot.Controls.Add(this.Label_NoOfStudents_Registered);
             this.Tab_Allot.Controls.Add(this.label3);
             this.Tab_Allot.Controls.Add(this.label2);
-            this.Tab_Allot.Controls.Add(this.comboBox2);
-            this.Tab_Allot.Controls.Add(this.comboBox1);
-            this.Tab_Allot.Controls.Add(this.dateTimePicker1);
+            this.Tab_Allot.Controls.Add(this.Combobox_Session);
+            this.Tab_Allot.Controls.Add(this.DateTimePicker_Date);
             this.Tab_Allot.Location = new System.Drawing.Point(4, 26);
             this.Tab_Allot.Name = "Tab_Allot";
             this.Tab_Allot.Padding = new System.Windows.Forms.Padding(3);
@@ -189,80 +196,50 @@
             this.Tab_Allot.Text = "Allot Students";
             this.Tab_Allot.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // Dgv_RegCourseWise_Count
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(1, 299);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(381, 249);
-            this.dataGridView2.TabIndex = 3;
+            this.Dgv_RegCourseWise_Count.AllowUserToAddRows = false;
+            this.Dgv_RegCourseWise_Count.AllowUserToDeleteRows = false;
+            this.Dgv_RegCourseWise_Count.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_RegCourseWise_Count.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_RegCourseWise_Count.Location = new System.Drawing.Point(1, 299);
+            this.Dgv_RegCourseWise_Count.Name = "Dgv_RegCourseWise_Count";
+            this.Dgv_RegCourseWise_Count.RowTemplate.Height = 24;
+            this.Dgv_RegCourseWise_Count.Size = new System.Drawing.Size(385, 249);
+            this.Dgv_RegCourseWise_Count.TabIndex = 3;
             // 
-            // dataGridView4
+            // Dgv_Alloted_Rooms
             // 
-            this.dataGridView4.AllowUserToAddRows = false;
-            this.dataGridView4.AllowUserToDeleteRows = false;
-            this.dataGridView4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(735, 89);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.RowTemplate.Height = 24;
-            this.dataGridView4.Size = new System.Drawing.Size(327, 459);
-            this.dataGridView4.TabIndex = 3;
+            this.Dgv_Alloted_Rooms.AllowUserToAddRows = false;
+            this.Dgv_Alloted_Rooms.AllowUserToDeleteRows = false;
+            this.Dgv_Alloted_Rooms.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Alloted_Rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Alloted_Rooms.Location = new System.Drawing.Point(388, 76);
+            this.Dgv_Alloted_Rooms.Name = "Dgv_Alloted_Rooms";
+            this.Dgv_Alloted_Rooms.RowTemplate.Height = 24;
+            this.Dgv_Alloted_Rooms.Size = new System.Drawing.Size(312, 472);
+            this.Dgv_Alloted_Rooms.TabIndex = 3;
             // 
-            // dataGridView3
+            // Dgv_RegCandidates_List
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(388, 89);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(341, 459);
-            this.dataGridView3.TabIndex = 3;
+            this.Dgv_RegCandidates_List.AllowUserToAddRows = false;
+            this.Dgv_RegCandidates_List.AllowUserToDeleteRows = false;
+            this.Dgv_RegCandidates_List.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_RegCandidates_List.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_RegCandidates_List.Location = new System.Drawing.Point(1, 76);
+            this.Dgv_RegCandidates_List.Name = "Dgv_RegCandidates_List";
+            this.Dgv_RegCandidates_List.RowTemplate.Height = 24;
+            this.Dgv_RegCandidates_List.Size = new System.Drawing.Size(385, 220);
+            this.Dgv_RegCandidates_List.TabIndex = 3;
             // 
-            // dataGridView1
+            // Label_NoOfStudents_Registered
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1, 76);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(381, 217);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(413, 62);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 17);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "No of Students :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 551);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(165, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "No of Students registered :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(413, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 17);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Allocated Room :";
+            this.Label_NoOfStudents_Registered.AutoSize = true;
+            this.Label_NoOfStudents_Registered.Location = new System.Drawing.Point(8, 551);
+            this.Label_NoOfStudents_Registered.Name = "Label_NoOfStudents_Registered";
+            this.Label_NoOfStudents_Registered.Size = new System.Drawing.Size(165, 17);
+            this.Label_NoOfStudents_Registered.TabIndex = 2;
+            this.Label_NoOfStudents_Registered.Text = "No of Students registered :";
             // 
             // label3
             // 
@@ -282,36 +259,37 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Date :";
             // 
-            // comboBox2
+            // Combobox_Session
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(554, 19);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(228, 25);
-            this.comboBox2.TabIndex = 1;
+            this.Combobox_Session.FormattingEnabled = true;
+            this.Combobox_Session.Items.AddRange(new object[] {
+            "-Select-",
+            "Forenoon",
+            "Afternoon"});
+            this.Combobox_Session.Location = new System.Drawing.Point(82, 42);
+            this.Combobox_Session.Name = "Combobox_Session";
+            this.Combobox_Session.Size = new System.Drawing.Size(228, 25);
+            this.Combobox_Session.TabIndex = 1;
+            this.Combobox_Session.SelectedIndexChanged += new System.EventHandler(this.Combobox_Session_SelectedIndexChanged);
             // 
-            // comboBox1
+            // DateTimePicker_Date
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(82, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(228, 25);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(82, 10);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(228, 22);
-            this.dateTimePicker1.TabIndex = 0;
+            this.DateTimePicker_Date.Location = new System.Drawing.Point(82, 10);
+            this.DateTimePicker_Date.Name = "DateTimePicker_Date";
+            this.DateTimePicker_Date.Size = new System.Drawing.Size(228, 22);
+            this.DateTimePicker_Date.TabIndex = 0;
+            this.DateTimePicker_Date.ValueChanged += new System.EventHandler(this.DateTimePicker_Date_ValueChanged);
             // 
             // Tab_ExcelSheet
             // 
-            this.Tab_ExcelSheet.Controls.Add(this.button2);
-            this.Tab_ExcelSheet.Controls.Add(this.button4);
-            this.Tab_ExcelSheet.Controls.Add(this.button1);
+            this.Tab_ExcelSheet.Controls.Add(this.Button_FilepathChange);
+            this.Tab_ExcelSheet.Controls.Add(this.Button_RoomSheet);
+            this.Tab_ExcelSheet.Controls.Add(this.Button_SummarySheet);
+            this.Tab_ExcelSheet.Controls.Add(this.Button_DisplaySheet);
+            this.Tab_ExcelSheet.Controls.Add(this.Button_SignatureSheet);
             this.Tab_ExcelSheet.Controls.Add(this.label12);
-            this.Tab_ExcelSheet.Controls.Add(this.textBox1);
+            this.Tab_ExcelSheet.Controls.Add(this.Textbox_Filepath);
+            this.Tab_ExcelSheet.Controls.Add(this.Textbox_ExamName);
             this.Tab_ExcelSheet.Location = new System.Drawing.Point(4, 26);
             this.Tab_ExcelSheet.Name = "Tab_ExcelSheet";
             this.Tab_ExcelSheet.Padding = new System.Windows.Forms.Padding(3);
@@ -320,80 +298,80 @@
             this.Tab_ExcelSheet.Text = "Generate Excel Sheets";
             this.Tab_ExcelSheet.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // Button_RoomSheet
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(432, 188);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 40);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "Room Sheet";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Button_RoomSheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_RoomSheet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_RoomSheet.FlatAppearance.BorderSize = 0;
+            this.Button_RoomSheet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_RoomSheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_RoomSheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_RoomSheet.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_RoomSheet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_RoomSheet.Location = new System.Drawing.Point(432, 179);
+            this.Button_RoomSheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_RoomSheet.Name = "Button_RoomSheet";
+            this.Button_RoomSheet.Size = new System.Drawing.Size(156, 40);
+            this.Button_RoomSheet.TabIndex = 31;
+            this.Button_RoomSheet.Text = "Room Sheet";
+            this.Button_RoomSheet.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // Button_DisplaySheet
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(432, 288);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(156, 40);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "Display Sheet";
-            this.button4.UseVisualStyleBackColor = false;
+            this.Button_DisplaySheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_DisplaySheet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_DisplaySheet.FlatAppearance.BorderSize = 0;
+            this.Button_DisplaySheet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_DisplaySheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_DisplaySheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_DisplaySheet.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_DisplaySheet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_DisplaySheet.Location = new System.Drawing.Point(432, 279);
+            this.Button_DisplaySheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_DisplaySheet.Name = "Button_DisplaySheet";
+            this.Button_DisplaySheet.Size = new System.Drawing.Size(156, 40);
+            this.Button_DisplaySheet.TabIndex = 31;
+            this.Button_DisplaySheet.Text = "Display Sheet";
+            this.Button_DisplaySheet.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // Button_SignatureSheet
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(432, 239);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 40);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Signature Sheet";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Button_SignatureSheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_SignatureSheet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_SignatureSheet.FlatAppearance.BorderSize = 0;
+            this.Button_SignatureSheet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_SignatureSheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_SignatureSheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_SignatureSheet.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_SignatureSheet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_SignatureSheet.Location = new System.Drawing.Point(432, 230);
+            this.Button_SignatureSheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_SignatureSheet.Name = "Button_SignatureSheet";
+            this.Button_SignatureSheet.Size = new System.Drawing.Size(156, 40);
+            this.Button_SignatureSheet.TabIndex = 31;
+            this.Button_SignatureSheet.Text = "Signature Sheet";
+            this.Button_SignatureSheet.UseVisualStyleBackColor = false;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(346, 117);
+            this.label12.Location = new System.Drawing.Point(346, 108);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(125, 17);
             this.label12.TabIndex = 1;
             this.label12.Text = "Examination Name :";
             // 
-            // textBox1
+            // Textbox_ExamName
             // 
-            this.textBox1.Location = new System.Drawing.Point(350, 142);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(321, 22);
-            this.textBox1.TabIndex = 0;
+            this.Textbox_ExamName.Location = new System.Drawing.Point(350, 133);
+            this.Textbox_ExamName.Name = "Textbox_ExamName";
+            this.Textbox_ExamName.Size = new System.Drawing.Size(321, 22);
+            this.Textbox_ExamName.TabIndex = 0;
             // 
             // Tab_ShiftSwap
             // 
-            this.Tab_ShiftSwap.Controls.Add(this.button3);
-            this.Tab_ShiftSwap.Controls.Add(this.Add_btn);
+            this.Tab_ShiftSwap.Controls.Add(this.Button_Swap);
+            this.Tab_ShiftSwap.Controls.Add(this.Button_Shift);
             this.Tab_ShiftSwap.Controls.Add(this.groupBox3);
             this.Tab_ShiftSwap.Controls.Add(this.groupBox2);
             this.Tab_ShiftSwap.Location = new System.Drawing.Point(4, 26);
@@ -403,47 +381,29 @@
             this.Tab_ShiftSwap.Text = "Shift/Swap Students";
             this.Tab_ShiftSwap.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Button_Shift
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button3.Location = new System.Drawing.Point(548, 285);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 40);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "Swap";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // Add_btn
-            // 
-            this.Add_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Add_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Add_btn.FlatAppearance.BorderSize = 0;
-            this.Add_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
-            this.Add_btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.Add_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Add_btn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_btn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Add_btn.Location = new System.Drawing.Point(417, 285);
-            this.Add_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.Size = new System.Drawing.Size(100, 40);
-            this.Add_btn.TabIndex = 30;
-            this.Add_btn.Text = "Shift";
-            this.Add_btn.UseVisualStyleBackColor = false;
+            this.Button_Shift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Shift.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Shift.FlatAppearance.BorderSize = 0;
+            this.Button_Shift.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_Shift.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_Shift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Shift.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Shift.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_Shift.Location = new System.Drawing.Point(417, 285);
+            this.Button_Shift.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Shift.Name = "Button_Shift";
+            this.Button_Shift.Size = new System.Drawing.Size(100, 40);
+            this.Button_Shift.TabIndex = 30;
+            this.Button_Shift.Text = "Shift";
+            this.Button_Shift.UseVisualStyleBackColor = false;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.comboBox4);
-            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.Combobox_To_RoomNo);
+            this.groupBox3.Controls.Add(this.Combobox_To_SeriesAB);
+            this.groupBox3.Controls.Add(this.Textbox_To_StartSeat);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label14);
@@ -454,28 +414,28 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "To";
             // 
-            // comboBox5
+            // Combobox_To_RoomNo
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(146, 30);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(108, 25);
-            this.comboBox5.TabIndex = 1;
+            this.Combobox_To_RoomNo.FormattingEnabled = true;
+            this.Combobox_To_RoomNo.Location = new System.Drawing.Point(146, 30);
+            this.Combobox_To_RoomNo.Name = "Combobox_To_RoomNo";
+            this.Combobox_To_RoomNo.Size = new System.Drawing.Size(108, 25);
+            this.Combobox_To_RoomNo.TabIndex = 1;
             // 
-            // comboBox4
+            // Combobox_To_SeriesAB
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(146, 98);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(108, 25);
-            this.comboBox4.TabIndex = 1;
+            this.Combobox_To_SeriesAB.FormattingEnabled = true;
+            this.Combobox_To_SeriesAB.Location = new System.Drawing.Point(146, 98);
+            this.Combobox_To_SeriesAB.Name = "Combobox_To_SeriesAB";
+            this.Combobox_To_SeriesAB.Size = new System.Drawing.Size(108, 25);
+            this.Combobox_To_SeriesAB.TabIndex = 1;
             // 
-            // textBox4
+            // Textbox_To_StartSeat
             // 
-            this.textBox4.Location = new System.Drawing.Point(146, 65);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(108, 22);
-            this.textBox4.TabIndex = 1;
+            this.Textbox_To_StartSeat.Location = new System.Drawing.Point(146, 65);
+            this.Textbox_To_StartSeat.Name = "Textbox_To_StartSeat";
+            this.Textbox_To_StartSeat.Size = new System.Drawing.Size(108, 22);
+            this.Textbox_To_StartSeat.TabIndex = 1;
             // 
             // label11
             // 
@@ -506,10 +466,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox6);
-            this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.Combobox_From_RoomNo);
+            this.groupBox2.Controls.Add(this.Combobox_From_SeriesAB);
+            this.groupBox2.Controls.Add(this.Textbox_From_EndSeat);
+            this.groupBox2.Controls.Add(this.Textbox_From_StartSeat);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label8);
@@ -521,35 +481,35 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "From";
             // 
-            // comboBox6
+            // Combobox_From_RoomNo
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(152, 33);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(108, 25);
-            this.comboBox6.TabIndex = 1;
+            this.Combobox_From_RoomNo.FormattingEnabled = true;
+            this.Combobox_From_RoomNo.Location = new System.Drawing.Point(152, 33);
+            this.Combobox_From_RoomNo.Name = "Combobox_From_RoomNo";
+            this.Combobox_From_RoomNo.Size = new System.Drawing.Size(108, 25);
+            this.Combobox_From_RoomNo.TabIndex = 1;
             // 
-            // comboBox3
+            // Combobox_From_SeriesAB
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(152, 131);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(108, 25);
-            this.comboBox3.TabIndex = 1;
+            this.Combobox_From_SeriesAB.FormattingEnabled = true;
+            this.Combobox_From_SeriesAB.Location = new System.Drawing.Point(152, 131);
+            this.Combobox_From_SeriesAB.Name = "Combobox_From_SeriesAB";
+            this.Combobox_From_SeriesAB.Size = new System.Drawing.Size(108, 25);
+            this.Combobox_From_SeriesAB.TabIndex = 1;
             // 
-            // textBox3
+            // Textbox_From_EndSeat
             // 
-            this.textBox3.Location = new System.Drawing.Point(152, 99);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(108, 22);
-            this.textBox3.TabIndex = 1;
+            this.Textbox_From_EndSeat.Location = new System.Drawing.Point(152, 99);
+            this.Textbox_From_EndSeat.Name = "Textbox_From_EndSeat";
+            this.Textbox_From_EndSeat.Size = new System.Drawing.Size(108, 22);
+            this.Textbox_From_EndSeat.TabIndex = 1;
             // 
-            // textBox2
+            // Textbox_From_StartSeat
             // 
-            this.textBox2.Location = new System.Drawing.Point(152, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(108, 22);
-            this.textBox2.TabIndex = 1;
+            this.Textbox_From_StartSeat.Location = new System.Drawing.Point(152, 67);
+            this.Textbox_From_StartSeat.Name = "Textbox_From_StartSeat";
+            this.Textbox_From_StartSeat.Size = new System.Drawing.Size(108, 22);
+            this.Textbox_From_StartSeat.TabIndex = 1;
             // 
             // label9
             // 
@@ -587,6 +547,141 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Room No :";
             // 
+            // Button_MultiAllot
+            // 
+            this.Button_MultiAllot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_MultiAllot.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_MultiAllot.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_MultiAllot.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_MultiAllot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_MultiAllot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_MultiAllot.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_MultiAllot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_MultiAllot.Location = new System.Drawing.Point(565, 22);
+            this.Button_MultiAllot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_MultiAllot.Name = "Button_MultiAllot";
+            this.Button_MultiAllot.Size = new System.Drawing.Size(100, 40);
+            this.Button_MultiAllot.TabIndex = 29;
+            this.Button_MultiAllot.Text = "Multi Allot";
+            this.Button_MultiAllot.UseVisualStyleBackColor = false;
+            // 
+            // Button_SingleAllot
+            // 
+            this.Button_SingleAllot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_SingleAllot.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_SingleAllot.FlatAppearance.BorderSize = 0;
+            this.Button_SingleAllot.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_SingleAllot.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_SingleAllot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_SingleAllot.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_SingleAllot.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_SingleAllot.Location = new System.Drawing.Point(449, 22);
+            this.Button_SingleAllot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_SingleAllot.Name = "Button_SingleAllot";
+            this.Button_SingleAllot.Size = new System.Drawing.Size(100, 40);
+            this.Button_SingleAllot.TabIndex = 30;
+            this.Button_SingleAllot.Text = "Single Allot";
+            this.Button_SingleAllot.UseVisualStyleBackColor = false;
+            // 
+            // Button_Swap
+            // 
+            this.Button_Swap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_Swap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_Swap.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Swap.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_Swap.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_Swap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_Swap.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_Swap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_Swap.Location = new System.Drawing.Point(552, 285);
+            this.Button_Swap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_Swap.Name = "Button_Swap";
+            this.Button_Swap.Size = new System.Drawing.Size(100, 40);
+            this.Button_Swap.TabIndex = 31;
+            this.Button_Swap.Text = "Swap";
+            this.Button_Swap.UseVisualStyleBackColor = false;
+            // 
+            // Button_SummarySheet
+            // 
+            this.Button_SummarySheet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_SummarySheet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_SummarySheet.FlatAppearance.BorderSize = 0;
+            this.Button_SummarySheet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_SummarySheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_SummarySheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_SummarySheet.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_SummarySheet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_SummarySheet.Location = new System.Drawing.Point(432, 327);
+            this.Button_SummarySheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_SummarySheet.Name = "Button_SummarySheet";
+            this.Button_SummarySheet.Size = new System.Drawing.Size(156, 40);
+            this.Button_SummarySheet.TabIndex = 31;
+            this.Button_SummarySheet.Text = "Summary Sheet";
+            this.Button_SummarySheet.UseVisualStyleBackColor = false;
+            // 
+            // Dgv_Cand_in_AllotedRooms
+            // 
+            this.Dgv_Cand_in_AllotedRooms.AllowUserToAddRows = false;
+            this.Dgv_Cand_in_AllotedRooms.AllowUserToDeleteRows = false;
+            this.Dgv_Cand_in_AllotedRooms.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Cand_in_AllotedRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Cand_in_AllotedRooms.Location = new System.Drawing.Point(701, 76);
+            this.Dgv_Cand_in_AllotedRooms.Name = "Dgv_Cand_in_AllotedRooms";
+            this.Dgv_Cand_in_AllotedRooms.RowTemplate.Height = 24;
+            this.Dgv_Cand_in_AllotedRooms.Size = new System.Drawing.Size(361, 472);
+            this.Dgv_Cand_in_AllotedRooms.TabIndex = 34;
+            // 
+            // Label_NoOfStudents
+            // 
+            this.Label_NoOfStudents.AutoSize = true;
+            this.Label_NoOfStudents.Location = new System.Drawing.Point(743, 56);
+            this.Label_NoOfStudents.Name = "Label_NoOfStudents";
+            this.Label_NoOfStudents.Size = new System.Drawing.Size(101, 17);
+            this.Label_NoOfStudents.TabIndex = 32;
+            this.Label_NoOfStudents.Text = "No of Students :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(743, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 17);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Allocated Room :";
+            // 
+            // Combobox_Alloted_Rooms
+            // 
+            this.Combobox_Alloted_Rooms.FormattingEnabled = true;
+            this.Combobox_Alloted_Rooms.Location = new System.Drawing.Point(860, 16);
+            this.Combobox_Alloted_Rooms.Name = "Combobox_Alloted_Rooms";
+            this.Combobox_Alloted_Rooms.Size = new System.Drawing.Size(199, 25);
+            this.Combobox_Alloted_Rooms.TabIndex = 31;
+            // 
+            // Textbox_Filepath
+            // 
+            this.Textbox_Filepath.Location = new System.Drawing.Point(6, 543);
+            this.Textbox_Filepath.Name = "Textbox_Filepath";
+            this.Textbox_Filepath.Size = new System.Drawing.Size(321, 22);
+            this.Textbox_Filepath.TabIndex = 0;
+            // 
+            // Button_FilepathChange
+            // 
+            this.Button_FilepathChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_FilepathChange.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_FilepathChange.FlatAppearance.BorderSize = 0;
+            this.Button_FilepathChange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(63)))), ((int)(((byte)(159)))));
+            this.Button_FilepathChange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.Button_FilepathChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_FilepathChange.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_FilepathChange.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Button_FilepathChange.Location = new System.Drawing.Point(333, 539);
+            this.Button_FilepathChange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_FilepathChange.Name = "Button_FilepathChange";
+            this.Button_FilepathChange.Size = new System.Drawing.Size(119, 31);
+            this.Button_FilepathChange.TabIndex = 31;
+            this.Button_FilepathChange.Text = "Change path";
+            this.Button_FilepathChange.UseVisualStyleBackColor = false;
+            // 
             // Form_Allotment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -609,10 +704,9 @@
             this.tabControl1.ResumeLayout(false);
             this.Tab_Allot.ResumeLayout(false);
             this.Tab_Allot.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_RegCourseWise_Count)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Alloted_Rooms)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_RegCandidates_List)).EndInit();
             this.Tab_ExcelSheet.ResumeLayout(false);
             this.Tab_ExcelSheet.PerformLayout();
             this.Tab_ShiftSwap.ResumeLayout(false);
@@ -620,6 +714,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Cand_in_AllotedRooms)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -630,24 +725,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Button_Close;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton Radio_Series;
+        private System.Windows.Forms.RadioButton Radio_University;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Tab_Allot;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox Combobox_Session;
+        private System.Windows.Forms.DateTimePicker DateTimePicker_Date;
         private System.Windows.Forms.TabPage Tab_ExcelSheet;
         private System.Windows.Forms.TabPage Tab_ShiftSwap;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DataGridView Dgv_RegCourseWise_Count;
+        private System.Windows.Forms.DataGridView Dgv_Alloted_Rooms;
+        private System.Windows.Forms.DataGridView Dgv_RegCandidates_List;
+        private System.Windows.Forms.Label Label_NoOfStudents_Registered;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
@@ -657,19 +748,28 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button Add_btn;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox Combobox_To_RoomNo;
+        private System.Windows.Forms.ComboBox Combobox_To_SeriesAB;
+        private System.Windows.Forms.TextBox Textbox_To_StartSeat;
+        private System.Windows.Forms.ComboBox Combobox_From_RoomNo;
+        private System.Windows.Forms.ComboBox Combobox_From_SeriesAB;
+        private System.Windows.Forms.TextBox Textbox_From_EndSeat;
+        private System.Windows.Forms.TextBox Textbox_From_StartSeat;
+        private System.Windows.Forms.Button Button_Shift;
+        private System.Windows.Forms.Button Button_RoomSheet;
+        private System.Windows.Forms.Button Button_DisplaySheet;
+        private System.Windows.Forms.Button Button_SignatureSheet;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Textbox_ExamName;
+        private System.Windows.Forms.Button Button_MultiAllot;
+        private System.Windows.Forms.Button Button_SingleAllot;
+        private System.Windows.Forms.Button Button_Swap;
+        private System.Windows.Forms.Button Button_SummarySheet;
+        private System.Windows.Forms.DataGridView Dgv_Cand_in_AllotedRooms;
+        private System.Windows.Forms.Label Label_NoOfStudents;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox Combobox_Alloted_Rooms;
+        private System.Windows.Forms.Button Button_FilepathChange;
+        private System.Windows.Forms.TextBox Textbox_Filepath;
     }
 }
