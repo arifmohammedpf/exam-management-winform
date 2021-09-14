@@ -31,10 +31,10 @@
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Groupbox_SelectExam = new System.Windows.Forms.GroupBox();
             this.Radio_Series = new System.Windows.Forms.RadioButton();
             this.Radio_University = new System.Windows.Forms.RadioButton();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TabPanel = new System.Windows.Forms.TabControl();
             this.Tab_Allot = new System.Windows.Forms.TabPage();
             this.Dgv_RegCourseWise_Count = new System.Windows.Forms.DataGridView();
             this.Dgv_Alloted_Rooms = new System.Windows.Forms.DataGridView();
@@ -78,9 +78,11 @@
             this.Combobox_Alloted_Rooms = new System.Windows.Forms.ComboBox();
             this.Textbox_Filepath = new System.Windows.Forms.TextBox();
             this.Button_FilepathChange = new System.Windows.Forms.Button();
+            this.Panel_ProgressBar = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.Panel_Header.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.Groupbox_SelectExam.SuspendLayout();
+            this.TabPanel.SuspendLayout();
             this.Tab_Allot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_RegCourseWise_Count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Alloted_Rooms)).BeginInit();
@@ -90,6 +92,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Cand_in_AllotedRooms)).BeginInit();
+            this.Panel_ProgressBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Header
@@ -127,16 +130,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Allotment";
             // 
-            // groupBox1
+            // Groupbox_SelectExam
             // 
-            this.groupBox1.Controls.Add(this.Radio_Series);
-            this.groupBox1.Controls.Add(this.Radio_University);
-            this.groupBox1.Location = new System.Drawing.Point(9, 62);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 77);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Select Exam";
+            this.Groupbox_SelectExam.Controls.Add(this.Radio_Series);
+            this.Groupbox_SelectExam.Controls.Add(this.Radio_University);
+            this.Groupbox_SelectExam.Location = new System.Drawing.Point(9, 62);
+            this.Groupbox_SelectExam.Name = "Groupbox_SelectExam";
+            this.Groupbox_SelectExam.Size = new System.Drawing.Size(272, 77);
+            this.Groupbox_SelectExam.TabIndex = 12;
+            this.Groupbox_SelectExam.TabStop = false;
+            this.Groupbox_SelectExam.Text = "Select Exam";
             // 
             // Radio_Series
             // 
@@ -160,17 +163,17 @@
             this.Radio_University.Text = "University";
             this.Radio_University.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // TabPanel
             // 
-            this.tabControl1.Controls.Add(this.Tab_Allot);
-            this.tabControl1.Controls.Add(this.Tab_ExcelSheet);
-            this.tabControl1.Controls.Add(this.Tab_ShiftSwap);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(0, 145);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1073, 609);
-            this.tabControl1.TabIndex = 13;
+            this.TabPanel.Controls.Add(this.Tab_Allot);
+            this.TabPanel.Controls.Add(this.Tab_ExcelSheet);
+            this.TabPanel.Controls.Add(this.Tab_ShiftSwap);
+            this.TabPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TabPanel.Location = new System.Drawing.Point(0, 145);
+            this.TabPanel.Name = "TabPanel";
+            this.TabPanel.SelectedIndex = 0;
+            this.TabPanel.Size = new System.Drawing.Size(1073, 609);
+            this.TabPanel.TabIndex = 13;
             // 
             // Tab_Allot
             // 
@@ -564,6 +567,7 @@
             this.Button_MultiAllot.TabIndex = 29;
             this.Button_MultiAllot.Text = "Multi Allot";
             this.Button_MultiAllot.UseVisualStyleBackColor = false;
+            this.Button_MultiAllot.Click += new System.EventHandler(this.Button_MultiAllot_Click);
             // 
             // Button_SingleAllot
             // 
@@ -582,6 +586,7 @@
             this.Button_SingleAllot.TabIndex = 30;
             this.Button_SingleAllot.Text = "Single Allot";
             this.Button_SingleAllot.UseVisualStyleBackColor = false;
+            this.Button_SingleAllot.Click += new System.EventHandler(this.Button_SingleAllot_Click);
             // 
             // Button_Swap
             // 
@@ -683,15 +688,40 @@
             this.Button_FilepathChange.Text = "Change path";
             this.Button_FilepathChange.UseVisualStyleBackColor = false;
             // 
+            // Panel_ProgressBar
+            // 
+            this.Panel_ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
+            this.Panel_ProgressBar.Controls.Add(this.label4);
+            this.Panel_ProgressBar.Location = new System.Drawing.Point(381, 382);
+            this.Panel_ProgressBar.Name = "Panel_ProgressBar";
+            this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 70);
+            this.Panel_ProgressBar.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(98, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 22);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Please Wait !";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form_Allotment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(1073, 754);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.TabPanel);
+            this.Controls.Add(this.Groupbox_SelectExam);
             this.Controls.Add(this.Panel_Header);
+            this.Controls.Add(this.Panel_ProgressBar);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -700,9 +730,9 @@
             this.Text = "Form_Allotment";
             this.Panel_Header.ResumeLayout(false);
             this.Panel_Header.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.Groupbox_SelectExam.ResumeLayout(false);
+            this.Groupbox_SelectExam.PerformLayout();
+            this.TabPanel.ResumeLayout(false);
             this.Tab_Allot.ResumeLayout(false);
             this.Tab_Allot.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_RegCourseWise_Count)).EndInit();
@@ -716,6 +746,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Cand_in_AllotedRooms)).EndInit();
+            this.Panel_ProgressBar.ResumeLayout(false);
+            this.Panel_ProgressBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -725,10 +757,10 @@
         private System.Windows.Forms.Panel Panel_Header;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Button_Close;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox Groupbox_SelectExam;
         private System.Windows.Forms.RadioButton Radio_Series;
         private System.Windows.Forms.RadioButton Radio_University;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl TabPanel;
         private System.Windows.Forms.TabPage Tab_Allot;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -772,5 +804,7 @@
         private System.Windows.Forms.ComboBox Combobox_Alloted_Rooms;
         private System.Windows.Forms.Button Button_FilepathChange;
         private System.Windows.Forms.TextBox Textbox_Filepath;
+        private System.Windows.Forms.Panel Panel_ProgressBar;
+        private System.Windows.Forms.Label label4;
     }
 }
