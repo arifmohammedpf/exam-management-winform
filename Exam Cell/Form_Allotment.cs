@@ -562,56 +562,166 @@ namespace Exam_Cell
         {
             if (Combobox_From_RoomNo.SelectedIndex != 0 && Combobox_To_RoomNo.SelectedIndex != 0 && Combobox_From_SeriesAB.SelectedIndex != 0 && Combobox_To_SeriesAB.SelectedIndex != 0)
             {
-                bool canShift = ValidateFromToRoomSeatNo();
-                if (canShift)
+                CustomMessageBox.ShowMessageBox("Are you sure to shift selected students ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+                string result = CustomMessageBox.UserChoice;
+                if (result == "Yes")
                 {
-                    try
+                    bool canShift = ValidateFromToRoomSeatNo();
+                    if (canShift)
                     {
-                        int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.SelectedItem.ToString());
-                        int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.SelectedItem.ToString());
-                        int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.SelectedItem.ToString());
-                        string fromRoomNo = Combobox_From_RoomNo.SelectedItem.ToString();
-                        string toRoomNo = Combobox_To_RoomNo.SelectedItem.ToString();
-                        string fromRoomSeries = Combobox_From_SeriesAB.SelectedItem.ToString();
-                        string toRoomSeries = Combobox_To_SeriesAB.SelectedItem.ToString();
-                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        try
                         {
-                            string query;
-                            if (Radio_University.Checked) query = string.Format("update University_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Seat=@SelectedSeat");
-                            else query = string.Format("update Series_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Seat=@SelectedSeat");
-                            SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
-                            for (int i = fromRoomStartSeat; i <= fromRoomEndSeat; i++)
+                            int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.SelectedItem.ToString());
+                            int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.SelectedItem.ToString());
+                            int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.SelectedItem.ToString());
+                            string fromRoomNo = Combobox_From_RoomNo.SelectedItem.ToString();
+                            string toRoomNo = Combobox_To_RoomNo.SelectedItem.ToString();
+                            string fromRoomSeries = Combobox_From_SeriesAB.SelectedItem.ToString();
+                            string toRoomSeries = Combobox_To_SeriesAB.SelectedItem.ToString();
+                            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                             {
-                                MessageBox.Show(toRoomSeries + toRoomStartSeat); // testing msg box.........delete after testing
-                                comm.Parameters.AddWithValue("@Room_No", toRoomNo);
-                                comm.Parameters.AddWithValue("@Seat", toRoomSeries + toRoomStartSeat);
-                                comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
-                                comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
-                                comm.Parameters.AddWithValue("@SelectedRoom_No", fromRoomNo);
-                                comm.Parameters.AddWithValue("@SelectedSeat", fromRoomSeries + i);
-                                comm.ExecuteNonQuery();
+                                string query;
+                                if (Radio_University.Checked) query = string.Format("update University_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Seat=@SelectedSeat");
+                                else query = string.Format("update Series_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Seat=@SelectedSeat");
+                                SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                                for (int i = fromRoomStartSeat; i <= fromRoomEndSeat; i++)
+                                {
+                                    MessageBox.Show(toRoomSeries + toRoomStartSeat); // testing msg box.........delete after testing
+                                    comm.Parameters.AddWithValue("@Room_No", toRoomNo);
+                                    comm.Parameters.AddWithValue("@Seat", toRoomSeries + toRoomStartSeat);
+                                    comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
+                                    comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
+                                    comm.Parameters.AddWithValue("@SelectedRoom_No", fromRoomNo);
+                                    comm.Parameters.AddWithValue("@SelectedSeat", fromRoomSeries + i);
+                                    comm.ExecuteNonQuery();
 
-                                toRoomStartSeat++;
+                                    toRoomStartSeat++;
+                                }
                             }
+                            CustomMessageBox.ShowMessageBox("Students shifted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                         }
-                        CustomMessageBox.ShowMessageBox("Students shifted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else CustomMessageBox.ShowMessageBox("Not enough seats to shift", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                    else CustomMessageBox.ShowMessageBox("Not enough seats to shift", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                }                    
             }
+        }
+
+        bool CheckIfRoomExist()
+        {
+            int roomCount;
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                string query;
+                if (Radio_University.Checked) query = string.Format("Select Count(*) from University_Alloted where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No");
+                else query = string.Format("Select Count(*) from Series_Alloted where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No");
+                SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
+                comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
+                comm.Parameters.AddWithValue("@SelectedRoom_No", Combobox_To_RoomNo.SelectedItem.ToString());
+                roomCount = (int)comm.ExecuteScalar();
+            }
+            if (roomCount > 0) return true;
+            return false;
         }
 
         private void Button_Swap_Click(object sender, EventArgs e)
         {
-            // check if To_room exist in alloted table
-            // check no of seats in toroom can be filled
-            if (Combobox_From_RoomNo.SelectedIndex != 0 && Combobox_To_RoomNo.SelectedIndex != 0 && Combobox_From_SeriesAB.SelectedIndex != 0 && Combobox_To_SeriesAB.SelectedIndex != 0)
+            bool isToRoomExist = CheckIfRoomExist();
+            if (isToRoomExist)
             {
+                if (Combobox_From_RoomNo.SelectedIndex != 0 && Combobox_To_RoomNo.SelectedIndex != 0 && Combobox_From_SeriesAB.SelectedIndex != 0 && Combobox_To_SeriesAB.SelectedIndex != 0)
+                {
+                    CustomMessageBox.ShowMessageBox("Are you sure to swap selected students ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+                    string result = CustomMessageBox.UserChoice;
+                    if (result == "Yes")
+                    {
+                        bool canSwap = ValidateFromToRoomSeatNo();
+                        if (canSwap)
+                        {
+                            try
+                            {
+                                int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.SelectedItem.ToString());
+                                int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.SelectedItem.ToString());
+                                int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.SelectedItem.ToString());
+                                string fromRoomNo = Combobox_From_RoomNo.SelectedItem.ToString();
+                                string toRoomNo = Combobox_To_RoomNo.SelectedItem.ToString();
+                                string fromRoomSeries = Combobox_From_SeriesAB.SelectedItem.ToString();
+                                string toRoomSeries = Combobox_To_SeriesAB.SelectedItem.ToString();
+                                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                                {
+                                    string query, secondQuery;
+                                    if (Radio_University.Checked) query = string.Format("Select Room_No,Seat,Reg_No from University_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
+                                    else query = string.Format("Select Room_No,Seat,Reg_No from Series_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
+                                    SQLiteCommand selectCommand = new SQLiteCommand(query, dbConnection);
+                                    selectCommand.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
+                                    selectCommand.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                                    selectCommand.Parameters.AddWithValue("@Room_No", toRoomNo);
+                                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(selectCommand);
+                                    DataTable dataTableStudents = new DataTable();
+                                    adapter.Fill(dataTableStudents);
 
+                                    if (Radio_University.Checked)
+                                    {
+                                        query = string.Format("update University_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Seat=@SelectedSeat");
+                                        secondQuery = string.Format("update University_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Reg_No=@SelectedReg_No");
+                                    }
+                                    else
+                                    {
+                                        query = string.Format("update Series_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Seat=@SelectedSeat");
+                                        secondQuery = string.Format("update Series_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Reg_No=@SelectedReg_No");
+                                    }
+                                    SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                                    SQLiteCommand updateCommand = new SQLiteCommand(secondQuery, dbConnection);
+                                    for (int i = fromRoomStartSeat; i <= fromRoomEndSeat; i++)
+                                    {
+                                        MessageBox.Show(toRoomSeries + toRoomStartSeat); // testing msg box.........delete after testing
+                                                                                         // fromRoom to toRoom
+                                        comm.Parameters.AddWithValue("@Room_No", toRoomNo);
+                                        comm.Parameters.AddWithValue("@Seat", toRoomSeries + toRoomStartSeat);
+                                        comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
+                                        comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
+                                        comm.Parameters.AddWithValue("@SelectedRoom_No", fromRoomNo);
+                                        comm.Parameters.AddWithValue("@SelectedSeat", fromRoomSeries + i);
+                                        comm.ExecuteNonQuery();
+
+                                        // toRoom to fromRoom
+                                        foreach (DataRow dataRow in dataTableStudents.Rows)
+                                        {
+                                            if (dataRow["Seat"].ToString() == toRoomSeries + toRoomStartSeat)
+                                            {
+                                                updateCommand.Parameters.AddWithValue("@Room_No", fromRoomNo);
+                                                updateCommand.Parameters.AddWithValue("@Seat", fromRoomSeries + i);
+                                                updateCommand.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
+                                                updateCommand.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
+                                                updateCommand.Parameters.AddWithValue("@SelectedRoom_No", toRoomNo);
+                                                updateCommand.Parameters.AddWithValue("@SelectedReg_No", dataRow["Reg_No"]);
+                                                updateCommand.ExecuteNonQuery();
+                                                break;
+                                            }
+                                        }
+
+                                        toRoomStartSeat++;
+                                    }
+                                }
+                                CustomMessageBox.ShowMessageBox("Students swapped  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.ToString());
+                            }
+                        }
+                        else CustomMessageBox.ShowMessageBox("Not enough seats to swap", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                string messageText = string.Format("Room '%{0}%' does not exist in Alloted records  ", Combobox_To_RoomNo.SelectedItem.ToString());
+                CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
             }
         }
 

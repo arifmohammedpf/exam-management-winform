@@ -81,6 +81,7 @@
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.Label_No_Of_Students_Selected = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.Panel_Header.SuspendLayout();
             this.Groupbox_SelectExam.SuspendLayout();
             this.TabPanel.SuspendLayout();
@@ -498,6 +499,7 @@
             // 
             this.Tab_ShiftSwap.Controls.Add(this.groupBox3);
             this.Tab_ShiftSwap.Controls.Add(this.groupBox2);
+            this.Tab_ShiftSwap.Controls.Add(this.label6);
             this.Tab_ShiftSwap.Location = new System.Drawing.Point(4, 26);
             this.Tab_ShiftSwap.Name = "Tab_ShiftSwap";
             this.Tab_ShiftSwap.Size = new System.Drawing.Size(1065, 579);
@@ -742,6 +744,15 @@
             this.Label_No_Of_Students_Selected.TabIndex = 0;
             this.Label_No_Of_Students_Selected.Text = "No of students selected :";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(353, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(339, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Note : Select Date and Session from \"Allot Students\" Tab";
+            // 
             // Form_Allotment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -773,6 +784,7 @@
             this.Tab_ExcelSheet.ResumeLayout(false);
             this.Tab_ExcelSheet.PerformLayout();
             this.Tab_ShiftSwap.ResumeLayout(false);
+            this.Tab_ShiftSwap.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -838,5 +850,6 @@
         private System.Windows.Forms.ComboBox Combobox_From_SeriesAB;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label Label_No_Of_Students_Selected;
+        private System.Windows.Forms.Label label6;
     }
 }
