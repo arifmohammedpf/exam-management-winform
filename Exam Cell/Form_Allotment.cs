@@ -167,6 +167,7 @@ namespace Exam_Cell
                 SearchRegisteredCourseWiseCount();
                 SearchAllotedRooms();
                 AllotedRoomComboboxFill();
+                ShiftOrSwap_FormReset();
             }
         }
 
@@ -178,6 +179,27 @@ namespace Exam_Cell
                 SearchRegisteredCourseWiseCount();
                 SearchAllotedRooms();
                 AllotedRoomComboboxFill();
+                ShiftOrSwap_FormReset();
+            }
+        }
+
+        DataTable GetAllotedRooms()
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                string query;
+                if (Radio_University.Checked) query = string.Format("Select Distinct Room_No from University_Alloted where Date=@Date and Session=@Session order by Room_No");
+                else query = string.Format("Select Distinct Room_No from Series_Alloted where Date=@Date and Session=@Session order by Room_No");
+                SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                comm.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
+                comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
+                DataTable roomDatatable = new DataTable();
+                adapter.Fill(roomDatatable);
+                DataRow roomTableTop = roomDatatable.NewRow();
+                roomTableTop[0] = "-Select-";
+                roomDatatable.Rows.InsertAt(roomTableTop, 0);
+                return roomDatatable;
             }
         }
 
@@ -185,22 +207,10 @@ namespace Exam_Cell
         {
             try
             {
-                Dgv_Cand_in_AllotedRooms.DataSource = null;
-                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                Combobox_Alloted_Rooms.DataSource = null;
+                if (Combobox_Session.SelectedIndex != 0)
                 {
-                    string query;
-                    if (Radio_University.Checked) query = string.Format("Select Distinct Room_No from University_Alloted where Date=@Date and Session=@Session order by Room_No");
-                    else query = string.Format("Select Distinct Room_No from Series_Alloted where Date=@Date and Session=@Session order by Room_No");
-                    SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
-                    comm.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                    comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
-                    DataTable roomDatatable = new DataTable();
-                    adapter.Fill(roomDatatable);
-                    DataRow roomTableTop = roomDatatable.NewRow();
-                    roomTableTop[0] = "-Select-";
-                    roomDatatable.Rows.InsertAt(roomTableTop, 0);
-
+                    DataTable roomDatatable = GetAllotedRooms();
                     Combobox_Alloted_Rooms.DataSource = roomDatatable;
                     Combobox_Alloted_Rooms.DisplayMember = "Room_No";
                     Combobox_Alloted_Rooms.ValueMember = "Room_No";
@@ -331,6 +341,7 @@ namespace Exam_Cell
                 }
                 AllotedRoomComboboxFill();
                 SearchAllotedRooms();
+                ShiftOrSwap_FormReset();
                 SetLoading(false);
                 CustomMessageBox.ShowMessageBox("Single Allotment Complete  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
             }
@@ -427,6 +438,7 @@ namespace Exam_Cell
 
                 AllotedRoomComboboxFill();
                 SearchAllotedRooms();
+                ShiftOrSwap_FormReset();
                 SetLoading(false);
                 CustomMessageBox.ShowMessageBox("Multi Allotment Complete  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
             }
@@ -448,7 +460,250 @@ namespace Exam_Cell
             SetLoading(true);
             AllotStudents(false);
         }
+
+        void ResetData()
+        {
+            Dgv_RegCandidates_List.DataSource = null;
+            Dgv_RegCourseWise_Count.DataSource = null;
+            Dgv_Alloted_Rooms.DataSource = null;
+            Dgv_Cand_in_AllotedRooms.DataSource = null;
+            Combobox_Session.SelectedIndex = 0;
+            DateTimePicker_Date.Value = DateTime.Now;
+            ShiftOrSwap_FormReset();
+        }
+
+        private void Radio_University_CheckedChanged(object sender, EventArgs e)
+        {
+            ResetData();
+        }
+
+        private void Radio_Series_CheckedChanged(object sender, EventArgs e)
+        {
+            ResetData();
+        }
+
+        void LoadFilepathToSaveExcel()
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                SQLiteCommand comm = new SQLiteCommand("Select Savepath from DBManagement where Savepath is not null");
+                string savepath = (string)comm.ExecuteScalar();
+                Textbox_Filepath.Text = savepath;
+            }
+        }
+
+        void GetRooms_ToShiftSwap()
+        {
+            try
+            {
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string query = string.Format("Select Distinct Room_No from Rooms order by Room_No");
+                    SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
+                    DataTable roomDatatable = new DataTable();
+                    adapter.Fill(roomDatatable);
+                    DataRow roomTableTop = roomDatatable.NewRow();
+                    roomTableTop[0] = "-Select-";
+                    roomDatatable.Rows.InsertAt(roomTableTop, 0);
+                    Combobox_From_RoomNo.DataSource = roomDatatable;
+                    Combobox_From_RoomNo.DisplayMember = "Room_No";
+                    Combobox_From_RoomNo.ValueMember = "Room_No";
+                    Combobox_From_RoomNo.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }            
+        }
+
+        private void Form_Allotment_Load(object sender, EventArgs e)
+        {
+            DateTimePicker_Date.Format = DateTimePickerFormat.Custom;
+            DateTimePicker_Date.CustomFormat = "dd-MM-yyyy";
+            DateTimePicker_Date.Value = DateTime.Now;
+            LoadFilepathToSaveExcel();
+            // fill To_Room Shift/Swap
+            GetRooms_ToShiftSwap();
+            Radio_University.Checked = true;
+        }
+
+        void ShiftOrSwap_FormReset()
+        {
+            Combobox_From_RoomNo.DataSource = null;
+            Combobox_From_SeriesAB.SelectedIndex = 0;
+            Combobox_From_Starting_Seat.Items.Clear();
+            Combobox_From_Ending_Seat.Items.Clear();
+            //Combobox_To_RoomNo.DataSource = null;
+            Combobox_To_SeriesAB.SelectedIndex = 0;
+            Combobox_To_Starting_Seat.Items.Clear();
+
+            // Combobox From_RoomNo
+            if (Combobox_Session.SelectedIndex != 0)
+            {
+                DataTable roomDatatable = GetAllotedRooms();
+                Combobox_From_RoomNo.DataSource = roomDatatable;
+                Combobox_From_RoomNo.DisplayMember = "Room_No";
+                Combobox_From_RoomNo.ValueMember = "Room_No";
+                Combobox_From_RoomNo.SelectedIndex = 0;
+            }
+        }
+
+        bool ValidateFromToRoomSeatNo()
+        {
+            int selectedSeatsInToRoom = (totalSeats_inToRoom - int.Parse(Combobox_To_Starting_Seat.SelectedItem.ToString())) + 1;
+            if(seatsSelectedInFromRoom > selectedSeatsInToRoom)
+                return false;
+            return true;
+        }
+
+        private void Button_Shift_Click(object sender, EventArgs e)
+        {
+            if (Combobox_From_RoomNo.SelectedIndex != 0 && Combobox_To_RoomNo.SelectedIndex != 0 && Combobox_From_SeriesAB.SelectedIndex != 0 && Combobox_To_SeriesAB.SelectedIndex != 0)
+            {
+                bool canShift = ValidateFromToRoomSeatNo();
+                if (canShift)
+                {
+                    try
+                    {
+                        int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.SelectedItem.ToString());
+                        int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.SelectedItem.ToString());
+                        int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.SelectedItem.ToString());
+                        string fromRoomNo = Combobox_From_RoomNo.SelectedItem.ToString();
+                        string toRoomNo = Combobox_To_RoomNo.SelectedItem.ToString();
+                        string fromRoomSeries = Combobox_From_SeriesAB.SelectedItem.ToString();
+                        string toRoomSeries = Combobox_To_SeriesAB.SelectedItem.ToString();
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            string query;
+                            if (Radio_University.Checked) query = string.Format("update University_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Seat=@SelectedSeat");
+                            else query = string.Format("update Series_Alloted set Room_No=@Room_No,Seat=@Seat where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No and Seat=@SelectedSeat");
+                            SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                            for (int i = fromRoomStartSeat; i <= fromRoomEndSeat; i++)
+                            {
+                                MessageBox.Show(toRoomSeries + toRoomStartSeat); // testing msg box.........delete after testing
+                                comm.Parameters.AddWithValue("@Room_No", toRoomNo);
+                                comm.Parameters.AddWithValue("@Seat", toRoomSeries + toRoomStartSeat);
+                                comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
+                                comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
+                                comm.Parameters.AddWithValue("@SelectedRoom_No", fromRoomNo);
+                                comm.Parameters.AddWithValue("@SelectedSeat", fromRoomSeries + i);
+                                comm.ExecuteNonQuery();
+
+                                toRoomStartSeat++;
+                            }
+                        }
+                        CustomMessageBox.ShowMessageBox("Students shifted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else CustomMessageBox.ShowMessageBox("Not enough seats to shift", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            }
+        }
+
+        private void Button_Swap_Click(object sender, EventArgs e)
+        {
+            // check if To_room exist in alloted table
+            // check no of seats in toroom can be filled
+            if (Combobox_From_RoomNo.SelectedIndex != 0 && Combobox_To_RoomNo.SelectedIndex != 0 && Combobox_From_SeriesAB.SelectedIndex != 0 && Combobox_To_SeriesAB.SelectedIndex != 0)
+            {
+
+            }
+        }
+
+        private void Combobox_From_SeriesAB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Combobox_From_Starting_Seat.Items.Clear();
+            Combobox_From_Ending_Seat.Items.Clear();
+            if (Combobox_From_SeriesAB.SelectedIndex != 0)
+            {
+                int noOfSeats;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string query = string.Format("Select @Series from Rooms where Room_No=@Room_No");
+                    string selectedSeries = Combobox_From_SeriesAB.SelectedItem.ToString() + "_Series";
+                    SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                    comm.Parameters.AddWithValue("@Series", selectedSeries);
+                    comm.Parameters.AddWithValue("@Room_No", Combobox_From_RoomNo.SelectedItem.ToString());
+                    noOfSeats = (int)comm.ExecuteScalar();
+                }
+                // fill start & end seat combobox
+                for(int i=1; i<=noOfSeats; i++)
+                {
+                    Combobox_From_Starting_Seat.Items.Add(i);
+                    Combobox_From_Ending_Seat.Items.Add(i);
+                }
+                Combobox_From_Starting_Seat.SelectedIndex = 0;
+                Combobox_From_Ending_Seat.SelectedIndex = 0;
+            }
+        }
+
+        int totalSeats_inToRoom;
+        private void Combobox_To_SeriesAB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Combobox_To_Starting_Seat.Items.Clear();
+            if (Combobox_To_SeriesAB.SelectedIndex != 0)
+            {                
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string query = string.Format("Select @Series from Rooms where Room_No=@Room_No");
+                    string selectedSeries = Combobox_To_SeriesAB.SelectedItem.ToString() + "_Series";
+                    SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                    comm.Parameters.AddWithValue("@Series", selectedSeries);
+                    comm.Parameters.AddWithValue("@Room_No", Combobox_To_RoomNo.SelectedItem.ToString());
+                    totalSeats_inToRoom = (int)comm.ExecuteScalar();
+                }
+                // fill start & end seat combobox
+                for (int i = 1; i <= totalSeats_inToRoom; i++)
+                {
+                    Combobox_To_Starting_Seat.Items.Add(i);
+                }
+                Combobox_To_Starting_Seat.SelectedIndex = 0;
+            }
+        }
+
+        int seatsSelectedInFromRoom;
+        void Get_No_Of_Students_Selected()
+        {
+            try
+            {
+                Label_No_Of_Students_Selected.Text = "No of students selected : ";
+                if (Combobox_From_Starting_Seat.SelectedIndex != 0 && Combobox_From_Ending_Seat.SelectedIndex != 0)
+                {
+                    int startSeat, endSeat;
+                    startSeat = int.Parse(Combobox_From_Ending_Seat.SelectedItem.ToString());
+                    endSeat = int.Parse(Combobox_From_Starting_Seat.SelectedItem.ToString());
+                    if (startSeat <= endSeat)
+                    {
+                        seatsSelectedInFromRoom = (endSeat - startSeat) + 1;
+                        Label_No_Of_Students_Selected.Text = "No of students selected : " + seatsSelectedInFromRoom;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }            
+        }
+
+        private void Combobox_From_Starting_Seat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Get_No_Of_Students_Selected();
+        }
+
+        private void Combobox_From_Ending_Seat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Get_No_Of_Students_Selected();
+        }
     }
 }
+
+// fill shift swap form when date/session combobox changes
+// give combobox for start and end seat no: instead of textbox
 // TESTING //
+// * line 545, executescalar may give error...check
 // * SearchCandidates, query for Series (line 42) ???
