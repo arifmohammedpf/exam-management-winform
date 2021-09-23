@@ -828,186 +828,191 @@ namespace Exam_Cell
             }
         }
 
+        bool CheckStudentsAlloted()
+        {
+            string commandtext;
+            if (Radio_Series.Checked) commandtext = string.Format("SELECT Count(*) from Series_Alloted where Date=@Date and Session=@Session");
+            else commandtext = string.Format("SELECT Count(*) from University_Alloted where Date=@Date and Session=@Session");
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                SQLiteCommand command = new SQLiteCommand(commandtext, dbConnection);
+                command.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
+                command.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                Int32 Checkcount = Convert.ToInt32(command.ExecuteScalar());
+                if (Checkcount == 0)
+                {
+                    CustomMessageBox.ShowMessageBox("No students alloted    ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                    return false;
+                }
+                else return true;
+            }
+        }
         void Generate_Excel_Room_Signature_Sheet(string f)
         {
             if (Combobox_Session.SelectedIndex != 0)
             {
+                bool isStudentsAlloted = CheckStudentsAlloted();
+                if (!isStudentsAlloted) return;
                 try
                 {
-                    string commandtext;
-                    if (Radio_Series.Checked) commandtext = string.Format("SELECT Count(*) from Series_Alloted where Date=@Date and Session=@Session");
-                    else commandtext = string.Format("SELECT Count(*) from University_Alloted where Date=@Date and Session=@Session");
+                    string createRoomPath = Textbox_Filepath.Text + @"\Room Sheets";
+                    string createSignaturePath = Textbox_Filepath.Text + @"\Signature Sheets";
+                    Directory.CreateDirectory(createRoomPath);
+                    Directory.CreateDirectory(createSignaturePath);
+
+
+                    string selectQuery = "", date = DateTimePicker_Date.Text, session = Combobox_Session.SelectedItem.ToString();
+                    //Create a query and fill the data table with the data from the DB            
+                    if (Radio_Series.Checked) selectQuery = string.Format("SELECT Seat,Reg_No,Name,Sub_Code,Room_No from Series_Alloted Where Date=@Date and Session=@Session order by Room_No");
+                    else selectQuery = string.Format("SELECT Seat,Reg_No,Name,Sub_Code,Room_No from University_Alloted Where Date=@Date and Session=@Session order by Room_No");
+                    DataTable dt, dstnctroomdatatable;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
-                        SQLiteCommand command = new SQLiteCommand(commandtext, dbConnection);
-                        command.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                        command.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
-                        Int32 Checkcount = Convert.ToInt32(command.ExecuteScalar());
-                        if (Checkcount == 0)
-                        {
-                            CustomMessageBox.ShowMessageBox("No students alloted    ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-                            return;
-                        }
-                        else
-                        {
-                            string createRoomPath = Textbox_Filepath.Text + @"\Room Sheets";
-                            string createSignaturePath = Textbox_Filepath.Text + @"\Signature Sheets";
-                            Directory.CreateDirectory(createRoomPath);
-                            Directory.CreateDirectory(createSignaturePath);
+                        SQLiteCommand cmd = new SQLiteCommand(selectQuery, dbConnection);
+                        cmd.Parameters.AddWithValue("@Date", date);
+                        cmd.Parameters.AddWithValue("@Session", session);
+                        SQLiteDataAdapter adptr = new SQLiteDataAdapter(cmd);
+                        dt = new DataTable();
+                        adptr.Fill(dt);
 
+                        if (Radio_Series.Checked) selectQuery = string.Format("SELECT Distinct Room_No from Series_Alloted Where Date=@Date and Session=@Session");
+                        else selectQuery = string.Format("SELECT Distinct Room_No from University_Alloted Where Date=@Date and Session=@Session");
 
-                            string selectQuery = "", date = DateTimePicker_Date.Text, session = Combobox_Session.SelectedItem.ToString();
-                            //Create a query and fill the data table with the data from the DB            
-                            if (Radio_Series.Checked) selectQuery = string.Format("SELECT Seat,Reg_No,Name,Sub_Code,Room_No from Series_Alloted Where Date=@Date and Session=@Session order by Room_No");
-                            else selectQuery = string.Format("SELECT Seat,Reg_No,Name,Sub_Code,Room_No from University_Alloted Where Date=@Date and Session=@Session order by Room_No");
-
-                            SQLiteCommand cmd = new SQLiteCommand(selectQuery, dbConnection);
-                            cmd.Parameters.AddWithValue("@Date", date);
-                            cmd.Parameters.AddWithValue("@Session", session);
-                            SQLiteDataAdapter adptr = new SQLiteDataAdapter(cmd);
-                            DataTable dt = new DataTable();
-                            adptr.Fill(dt);
-
-                            DataTable dstnctroomdatatable = new DataTable();
-                            if (Radio_Series.Checked) selectQuery = string.Format("SELECT Distinct Room_No from Series_Alloted Where Date=@Date and Session=@Session");
-                            else selectQuery = string.Format("SELECT Distinct Room_No from University_Alloted Where Date=@Date and Session=@Session");
-
-                            SQLiteCommand commandroom = new SQLiteCommand(selectQuery, dbConnection);
-                            commandroom.Parameters.AddWithValue("@Date", date);
-                            commandroom.Parameters.AddWithValue("@Session", session);
-                            SQLiteDataAdapter distinctroomadapter = new SQLiteDataAdapter(commandroom);
-                            distinctroomadapter.Fill(dstnctroomdatatable);
-
-                            using (var package = new ExcelPackage())
-                            {
-                                foreach (DataRow dstrw in dstnctroomdatatable.Rows)
-                                {
-                                    string checkroom = dstrw["Room_No"].ToString();
-                                    //Add a new worksheet to the empty workbook
-                                    var worksheet = package.Workbook.Worksheets.Add(checkroom);
-                                    //Insert Items to ExcelSheet
-                                    worksheet.Cells["A1"].Value = "KMEA ENGINEERING COLLEGE";
-                                    worksheet.Cells["A2"].Value = Textbox_ExamName.Text;
-                                    if (f == "Room_Sheet") worksheet.Cells["A3"].Value = "STUDENTS LIST";
-                                    else worksheet.Cells["A3"].Value = "ATTENDANCE STATEMENT";
-                                    worksheet.Cells["A4"].Value = "Room No: " + checkroom;
-                                    worksheet.Cells["E4"].Value = date + " " + session;
-
-                                    using (var range = worksheet.Cells["A1:F1"])
-                                    {
-                                        range.Style.Font.Name = "Arial";
-                                        range.Style.Font.Size = 14;
-                                        range.Style.Font.Bold = true;
-                                        range.Merge = true;
-                                        range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                                    }
-                                    using (var range = worksheet.Cells["A2:F2"])
-                                    {
-                                        range.Style.Font.Name = "Arial";
-                                        range.Style.Font.Size = 12;
-                                        range.Style.Font.Bold = true;
-                                        range.Merge = true;
-                                        range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                                    }
-                                    using (var range = worksheet.Cells["A3:F3"])
-                                    {
-                                        range.Style.Font.Name = "Arial";
-                                        range.Style.Font.Size = 10;
-                                        range.Style.Font.Bold = true;
-                                        range.Merge = true;
-                                        range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                                    }
-                                    using (var range = worksheet.Cells["A4:C4"])
-                                    {
-                                        range.Style.Font.Name = "Arial";
-                                        range.Style.Font.Size = 10;
-                                        range.Style.Font.Bold = true;
-                                        range.Merge = true;
-                                    }
-                                    using (var range = worksheet.Cells["A4:F4"])
-                                    {
-                                        range.Style.Font.Name = "Arial";
-                                        range.Style.Font.Size = 10;
-                                        range.Style.Font.Bold = true;
-                                        range.Merge = true;
-                                    }
-
-                                    // column headings
-                                    worksheet.Cells[5, 1].Value = "Sl.No";
-                                    worksheet.Cells[5, 1].Style.Font.Name = "Arial";
-                                    worksheet.Cells[5, 1].Style.Font.Size = 10;
-                                    worksheet.Cells[5, 1].Style.Font.Bold = true;
-                                    if (f == "Signature_Sheet")
-                                    {
-                                        worksheet.Cells[5, dt.Columns.Count + 2].Value = "Signature";
-                                        worksheet.Cells[5, dt.Columns.Count + 2].Style.Font.Bold = true;
-                                    }
-                                    for (int i = 0; i < dt.Columns.Count; i++)
-                                    {
-                                        worksheet.Cells[5, i + 2].Value = dt.Columns[i].ColumnName;
-                                        worksheet.Cells[5, i + 2].Style.Font.Name = "Arial";
-                                        worksheet.Cells[5, i + 2].Style.Font.Size = 10;
-                                        worksheet.Cells[5, i + 2].Style.Font.Bold = true;
-                                    }
-
-                                    // rows
-                                    int rc = 0;
-                                    for (int i = 0; i < dt.Rows.Count; i++)
-                                    {
-                                        if (dt.Rows[i]["Room_No"].ToString() == checkroom)
-                                        {
-                                            worksheet.Cells[rc + 6, 1].Value = rc + 1;    //Sl.No Filling
-                                            for (int j = 0; j < dt.Columns.Count; j++)
-                                            {
-                                                worksheet.Cells[rc + 6, j + 2].Value = dt.Rows[i][j];
-                                            }
-                                            rc++;
-                                        }
-
-                                    }
-                                    worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-                                    if (f == "Room_Sheet")
-                                    {
-                                        using (var range = worksheet.Cells[5, 1, rc + 5, dt.Columns.Count + 1])
-                                        {
-                                            range.Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        using (var range = worksheet.Cells[5, 1, rc + 5, dt.Columns.Count + 2])
-                                        {
-                                            range.Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-                                            range.Merge = true;
-                                        }
-                                        worksheet.Cells[rc + 7, 1].Value = " Write the Register Numbers of the absentees in the box";
-                                        using (var range = worksheet.Cells[rc + 8, 1, rc + 16, 4])
-                                        {
-                                            range.Style.Border.Top.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Left.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Right.Style = ExcelBorderStyle.Thin;
-                                            range.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
-                                        }
-                                        worksheet.Cells[rc + 16, 5].Value = " Name and Signature of Invigilator(s)";
-                                    }
-                                }
-                                //Save Excel File
-                                string path = createRoomPath + @"\Room Sheet " + date + " " + session + ".xlsx";
-                                if (f == "Signature_Sheet") path = createSignaturePath + @"\Signature Sheet " + date + " " + session + ".xlsx";
-
-                                Stream stream = File.Create(path);
-                                package.SaveAs(stream);
-                                stream.Close();
-                            }
-                            CustomMessageBox.ShowMessageBox("Excel sheets generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
-                        }
+                        SQLiteCommand commandroom = new SQLiteCommand(selectQuery, dbConnection);
+                        commandroom.Parameters.AddWithValue("@Date", date);
+                        commandroom.Parameters.AddWithValue("@Session", session);
+                        SQLiteDataAdapter distinctroomadapter = new SQLiteDataAdapter(commandroom);
+                        dstnctroomdatatable = new DataTable();
+                        distinctroomadapter.Fill(dstnctroomdatatable);
                     }
+                    using (var package = new ExcelPackage())
+                    {
+                        foreach (DataRow dstrw in dstnctroomdatatable.Rows)
+                        {
+                            string checkroom = dstrw["Room_No"].ToString();
+                            //Add a new worksheet to the empty workbook
+                            var worksheet = package.Workbook.Worksheets.Add(checkroom);
+                            //Insert Items to ExcelSheet
+                            worksheet.Cells["A1"].Value = "KMEA ENGINEERING COLLEGE";
+                            worksheet.Cells["A2"].Value = Textbox_ExamName.Text;
+                            if (f == "Room_Sheet") worksheet.Cells["A3"].Value = "STUDENTS LIST";
+                            else worksheet.Cells["A3"].Value = "ATTENDANCE STATEMENT";
+                            worksheet.Cells["A4"].Value = "Room No: " + checkroom;
+                            worksheet.Cells["E4"].Value = date + " " + session;
+
+                            using (var range = worksheet.Cells["A1:F1"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 14;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                                range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                            using (var range = worksheet.Cells["A2:F2"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 12;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                                range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                            using (var range = worksheet.Cells["A3:F3"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 10;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                                range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                            using (var range = worksheet.Cells["A4:C4"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 10;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                            }
+                            using (var range = worksheet.Cells["A4:F4"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 10;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                            }
+
+                            // column headings
+                            worksheet.Cells[5, 1].Value = "Sl.No";
+                            worksheet.Cells[5, 1].Style.Font.Name = "Arial";
+                            worksheet.Cells[5, 1].Style.Font.Size = 10;
+                            worksheet.Cells[5, 1].Style.Font.Bold = true;
+                            if (f == "Signature_Sheet")
+                            {
+                                worksheet.Cells[5, dt.Columns.Count + 2].Value = "Signature";
+                                worksheet.Cells[5, dt.Columns.Count + 2].Style.Font.Bold = true;
+                            }
+                            for (int i = 0; i < dt.Columns.Count; i++)
+                            {
+                                worksheet.Cells[5, i + 2].Value = dt.Columns[i].ColumnName;
+                                worksheet.Cells[5, i + 2].Style.Font.Name = "Arial";
+                                worksheet.Cells[5, i + 2].Style.Font.Size = 10;
+                                worksheet.Cells[5, i + 2].Style.Font.Bold = true;
+                            }
+
+                            // rows
+                            int rc = 0;
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                if (dt.Rows[i]["Room_No"].ToString() == checkroom)
+                                {
+                                    worksheet.Cells[rc + 6, 1].Value = rc + 1;    //Sl.No Filling
+                                    for (int j = 0; j < dt.Columns.Count; j++)
+                                    {
+                                        worksheet.Cells[rc + 6, j + 2].Value = dt.Rows[i][j];
+                                    }
+                                    rc++;
+                                }
+
+                            }
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                            if (f == "Room_Sheet")
+                            {
+                                using (var range = worksheet.Cells[5, 1, rc + 5, dt.Columns.Count + 1])
+                                {
+                                    range.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                }
+                            }
+                            else
+                            {
+                                using (var range = worksheet.Cells[5, 1, rc + 5, dt.Columns.Count + 2])
+                                {
+                                    range.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                    range.Merge = true;
+                                }
+                                worksheet.Cells[rc + 7, 1].Value = " Write the Register Numbers of the absentees in the box";
+                                using (var range = worksheet.Cells[rc + 8, 1, rc + 16, 4])
+                                {
+                                    range.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                                    range.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                }
+                                worksheet.Cells[rc + 16, 5].Value = " Name and Signature of Invigilator(s)";
+                            }
+                        }
+                        //Save Excel File
+                        string path = createRoomPath + @"\Room Sheet " + date + " " + session + ".xlsx";
+                        if (f == "Signature_Sheet") path = createSignaturePath + @"\Signature Sheet " + date + " " + session + ".xlsx";
+
+                        Stream stream = File.Create(path);
+                        package.SaveAs(stream);
+                        stream.Close();
+                    }
+                    CustomMessageBox.ShowMessageBox("Excel sheets generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -1025,6 +1030,202 @@ namespace Exam_Cell
         private void Button_SignatureSheet_Click(object sender, EventArgs e)
         {
             Generate_Excel_Room_Signature_Sheet("Signature_Sheet");
+        }
+
+        void Generate_Excel_Display_Sheet()
+        {
+            if (Combobox_Session.SelectedIndex != 0)
+            {
+                bool isStudentsAlloted = CheckStudentsAlloted();
+                if (!isStudentsAlloted) return;
+                try
+                {
+                    string createDisplayPath = Textbox_Filepath.Text + @"\Display Sheets";
+                    Directory.CreateDirectory(createDisplayPath);
+
+                    string selectQuery = "", date = DateTimePicker_Date.Text, session = Combobox_Session.SelectedItem.ToString();
+
+                    if (Radio_University.Checked) selectQuery = string.Format("SELECT Distinct Branch from University_Alloted Where Date=@Date and Session=@Session");
+                    else selectQuery = string.Format("SELECT Distinct Class from Series_Alloted Where Date=@Date and Session=@Session");
+                    DataTable dataTableBranchClass;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        SQLiteCommand commandroom = new SQLiteCommand(selectQuery,dbConnection);
+                        commandroom.Parameters.AddWithValue("@Date", date);
+                        commandroom.Parameters.AddWithValue("@Session", session);
+                        SQLiteDataAdapter adptr2 = new SQLiteDataAdapter(commandroom);
+                        dataTableBranchClass = new DataTable();
+                        adptr2.Fill(dataTableBranchClass);
+                    }
+                    using (var package = new ExcelPackage())
+                    {
+                        foreach (DataRow dstrw in dataTableBranchClass.Rows)
+                        {
+                            string checkbranch;
+                            if (Radio_University.Checked) checkbranch = dstrw["Branch"].ToString();
+                            else checkbranch = dstrw["Class"].ToString();
+                            //Add a new worksheet to the empty workbook
+                            var worksheet = package.Workbook.Worksheets.Add(checkbranch);
+                            //Insert Items to ExcelSheet
+                            worksheet.Cells["A1"].Value = "KMEA ENGINEERING COLLEGE";
+                            worksheet.Cells["A2"].Value = Textbox_ExamName.Text;
+                            worksheet.Cells["A3"].Value = date + " " + session;
+                            worksheet.Cells["A4"].Value = checkbranch;
+                            worksheet.Cells["A5"].Value = "Register No - Room No - Seat No";
+                            using (var range = worksheet.Cells["A5"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 14;
+                                range.Style.Font.Bold = true;
+                            }
+                            using (var range = worksheet.Cells["A1:D1"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 16;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                                range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                            using (var range = worksheet.Cells["A2:D2"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 14;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                                range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                            using (var range = worksheet.Cells["A3:D3"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 14;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                                range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                            using (var range = worksheet.Cells["A4:D4"])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 14;
+                                range.Style.Font.Bold = true;
+                                range.Merge = true;
+                                range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                            {
+                                if (Radio_University.Checked)
+                                {
+                                    SQLiteCommand coursecommand = new SQLiteCommand("Select Course from University_Alloted where Branch=@Branch and Date=@Date and Session=@Session ", dbConnection);
+                                    coursecommand.Parameters.AddWithValue("@Branch", checkbranch);
+                                    coursecommand.Parameters.AddWithValue("@Date", date);
+                                    coursecommand.Parameters.AddWithValue("@Session", session);
+                                    string Course = (string)coursecommand.ExecuteScalar();
+                                    SQLiteCommand examcodecommand = new SQLiteCommand("Select Sub_Code from University_Alloted where Branch=@Branch and Date=@Date and Session=@Session ", dbConnection);
+                                    examcodecommand.Parameters.AddWithValue("@Branch", checkbranch);
+                                    examcodecommand.Parameters.AddWithValue("@Date", date);
+                                    examcodecommand.Parameters.AddWithValue("@Session", session);
+                                    string ExamCode = (string)examcodecommand.ExecuteScalar();
+                                    worksheet.Cells["A6"].Value = Course + " " + ExamCode;
+                                    using (var range = worksheet.Cells["A6"])
+                                    {
+                                        range.Style.Font.Name = "Arial";
+                                        range.Style.Font.Size = 14;
+                                        range.Style.Font.Bold = true;
+                                    }
+                                    SQLiteCommand coursecmd = new SQLiteCommand("SELECT Reg_No,Room_No,Seat from University_Alloted Where Date=@Date and Session=@Session and Course=@Course order by Reg_No", dbConnection);
+                                    coursecmd.Parameters.AddWithValue("@Date", date);
+                                    coursecmd.Parameters.AddWithValue("@Session", session);
+                                    coursecmd.Parameters.AddWithValue("@Course", Course);
+                                    DataTable coursedt = new DataTable();
+                                    SQLiteDataAdapter courseadptr = new SQLiteDataAdapter(coursecmd);
+                                    courseadptr.Fill(coursedt);
+                                    //excel table format
+                                    int j = 7, k = 1, limit = coursedt.Rows.Count / 3;
+                                    for (var i = 0; i < coursedt.Rows.Count; i++)
+                                    {
+                                        worksheet.Cells[j, k].Value = coursedt.Rows[i][0] + " - " + coursedt.Rows[i][1] + " - " + coursedt.Rows[i][2];
+                                        if (j == limit + 7)
+                                        {
+                                            k++;
+                                            j = 7;
+                                        }
+                                        j++;
+                                    }
+                                    using (var range = worksheet.Cells[7, 1, limit + 7, k])
+                                    {
+                                        range.Style.Font.Name = "Arial";
+                                        range.Style.Font.Size = 14;
+                                        range.Style.Font.Bold = true;
+                                    }
+                                }
+                                else
+                                {
+                                    SQLiteCommand coursecommand = new SQLiteCommand("Select Distinct Course,Sub_Code from Series_Alloted where Class=@Class and Date=@Date and Session=@Session ", dbConnection);
+                                    coursecommand.Parameters.AddWithValue("@Class", checkbranch);
+                                    coursecommand.Parameters.AddWithValue("@Date", date);
+                                    coursecommand.Parameters.AddWithValue("@Session", session);
+                                    DataTable coursedata = new DataTable();
+                                    SQLiteDataAdapter coursedataadptr = new SQLiteDataAdapter(coursecommand);
+                                    coursedataadptr.Fill(coursedata);
+                                    int sheet_row = 6;
+                                    foreach (DataRow dataRow in coursedata.Rows)
+                                    {
+                                        worksheet.Cells[sheet_row, 1].Value = dataRow["Course"].ToString() + " " + dataRow["Exam_code"].ToString();
+                                        using (var range = worksheet.Cells[sheet_row, 1])
+                                        {
+                                            range.Style.Font.Name = "Arial";
+                                            range.Style.Font.Size = 14;
+                                            range.Style.Font.Bold = true;
+                                        }
+                                        sheet_row++;
+                                        SQLiteCommand coursecmd = new SQLiteCommand("SELECT Reg_No,Room_No,Seat from Series_Alloted Where Date=@Date and Session=@Session and Course=@Course order by Reg_No", dbConnection);
+                                        coursecmd.Parameters.AddWithValue("@Date", date);
+                                        coursecmd.Parameters.AddWithValue("@Session", session);
+                                        coursecommand.Parameters.AddWithValue("@Course", dataRow["Course"].ToString());
+                                        DataTable coursedt = new DataTable();
+                                        SQLiteDataAdapter courseadptr = new SQLiteDataAdapter(coursecmd);
+                                        courseadptr.Fill(coursedt);
+                                        int limit = (coursedt.Rows.Count / 3) + sheet_row, col = 1, current_row = sheet_row;
+                                        for (var i = 0; i < coursedt.Rows.Count; i++)
+                                        {
+                                            worksheet.Cells[sheet_row, col].Value = coursedt.Rows[i][0] + " - " + coursedt.Rows[i][1] + " - " + coursedt.Rows[i][2];
+                                            if (sheet_row == limit)
+                                            {
+                                                sheet_row = current_row;
+                                                col++;
+                                            }
+                                            sheet_row++;
+                                        }
+                                        using (var range = worksheet.Cells[7, 1, limit, col])
+                                        {
+                                            range.Style.Font.Name = "Arial";
+                                            range.Style.Font.Size = 14;
+                                            range.Style.Font.Bold = true;
+                                        }
+                                        sheet_row++;
+                                    }
+                                }
+                            }
+                                
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                        }
+                        //Save Excel File
+                        string path = createDisplayPath + @"\Display Sheet " + date + " " + session + ".xlsx";
+                        Stream stream = File.Create(path);
+                        package.SaveAs(stream);
+                        stream.Close();
+                    }
+                    CustomMessageBox.ShowMessageBox("Display sheets generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else CustomMessageBox.ShowMessageBox("Select Session   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+        }
+        private void Button_DisplaySheet_Click(object sender, EventArgs e)
+        {
+            Generate_Excel_Display_Sheet();
         }
     }
 }

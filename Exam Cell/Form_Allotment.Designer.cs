@@ -455,6 +455,7 @@
             this.Button_DisplaySheet.TabIndex = 31;
             this.Button_DisplaySheet.Text = "Display Sheet";
             this.Button_DisplaySheet.UseVisualStyleBackColor = false;
+            this.Button_DisplaySheet.Click += new System.EventHandler(this.Button_DisplaySheet_Click);
             // 
             // Button_SignatureSheet
             // 
