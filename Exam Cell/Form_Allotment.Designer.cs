@@ -399,6 +399,7 @@
             this.Button_FilepathChange.TabIndex = 31;
             this.Button_FilepathChange.Text = "Change path";
             this.Button_FilepathChange.UseVisualStyleBackColor = false;
+            this.Button_FilepathChange.Click += new System.EventHandler(this.Button_FilepathChange_Click);
             // 
             // Button_RoomSheet
             // 
@@ -417,6 +418,7 @@
             this.Button_RoomSheet.TabIndex = 31;
             this.Button_RoomSheet.Text = "Room Sheet";
             this.Button_RoomSheet.UseVisualStyleBackColor = false;
+            this.Button_RoomSheet.Click += new System.EventHandler(this.Button_RoomSheet_Click);
             // 
             // Button_SummarySheet
             // 
@@ -471,6 +473,7 @@
             this.Button_SignatureSheet.TabIndex = 31;
             this.Button_SignatureSheet.Text = "Signature Sheet";
             this.Button_SignatureSheet.UseVisualStyleBackColor = false;
+            this.Button_SignatureSheet.Click += new System.EventHandler(this.Button_SignatureSheet_Click);
             // 
             // label12
             // 
