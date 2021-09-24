@@ -140,8 +140,8 @@ namespace Exam_Cell
                 try
                 {
                     string query = "";
-                    if (Radio_Series.Checked) query = string.Format("select Seat,Reg_No,Status,Name,Class,Course,Sub_Code from Series_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
-                    else query = string.Format("select Seat,Reg_No,Status,Name,Branch,Sub_Code,Course from University_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
+                    if (Radio_Series.Checked) query = string.Format("select Seat,Reg_No,Status,Name,Class,Course,Sub_Code,Date,Session,Room_No from Series_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
+                    else query = string.Format("select Seat,Reg_No,Status,Name,Branch,Sub_Code,Course,Date,Session,Room_No from University_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
@@ -176,6 +176,38 @@ namespace Exam_Cell
                 {
                     cell.Value = "Present";
                     cell.Style.ForeColor = Color.Black;
+                }
+            }
+        }
+
+        private void Button_Marking_Save_Click(object sender, EventArgs e)
+        {
+            if (Dgv_Marking.Rows.Count != 0)
+            {
+                try
+                {
+                    string query = "";
+                    if (Radio_Series.Checked) query = string.Format("update Series_Alloted Set Status=@Status where Reg_No=@Reg_No and Name=@Name and Date=@Date and Session=@Session and Room_No=@Room_No");
+                    else query = string.Format("update University_Alloted Set Status=@Status where Reg_No=@Reg_No and Name=@Name and Date=@Date and Session=@Session and Room_No=@Room_No");
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                        foreach (DataGridViewRow row in Dgv_Marking.Rows)
+                        {
+                            comm.Parameters.AddWithValue("@Reg_No", row.Cells["Reg_No"].Value);
+                            comm.Parameters.AddWithValue("@Name", row.Cells["Name"].Value);
+                            comm.Parameters.AddWithValue("@Status", row.Cells["Status"].Value);
+                            comm.Parameters.AddWithValue("@Date", row.Cells["Date"].Value);
+                            comm.Parameters.AddWithValue("@Session", row.Cells["Session"].Value);
+                            comm.Parameters.AddWithValue("@Room_No", row.Cells["Room_No"].Value);
+                            comm.ExecuteNonQuery();
+                        }
+                    }
+                    CustomMessageBox.ShowMessageBox("Status saved  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }

@@ -36,7 +36,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Radio_Series = new System.Windows.Forms.RadioButton();
             this.Radio_University = new System.Windows.Forms.RadioButton();
-            this.Button_Marking_DeletePrevData = new System.Windows.Forms.Button();
             this.Button_Marking_Search = new System.Windows.Forms.Button();
             this.Combobox_Marking_Session = new System.Windows.Forms.ComboBox();
             this.Combobox_Marking_RoomNo = new System.Windows.Forms.ComboBox();
@@ -123,7 +122,6 @@
             // Tab_Marking
             // 
             this.Tab_Marking.Controls.Add(this.groupBox2);
-            this.Tab_Marking.Controls.Add(this.Button_Marking_DeletePrevData);
             this.Tab_Marking.Controls.Add(this.Button_Marking_Search);
             this.Tab_Marking.Controls.Add(this.Combobox_Marking_Session);
             this.Tab_Marking.Controls.Add(this.Combobox_Marking_RoomNo);
@@ -175,25 +173,6 @@
             this.Radio_University.Text = "University";
             this.Radio_University.UseVisualStyleBackColor = true;
             this.Radio_University.CheckedChanged += new System.EventHandler(this.Radio_University_CheckedChanged);
-            // 
-            // Button_Marking_DeletePrevData
-            // 
-            this.Button_Marking_DeletePrevData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.Button_Marking_DeletePrevData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_Marking_DeletePrevData.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.Button_Marking_DeletePrevData.FlatAppearance.BorderSize = 0;
-            this.Button_Marking_DeletePrevData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.Button_Marking_DeletePrevData.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(51)))), ((int)(((byte)(120)))));
-            this.Button_Marking_DeletePrevData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_Marking_DeletePrevData.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_Marking_DeletePrevData.ForeColor = System.Drawing.Color.White;
-            this.Button_Marking_DeletePrevData.Location = new System.Drawing.Point(113, 348);
-            this.Button_Marking_DeletePrevData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Button_Marking_DeletePrevData.Name = "Button_Marking_DeletePrevData";
-            this.Button_Marking_DeletePrevData.Size = new System.Drawing.Size(240, 40);
-            this.Button_Marking_DeletePrevData.TabIndex = 42;
-            this.Button_Marking_DeletePrevData.Text = "Delete Previous Data";
-            this.Button_Marking_DeletePrevData.UseVisualStyleBackColor = false;
             // 
             // Button_Marking_Search
             // 
@@ -288,6 +267,7 @@
             this.Button_Marking_Save.TabIndex = 34;
             this.Button_Marking_Save.Text = "Save";
             this.Button_Marking_Save.UseVisualStyleBackColor = false;
+            this.Button_Marking_Save.Click += new System.EventHandler(this.Button_Marking_Save_Click);
             // 
             // Dgv_Marking
             // 
@@ -565,7 +545,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button Button_Marking_Save;
         private System.Windows.Forms.DataGridView Dgv_Marking;
-        private System.Windows.Forms.Button Button_Marking_DeletePrevData;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton Radio_Series;
         private System.Windows.Forms.RadioButton Radio_University;
