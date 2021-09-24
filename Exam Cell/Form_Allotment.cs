@@ -308,8 +308,8 @@ namespace Exam_Cell
                 int totalStudentsCount = table_students.Rows.Count, currentStudentCount = 0, flag = 0;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
-                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course)");
-                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Class,Sub_Code,Course)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Class,@Sub_Code,@Course)");
+                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Status)");
+                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Class,Sub_Code,Course,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Class,@Sub_Code,@Course,@Status)");
                     SQLiteCommand comm = new SQLiteCommand(insertQuery, dbConnection);
 
                     foreach (DataRow roomrow in table_rooms.Rows)
@@ -329,6 +329,7 @@ namespace Exam_Cell
                                 else comm.Parameters.AddWithValue("@Class", table_students.Rows[currentStudentCount]["Class"].ToString());
                                 comm.Parameters.AddWithValue("@Sub_Code", table_students.Rows[currentStudentCount]["Sub_Code"].ToString());
                                 comm.Parameters.AddWithValue("@Course", table_students.Rows[currentStudentCount]["Course"].ToString());
+                                comm.Parameters.AddWithValue("@Status", "Present");
                                 comm.ExecuteNonQuery();
 
                                 currentStudentCount++;
@@ -369,8 +370,8 @@ namespace Exam_Cell
 
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
-                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course)");
-                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Class,Sub_Code,Course)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Class,@Sub_Code,@Course)");
+                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Status)");
+                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Class,Sub_Code,Course,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Class,@Sub_Code,@Course,@Status)");
                     SQLiteCommand command4 = new SQLiteCommand(insertQuery, dbConnection);
                     
                     //allot for A series
@@ -391,6 +392,7 @@ namespace Exam_Cell
                                 else command4.Parameters.AddWithValue("@Class", Students_Aseries.Rows[currentStudentsCount]["Class"].ToString());
                                 command4.Parameters.AddWithValue("@Sub_Code", Students_Aseries.Rows[currentStudentsCount]["Sub_Code"].ToString());
                                 command4.Parameters.AddWithValue("@Course", Students_Aseries.Rows[currentStudentsCount]["Course"].ToString());
+                                command4.Parameters.AddWithValue("@Status", "Present");
                                 command4.ExecuteNonQuery();
 
                                 currentStudentsCount++;
@@ -424,6 +426,7 @@ namespace Exam_Cell
                                 else command4.Parameters.AddWithValue("@Class", Students_Bseries.Rows[currentStudentsCount]["Class"].ToString());
                                 command4.Parameters.AddWithValue("@Sub_Code", Students_Bseries.Rows[currentStudentsCount]["Sub_Code"].ToString());
                                 command4.Parameters.AddWithValue("@Course", Students_Bseries.Rows[currentStudentsCount]["Course"].ToString());
+                                command4.Parameters.AddWithValue("@Status", "Present");
                                 command4.ExecuteNonQuery();
 
                                 currentStudentsCount++;
