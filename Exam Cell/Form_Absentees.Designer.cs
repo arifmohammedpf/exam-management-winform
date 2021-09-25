@@ -31,7 +31,7 @@
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TabControl = new System.Windows.Forms.TabControl();
             this.Tab_Marking = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Radio_Series = new System.Windows.Forms.RadioButton();
@@ -63,8 +63,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Textbox_Statement_ExamName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.Panel_Header.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.TabControl.SuspendLayout();
             this.Tab_Marking.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Marking)).BeginInit();
@@ -108,16 +109,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Absentees";
             // 
-            // tabControl1
+            // TabControl
             // 
-            this.tabControl1.Controls.Add(this.Tab_Marking);
-            this.tabControl1.Controls.Add(this.Tab_Statement);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 55);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(900, 507);
-            this.tabControl1.TabIndex = 4;
+            this.TabControl.Controls.Add(this.Tab_Marking);
+            this.TabControl.Controls.Add(this.Tab_Statement);
+            this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabControl.Location = new System.Drawing.Point(0, 55);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(900, 507);
+            this.TabControl.TabIndex = 4;
+            this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
             // 
             // Tab_Marking
             // 
@@ -288,6 +290,7 @@
             this.Tab_Statement.Controls.Add(this.Button_Prepare_Statement);
             this.Tab_Statement.Controls.Add(this.Dgv_Statement);
             this.Tab_Statement.Controls.Add(this.groupBox1);
+            this.Tab_Statement.Controls.Add(this.button1);
             this.Tab_Statement.Controls.Add(this.Textbox_Statement_ExamName);
             this.Tab_Statement.Controls.Add(this.label6);
             this.Tab_Statement.Location = new System.Drawing.Point(4, 26);
@@ -308,7 +311,7 @@
             this.Button_Prepare_Statement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Prepare_Statement.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Prepare_Statement.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Prepare_Statement.Location = new System.Drawing.Point(105, 404);
+            this.Button_Prepare_Statement.Location = new System.Drawing.Point(105, 427);
             this.Button_Prepare_Statement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Prepare_Statement.Name = "Button_Prepare_Statement";
             this.Button_Prepare_Statement.Size = new System.Drawing.Size(180, 40);
@@ -343,7 +346,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(6, 42);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(373, 323);
             this.groupBox1.TabIndex = 15;
@@ -353,7 +356,7 @@
             // Label_NoOfAbsent
             // 
             this.Label_NoOfAbsent.AutoSize = true;
-            this.Label_NoOfAbsent.Location = new System.Drawing.Point(198, 287);
+            this.Label_NoOfAbsent.Location = new System.Drawing.Point(197, 287);
             this.Label_NoOfAbsent.Name = "Label_NoOfAbsent";
             this.Label_NoOfAbsent.Size = new System.Drawing.Size(115, 17);
             this.Label_NoOfAbsent.TabIndex = 31;
@@ -371,7 +374,7 @@
             // Label_NoOfCandidates
             // 
             this.Label_NoOfCandidates.AutoSize = true;
-            this.Label_NoOfCandidates.Location = new System.Drawing.Point(164, 237);
+            this.Label_NoOfCandidates.Location = new System.Drawing.Point(170, 237);
             this.Label_NoOfCandidates.Name = "Label_NoOfCandidates";
             this.Label_NoOfCandidates.Size = new System.Drawing.Size(142, 17);
             this.Label_NoOfCandidates.TabIndex = 33;
@@ -394,10 +397,15 @@
             this.Button_Statement_Search.TabIndex = 30;
             this.Button_Statement_Search.Text = "Search";
             this.Button_Statement_Search.UseVisualStyleBackColor = false;
+            this.Button_Statement_Search.Click += new System.EventHandler(this.Button_Statement_Search_Click);
             // 
             // Combobox_Statement_Session
             // 
             this.Combobox_Statement_Session.FormattingEnabled = true;
+            this.Combobox_Statement_Session.Items.AddRange(new object[] {
+            "-Select-",
+            "Forenoon",
+            "Afternoon"});
             this.Combobox_Statement_Session.Location = new System.Drawing.Point(127, 72);
             this.Combobox_Statement_Session.Name = "Combobox_Statement_Session";
             this.Combobox_Statement_Session.Size = new System.Drawing.Size(240, 25);
@@ -465,7 +473,7 @@
             // 
             // Textbox_Statement_ExamName
             // 
-            this.Textbox_Statement_ExamName.Location = new System.Drawing.Point(18, 369);
+            this.Textbox_Statement_ExamName.Location = new System.Drawing.Point(18, 392);
             this.Textbox_Statement_ExamName.Name = "Textbox_Statement_ExamName";
             this.Textbox_Statement_ExamName.Size = new System.Drawing.Size(355, 22);
             this.Textbox_Statement_ExamName.TabIndex = 13;
@@ -473,11 +481,29 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 346);
+            this.label6.Location = new System.Drawing.Point(14, 369);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(140, 17);
             this.label6.TabIndex = 8;
             this.label6.Text = "Name of Examination :";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.button1.Location = new System.Drawing.Point(6, 8);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(373, 28);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "re-load datas button needed ?";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Form_Absentees
             // 
@@ -485,7 +511,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(900, 562);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.TabControl);
             this.Controls.Add(this.Panel_Header);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -496,7 +522,7 @@
             this.Load += new System.EventHandler(this.Form_Absentees_Load);
             this.Panel_Header.ResumeLayout(false);
             this.Panel_Header.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.TabControl.ResumeLayout(false);
             this.Tab_Marking.ResumeLayout(false);
             this.Tab_Marking.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -516,7 +542,7 @@
         private System.Windows.Forms.Panel Panel_Header;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Button_Close;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage Tab_Marking;
         private System.Windows.Forms.TabPage Tab_Statement;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -548,5 +574,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton Radio_Series;
         private System.Windows.Forms.RadioButton Radio_University;
+        private System.Windows.Forms.Button button1;
     }
 }
