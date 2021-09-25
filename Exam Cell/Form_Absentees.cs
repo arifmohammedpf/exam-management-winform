@@ -253,6 +253,7 @@ namespace Exam_Cell
         {
             try
             {
+                Combobox_Statement_BranchClass.DataSource = null;
                 string query;
                 if (Radio_University.Checked) query = string.Format("Select Distinct Branch from University_Alloted order by Branch");
                 else query = string.Format("Select Distinct Class from Series_Alloted order by Class");
