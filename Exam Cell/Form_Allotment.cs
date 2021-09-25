@@ -852,7 +852,7 @@ namespace Exam_Cell
         }
         void Generate_Excel_Room_Signature_Sheet(string f)
         {
-            if (Combobox_Session.SelectedIndex != 0)
+            if (Combobox_Session.SelectedIndex != 0 && Textbox_Filepath.Text != "Select Filepath")
             {
                 bool isStudentsAlloted = CheckStudentsAlloted();
                 if (!isStudentsAlloted) return;
@@ -1022,7 +1022,7 @@ namespace Exam_Cell
                     MessageBox.Show(ex.ToString());
                 }
             }
-            else CustomMessageBox.ShowMessageBox("Select Session   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            else CustomMessageBox.ShowMessageBox("Check whether Session and filepath is selected or not   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
         }
 
         private void Button_RoomSheet_Click(object sender, EventArgs e)
@@ -1037,7 +1037,7 @@ namespace Exam_Cell
 
         void Generate_Excel_Display_Sheet()
         {
-            if (Combobox_Session.SelectedIndex != 0)
+            if (Combobox_Session.SelectedIndex != 0 && Textbox_Filepath.Text != "Select Filepath")
             {
                 bool isStudentsAlloted = CheckStudentsAlloted();
                 if (!isStudentsAlloted) return;
@@ -1224,7 +1224,7 @@ namespace Exam_Cell
                     MessageBox.Show(ex.ToString());
                 }
             }
-            else CustomMessageBox.ShowMessageBox("Select Session   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            else CustomMessageBox.ShowMessageBox("Check whether Session and filepath is selected or not   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
         }
         private void Button_DisplaySheet_Click(object sender, EventArgs e)
         {

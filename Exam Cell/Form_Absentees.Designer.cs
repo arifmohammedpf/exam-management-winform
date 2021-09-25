@@ -318,6 +318,7 @@
             this.Button_Prepare_Statement.TabIndex = 32;
             this.Button_Prepare_Statement.Text = "Prepare Statement";
             this.Button_Prepare_Statement.UseVisualStyleBackColor = false;
+            this.Button_Prepare_Statement.Click += new System.EventHandler(this.Button_Prepare_Statement_Click);
             // 
             // Dgv_Statement
             // 
@@ -356,29 +357,29 @@
             // Label_NoOfAbsent
             // 
             this.Label_NoOfAbsent.AutoSize = true;
-            this.Label_NoOfAbsent.Location = new System.Drawing.Point(197, 287);
+            this.Label_NoOfAbsent.Location = new System.Drawing.Point(170, 287);
             this.Label_NoOfAbsent.Name = "Label_NoOfAbsent";
-            this.Label_NoOfAbsent.Size = new System.Drawing.Size(115, 17);
+            this.Label_NoOfAbsent.Size = new System.Drawing.Size(108, 17);
             this.Label_NoOfAbsent.TabIndex = 31;
-            this.Label_NoOfAbsent.Text = "No of Absent : 000";
+            this.Label_NoOfAbsent.Text = "No of Absent : 00";
             // 
             // Label_NoOfPresent
             // 
             this.Label_NoOfPresent.AutoSize = true;
-            this.Label_NoOfPresent.Location = new System.Drawing.Point(195, 262);
+            this.Label_NoOfPresent.Location = new System.Drawing.Point(170, 262);
             this.Label_NoOfPresent.Name = "Label_NoOfPresent";
-            this.Label_NoOfPresent.Size = new System.Drawing.Size(117, 17);
+            this.Label_NoOfPresent.Size = new System.Drawing.Size(110, 17);
             this.Label_NoOfPresent.TabIndex = 32;
-            this.Label_NoOfPresent.Text = "No of Present : 000";
+            this.Label_NoOfPresent.Text = "No of Present : 00";
             // 
             // Label_NoOfCandidates
             // 
             this.Label_NoOfCandidates.AutoSize = true;
             this.Label_NoOfCandidates.Location = new System.Drawing.Point(170, 237);
             this.Label_NoOfCandidates.Name = "Label_NoOfCandidates";
-            this.Label_NoOfCandidates.Size = new System.Drawing.Size(142, 17);
+            this.Label_NoOfCandidates.Size = new System.Drawing.Size(135, 17);
             this.Label_NoOfCandidates.TabIndex = 33;
-            this.Label_NoOfCandidates.Text = "No of Candidates : 000";
+            this.Label_NoOfCandidates.Text = "No of Candidates : 00";
             // 
             // Button_Statement_Search
             // 

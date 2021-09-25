@@ -1,10 +1,13 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -304,9 +307,10 @@ namespace Exam_Cell
             }
         }
 
+        int prescount = 0, abscount = 0;
         void FillCandidatesInfoLabel()
         {
-            int prescount = 0, abscount = 0;
+            prescount = 0; abscount = 0;
             foreach(DataGridViewRow viewRow in Dgv_Statement.Rows)
             {
                 if (viewRow.Cells["Status"].Value.ToString() == "Absent")
@@ -347,6 +351,144 @@ namespace Exam_Cell
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void Button_Prepare_Statement_Click(object sender, EventArgs e)
+        {
+            string savepath;
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                SQLiteCommand comm = new SQLiteCommand("Select Savepath from DBManagement where Savepath is not null");
+                savepath = (string)comm.ExecuteScalar();
+            }
+            if (Dgv_Statement.Rows.Count != 0 && savepath != "Select Filepath")
+            {
+                try
+                {
+                    string createStatePath = savepath + @"\Attendance Sheets";
+                    Directory.CreateDirectory(createStatePath);
+
+                    using (var package = new ExcelPackage())
+                    {
+                        //Add a new worksheet to the empty workbook
+                        var worksheet = package.Workbook.Worksheets.Add(Combobox_Statement_BranchClass.SelectedItem.ToString());
+                        string Yoa;
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            SQLiteCommand command = new SQLiteCommand("select YOA from Students where Reg_No=@Reg_No", dbConnection);
+                            command.Parameters.AddWithValue("@Reg_No", Dgv_Statement.Rows[0].Cells["Reg_No"].Value.ToString());
+                            Yoa = (string)command.ExecuteScalar();
+                        }
+                        
+                        //Insert Items to ExcelSheet
+                        worksheet.Cells["A1"].Value = "KMEA ENGINEERING COLLEGE";
+                        worksheet.Cells["A2"].Value = Textbox_Statement_ExamName.Text;
+                        worksheet.Cells["A3"].Value = "ATTENDANCE STATEMENT";
+                        worksheet.Cells["A4"].Value = Combobox_Statement_Date.SelectedItem.ToString();
+                        worksheet.Cells["D4"].Value = Combobox_Statement_Session.SelectedItem.ToString();
+                        worksheet.Cells["A5"].Value = Combobox_Statement_BranchClass.SelectedItem.ToString();
+                        worksheet.Cells["C5"].Value = "Year: " + Yoa;
+                        worksheet.Cells["D5"].Value = Dgv_Statement.Rows[0].Cells["Course"].Value.ToString() + " " + Combobox_Statement_SubCode.SelectedItem.ToString();
+
+                        using (var range = worksheet.Cells["A1:D1"])
+                        {
+                            range.Merge = true;
+                            range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Size = 16;
+                            range.Style.Font.Bold = true;
+                        }
+                        using (var range = worksheet.Cells["A2:D2"])
+                        {
+                            range.Merge = true;
+                            range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Size = 14;
+                            range.Style.Font.Bold = true;
+                        }
+                        using (var range = worksheet.Cells["A3:D3"])
+                        {
+                            range.Merge = true;
+                            range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Size = 12;
+                            range.Style.Font.Bold = true;
+                        }
+                        using (var range = worksheet.Cells["A4:D4"])
+                        {
+                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Size = 11;
+                            range.Style.Font.Bold = true;
+                        }
+                        using (var range = worksheet.Cells["A5:D5"])
+                        {
+                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Size = 11;
+                            range.Style.Font.Bold = true;
+                        }
+
+                        // column headings
+                        worksheet.Cells[6, 1].Value = "Sl.No";
+                        worksheet.Cells[6, 1].Style.Font.Name = "Arial";
+                        worksheet.Cells[6, 1].Style.Font.Size = 12;
+                        worksheet.Cells[6, 1].Style.Font.Bold = true;
+                        for (var i = 0; i < 3; i++)
+                        {
+                            worksheet.Cells[6, i + 2].Value = Dgv_Statement.Columns[i].ToString();
+                            worksheet.Cells[6, i + 2].Style.Font.Name = "Arial";
+                            worksheet.Cells[6, i + 2].Style.Font.Size = 12;
+                            worksheet.Cells[6, i + 2].Style.Font.Bold = true;
+                        }
+                        //rows filling
+                        int count = 0;
+                        for (int i = 0; i < Dgv_Statement.Rows.Count; i++)
+                        {
+                            worksheet.Cells[i + 7, 1].Value = i + 1;    //Sl.No Filling
+                            for (var j = 0; j < 3; j++)
+                            {
+                                worksheet.Cells[i + 7, j + 2].Value = Dgv_Statement.Rows[i].Cells[j];
+                                if (Dgv_Statement.Rows[i].Cells[j].ToString() == "Absent")
+                                {
+                                    worksheet.Cells[i + 7, j + 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                    worksheet.Cells[i + 7, j + 2].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+                                    worksheet.Cells[i + 7, j + 2].Style.Font.Color.SetColor(Color.Red);
+                                }
+                            }
+                            count = i + 9;
+                        }
+                        using (var range = worksheet.Cells[7, 1, Dgv_Statement.Rows.Count + 6, 4])
+                        {
+                            range.AutoFitColumns();
+                            range.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                            range.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                            range.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+                            range.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                        }
+                        worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                        worksheet.Cells[count, 3].Value = "No of Present = " + prescount;
+                        worksheet.Cells[count + 1, 3].Value = "No of Absent = " + abscount;
+
+                        //Save Excel File  
+                        string path = createStatePath + @"\Attendance " + Combobox_Statement_Session.SelectedItem.ToString() + " " + Combobox_Statement_SubCode.SelectedItem.ToString() + " " + Combobox_Statement_BranchClass.SelectedItem.ToString() + ".xlsx";
+                        Stream stream = File.Create(path);
+                        package.SaveAs(stream);
+                        stream.Close();
+
+                        Combobox_Statement_BranchClass.SelectedIndex = 0;
+                        Combobox_Statement_SubCode.SelectedIndex = 0;
+                        Label_NoOfCandidates.ResetText();
+                        Label_NoOfPresent.ResetText();
+                        Label_NoOfAbsent.ResetText();
+                        Dgv_Statement.DataSource = null;
+                        CustomMessageBox.ShowMessageBox("Absentees Statement generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else CustomMessageBox.ShowMessageBox("Savepath may not be saved or No student records to generate statement   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
         }
     }
 }
