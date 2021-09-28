@@ -104,9 +104,9 @@ namespace Exam_Cell
             {
                 if (!isFormReset)
                 {
-                    string branch = Combobox_Branch_Search_Course.SelectedItem.ToString();
+                    string branch = Combobox_Branch_Search_Course.Text;
                     string examcode = Textbox_ExamCode_Search_Course.Text;
-                    string semester = Combobox_Semester.SelectedItem.ToString();
+                    string semester = Combobox_Semester.Text;
                     Dgv_Courses.DataSource = null;
                     HeaderCheckBox.Checked = false;
 
@@ -177,7 +177,7 @@ namespace Exam_Cell
                     }
                     else
                     {
-                        string branch = Combobox_Branch_Search_Timetable.SelectedItem.ToString();
+                        string branch = Combobox_Branch_Search_Timetable.Text;
                         string examcode = Textbox_ExamCode_Search_Timetable.Text;
                         if (branch != "-Select-")
                             searchRecord = string.Format("Branch like '%{0}%'", branch);
@@ -279,7 +279,7 @@ namespace Exam_Cell
                             string query = string.Format("Insert into Timetable(Date,Session,Sub_Code,Course,Semester,Branch)Values(" + "@Date,@Session,@Sub_Code,@Course,@Semester,@Branch)");
                             SQLiteCommand comm = new SQLiteCommand(query,dbConnection);
                             comm.Parameters.AddWithValue("@Date", DateTimePicker_Add_Timetable.Text);
-                            comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                            comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                             comm.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
                             comm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
                             comm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
@@ -288,7 +288,7 @@ namespace Exam_Cell
 
                             // backup for undo
                             DateList.Add(DateTimePicker_Add_Timetable.Text);
-                            SessionList.Add(Combobox_Session.SelectedItem.ToString());
+                            SessionList.Add(Combobox_Session.Text);
                             SubCodeList.Add(dr.Cells["Sub_Code"].Value.ToString());
                             SubNameList.Add(dr.Cells["Course"].Value.ToString());
                             SemesterList.Add(dr.Cells["Semester"].Value.ToString());

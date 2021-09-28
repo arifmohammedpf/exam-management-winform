@@ -48,8 +48,8 @@ namespace Exam_Cell
                 SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                 if (isRoom)
                 {
-                    comm.Parameters.AddWithValue("@Date", Combobox_Marking_Date.SelectedItem.ToString());
-                    comm.Parameters.AddWithValue("@Session", Combobox_Marking_Session.SelectedItem.ToString());
+                    comm.Parameters.AddWithValue("@Date", Combobox_Marking_Date.Text);
+                    comm.Parameters.AddWithValue("@Session", Combobox_Marking_Session.Text);
                 }
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
                 DataTable table = new DataTable();
@@ -150,9 +150,9 @@ namespace Exam_Cell
                     {
                         dbConnection.Open();
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                        command.Parameters.AddWithValue("@Date", Combobox_Marking_Date.SelectedItem.ToString());
-                        command.Parameters.AddWithValue("@Session", Combobox_Marking_Session.SelectedItem.ToString());
-                        command.Parameters.AddWithValue("@Room_No", Combobox_Marking_RoomNo.SelectedItem.ToString());
+                        command.Parameters.AddWithValue("@Date", Combobox_Marking_Date.Text);
+                        command.Parameters.AddWithValue("@Session", Combobox_Marking_Session.Text);
+                        command.Parameters.AddWithValue("@Room_No", Combobox_Marking_RoomNo.Text);
                         SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
                         DataTable table = new DataTable();
                         adapter.Fill(table);
@@ -341,11 +341,11 @@ namespace Exam_Cell
                 {
                     dbConnection.Open();
                     SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                    command.Parameters.AddWithValue("@Date", Combobox_Statement_Date.SelectedItem.ToString());
-                    command.Parameters.AddWithValue("@Session", Combobox_Statement_Session.SelectedItem.ToString());
-                    if(Radio_University.Checked) command.Parameters.AddWithValue("@Branch", Combobox_Statement_BranchClass.SelectedItem.ToString());
-                    else command.Parameters.AddWithValue("@Class", Combobox_Statement_BranchClass.SelectedItem.ToString());
-                    command.Parameters.AddWithValue("@Sub_Code", Combobox_Statement_SubCode.SelectedItem.ToString());
+                    command.Parameters.AddWithValue("@Date", Combobox_Statement_Date.Text);
+                    command.Parameters.AddWithValue("@Session", Combobox_Statement_Session.Text);
+                    if(Radio_University.Checked) command.Parameters.AddWithValue("@Branch", Combobox_Statement_BranchClass.Text);
+                    else command.Parameters.AddWithValue("@Class", Combobox_Statement_BranchClass.Text);
+                    command.Parameters.AddWithValue("@Sub_Code", Combobox_Statement_SubCode.Text);
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
                     DataTable table = new DataTable();
                     adapter.Fill(table);
@@ -378,7 +378,7 @@ namespace Exam_Cell
                     using (var package = new ExcelPackage())
                     {
                         //Add a new worksheet to the empty workbook
-                        var worksheet = package.Workbook.Worksheets.Add(Combobox_Statement_BranchClass.SelectedItem.ToString());
+                        var worksheet = package.Workbook.Worksheets.Add(Combobox_Statement_BranchClass.Text);
                         string Yoa;
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
@@ -392,11 +392,11 @@ namespace Exam_Cell
                         worksheet.Cells["A1"].Value = "KMEA ENGINEERING COLLEGE";
                         worksheet.Cells["A2"].Value = Textbox_Statement_ExamName.Text;
                         worksheet.Cells["A3"].Value = "ATTENDANCE STATEMENT";
-                        worksheet.Cells["A4"].Value = Combobox_Statement_Date.SelectedItem.ToString();
-                        worksheet.Cells["D4"].Value = Combobox_Statement_Session.SelectedItem.ToString();
-                        worksheet.Cells["A5"].Value = Combobox_Statement_BranchClass.SelectedItem.ToString();
+                        worksheet.Cells["A4"].Value = Combobox_Statement_Date.Text;
+                        worksheet.Cells["D4"].Value = Combobox_Statement_Session.Text;
+                        worksheet.Cells["A5"].Value = Combobox_Statement_BranchClass.Text;
                         worksheet.Cells["C5"].Value = "Year: " + Yoa;
-                        worksheet.Cells["D5"].Value = Dgv_Statement.Rows[0].Cells["Course"].Value.ToString() + " " + Combobox_Statement_SubCode.SelectedItem.ToString();
+                        worksheet.Cells["D5"].Value = Dgv_Statement.Rows[0].Cells["Course"].Value.ToString() + " " + Combobox_Statement_SubCode.Text;
 
                         using (var range = worksheet.Cells["A1:D1"])
                         {
@@ -477,7 +477,7 @@ namespace Exam_Cell
                         worksheet.Cells[count + 1, 3].Value = "No of Absent = " + abscount;
 
                         //Save Excel File  
-                        string path = createStatePath + @"\Attendance " + Combobox_Statement_Session.SelectedItem.ToString() + " " + Combobox_Statement_SubCode.SelectedItem.ToString() + " " + Combobox_Statement_BranchClass.SelectedItem.ToString() + ".xlsx";
+                        string path = createStatePath + @"\Attendance " + Combobox_Statement_Session.Text + " " + Combobox_Statement_SubCode.Text + " " + Combobox_Statement_BranchClass.Text + ".xlsx";
                         Stream stream = File.Create(path);
                         package.SaveAs(stream);
                         stream.Close();

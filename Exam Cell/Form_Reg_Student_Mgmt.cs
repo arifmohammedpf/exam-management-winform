@@ -162,8 +162,8 @@ namespace Exam_Cell
             {
                 Dgv_Students.DataSource = null;
                 string regno = Textbox_RegNo.Text;
-                string branch = Combobox_Branch.SelectedItem.ToString();
-                string semester = Combobox_Semester.SelectedItem.ToString();
+                string branch = Combobox_Branch.Text;
+                string semester = Combobox_Semester.Text;
                 HeaderCheckBox.Checked = false;
 
                 string searchRecord = "";

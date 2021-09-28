@@ -155,9 +155,9 @@ namespace Exam_Cell
         {
             if (!isFormReset)
             {
-                string scheme = Combobox_Branch_SchemeSearch.SelectedItem.ToString();
-                string branch = Combobox_Branch_SchemeSearch.SelectedItem.ToString();
-                string semester = Combobox_Semester.SelectedItem.ToString();
+                string scheme = Combobox_Branch_SchemeSearch.Text;
+                string branch = Combobox_Branch_SchemeSearch.Text;
+                string semester = Combobox_Semester.Text;
                 Dgv_Course.DataSource = null;
 
                 string searchRecord = "";
@@ -238,7 +238,7 @@ namespace Exam_Cell
         {
             if(Combobox_ExcelSheets.SelectedItem != null)
             {
-                DataTable dt = tableCollection[Combobox_ExcelSheets.SelectedItem.ToString()];
+                DataTable dt = tableCollection[Combobox_ExcelSheets.Text];
                 if (dt != null)
                 {
                     List<Class_Reg_University_Students_Excel> excst = new List<Class_Reg_University_Students_Excel>(); //<--here ExcelStudents is class name
@@ -304,7 +304,7 @@ namespace Exam_Cell
             {
                 Dgv_Students.DataSource = null;
                 HeaderCheckBox.Checked = false;
-                string branch = Combobox_Branch_Cand_Register.SelectedItem.ToString();
+                string branch = Combobox_Branch_Cand_Register.Text;
                 string yoa = Textbox_Yoa_SearchCand.Text;
 
                 string searchRecord = "";
@@ -400,7 +400,7 @@ namespace Exam_Cell
             {
                 Dgv_Students.DataSource = null;
                 HeaderCheckBox.Checked = false;
-                string studentClass = Combobox_Class.SelectedItem.ToString();
+                string studentClass = Combobox_Class.Text;
 
                 string searchRecord = "";
 

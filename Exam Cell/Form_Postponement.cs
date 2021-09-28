@@ -84,9 +84,9 @@ namespace Exam_Cell
                 HeaderCheckBox.Checked = false;
                 Dgv_Timetable.DataSource = null;
                 string searchRecord = "";
-                string branch = Combobox_Branch.SelectedItem.ToString();
+                string branch = Combobox_Branch.Text;
                 string examcode = Textbox_SubCode.Text;
-                string semester = Combobox_Semester.SelectedItem.ToString();
+                string semester = Combobox_Semester.Text;
                 string date = DateTimePicker_Date.Text;
 
                 if (Checkbox_Datewise.Checked)
@@ -165,7 +165,7 @@ namespace Exam_Cell
                 {
                     int flag = 0;
                     bool isPostponWithSession = false;
-                    if (Combobox_NewSession.SelectedItem.ToString() != "-Optional-") isPostponWithSession = true;
+                    if (Combobox_NewSession.Text != "-Optional-") isPostponWithSession = true;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
@@ -183,7 +183,7 @@ namespace Exam_Cell
                                 flag = 1;                                
                                 
                                 comm.Parameters.AddWithValue("@NewDate", DateTimePicker_NewDate.Text);
-                                if (isPostponWithSession) comm.Parameters.AddWithValue("@NewSession", Combobox_NewSession.SelectedItem.ToString());
+                                if (isPostponWithSession) comm.Parameters.AddWithValue("@NewSession", Combobox_NewSession.Text);
                                 comm.Parameters.AddWithValue("@Date", dr.Cells["Date"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Session", dr.Cells["Session"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Subcode", dr.Cells["Sub_Code"].Value.ToString());

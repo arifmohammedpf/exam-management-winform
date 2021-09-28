@@ -64,7 +64,7 @@ namespace Exam_Cell
                     dbConnection.Open();
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                     comm.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                    comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                    comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                     SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(comm);
                     DataTable studentRecords = new DataTable();
                     dataAdapter.Fill(studentRecords);
@@ -91,7 +91,7 @@ namespace Exam_Cell
                     dbConnection.Open();
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                     comm.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                    comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                    comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                     SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(comm);
                     DataTable studentRecords = new DataTable();
                     dataAdapter.Fill(studentRecords);
@@ -128,7 +128,7 @@ namespace Exam_Cell
                     dbConnection.Open();
                     SQLiteCommand comm = new SQLiteCommand(query,dbConnection);
                     comm.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                    comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                    comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -155,8 +155,8 @@ namespace Exam_Cell
                     dbConnection.Open();
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                     comm.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                    comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
-                    comm.Parameters.AddWithValue("@Room_No", Combobox_Alloted_Rooms.SelectedItem.ToString());
+                    comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
+                    comm.Parameters.AddWithValue("@Room_No", Combobox_Alloted_Rooms.Text);
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -200,7 +200,7 @@ namespace Exam_Cell
                 else query = string.Format("Select Distinct Room_No from Series_Alloted where Date=@Date and Session=@Session order by Room_No");
                 SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                 comm.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
                 DataTable roomDatatable = new DataTable();
                 adapter.Fill(roomDatatable);
@@ -262,7 +262,7 @@ namespace Exam_Cell
                     //get registered students details
                     SQLiteCommand studentCommand = new SQLiteCommand(commandQuery,dbConnection);
                     studentCommand.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                    studentCommand.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                    studentCommand.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                     SQLiteDataAdapter studentAdapter = new SQLiteDataAdapter(studentCommand);
                     DataTable table_students = new DataTable();
                     studentAdapter.Fill(table_students);
@@ -329,7 +329,7 @@ namespace Exam_Cell
                                 comm.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
                                 comm.Parameters.AddWithValue("@Room_No", roomrow["Room_No"].ToString());
                                 comm.Parameters.AddWithValue("@Seat", "A" + (i + 1));
-                                comm.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                                comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                                 comm.Parameters.AddWithValue("@Reg_No", table_students.Rows[currentStudentCount]["Reg_No"].ToString());
                                 comm.Parameters.AddWithValue("@Name", table_students.Rows[currentStudentCount]["Name"].ToString());
                                 if (Radio_University.Checked) comm.Parameters.AddWithValue("@Branch", table_students.Rows[currentStudentCount]["Branch"].ToString());
@@ -393,7 +393,7 @@ namespace Exam_Cell
                                 command4.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
                                 command4.Parameters.AddWithValue("@Room_No", roomrow["Room_No"].ToString());
                                 command4.Parameters.AddWithValue("@Seat", "A" + (i + 1));
-                                command4.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                                command4.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                                 command4.Parameters.AddWithValue("@Reg_No", Students_Aseries.Rows[currentStudentsCount]["Reg_No"].ToString());
                                 command4.Parameters.AddWithValue("@Name", Students_Aseries.Rows[currentStudentsCount]["Name"].ToString());
                                 if (Radio_University.Checked) command4.Parameters.AddWithValue("@Branch", Students_Aseries.Rows[currentStudentsCount]["Branch"].ToString());
@@ -427,7 +427,7 @@ namespace Exam_Cell
                                 command4.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
                                 command4.Parameters.AddWithValue("@Room_No", roomrow["Room_No"].ToString());
                                 command4.Parameters.AddWithValue("@Seat", "B" + (i + 1));
-                                command4.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                                command4.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                                 command4.Parameters.AddWithValue("@Reg_No", Students_Bseries.Rows[currentStudentsCount]["Reg_No"].ToString());
                                 command4.Parameters.AddWithValue("@Name", Students_Bseries.Rows[currentStudentsCount]["Name"].ToString());
                                 if (Radio_University.Checked) command4.Parameters.AddWithValue("@Branch", Students_Bseries.Rows[currentStudentsCount]["Branch"].ToString());
@@ -568,7 +568,7 @@ namespace Exam_Cell
 
         bool ValidateFromToRoomSeatNo()
         {
-            int selectedSeatsInToRoom = (totalSeats_inToRoom - int.Parse(Combobox_To_Starting_Seat.SelectedItem.ToString())) + 1;
+            int selectedSeatsInToRoom = (totalSeats_inToRoom - int.Parse(Combobox_To_Starting_Seat.Text)) + 1;
             if(seatsSelectedInFromRoom > selectedSeatsInToRoom)
                 return false;
             return true;
@@ -587,13 +587,13 @@ namespace Exam_Cell
                     {
                         try
                         {
-                            int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.SelectedItem.ToString());
-                            int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.SelectedItem.ToString());
-                            int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.SelectedItem.ToString());
-                            string fromRoomNo = Combobox_From_RoomNo.SelectedItem.ToString();
-                            string toRoomNo = Combobox_To_RoomNo.SelectedItem.ToString();
-                            string fromRoomSeries = Combobox_From_SeriesAB.SelectedItem.ToString();
-                            string toRoomSeries = Combobox_To_SeriesAB.SelectedItem.ToString();
+                            int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.Text);
+                            int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.Text);
+                            int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.Text);
+                            string fromRoomNo = Combobox_From_RoomNo.Text;
+                            string toRoomNo = Combobox_To_RoomNo.Text;
+                            string fromRoomSeries = Combobox_From_SeriesAB.Text;
+                            string toRoomSeries = Combobox_To_SeriesAB.Text;
                             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                             {
                                 dbConnection.Open();
@@ -607,7 +607,7 @@ namespace Exam_Cell
                                     comm.Parameters.AddWithValue("@Room_No", toRoomNo);
                                     comm.Parameters.AddWithValue("@Seat", toRoomSeries + toRoomStartSeat);
                                     comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
-                                    comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
+                                    comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.Text);
                                     comm.Parameters.AddWithValue("@SelectedRoom_No", fromRoomNo);
                                     comm.Parameters.AddWithValue("@SelectedSeat", fromRoomSeries + i);
                                     comm.ExecuteNonQuery();
@@ -638,8 +638,8 @@ namespace Exam_Cell
                 else query = string.Format("Select Count(*) from Series_Alloted where Date=@SelectedDate and Session=@SelectedSession and Room_No=@SelectedRoom_No");
                 SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                 comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
-                comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
-                comm.Parameters.AddWithValue("@SelectedRoom_No", Combobox_To_RoomNo.SelectedItem.ToString());
+                comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.Text);
+                comm.Parameters.AddWithValue("@SelectedRoom_No", Combobox_To_RoomNo.Text);
                 roomCount = (int)comm.ExecuteScalar();
             }
             if (roomCount > 0) return true;
@@ -662,13 +662,13 @@ namespace Exam_Cell
                         {
                             try
                             {
-                                int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.SelectedItem.ToString());
-                                int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.SelectedItem.ToString());
-                                int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.SelectedItem.ToString());
-                                string fromRoomNo = Combobox_From_RoomNo.SelectedItem.ToString();
-                                string toRoomNo = Combobox_To_RoomNo.SelectedItem.ToString();
-                                string fromRoomSeries = Combobox_From_SeriesAB.SelectedItem.ToString();
-                                string toRoomSeries = Combobox_To_SeriesAB.SelectedItem.ToString();
+                                int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.Text);
+                                int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.Text);
+                                int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.Text);
+                                string fromRoomNo = Combobox_From_RoomNo.Text;
+                                string toRoomNo = Combobox_To_RoomNo.Text;
+                                string fromRoomSeries = Combobox_From_SeriesAB.Text;
+                                string toRoomSeries = Combobox_To_SeriesAB.Text;
                                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                                 {
                                     dbConnection.Open();
@@ -677,7 +677,7 @@ namespace Exam_Cell
                                     else query = string.Format("Select Room_No,Seat,Reg_No from Series_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
                                     SQLiteCommand selectCommand = new SQLiteCommand(query, dbConnection);
                                     selectCommand.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                                    selectCommand.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                                    selectCommand.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                                     selectCommand.Parameters.AddWithValue("@Room_No", toRoomNo);
                                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(selectCommand);
                                     DataTable dataTableStudents = new DataTable();
@@ -702,7 +702,7 @@ namespace Exam_Cell
                                         comm.Parameters.AddWithValue("@Room_No", toRoomNo);
                                         comm.Parameters.AddWithValue("@Seat", toRoomSeries + toRoomStartSeat);
                                         comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
-                                        comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
+                                        comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.Text);
                                         comm.Parameters.AddWithValue("@SelectedRoom_No", fromRoomNo);
                                         comm.Parameters.AddWithValue("@SelectedSeat", fromRoomSeries + i);
                                         comm.ExecuteNonQuery();
@@ -715,7 +715,7 @@ namespace Exam_Cell
                                                 updateCommand.Parameters.AddWithValue("@Room_No", fromRoomNo);
                                                 updateCommand.Parameters.AddWithValue("@Seat", fromRoomSeries + i);
                                                 updateCommand.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
-                                                updateCommand.Parameters.AddWithValue("@SelectedSession", Combobox_Session.SelectedItem.ToString());
+                                                updateCommand.Parameters.AddWithValue("@SelectedSession", Combobox_Session.Text);
                                                 updateCommand.Parameters.AddWithValue("@SelectedRoom_No", toRoomNo);
                                                 updateCommand.Parameters.AddWithValue("@SelectedReg_No", dataRow["Reg_No"]);
                                                 updateCommand.ExecuteNonQuery();
@@ -739,7 +739,7 @@ namespace Exam_Cell
             }
             else
             {
-                string messageText = string.Format("Room '%{0}%' does not exist in Alloted records  ", Combobox_To_RoomNo.SelectedItem.ToString());
+                string messageText = string.Format("Room '%{0}%' does not exist in Alloted records  ", Combobox_To_RoomNo.Text);
                 CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
             }
         }
@@ -755,10 +755,10 @@ namespace Exam_Cell
                 {
                     dbConnection.Open();
                     string query = string.Format("Select @Series from Rooms where Room_No=@Room_No");
-                    string selectedSeries = Combobox_From_SeriesAB.SelectedItem.ToString() + "_Series";
+                    string selectedSeries = Combobox_From_SeriesAB.Text + "_Series";
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                     comm.Parameters.AddWithValue("@Series", selectedSeries);
-                    comm.Parameters.AddWithValue("@Room_No", Combobox_From_RoomNo.SelectedItem.ToString());
+                    comm.Parameters.AddWithValue("@Room_No", Combobox_From_RoomNo.Text);
                     noOfSeats = (int)comm.ExecuteScalar();
                 }
                 // fill start & end seat combobox
@@ -782,10 +782,10 @@ namespace Exam_Cell
                 {
                     dbConnection.Open();
                     string query = string.Format("Select @Series from Rooms where Room_No=@Room_No");
-                    string selectedSeries = Combobox_To_SeriesAB.SelectedItem.ToString() + "_Series";
+                    string selectedSeries = Combobox_To_SeriesAB.Text + "_Series";
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                     comm.Parameters.AddWithValue("@Series", selectedSeries);
-                    comm.Parameters.AddWithValue("@Room_No", Combobox_To_RoomNo.SelectedItem.ToString());
+                    comm.Parameters.AddWithValue("@Room_No", Combobox_To_RoomNo.Text);
                     totalSeats_inToRoom = (int)comm.ExecuteScalar();
                 }
                 // fill start & end seat combobox
@@ -806,8 +806,8 @@ namespace Exam_Cell
                 if (Combobox_From_Starting_Seat.SelectedIndex != 0 && Combobox_From_Ending_Seat.SelectedIndex != 0)
                 {
                     int startSeat, endSeat;
-                    startSeat = int.Parse(Combobox_From_Ending_Seat.SelectedItem.ToString());
-                    endSeat = int.Parse(Combobox_From_Starting_Seat.SelectedItem.ToString());
+                    startSeat = int.Parse(Combobox_From_Ending_Seat.Text);
+                    endSeat = int.Parse(Combobox_From_Starting_Seat.Text);
                     if (startSeat <= endSeat)
                     {
                         seatsSelectedInFromRoom = (endSeat - startSeat) + 1;
@@ -857,7 +857,7 @@ namespace Exam_Cell
                 dbConnection.Open();
                 SQLiteCommand command = new SQLiteCommand(commandtext, dbConnection);
                 command.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
-                command.Parameters.AddWithValue("@Session", Combobox_Session.SelectedItem.ToString());
+                command.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                 Int32 Checkcount = Convert.ToInt32(command.ExecuteScalar());
                 if (Checkcount == 0)
                 {
@@ -881,7 +881,7 @@ namespace Exam_Cell
                     Directory.CreateDirectory(createSignaturePath);
 
 
-                    string selectQuery = "", date = DateTimePicker_Date.Text, session = Combobox_Session.SelectedItem.ToString();
+                    string selectQuery = "", date = DateTimePicker_Date.Text, session = Combobox_Session.Text;
                     //Create a query and fill the data table with the data from the DB            
                     if (Radio_Series.Checked) selectQuery = string.Format("SELECT Seat,Reg_No,Name,Sub_Code,Room_No from Series_Alloted Where Date=@Date and Session=@Session order by Room_No");
                     else selectQuery = string.Format("SELECT Seat,Reg_No,Name,Sub_Code,Room_No from University_Alloted Where Date=@Date and Session=@Session order by Room_No");
@@ -1064,7 +1064,7 @@ namespace Exam_Cell
                     string createDisplayPath = Textbox_Filepath.Text + @"\Display Sheets";
                     Directory.CreateDirectory(createDisplayPath);
 
-                    string selectQuery = "", date = DateTimePicker_Date.Text, session = Combobox_Session.SelectedItem.ToString();
+                    string selectQuery = "", date = DateTimePicker_Date.Text, session = Combobox_Session.Text;
 
                     if (Radio_University.Checked) selectQuery = string.Format("SELECT Distinct Branch from University_Alloted Where Date=@Date and Session=@Session");
                     else selectQuery = string.Format("SELECT Distinct Class from Series_Alloted Where Date=@Date and Session=@Session");

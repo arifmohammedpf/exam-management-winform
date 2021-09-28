@@ -105,13 +105,13 @@ namespace Exam_Cell
                     branchTop[0] = "-Select-";
                     branchDT.Rows.InsertAt(branchTop, 0);
                     
+                    Combobox_Branch.DataSource = branchDT;
                     Combobox_Branch.DisplayMember = "Branch";
                     Combobox_Branch.ValueMember = "Branch";
-                    Combobox_Branch.DataSource = branchDT;
                     
+                    Combobox_Branch_updateStudTab.DataSource = branchDT;
                     Combobox_Branch_updateStudTab.DisplayMember = "Branch";
                     Combobox_Branch_updateStudTab.ValueMember = "Branch";
-                    Combobox_Branch_updateStudTab.DataSource = branchDT;
                     
                     Combobox_Branch_updateCourseTab.DataSource = branchDT;
                     Combobox_Branch_updateCourseTab.DisplayMember = "Branch";
@@ -212,7 +212,7 @@ namespace Exam_Cell
         {
             try
             {
-                DataTable dt = tableCollection[Combobox_StudSheets.SelectedItem.ToString()];
+                DataTable dt = tableCollection[Combobox_StudSheets.Text];
                 if (dt != null)
                 {
                     List<Class_Add_New_Student_Excel> excelClassList = new List<Class_Add_New_Student_Excel>(); //<-- Class_Add_NewStudent_Excel is class filename
@@ -243,7 +243,7 @@ namespace Exam_Cell
         {
             try
             {
-                DataTable dt = tableCollection[Combobox_BranchSheets.SelectedItem.ToString()];
+                DataTable dt = tableCollection[Combobox_BranchSheets.Text];
                 if (dt != null)
                 {
                     List<Class_Add_New_Branch_Excel> excelClassListBranch = new List<Class_Add_New_Branch_Excel>();
@@ -317,7 +317,7 @@ namespace Exam_Cell
                                 command.Parameters.AddWithValue("@YOA", dr.Cells["YOA"].Value);
                                 command.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value);
                                 command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value);
-                                command.Parameters.AddWithValue("@Branch", Combobox_Branch.SelectedItem.ToString());
+                                command.Parameters.AddWithValue("@Branch", Combobox_Branch.Text);
                                 command.ExecuteNonQuery();
                             }
                         }
@@ -438,10 +438,10 @@ namespace Exam_Cell
             HeaderCheckbox.Checked = false;
             string regno = Textbox_Regno.Text;
             string name = Textbox_Name.Text;
-            string branch = Combobox_Branch_updateStudTab.SelectedItem.ToString();
+            string branch = Combobox_Branch_updateStudTab.Text;
             string yoa = Textbox_Yoa.Text;
-            string semester = Combobox_Semester.SelectedItem.ToString();
-            string studentClass = Combobox_Class.SelectedItem.ToString();
+            string semester = Combobox_Semester.Text;
+            string studentClass = Combobox_Class.Text;
 
             string searchRecord = "";        // string for sql statements to be written
             if (regno != "")
@@ -539,9 +539,9 @@ namespace Exam_Cell
                             command.Parameters.AddWithValue("@Reg_No", Textbox_Regno.Text);
                             command.Parameters.AddWithValue("@Name", Textbox_Name.Text);
                             command.Parameters.AddWithValue("@YOA", Textbox_Yoa.Text);
-                            command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateStudTab.SelectedItem.ToString());
-                            command.Parameters.AddWithValue("@Semester", Combobox_Semester.SelectedItem.ToString());
-                            command.Parameters.AddWithValue("@Class", Combobox_Class.SelectedItem.ToString());
+                            command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateStudTab.Text);
+                            command.Parameters.AddWithValue("@Semester", Combobox_Semester.Text);
+                            command.Parameters.AddWithValue("@Class", Combobox_Class.Text);
                             command.Parameters.AddWithValue("@SelectedReg_No", selectedRegNo);
                             command.Parameters.AddWithValue("@SelectedName", selectedName);
                             command.Parameters.AddWithValue("@SelectedYOA", selectedYoa);
@@ -721,8 +721,8 @@ namespace Exam_Cell
             try
             {
                 SetLoading(true);
-                string branch = Combobox_Branch_updateCourseTab.SelectedItem.ToString();
-                string semester = Combobox_Semester_updateCourse.SelectedItem.ToString();
+                string branch = Combobox_Branch_updateCourseTab.Text;
+                string semester = Combobox_Semester_updateCourse.Text;
                 string subcode = Textbox_SubCode.Text;
                 string subname = Textbox_SubName.Text;
                 string acode = Textbox_ACode.Text;
@@ -819,8 +819,8 @@ namespace Exam_Cell
                             command.Parameters.AddWithValue("@Sub_Code", Textbox_SubCode.Text);
                             command.Parameters.AddWithValue("@Course", Textbox_Name.Text);
                             command.Parameters.AddWithValue("@Acode", Textbox_ACode.Text);
-                            command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateCourseTab.SelectedItem.ToString());
-                            command.Parameters.AddWithValue("@Semester", Combobox_Semester_updateCourse.SelectedItem.ToString());
+                            command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateCourseTab.Text);
+                            command.Parameters.AddWithValue("@Semester", Combobox_Semester_updateCourse.Text);
                             command.Parameters.AddWithValue("@SelectedSub_Code", selectedSubCode);
                             command.Parameters.AddWithValue("@SelectedCourse", selectedSubName);
                             command.Parameters.AddWithValue("@SelectedAcode", selectedAcode);
