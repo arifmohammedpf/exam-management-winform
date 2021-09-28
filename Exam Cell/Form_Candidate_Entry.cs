@@ -31,6 +31,7 @@ namespace Exam_Cell
 
         private void Form_Candidate_Entry_Load(object sender, EventArgs e)
         {
+            ComboboxesFill();
             Radio_University.Checked = true;
         }
 
@@ -53,11 +54,71 @@ namespace Exam_Cell
             this.Close();
         }
 
+        DataTable GetDataTable(string choice)
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                string query;
+                if (choice == "Branch") query = string.Format("Select Branch from Branch_Priority where Branch is not null");
+                else if (choice == "Scheme") query = string.Format("Select distinct Scheme from Scheme where Scheme is not null");
+                else query= string.Format("Select distinct Class from Students where Class is not null");
+                SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
+                DataTable queryDatatable = new DataTable();
+                adapter.Fill(queryDatatable);
+                DataRow datatableTop = queryDatatable.NewRow();
+                datatableTop[0] = "-Select-";
+                queryDatatable.Rows.InsertAt(datatableTop, 0);
+                return queryDatatable;
+            }                
+        }
+
+        void ComboboxesFill()
+        {
+            try
+            {
+                Combobox_Branch_Cand_Register.DataSource = null;
+                Combobox_Branch_SchemeSearch.DataSource = null;
+                Combobox_Scheme.DataSource = null;
+                Combobox_Class.DataSource = null;
+
+                // Branch
+                DataTable candBranch = GetDataTable("Branch");
+                Combobox_Branch_Cand_Register.DataSource = candBranch;
+                Combobox_Branch_Cand_Register.DisplayMember = "Branch";
+                Combobox_Branch_Cand_Register.ValueMember = "Branch";
+
+                DataTable schemeBranch = GetDataTable("Branch");
+                Combobox_Branch_SchemeSearch.DataSource = schemeBranch;
+                Combobox_Branch_SchemeSearch.DisplayMember = "Branch";
+                Combobox_Branch_SchemeSearch.ValueMember = "Branch";
+
+                // Scheme
+                DataTable schemeDT = GetDataTable("Scheme");
+                Combobox_Scheme.DataSource = schemeDT;
+                Combobox_Scheme.DisplayMember = "Scheme";
+                Combobox_Scheme.ValueMember = "Scheme";
+
+                // Class
+                DataTable classDT = GetDataTable("Class");
+                Combobox_Class.DataSource = classDT;
+                Combobox_Class.DisplayMember = "Class";
+                Combobox_Class.ValueMember = "Class";
+
+                Combobox_Semester.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void Radio_University_CheckedChanged(object sender, EventArgs e)
         {
-            TabControl.TabPages.Remove(Tab_Series_Search);
-            TabControl.TabPages.Insert(0, Tab_Excel_Import);
-            TabControl.TabPages.Insert(1, Tab_Univeristy_Search);
+            Panel_Import_Excel.Enabled = true;
+            Panel_University_Search.Enabled = true;
+            Panel_Series_Search.Enabled = false;
             TabControl.SelectedTab = Tab_Excel_Import;
             Groupbox_ExtraCandidateRegister.Enabled = true;
             ResetForm();
@@ -65,9 +126,9 @@ namespace Exam_Cell
 
         private void Radio_Series_CheckedChanged(object sender, EventArgs e)
         {
-            TabControl.TabPages.Remove(Tab_Excel_Import);
-            TabControl.TabPages.Remove(Tab_Univeristy_Search);
-            TabControl.TabPages.Insert(0,Tab_Series_Search);
+            Panel_Import_Excel.Enabled = false;
+            Panel_University_Search.Enabled = false;
+            Panel_Series_Search.Enabled = true;
             TabControl.SelectedTab = Tab_Series_Search;
             Groupbox_ExtraCandidateRegister.Enabled = false;
             ResetForm();
