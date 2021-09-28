@@ -61,9 +61,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.Textbox_Statement_ExamName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.Panel_Header.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.Tab_Marking.SuspendLayout();
@@ -83,7 +83,7 @@
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(900, 55);
-            this.Panel_Header.TabIndex = 3;
+            this.Panel_Header.TabIndex = 1;
             // 
             // Button_Close
             // 
@@ -94,7 +94,7 @@
             this.Button_Close.Location = new System.Drawing.Point(848, 9);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(40, 37);
-            this.Button_Close.TabIndex = 5;
+            this.Button_Close.TabIndex = 0;
             this.Button_Close.UseVisualStyleBackColor = true;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
@@ -118,7 +118,7 @@
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(900, 507);
-            this.TabControl.TabIndex = 4;
+            this.TabControl.TabIndex = 0;
             this.TabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
             // 
             // Tab_Marking
@@ -148,7 +148,7 @@
             this.groupBox2.Location = new System.Drawing.Point(27, 32);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(326, 77);
-            this.groupBox2.TabIndex = 43;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Select Exam";
             // 
@@ -158,7 +158,7 @@
             this.Radio_Series.Location = new System.Drawing.Point(206, 34);
             this.Radio_Series.Name = "Radio_Series";
             this.Radio_Series.Size = new System.Drawing.Size(61, 21);
-            this.Radio_Series.TabIndex = 5;
+            this.Radio_Series.TabIndex = 1;
             this.Radio_Series.TabStop = true;
             this.Radio_Series.Text = "Series";
             this.Radio_Series.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             this.Radio_University.Location = new System.Drawing.Point(53, 34);
             this.Radio_University.Name = "Radio_University";
             this.Radio_University.Size = new System.Drawing.Size(83, 21);
-            this.Radio_University.TabIndex = 5;
+            this.Radio_University.TabIndex = 0;
             this.Radio_University.TabStop = true;
             this.Radio_University.Text = "University";
             this.Radio_University.UseVisualStyleBackColor = true;
@@ -190,7 +190,7 @@
             this.Button_Marking_Search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Marking_Search.Name = "Button_Marking_Search";
             this.Button_Marking_Search.Size = new System.Drawing.Size(240, 40);
-            this.Button_Marking_Search.TabIndex = 41;
+            this.Button_Marking_Search.TabIndex = 4;
             this.Button_Marking_Search.Text = "Search";
             this.Button_Marking_Search.UseVisualStyleBackColor = false;
             this.Button_Marking_Search.Click += new System.EventHandler(this.Button_Marking_Search_Click);
@@ -205,7 +205,7 @@
             this.Combobox_Marking_Session.Location = new System.Drawing.Point(113, 174);
             this.Combobox_Marking_Session.Name = "Combobox_Marking_Session";
             this.Combobox_Marking_Session.Size = new System.Drawing.Size(240, 25);
-            this.Combobox_Marking_Session.TabIndex = 38;
+            this.Combobox_Marking_Session.TabIndex = 2;
             this.Combobox_Marking_Session.SelectedIndexChanged += new System.EventHandler(this.Combobox_Marking_Session_SelectedIndexChanged);
             // 
             // Combobox_Marking_RoomNo
@@ -214,7 +214,7 @@
             this.Combobox_Marking_RoomNo.Location = new System.Drawing.Point(113, 209);
             this.Combobox_Marking_RoomNo.Name = "Combobox_Marking_RoomNo";
             this.Combobox_Marking_RoomNo.Size = new System.Drawing.Size(240, 25);
-            this.Combobox_Marking_RoomNo.TabIndex = 39;
+            this.Combobox_Marking_RoomNo.TabIndex = 3;
             // 
             // Combobox_Marking_Date
             // 
@@ -222,7 +222,7 @@
             this.Combobox_Marking_Date.Location = new System.Drawing.Point(113, 139);
             this.Combobox_Marking_Date.Name = "Combobox_Marking_Date";
             this.Combobox_Marking_Date.Size = new System.Drawing.Size(240, 25);
-            this.Combobox_Marking_Date.TabIndex = 40;
+            this.Combobox_Marking_Date.TabIndex = 1;
             this.Combobox_Marking_Date.SelectedIndexChanged += new System.EventHandler(this.Combobox_Marking_Date_SelectedIndexChanged);
             // 
             // label13
@@ -266,7 +266,7 @@
             this.Button_Marking_Save.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Marking_Save.Name = "Button_Marking_Save";
             this.Button_Marking_Save.Size = new System.Drawing.Size(240, 40);
-            this.Button_Marking_Save.TabIndex = 34;
+            this.Button_Marking_Save.TabIndex = 5;
             this.Button_Marking_Save.Text = "Save";
             this.Button_Marking_Save.UseVisualStyleBackColor = false;
             this.Button_Marking_Save.Click += new System.EventHandler(this.Button_Marking_Save_Click);
@@ -275,6 +275,8 @@
             // 
             this.Dgv_Marking.AllowUserToAddRows = false;
             this.Dgv_Marking.AllowUserToDeleteRows = false;
+            this.Dgv_Marking.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Marking.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Marking.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Marking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Marking.Dock = System.Windows.Forms.DockStyle.Right;
@@ -315,7 +317,7 @@
             this.Button_Prepare_Statement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Prepare_Statement.Name = "Button_Prepare_Statement";
             this.Button_Prepare_Statement.Size = new System.Drawing.Size(180, 40);
-            this.Button_Prepare_Statement.TabIndex = 32;
+            this.Button_Prepare_Statement.TabIndex = 3;
             this.Button_Prepare_Statement.Text = "Prepare Statement";
             this.Button_Prepare_Statement.UseVisualStyleBackColor = false;
             this.Button_Prepare_Statement.Click += new System.EventHandler(this.Button_Prepare_Statement_Click);
@@ -324,6 +326,8 @@
             // 
             this.Dgv_Statement.AllowUserToAddRows = false;
             this.Dgv_Statement.AllowUserToDeleteRows = false;
+            this.Dgv_Statement.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Statement.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Statement.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Statement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Statement.Dock = System.Windows.Forms.DockStyle.Right;
@@ -350,7 +354,7 @@
             this.groupBox1.Location = new System.Drawing.Point(6, 42);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(373, 323);
-            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
@@ -395,7 +399,7 @@
             this.Button_Statement_Search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Statement_Search.Name = "Button_Statement_Search";
             this.Button_Statement_Search.Size = new System.Drawing.Size(240, 40);
-            this.Button_Statement_Search.TabIndex = 30;
+            this.Button_Statement_Search.TabIndex = 4;
             this.Button_Statement_Search.Text = "Search";
             this.Button_Statement_Search.UseVisualStyleBackColor = false;
             this.Button_Statement_Search.Click += new System.EventHandler(this.Button_Statement_Search_Click);
@@ -410,7 +414,7 @@
             this.Combobox_Statement_Session.Location = new System.Drawing.Point(127, 72);
             this.Combobox_Statement_Session.Name = "Combobox_Statement_Session";
             this.Combobox_Statement_Session.Size = new System.Drawing.Size(240, 25);
-            this.Combobox_Statement_Session.TabIndex = 14;
+            this.Combobox_Statement_Session.TabIndex = 1;
             // 
             // Combobox_Statement_SubCode
             // 
@@ -418,7 +422,7 @@
             this.Combobox_Statement_SubCode.Location = new System.Drawing.Point(127, 146);
             this.Combobox_Statement_SubCode.Name = "Combobox_Statement_SubCode";
             this.Combobox_Statement_SubCode.Size = new System.Drawing.Size(240, 25);
-            this.Combobox_Statement_SubCode.TabIndex = 14;
+            this.Combobox_Statement_SubCode.TabIndex = 3;
             // 
             // Combobox_Statement_Date
             // 
@@ -426,7 +430,7 @@
             this.Combobox_Statement_Date.Location = new System.Drawing.Point(127, 35);
             this.Combobox_Statement_Date.Name = "Combobox_Statement_Date";
             this.Combobox_Statement_Date.Size = new System.Drawing.Size(240, 25);
-            this.Combobox_Statement_Date.TabIndex = 14;
+            this.Combobox_Statement_Date.TabIndex = 0;
             // 
             // Combobox_Statement_BranchClass
             // 
@@ -434,7 +438,7 @@
             this.Combobox_Statement_BranchClass.Location = new System.Drawing.Point(127, 109);
             this.Combobox_Statement_BranchClass.Name = "Combobox_Statement_BranchClass";
             this.Combobox_Statement_BranchClass.Size = new System.Drawing.Size(240, 25);
-            this.Combobox_Statement_BranchClass.TabIndex = 14;
+            this.Combobox_Statement_BranchClass.TabIndex = 2;
             // 
             // label2
             // 
@@ -472,22 +476,6 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Exam Code :";
             // 
-            // Textbox_Statement_ExamName
-            // 
-            this.Textbox_Statement_ExamName.Location = new System.Drawing.Point(18, 392);
-            this.Textbox_Statement_ExamName.Name = "Textbox_Statement_ExamName";
-            this.Textbox_Statement_ExamName.Size = new System.Drawing.Size(355, 22);
-            this.Textbox_Statement_ExamName.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 369);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Name of Examination :";
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
@@ -502,9 +490,25 @@
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(373, 28);
-            this.button1.TabIndex = 30;
+            this.button1.TabIndex = 0;
             this.button1.Text = "re-load datas button needed ?";
             this.button1.UseVisualStyleBackColor = false;
+            // 
+            // Textbox_Statement_ExamName
+            // 
+            this.Textbox_Statement_ExamName.Location = new System.Drawing.Point(18, 392);
+            this.Textbox_Statement_ExamName.Name = "Textbox_Statement_ExamName";
+            this.Textbox_Statement_ExamName.Size = new System.Drawing.Size(355, 22);
+            this.Textbox_Statement_ExamName.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 369);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Name of Examination :";
             // 
             // Form_Absentees
             // 

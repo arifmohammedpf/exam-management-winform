@@ -115,7 +115,7 @@
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(975, 55);
-            this.Panel_Header.TabIndex = 3;
+            this.Panel_Header.TabIndex = 1;
             // 
             // Button_Close
             // 
@@ -126,7 +126,7 @@
             this.Button_Close.Location = new System.Drawing.Point(923, 9);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(40, 37);
-            this.Button_Close.TabIndex = 5;
+            this.Button_Close.TabIndex = 0;
             this.Button_Close.UseVisualStyleBackColor = true;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
@@ -152,7 +152,7 @@
             this.TabPanel.Name = "TabPanel";
             this.TabPanel.SelectedIndex = 0;
             this.TabPanel.Size = new System.Drawing.Size(975, 610);
-            this.TabPanel.TabIndex = 4;
+            this.TabPanel.TabIndex = 0;
             // 
             // Tab_Add
             // 
@@ -192,7 +192,7 @@
             this.groupBox1.Location = new System.Drawing.Point(544, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(383, 219);
-            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Branch/Courses";
             // 
@@ -210,7 +210,7 @@
             this.Button_Select_ExcelBranch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Select_ExcelBranch.Name = "Button_Select_ExcelBranch";
             this.Button_Select_ExcelBranch.Size = new System.Drawing.Size(133, 40);
-            this.Button_Select_ExcelBranch.TabIndex = 29;
+            this.Button_Select_ExcelBranch.TabIndex = 0;
             this.Button_Select_ExcelBranch.Text = "Select Excel";
             this.Button_Select_ExcelBranch.UseVisualStyleBackColor = false;
             this.Button_Select_ExcelBranch.Click += new System.EventHandler(this.Button_Select_ExcelBranch_Click);
@@ -230,7 +230,7 @@
             this.Button_Add_BranchExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Add_BranchExcel.Name = "Button_Add_BranchExcel";
             this.Button_Add_BranchExcel.Size = new System.Drawing.Size(100, 40);
-            this.Button_Add_BranchExcel.TabIndex = 30;
+            this.Button_Add_BranchExcel.TabIndex = 2;
             this.Button_Add_BranchExcel.Text = "Add";
             this.Button_Add_BranchExcel.UseVisualStyleBackColor = false;
             this.Button_Add_BranchExcel.Click += new System.EventHandler(this.Button_Add_BranchExcel_Click);
@@ -251,7 +251,7 @@
             this.Combobox_BranchSheets.Location = new System.Drawing.Point(47, 122);
             this.Combobox_BranchSheets.Name = "Combobox_BranchSheets";
             this.Combobox_BranchSheets.Size = new System.Drawing.Size(284, 25);
-            this.Combobox_BranchSheets.TabIndex = 8;
+            this.Combobox_BranchSheets.TabIndex = 1;
             this.Combobox_BranchSheets.SelectedIndexChanged += new System.EventHandler(this.Combobox_BranchSheets_SelectedIndexChanged);
             // 
             // groupBox3
@@ -264,7 +264,7 @@
             this.groupBox3.Location = new System.Drawing.Point(33, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(383, 219);
-            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Add Students";
             // 
@@ -282,7 +282,7 @@
             this.Button_Select_ExcelStudent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Select_ExcelStudent.Name = "Button_Select_ExcelStudent";
             this.Button_Select_ExcelStudent.Size = new System.Drawing.Size(133, 40);
-            this.Button_Select_ExcelStudent.TabIndex = 29;
+            this.Button_Select_ExcelStudent.TabIndex = 0;
             this.Button_Select_ExcelStudent.Text = "Select Excel";
             this.Button_Select_ExcelStudent.UseVisualStyleBackColor = false;
             this.Button_Select_ExcelStudent.Click += new System.EventHandler(this.Button_Select_ExcelStudent_Click);
@@ -302,7 +302,7 @@
             this.Button_Add_StudExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Add_StudExcel.Name = "Button_Add_StudExcel";
             this.Button_Add_StudExcel.Size = new System.Drawing.Size(100, 40);
-            this.Button_Add_StudExcel.TabIndex = 30;
+            this.Button_Add_StudExcel.TabIndex = 3;
             this.Button_Add_StudExcel.Text = "Add";
             this.Button_Add_StudExcel.UseVisualStyleBackColor = false;
             this.Button_Add_StudExcel.Click += new System.EventHandler(this.Button_Add_StudExcel_Click);
@@ -314,7 +314,7 @@
             this.Textbox_Filepath_StudentExcel.Name = "Textbox_Filepath_StudentExcel";
             this.Textbox_Filepath_StudentExcel.ReadOnly = true;
             this.Textbox_Filepath_StudentExcel.Size = new System.Drawing.Size(284, 22);
-            this.Textbox_Filepath_StudentExcel.TabIndex = 7;
+            this.Textbox_Filepath_StudentExcel.TabIndex = 0;
             // 
             // Combobox_Branch
             // 
@@ -323,7 +323,7 @@
             this.Combobox_Branch.Location = new System.Drawing.Point(47, 135);
             this.Combobox_Branch.Name = "Combobox_Branch";
             this.Combobox_Branch.Size = new System.Drawing.Size(284, 25);
-            this.Combobox_Branch.TabIndex = 8;
+            this.Combobox_Branch.TabIndex = 2;
             // 
             // Combobox_StudSheets
             // 
@@ -334,7 +334,7 @@
             this.Combobox_StudSheets.Location = new System.Drawing.Point(47, 103);
             this.Combobox_StudSheets.Name = "Combobox_StudSheets";
             this.Combobox_StudSheets.Size = new System.Drawing.Size(284, 25);
-            this.Combobox_StudSheets.TabIndex = 8;
+            this.Combobox_StudSheets.TabIndex = 1;
             this.Combobox_StudSheets.SelectedIndexChanged += new System.EventHandler(this.Combobox_StudSheets_SelectedIndexChanged);
             // 
             // Tab_Update_Student
@@ -357,7 +357,7 @@
             this.HeaderCheckbox.Location = new System.Drawing.Point(55, 208);
             this.HeaderCheckbox.Name = "HeaderCheckbox";
             this.HeaderCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckbox.TabIndex = 30;
+            this.HeaderCheckbox.TabIndex = 1;
             this.HeaderCheckbox.UseVisualStyleBackColor = true;
             this.HeaderCheckbox.CheckedChanged += new System.EventHandler(this.HeaderCheckbox_CheckedChanged);
             // 
@@ -368,7 +368,7 @@
             this.groupBox4.Location = new System.Drawing.Point(743, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(218, 184);
-            this.groupBox4.TabIndex = 29;
+            this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Update Student\'s Semester";
             // 
@@ -386,7 +386,7 @@
             this.Button_Promote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Promote.Name = "Button_Promote";
             this.Button_Promote.Size = new System.Drawing.Size(125, 40);
-            this.Button_Promote.TabIndex = 28;
+            this.Button_Promote.TabIndex = 0;
             this.Button_Promote.Text = "Promote";
             this.Button_Promote.UseVisualStyleBackColor = false;
             this.Button_Promote.Click += new System.EventHandler(this.Button_Promote_Click);
@@ -405,7 +405,7 @@
             this.Button_Demote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Demote.Name = "Button_Demote";
             this.Button_Demote.Size = new System.Drawing.Size(125, 40);
-            this.Button_Demote.TabIndex = 25;
+            this.Button_Demote.TabIndex = 1;
             this.Button_Demote.Text = "Demote";
             this.Button_Demote.UseVisualStyleBackColor = false;
             this.Button_Demote.Click += new System.EventHandler(this.Button_Demote_Click);
@@ -414,6 +414,8 @@
             // 
             this.Dgv_Student.AllowUserToAddRows = false;
             this.Dgv_Student.AllowUserToDeleteRows = false;
+            this.Dgv_Student.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Student.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Student.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Student.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -423,7 +425,7 @@
             this.Dgv_Student.Name = "Dgv_Student";
             this.Dgv_Student.RowTemplate.Height = 24;
             this.Dgv_Student.Size = new System.Drawing.Size(961, 372);
-            this.Dgv_Student.TabIndex = 28;
+            this.Dgv_Student.TabIndex = 2;
             this.Dgv_Student.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Student_CellEndEdit);
             this.Dgv_Student.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Student_CellMouseUp);
             this.Dgv_Student.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Student_RowHeaderMouseDoubleClick);
@@ -432,7 +434,7 @@
             // 
             this.CheckBoxColumn.HeaderText = "";
             this.CheckBoxColumn.Name = "CheckBoxColumn";
-            this.CheckBoxColumn.Width = 35;
+            this.CheckBoxColumn.Width = 5;
             // 
             // groupBox2
             // 
@@ -455,7 +457,7 @@
             this.groupBox2.Location = new System.Drawing.Point(6, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(731, 184);
-            this.groupBox2.TabIndex = 27;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search/Update";
             // 
@@ -464,7 +466,7 @@
             this.Textbox_Yoa.Location = new System.Drawing.Point(85, 95);
             this.Textbox_Yoa.Name = "Textbox_Yoa";
             this.Textbox_Yoa.Size = new System.Drawing.Size(270, 22);
-            this.Textbox_Yoa.TabIndex = 39;
+            this.Textbox_Yoa.TabIndex = 2;
             // 
             // Button_Clear_updateStudentTab
             // 
@@ -480,7 +482,7 @@
             this.Button_Clear_updateStudentTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Clear_updateStudentTab.Name = "Button_Clear_updateStudentTab";
             this.Button_Clear_updateStudentTab.Size = new System.Drawing.Size(100, 40);
-            this.Button_Clear_updateStudentTab.TabIndex = 25;
+            this.Button_Clear_updateStudentTab.TabIndex = 8;
             this.Button_Clear_updateStudentTab.Text = "Clear";
             this.Button_Clear_updateStudentTab.UseVisualStyleBackColor = false;
             this.Button_Clear_updateStudentTab.Click += new System.EventHandler(this.Button_Clear_updateStudentTab_Click);
@@ -490,7 +492,7 @@
             this.Textbox_Name.Location = new System.Drawing.Point(85, 61);
             this.Textbox_Name.Name = "Textbox_Name";
             this.Textbox_Name.Size = new System.Drawing.Size(270, 22);
-            this.Textbox_Name.TabIndex = 40;
+            this.Textbox_Name.TabIndex = 1;
             // 
             // Button_Search_updateStudentTab
             // 
@@ -506,7 +508,7 @@
             this.Button_Search_updateStudentTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Search_updateStudentTab.Name = "Button_Search_updateStudentTab";
             this.Button_Search_updateStudentTab.Size = new System.Drawing.Size(100, 40);
-            this.Button_Search_updateStudentTab.TabIndex = 25;
+            this.Button_Search_updateStudentTab.TabIndex = 6;
             this.Button_Search_updateStudentTab.Text = "Search";
             this.Button_Search_updateStudentTab.UseVisualStyleBackColor = false;
             this.Button_Search_updateStudentTab.Click += new System.EventHandler(this.Button_Search_updateStudentTab_Click);
@@ -516,7 +518,7 @@
             this.Textbox_Regno.Location = new System.Drawing.Point(85, 27);
             this.Textbox_Regno.Name = "Textbox_Regno";
             this.Textbox_Regno.Size = new System.Drawing.Size(270, 22);
-            this.Textbox_Regno.TabIndex = 41;
+            this.Textbox_Regno.TabIndex = 0;
             // 
             // Button_Update_updateStudentTab
             // 
@@ -532,7 +534,7 @@
             this.Button_Update_updateStudentTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Update_updateStudentTab.Name = "Button_Update_updateStudentTab";
             this.Button_Update_updateStudentTab.Size = new System.Drawing.Size(100, 40);
-            this.Button_Update_updateStudentTab.TabIndex = 26;
+            this.Button_Update_updateStudentTab.TabIndex = 7;
             this.Button_Update_updateStudentTab.Text = "Update";
             this.Button_Update_updateStudentTab.UseVisualStyleBackColor = false;
             this.Button_Update_updateStudentTab.Click += new System.EventHandler(this.Button_Update_updateStudentTab_Click);
@@ -544,7 +546,7 @@
             this.Combobox_Class.Location = new System.Drawing.Point(452, 93);
             this.Combobox_Class.Name = "Combobox_Class";
             this.Combobox_Class.Size = new System.Drawing.Size(270, 25);
-            this.Combobox_Class.TabIndex = 36;
+            this.Combobox_Class.TabIndex = 5;
             // 
             // label4
             // 
@@ -572,7 +574,7 @@
             this.Button_Delete_Selected_updateStudentTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Delete_Selected_updateStudentTab.Name = "Button_Delete_Selected_updateStudentTab";
             this.Button_Delete_Selected_updateStudentTab.Size = new System.Drawing.Size(150, 40);
-            this.Button_Delete_Selected_updateStudentTab.TabIndex = 24;
+            this.Button_Delete_Selected_updateStudentTab.TabIndex = 9;
             this.Button_Delete_Selected_updateStudentTab.Text = "Delete Selected";
             this.Button_Delete_Selected_updateStudentTab.UseVisualStyleBackColor = false;
             this.Button_Delete_Selected_updateStudentTab.Click += new System.EventHandler(this.Button_Delete_Selected_updateStudentTab_Click);
@@ -625,10 +627,20 @@
             // 
             this.Combobox_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Semester.FormattingEnabled = true;
+            this.Combobox_Semester.Items.AddRange(new object[] {
+            "-Select-",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
             this.Combobox_Semester.Location = new System.Drawing.Point(452, 25);
             this.Combobox_Semester.Name = "Combobox_Semester";
             this.Combobox_Semester.Size = new System.Drawing.Size(270, 25);
-            this.Combobox_Semester.TabIndex = 37;
+            this.Combobox_Semester.TabIndex = 3;
             // 
             // Combobox_Branch_updateStudTab
             // 
@@ -637,7 +649,7 @@
             this.Combobox_Branch_updateStudTab.Location = new System.Drawing.Point(452, 59);
             this.Combobox_Branch_updateStudTab.Name = "Combobox_Branch_updateStudTab";
             this.Combobox_Branch_updateStudTab.Size = new System.Drawing.Size(270, 25);
-            this.Combobox_Branch_updateStudTab.TabIndex = 38;
+            this.Combobox_Branch_updateStudTab.TabIndex = 4;
             // 
             // label8
             // 
@@ -681,7 +693,7 @@
             this.HeaderCheckbox_CourseDgv.Location = new System.Drawing.Point(52, 163);
             this.HeaderCheckbox_CourseDgv.Name = "HeaderCheckbox_CourseDgv";
             this.HeaderCheckbox_CourseDgv.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckbox_CourseDgv.TabIndex = 68;
+            this.HeaderCheckbox_CourseDgv.TabIndex = 5;
             this.HeaderCheckbox_CourseDgv.UseVisualStyleBackColor = true;
             this.HeaderCheckbox_CourseDgv.CheckedChanged += new System.EventHandler(this.HeaderCheckbox_CourseDgv_CheckedChanged);
             // 
@@ -689,6 +701,8 @@
             // 
             this.Dgv_Course.AllowUserToAddRows = false;
             this.Dgv_Course.AllowUserToDeleteRows = false;
+            this.Dgv_Course.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Course.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Course.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Course.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -707,7 +721,7 @@
             // 
             this.CheckboxColumn_CourseDgv.HeaderText = "";
             this.CheckboxColumn_CourseDgv.Name = "CheckboxColumn_CourseDgv";
-            this.CheckboxColumn_CourseDgv.Width = 35;
+            this.CheckboxColumn_CourseDgv.Width = 5;
             // 
             // Button_Clear_updateCourseTab
             // 
@@ -723,7 +737,7 @@
             this.Button_Clear_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Clear_updateCourseTab.Name = "Button_Clear_updateCourseTab";
             this.Button_Clear_updateCourseTab.Size = new System.Drawing.Size(100, 40);
-            this.Button_Clear_updateCourseTab.TabIndex = 64;
+            this.Button_Clear_updateCourseTab.TabIndex = 9;
             this.Button_Clear_updateCourseTab.Text = "Clear";
             this.Button_Clear_updateCourseTab.UseVisualStyleBackColor = false;
             this.Button_Clear_updateCourseTab.Click += new System.EventHandler(this.Button_Clear_updateCourseTab_Click);
@@ -742,7 +756,7 @@
             this.Button_Search_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Search_updateCourseTab.Name = "Button_Search_updateCourseTab";
             this.Button_Search_updateCourseTab.Size = new System.Drawing.Size(100, 40);
-            this.Button_Search_updateCourseTab.TabIndex = 65;
+            this.Button_Search_updateCourseTab.TabIndex = 6;
             this.Button_Search_updateCourseTab.Text = "Search";
             this.Button_Search_updateCourseTab.UseVisualStyleBackColor = false;
             this.Button_Search_updateCourseTab.Click += new System.EventHandler(this.Button_Search_updateCourseTab_Click);
@@ -761,7 +775,7 @@
             this.Button_Update_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Update_updateCourseTab.Name = "Button_Update_updateCourseTab";
             this.Button_Update_updateCourseTab.Size = new System.Drawing.Size(100, 40);
-            this.Button_Update_updateCourseTab.TabIndex = 66;
+            this.Button_Update_updateCourseTab.TabIndex = 7;
             this.Button_Update_updateCourseTab.Text = "Update";
             this.Button_Update_updateCourseTab.UseVisualStyleBackColor = false;
             this.Button_Update_updateCourseTab.Click += new System.EventHandler(this.Button_Update_updateCourseTab_Click);
@@ -781,7 +795,7 @@
             this.Button_Delete_updateCourseTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Delete_updateCourseTab.Name = "Button_Delete_updateCourseTab";
             this.Button_Delete_updateCourseTab.Size = new System.Drawing.Size(134, 40);
-            this.Button_Delete_updateCourseTab.TabIndex = 63;
+            this.Button_Delete_updateCourseTab.TabIndex = 8;
             this.Button_Delete_updateCourseTab.Text = "Delete Selected";
             this.Button_Delete_updateCourseTab.UseVisualStyleBackColor = false;
             this.Button_Delete_updateCourseTab.Click += new System.EventHandler(this.Button_Delete_updateCourseTab_Click);
@@ -815,28 +829,28 @@
             this.Combobox_Branch_updateCourseTab.Location = new System.Drawing.Point(161, 23);
             this.Combobox_Branch_updateCourseTab.Name = "Combobox_Branch_updateCourseTab";
             this.Combobox_Branch_updateCourseTab.Size = new System.Drawing.Size(270, 25);
-            this.Combobox_Branch_updateCourseTab.TabIndex = 61;
+            this.Combobox_Branch_updateCourseTab.TabIndex = 0;
             // 
             // Textbox_ACode
             // 
             this.Textbox_ACode.Location = new System.Drawing.Point(787, 60);
             this.Textbox_ACode.Name = "Textbox_ACode";
             this.Textbox_ACode.Size = new System.Drawing.Size(68, 22);
-            this.Textbox_ACode.TabIndex = 57;
+            this.Textbox_ACode.TabIndex = 4;
             // 
             // Textbox_SubCode
             // 
             this.Textbox_SubCode.Location = new System.Drawing.Point(516, 60);
             this.Textbox_SubCode.Name = "Textbox_SubCode";
             this.Textbox_SubCode.Size = new System.Drawing.Size(195, 22);
-            this.Textbox_SubCode.TabIndex = 58;
+            this.Textbox_SubCode.TabIndex = 3;
             // 
             // Textbox_SubName
             // 
             this.Textbox_SubName.Location = new System.Drawing.Point(161, 60);
             this.Textbox_SubName.Name = "Textbox_SubName";
             this.Textbox_SubName.Size = new System.Drawing.Size(270, 22);
-            this.Textbox_SubName.TabIndex = 59;
+            this.Textbox_SubName.TabIndex = 1;
             // 
             // label6
             // 
@@ -875,10 +889,20 @@
             // 
             this.Combobox_Semester_updateCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Semester_updateCourse.FormattingEnabled = true;
+            this.Combobox_Semester_updateCourse.Items.AddRange(new object[] {
+            "-Select-",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
             this.Combobox_Semester_updateCourse.Location = new System.Drawing.Point(516, 23);
             this.Combobox_Semester_updateCourse.Name = "Combobox_Semester_updateCourse";
             this.Combobox_Semester_updateCourse.Size = new System.Drawing.Size(195, 25);
-            this.Combobox_Semester_updateCourse.TabIndex = 61;
+            this.Combobox_Semester_updateCourse.TabIndex = 2;
             // 
             // ProgressBarTimer
             // 
@@ -924,6 +948,7 @@
             this.Name = "Form_Database_Management";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Database_Mgmt_Student";
+            this.Load += new System.EventHandler(this.Form_Database_Management_Load);
             this.Panel_Header.ResumeLayout(false);
             this.Panel_Header.PerformLayout();
             this.TabPanel.ResumeLayout(false);

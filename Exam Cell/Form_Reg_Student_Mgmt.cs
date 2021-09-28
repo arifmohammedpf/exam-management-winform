@@ -54,6 +54,7 @@ namespace Exam_Cell
         {
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
+                dbConnection.Open();
                 SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                 studentCount = comm.ExecuteScalar().ToString();
             }
@@ -186,6 +187,7 @@ namespace Exam_Cell
                 else query = "Select * from Series_Alloted where " + searchRecord;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                     SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
                     DataTable studentRecord = new DataTable();
@@ -214,6 +216,7 @@ namespace Exam_Cell
 
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_Students.Rows)
                         {

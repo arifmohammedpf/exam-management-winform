@@ -53,6 +53,7 @@ namespace Exam_Cell
             {
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     Combobox_Branch.DataSource = null;
 
                     string branchQuery = string.Format("Select Branch from Branch_Priority where Branch is not null");
@@ -111,6 +112,7 @@ namespace Exam_Cell
                     DataTable TimeTable;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
                         TimeTable = new DataTable();
@@ -166,6 +168,7 @@ namespace Exam_Cell
                     if (Combobox_NewSession.SelectedItem.ToString() != "-Optional-") isPostponWithSession = true;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         SQLiteCommand comm;
                         string query = "";
                         if (isPostponWithSession)
@@ -264,13 +267,3 @@ namespace Exam_Cell
 // * dont know if any error comes when comm.paramter.addValue is given inside loop without comm builder (line 177)...check all the forms...
 // // // // FINAL DO // // // //
     // * in Dgv, set auto size rows as displayed cell in ALL the forms
-/*
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-*/

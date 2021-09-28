@@ -12,7 +12,7 @@ namespace Exam_Cell
         public string Scheme { get; set; }
         public string Semester { get; set; }
         public string Sub_Code { get; set; }
-        public string Sub_Name { get; set; }
+        public string Course { get; set; }
         public string Acode { get; set; }
     }
 }

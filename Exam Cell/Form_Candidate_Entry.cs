@@ -180,6 +180,7 @@ namespace Exam_Cell
                     DataTable courseTable;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
                         courseTable = new DataTable();
@@ -268,6 +269,7 @@ namespace Exam_Cell
                 {
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
                         SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_Students.Rows)
@@ -321,6 +323,7 @@ namespace Exam_Cell
                     string query = "Select * from Students where " + searchRecord;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
                         DataTable studentRecord = new DataTable();
@@ -351,6 +354,7 @@ namespace Exam_Cell
                 string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
                     //select checkbox from course dgv
                     foreach (DataGridViewRow dr in Dgv_Course.Rows)
@@ -407,6 +411,7 @@ namespace Exam_Cell
                     string query = "Select * from Students where " + searchRecord;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
                         DataTable studentRecord = new DataTable();
@@ -432,6 +437,7 @@ namespace Exam_Cell
                 string query = string.Format("Insert into Series_Candidates(Name,Reg_No,Class,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Class,@Branch,@Semester,@Course)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
                     //select checkbox from course dgv
                     foreach (DataGridViewRow dr in Dgv_Course.Rows)
@@ -481,6 +487,7 @@ namespace Exam_Cell
                 string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
                     //select checkbox from course dgv
                     foreach (DataGridViewRow dr in Dgv_Course.Rows)

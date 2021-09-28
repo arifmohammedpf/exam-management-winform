@@ -48,7 +48,7 @@
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(475, 55);
-            this.Panel_Header.TabIndex = 4;
+            this.Panel_Header.TabIndex = 2;
             // 
             // PictureBox_Icon
             // 
@@ -84,8 +84,9 @@
             this.Button_No.Location = new System.Drawing.Point(363, 157);
             this.Button_No.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_No.Name = "Button_No";
+            this.Button_No.Padding = new System.Windows.Forms.Padding(5);
             this.Button_No.Size = new System.Drawing.Size(100, 40);
-            this.Button_No.TabIndex = 43;
+            this.Button_No.TabIndex = 1;
             this.Button_No.Text = "No";
             this.Button_No.UseVisualStyleBackColor = false;
             this.Button_No.Click += new System.EventHandler(this.Button_No_Click);
@@ -104,8 +105,9 @@
             this.Button_Yes.Location = new System.Drawing.Point(250, 157);
             this.Button_Yes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Yes.Name = "Button_Yes";
+            this.Button_Yes.Padding = new System.Windows.Forms.Padding(5);
             this.Button_Yes.Size = new System.Drawing.Size(100, 40);
-            this.Button_Yes.TabIndex = 42;
+            this.Button_Yes.TabIndex = 0;
             this.Button_Yes.Text = "Yes";
             this.Button_Yes.UseVisualStyleBackColor = false;
             this.Button_Yes.Click += new System.EventHandler(this.Button_Yes_Click);
@@ -124,8 +126,9 @@
             this.Button_Ok.Location = new System.Drawing.Point(363, 157);
             this.Button_Ok.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Ok.Name = "Button_Ok";
+            this.Button_Ok.Padding = new System.Windows.Forms.Padding(5);
             this.Button_Ok.Size = new System.Drawing.Size(100, 40);
-            this.Button_Ok.TabIndex = 43;
+            this.Button_Ok.TabIndex = 2;
             this.Button_Ok.Text = "Ok";
             this.Button_Ok.UseVisualStyleBackColor = false;
             this.Button_Ok.Click += new System.EventHandler(this.Button_Ok_Click);
@@ -134,7 +137,7 @@
             // 
             this.Label_Message.AutoSize = true;
             this.Label_Message.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Message.Location = new System.Drawing.Point(63, 90);
+            this.Label_Message.Location = new System.Drawing.Point(54, 90);
             this.Label_Message.Name = "Label_Message";
             this.Label_Message.Size = new System.Drawing.Size(279, 20);
             this.Label_Message.TabIndex = 44;
@@ -147,15 +150,15 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(475, 210);
-            this.Controls.Add(this.Label_Message);
             this.Controls.Add(this.Button_Yes);
-            this.Controls.Add(this.Panel_Header);
             this.Controls.Add(this.Button_No);
             this.Controls.Add(this.Button_Ok);
+            this.Controls.Add(this.Label_Message);
+            this.Controls.Add(this.Panel_Header);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximumSize = new System.Drawing.Size(650, 800);
+            this.MaximumSize = new System.Drawing.Size(1200, 720);
             this.MinimumSize = new System.Drawing.Size(475, 210);
             this.Name = "Form_Message_Box";
             this.ShowInTaskbar = false;

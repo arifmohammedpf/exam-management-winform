@@ -78,7 +78,7 @@
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(1277, 55);
-            this.Panel_Header.TabIndex = 3;
+            this.Panel_Header.TabIndex = 1;
             // 
             // Button_Close
             // 
@@ -91,7 +91,7 @@
             this.Button_Close.Location = new System.Drawing.Point(1225, 9);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(40, 37);
-            this.Button_Close.TabIndex = 4;
+            this.Button_Close.TabIndex = 0;
             this.Button_Close.UseVisualStyleBackColor = false;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
@@ -124,7 +124,7 @@
             this.Panel_Body.Location = new System.Drawing.Point(0, 55);
             this.Panel_Body.Name = "Panel_Body";
             this.Panel_Body.Size = new System.Drawing.Size(1277, 695);
-            this.Panel_Body.TabIndex = 4;
+            this.Panel_Body.TabIndex = 0;
             // 
             // HeaderCheckBox
             // 
@@ -132,7 +132,7 @@
             this.HeaderCheckBox.Location = new System.Drawing.Point(56, 351);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckBox.TabIndex = 34;
+            this.HeaderCheckBox.TabIndex = 8;
             this.HeaderCheckBox.UseVisualStyleBackColor = true;
             this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
             // 
@@ -141,6 +141,8 @@
             this.Dgv_Timetable.AllowUserToAddRows = false;
             this.Dgv_Timetable.AllowUserToDeleteRows = false;
             this.Dgv_Timetable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Dgv_Timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Timetable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Timetable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -149,7 +151,7 @@
             this.Dgv_Timetable.Name = "Dgv_Timetable";
             this.Dgv_Timetable.RowTemplate.Height = 24;
             this.Dgv_Timetable.Size = new System.Drawing.Size(905, 344);
-            this.Dgv_Timetable.TabIndex = 33;
+            this.Dgv_Timetable.TabIndex = 9;
             this.Dgv_Timetable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Timetable_CellEndEdit);
             this.Dgv_Timetable.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Timetable_CellMouseUp);
             // 
@@ -157,13 +159,15 @@
             // 
             this.CheckBoxColumn_Timetable.HeaderText = "";
             this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
-            this.CheckBoxColumn_Timetable.Width = 35;
+            this.CheckBoxColumn_Timetable.Width = 5;
             // 
             // Dgv_Courses
             // 
             this.Dgv_Courses.AllowUserToAddRows = false;
             this.Dgv_Courses.AllowUserToDeleteRows = false;
             this.Dgv_Courses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Courses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Courses.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Courses.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Courses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Courses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -172,13 +176,13 @@
             this.Dgv_Courses.Name = "Dgv_Courses";
             this.Dgv_Courses.RowTemplate.Height = 24;
             this.Dgv_Courses.Size = new System.Drawing.Size(896, 344);
-            this.Dgv_Courses.TabIndex = 31;
+            this.Dgv_Courses.TabIndex = 7;
             // 
             // CheckBoxColumn_Course
             // 
             this.CheckBoxColumn_Course.HeaderText = "";
             this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
-            this.CheckBoxColumn_Course.Width = 35;
+            this.CheckBoxColumn_Course.Width = 5;
             // 
             // groupBox1
             // 
@@ -198,7 +202,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Size = new System.Drawing.Size(359, 338);
-            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search Scheduled Timetable";
             // 
@@ -208,7 +212,7 @@
             this.Textbox_ExamCode_Search_Timetable.Location = new System.Drawing.Point(122, 204);
             this.Textbox_ExamCode_Search_Timetable.Name = "Textbox_ExamCode_Search_Timetable";
             this.Textbox_ExamCode_Search_Timetable.Size = new System.Drawing.Size(223, 22);
-            this.Textbox_ExamCode_Search_Timetable.TabIndex = 20;
+            this.Textbox_ExamCode_Search_Timetable.TabIndex = 4;
             this.Textbox_ExamCode_Search_Timetable.TextChanged += new System.EventHandler(this.Textbox_ExamCode_Search_Timetable_TextChanged);
             // 
             // Radio_DateWiseSearch
@@ -230,7 +234,7 @@
             this.Combobox_Branch_Search_Timetable.Location = new System.Drawing.Point(122, 170);
             this.Combobox_Branch_Search_Timetable.Name = "Combobox_Branch_Search_Timetable";
             this.Combobox_Branch_Search_Timetable.Size = new System.Drawing.Size(223, 25);
-            this.Combobox_Branch_Search_Timetable.TabIndex = 19;
+            this.Combobox_Branch_Search_Timetable.TabIndex = 3;
             this.Combobox_Branch_Search_Timetable.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_Search_Timetable_SelectedIndexChanged);
             // 
             // Radio_BranchWiseSearch
@@ -239,7 +243,7 @@
             this.Radio_BranchWiseSearch.Location = new System.Drawing.Point(9, 135);
             this.Radio_BranchWiseSearch.Name = "Radio_BranchWiseSearch";
             this.Radio_BranchWiseSearch.Size = new System.Drawing.Size(144, 21);
-            this.Radio_BranchWiseSearch.TabIndex = 0;
+            this.Radio_BranchWiseSearch.TabIndex = 2;
             this.Radio_BranchWiseSearch.TabStop = true;
             this.Radio_BranchWiseSearch.Text = "Branch Wise Search";
             this.Radio_BranchWiseSearch.UseVisualStyleBackColor = true;
@@ -271,7 +275,7 @@
             this.Button_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Delete.Name = "Button_Delete";
             this.Button_Delete.Size = new System.Drawing.Size(100, 40);
-            this.Button_Delete.TabIndex = 14;
+            this.Button_Delete.TabIndex = 5;
             this.Button_Delete.Text = "Delete";
             this.Button_Delete.UseVisualStyleBackColor = false;
             this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
@@ -282,7 +286,7 @@
             this.DateTimePicker_Search_Timetable.Location = new System.Drawing.Point(122, 79);
             this.DateTimePicker_Search_Timetable.Name = "DateTimePicker_Search_Timetable";
             this.DateTimePicker_Search_Timetable.Size = new System.Drawing.Size(223, 22);
-            this.DateTimePicker_Search_Timetable.TabIndex = 18;
+            this.DateTimePicker_Search_Timetable.TabIndex = 1;
             this.DateTimePicker_Search_Timetable.ValueChanged += new System.EventHandler(this.DateTimePicker_Search_Timetable_ValueChanged);
             // 
             // label7
@@ -316,14 +320,14 @@
             this.Combobox_Session.Location = new System.Drawing.Point(94, 77);
             this.Combobox_Session.Name = "Combobox_Session";
             this.Combobox_Session.Size = new System.Drawing.Size(259, 25);
-            this.Combobox_Session.TabIndex = 19;
+            this.Combobox_Session.TabIndex = 1;
             // 
             // DateTimePicker_Add_Timetable
             // 
             this.DateTimePicker_Add_Timetable.Location = new System.Drawing.Point(94, 35);
             this.DateTimePicker_Add_Timetable.Name = "DateTimePicker_Add_Timetable";
             this.DateTimePicker_Add_Timetable.Size = new System.Drawing.Size(259, 22);
-            this.DateTimePicker_Add_Timetable.TabIndex = 18;
+            this.DateTimePicker_Add_Timetable.TabIndex = 0;
             // 
             // GroupBox_Exam_Mode
             // 
@@ -339,7 +343,7 @@
             this.GroupBox_Exam_Mode.Name = "GroupBox_Exam_Mode";
             this.GroupBox_Exam_Mode.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GroupBox_Exam_Mode.Size = new System.Drawing.Size(359, 134);
-            this.GroupBox_Exam_Mode.TabIndex = 17;
+            this.GroupBox_Exam_Mode.TabIndex = 2;
             this.GroupBox_Exam_Mode.TabStop = false;
             this.GroupBox_Exam_Mode.Text = "Search Courses";
             // 
@@ -348,7 +352,7 @@
             this.Textbox_ExamCode_Search_Course.Location = new System.Drawing.Point(113, 99);
             this.Textbox_ExamCode_Search_Course.Name = "Textbox_ExamCode_Search_Course";
             this.Textbox_ExamCode_Search_Course.Size = new System.Drawing.Size(228, 22);
-            this.Textbox_ExamCode_Search_Course.TabIndex = 20;
+            this.Textbox_ExamCode_Search_Course.TabIndex = 2;
             this.Textbox_ExamCode_Search_Course.TextChanged += new System.EventHandler(this.Textbox_ExamCode_Search_Course_TextChanged);
             // 
             // Combobox_Semester
@@ -367,7 +371,7 @@
             this.Combobox_Semester.Location = new System.Drawing.Point(113, 64);
             this.Combobox_Semester.Name = "Combobox_Semester";
             this.Combobox_Semester.Size = new System.Drawing.Size(228, 25);
-            this.Combobox_Semester.TabIndex = 19;
+            this.Combobox_Semester.TabIndex = 1;
             this.Combobox_Semester.SelectedIndexChanged += new System.EventHandler(this.Combobox_Semester_SelectedIndexChanged);
             // 
             // label4
@@ -398,7 +402,7 @@
             this.Combobox_Branch_Search_Course.Location = new System.Drawing.Point(113, 30);
             this.Combobox_Branch_Search_Course.Name = "Combobox_Branch_Search_Course";
             this.Combobox_Branch_Search_Course.Size = new System.Drawing.Size(228, 25);
-            this.Combobox_Branch_Search_Course.TabIndex = 19;
+            this.Combobox_Branch_Search_Course.TabIndex = 0;
             this.Combobox_Branch_Search_Course.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_Search_Course_SelectedIndexChanged);
             // 
             // label8
@@ -427,7 +431,7 @@
             this.Button_Undo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Undo.Name = "Button_Undo";
             this.Button_Undo.Size = new System.Drawing.Size(100, 40);
-            this.Button_Undo.TabIndex = 15;
+            this.Button_Undo.TabIndex = 4;
             this.Button_Undo.Text = "Undo Add";
             this.Button_Undo.UseVisualStyleBackColor = false;
             this.Button_Undo.Click += new System.EventHandler(this.Button_Undo_Click);
@@ -446,7 +450,7 @@
             this.Button_Clear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Clear.Name = "Button_Clear";
             this.Button_Clear.Size = new System.Drawing.Size(115, 40);
-            this.Button_Clear.TabIndex = 15;
+            this.Button_Clear.TabIndex = 5;
             this.Button_Clear.Text = "Clear Inputs";
             this.Button_Clear.UseVisualStyleBackColor = false;
             this.Button_Clear.Click += new System.EventHandler(this.Button_Clear_Click);
@@ -465,7 +469,7 @@
             this.Button_Add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Add.Name = "Button_Add";
             this.Button_Add.Size = new System.Drawing.Size(100, 40);
-            this.Button_Add.TabIndex = 16;
+            this.Button_Add.TabIndex = 3;
             this.Button_Add.Text = "Add";
             this.Button_Add.UseVisualStyleBackColor = false;
             this.Button_Add.Click += new System.EventHandler(this.Button_Add_Click);
@@ -489,7 +493,7 @@
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 17);
-            this.label6.TabIndex = 9;
+            this.label6.TabIndex = 6;
             this.label6.Text = "Date :";
             // 
             // Form_Timetable

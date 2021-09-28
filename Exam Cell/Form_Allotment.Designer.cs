@@ -75,13 +75,13 @@
             this.Combobox_From_SeriesAB = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.Combobox_From_RoomNo = new System.Windows.Forms.ComboBox();
+            this.Label_No_Of_Students_Selected = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.Label_No_Of_Students_Selected = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.Panel_Header.SuspendLayout();
             this.Groupbox_SelectExam.SuspendLayout();
             this.TabPanel.SuspendLayout();
@@ -106,7 +106,7 @@
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(1073, 55);
-            this.Panel_Header.TabIndex = 3;
+            this.Panel_Header.TabIndex = 2;
             // 
             // Button_Close
             // 
@@ -117,7 +117,7 @@
             this.Button_Close.Location = new System.Drawing.Point(1021, 9);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(40, 37);
-            this.Button_Close.TabIndex = 5;
+            this.Button_Close.TabIndex = 0;
             this.Button_Close.UseVisualStyleBackColor = true;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
@@ -139,7 +139,7 @@
             this.Groupbox_SelectExam.Location = new System.Drawing.Point(9, 62);
             this.Groupbox_SelectExam.Name = "Groupbox_SelectExam";
             this.Groupbox_SelectExam.Size = new System.Drawing.Size(272, 77);
-            this.Groupbox_SelectExam.TabIndex = 12;
+            this.Groupbox_SelectExam.TabIndex = 0;
             this.Groupbox_SelectExam.TabStop = false;
             this.Groupbox_SelectExam.Text = "Select Exam";
             // 
@@ -149,7 +149,7 @@
             this.Radio_Series.Location = new System.Drawing.Point(165, 32);
             this.Radio_Series.Name = "Radio_Series";
             this.Radio_Series.Size = new System.Drawing.Size(61, 21);
-            this.Radio_Series.TabIndex = 5;
+            this.Radio_Series.TabIndex = 1;
             this.Radio_Series.TabStop = true;
             this.Radio_Series.Text = "Series";
             this.Radio_Series.UseVisualStyleBackColor = true;
@@ -161,7 +161,7 @@
             this.Radio_University.Location = new System.Drawing.Point(31, 32);
             this.Radio_University.Name = "Radio_University";
             this.Radio_University.Size = new System.Drawing.Size(83, 21);
-            this.Radio_University.TabIndex = 5;
+            this.Radio_University.TabIndex = 0;
             this.Radio_University.TabStop = true;
             this.Radio_University.Text = "University";
             this.Radio_University.UseVisualStyleBackColor = true;
@@ -177,7 +177,7 @@
             this.TabPanel.Name = "TabPanel";
             this.TabPanel.SelectedIndex = 0;
             this.TabPanel.Size = new System.Drawing.Size(1073, 609);
-            this.TabPanel.TabIndex = 13;
+            this.TabPanel.TabIndex = 1;
             // 
             // Tab_Allot
             // 
@@ -207,6 +207,8 @@
             // 
             this.Dgv_Cand_in_AllotedRooms.AllowUserToAddRows = false;
             this.Dgv_Cand_in_AllotedRooms.AllowUserToDeleteRows = false;
+            this.Dgv_Cand_in_AllotedRooms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Cand_in_AllotedRooms.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Cand_in_AllotedRooms.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Cand_in_AllotedRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Cand_in_AllotedRooms.Location = new System.Drawing.Point(701, 76);
@@ -239,7 +241,7 @@
             this.Combobox_Alloted_Rooms.Location = new System.Drawing.Point(860, 16);
             this.Combobox_Alloted_Rooms.Name = "Combobox_Alloted_Rooms";
             this.Combobox_Alloted_Rooms.Size = new System.Drawing.Size(199, 25);
-            this.Combobox_Alloted_Rooms.TabIndex = 31;
+            this.Combobox_Alloted_Rooms.TabIndex = 4;
             this.Combobox_Alloted_Rooms.SelectedIndexChanged += new System.EventHandler(this.Combobox_Alloted_Rooms_SelectedIndexChanged);
             // 
             // Button_MultiAllot
@@ -256,7 +258,7 @@
             this.Button_MultiAllot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_MultiAllot.Name = "Button_MultiAllot";
             this.Button_MultiAllot.Size = new System.Drawing.Size(100, 40);
-            this.Button_MultiAllot.TabIndex = 29;
+            this.Button_MultiAllot.TabIndex = 3;
             this.Button_MultiAllot.Text = "Multi Allot";
             this.Button_MultiAllot.UseVisualStyleBackColor = false;
             this.Button_MultiAllot.Click += new System.EventHandler(this.Button_MultiAllot_Click);
@@ -275,7 +277,7 @@
             this.Button_SingleAllot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_SingleAllot.Name = "Button_SingleAllot";
             this.Button_SingleAllot.Size = new System.Drawing.Size(100, 40);
-            this.Button_SingleAllot.TabIndex = 30;
+            this.Button_SingleAllot.TabIndex = 2;
             this.Button_SingleAllot.Text = "Single Allot";
             this.Button_SingleAllot.UseVisualStyleBackColor = false;
             this.Button_SingleAllot.Click += new System.EventHandler(this.Button_SingleAllot_Click);
@@ -284,6 +286,8 @@
             // 
             this.Dgv_RegCourseWise_Count.AllowUserToAddRows = false;
             this.Dgv_RegCourseWise_Count.AllowUserToDeleteRows = false;
+            this.Dgv_RegCourseWise_Count.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_RegCourseWise_Count.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_RegCourseWise_Count.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_RegCourseWise_Count.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_RegCourseWise_Count.Location = new System.Drawing.Point(1, 299);
@@ -296,6 +300,8 @@
             // 
             this.Dgv_Alloted_Rooms.AllowUserToAddRows = false;
             this.Dgv_Alloted_Rooms.AllowUserToDeleteRows = false;
+            this.Dgv_Alloted_Rooms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Alloted_Rooms.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Alloted_Rooms.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Alloted_Rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Alloted_Rooms.Location = new System.Drawing.Point(388, 76);
@@ -308,6 +314,8 @@
             // 
             this.Dgv_RegCandidates_List.AllowUserToAddRows = false;
             this.Dgv_RegCandidates_List.AllowUserToDeleteRows = false;
+            this.Dgv_RegCandidates_List.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_RegCandidates_List.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_RegCandidates_List.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_RegCandidates_List.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_RegCandidates_List.Location = new System.Drawing.Point(1, 76);
@@ -396,7 +404,7 @@
             this.Button_FilepathChange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_FilepathChange.Name = "Button_FilepathChange";
             this.Button_FilepathChange.Size = new System.Drawing.Size(119, 31);
-            this.Button_FilepathChange.TabIndex = 31;
+            this.Button_FilepathChange.TabIndex = 5;
             this.Button_FilepathChange.Text = "Change path";
             this.Button_FilepathChange.UseVisualStyleBackColor = false;
             this.Button_FilepathChange.Click += new System.EventHandler(this.Button_FilepathChange_Click);
@@ -415,7 +423,7 @@
             this.Button_RoomSheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_RoomSheet.Name = "Button_RoomSheet";
             this.Button_RoomSheet.Size = new System.Drawing.Size(156, 40);
-            this.Button_RoomSheet.TabIndex = 31;
+            this.Button_RoomSheet.TabIndex = 1;
             this.Button_RoomSheet.Text = "Room Sheet";
             this.Button_RoomSheet.UseVisualStyleBackColor = false;
             this.Button_RoomSheet.Click += new System.EventHandler(this.Button_RoomSheet_Click);
@@ -434,7 +442,7 @@
             this.Button_SummarySheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_SummarySheet.Name = "Button_SummarySheet";
             this.Button_SummarySheet.Size = new System.Drawing.Size(156, 40);
-            this.Button_SummarySheet.TabIndex = 31;
+            this.Button_SummarySheet.TabIndex = 4;
             this.Button_SummarySheet.Text = "Summary Sheet";
             this.Button_SummarySheet.UseVisualStyleBackColor = false;
             // 
@@ -452,7 +460,7 @@
             this.Button_DisplaySheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_DisplaySheet.Name = "Button_DisplaySheet";
             this.Button_DisplaySheet.Size = new System.Drawing.Size(156, 40);
-            this.Button_DisplaySheet.TabIndex = 31;
+            this.Button_DisplaySheet.TabIndex = 3;
             this.Button_DisplaySheet.Text = "Display Sheet";
             this.Button_DisplaySheet.UseVisualStyleBackColor = false;
             this.Button_DisplaySheet.Click += new System.EventHandler(this.Button_DisplaySheet_Click);
@@ -471,7 +479,7 @@
             this.Button_SignatureSheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_SignatureSheet.Name = "Button_SignatureSheet";
             this.Button_SignatureSheet.Size = new System.Drawing.Size(156, 40);
-            this.Button_SignatureSheet.TabIndex = 31;
+            this.Button_SignatureSheet.TabIndex = 2;
             this.Button_SignatureSheet.Text = "Signature Sheet";
             this.Button_SignatureSheet.UseVisualStyleBackColor = false;
             this.Button_SignatureSheet.Click += new System.EventHandler(this.Button_SignatureSheet_Click);
@@ -524,7 +532,7 @@
             this.groupBox3.Location = new System.Drawing.Point(572, 125);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(330, 215);
-            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "To";
             // 
@@ -542,7 +550,7 @@
             this.Button_Swap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Swap.Name = "Button_Swap";
             this.Button_Swap.Size = new System.Drawing.Size(100, 40);
-            this.Button_Swap.TabIndex = 31;
+            this.Button_Swap.TabIndex = 4;
             this.Button_Swap.Text = "Swap";
             this.Button_Swap.UseVisualStyleBackColor = false;
             this.Button_Swap.Click += new System.EventHandler(this.Button_Swap_Click);
@@ -561,7 +569,7 @@
             this.Button_Shift.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Shift.Name = "Button_Shift";
             this.Button_Shift.Size = new System.Drawing.Size(100, 40);
-            this.Button_Shift.TabIndex = 30;
+            this.Button_Shift.TabIndex = 3;
             this.Button_Shift.Text = "Shift";
             this.Button_Shift.UseVisualStyleBackColor = false;
             this.Button_Shift.Click += new System.EventHandler(this.Button_Shift_Click);
@@ -572,7 +580,7 @@
             this.Combobox_To_Starting_Seat.Location = new System.Drawing.Point(181, 112);
             this.Combobox_To_Starting_Seat.Name = "Combobox_To_Starting_Seat";
             this.Combobox_To_Starting_Seat.Size = new System.Drawing.Size(108, 25);
-            this.Combobox_To_Starting_Seat.TabIndex = 3;
+            this.Combobox_To_Starting_Seat.TabIndex = 2;
             // 
             // Combobox_To_SeriesAB
             // 
@@ -584,7 +592,7 @@
             this.Combobox_To_SeriesAB.Location = new System.Drawing.Point(181, 72);
             this.Combobox_To_SeriesAB.Name = "Combobox_To_SeriesAB";
             this.Combobox_To_SeriesAB.Size = new System.Drawing.Size(108, 25);
-            this.Combobox_To_SeriesAB.TabIndex = 3;
+            this.Combobox_To_SeriesAB.TabIndex = 1;
             this.Combobox_To_SeriesAB.SelectedIndexChanged += new System.EventHandler(this.Combobox_To_SeriesAB_SelectedIndexChanged);
             // 
             // label11
@@ -602,7 +610,7 @@
             this.Combobox_To_RoomNo.Location = new System.Drawing.Point(181, 32);
             this.Combobox_To_RoomNo.Name = "Combobox_To_RoomNo";
             this.Combobox_To_RoomNo.Size = new System.Drawing.Size(108, 25);
-            this.Combobox_To_RoomNo.TabIndex = 1;
+            this.Combobox_To_RoomNo.TabIndex = 0;
             // 
             // label13
             // 
@@ -655,7 +663,7 @@
             this.Combobox_From_Starting_Seat.Location = new System.Drawing.Point(185, 111);
             this.Combobox_From_Starting_Seat.Name = "Combobox_From_Starting_Seat";
             this.Combobox_From_Starting_Seat.Size = new System.Drawing.Size(108, 25);
-            this.Combobox_From_Starting_Seat.TabIndex = 3;
+            this.Combobox_From_Starting_Seat.TabIndex = 2;
             this.Combobox_From_Starting_Seat.SelectedIndexChanged += new System.EventHandler(this.Combobox_From_Starting_Seat_SelectedIndexChanged);
             // 
             // Combobox_From_SeriesAB
@@ -668,7 +676,7 @@
             this.Combobox_From_SeriesAB.Location = new System.Drawing.Point(185, 72);
             this.Combobox_From_SeriesAB.Name = "Combobox_From_SeriesAB";
             this.Combobox_From_SeriesAB.Size = new System.Drawing.Size(108, 25);
-            this.Combobox_From_SeriesAB.TabIndex = 3;
+            this.Combobox_From_SeriesAB.TabIndex = 1;
             this.Combobox_From_SeriesAB.SelectedIndexChanged += new System.EventHandler(this.Combobox_From_SeriesAB_SelectedIndexChanged);
             // 
             // label9
@@ -686,7 +694,16 @@
             this.Combobox_From_RoomNo.Location = new System.Drawing.Point(185, 33);
             this.Combobox_From_RoomNo.Name = "Combobox_From_RoomNo";
             this.Combobox_From_RoomNo.Size = new System.Drawing.Size(108, 25);
-            this.Combobox_From_RoomNo.TabIndex = 1;
+            this.Combobox_From_RoomNo.TabIndex = 0;
+            // 
+            // Label_No_Of_Students_Selected
+            // 
+            this.Label_No_Of_Students_Selected.AutoSize = true;
+            this.Label_No_Of_Students_Selected.Location = new System.Drawing.Point(6, 195);
+            this.Label_No_Of_Students_Selected.Name = "Label_No_Of_Students_Selected";
+            this.Label_No_Of_Students_Selected.Size = new System.Drawing.Size(155, 17);
+            this.Label_No_Of_Students_Selected.TabIndex = 0;
+            this.Label_No_Of_Students_Selected.Text = "No of students selected :";
             // 
             // label10
             // 
@@ -715,6 +732,15 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Room No :";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(353, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(339, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Note : Select Date and Session from \"Allot Students\" Tab";
+            // 
             // Panel_ProgressBar
             // 
             this.Panel_ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -738,24 +764,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Please Wait !";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Label_No_Of_Students_Selected
-            // 
-            this.Label_No_Of_Students_Selected.AutoSize = true;
-            this.Label_No_Of_Students_Selected.Location = new System.Drawing.Point(6, 195);
-            this.Label_No_Of_Students_Selected.Name = "Label_No_Of_Students_Selected";
-            this.Label_No_Of_Students_Selected.Size = new System.Drawing.Size(155, 17);
-            this.Label_No_Of_Students_Selected.TabIndex = 0;
-            this.Label_No_Of_Students_Selected.Text = "No of students selected :";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(353, 105);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(339, 17);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Note : Select Date and Session from \"Allot Students\" Tab";
             // 
             // Form_Allotment
             // 

@@ -68,7 +68,7 @@
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(937, 55);
-            this.Panel_Header.TabIndex = 3;
+            this.Panel_Header.TabIndex = 1;
             // 
             // Button_Close
             // 
@@ -79,7 +79,7 @@
             this.Button_Close.Location = new System.Drawing.Point(885, 9);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(40, 37);
-            this.Button_Close.TabIndex = 5;
+            this.Button_Close.TabIndex = 0;
             this.Button_Close.UseVisualStyleBackColor = true;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
@@ -105,7 +105,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 55);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(937, 507);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 0;
             // 
             // HeaderCheckBox
             // 
@@ -113,7 +113,7 @@
             this.HeaderCheckBox.Location = new System.Drawing.Point(56, 214);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckBox.TabIndex = 36;
+            this.HeaderCheckBox.TabIndex = 2;
             this.HeaderCheckBox.UseVisualStyleBackColor = true;
             this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
             // 
@@ -121,6 +121,8 @@
             // 
             this.Dgv_Timetable.AllowUserToAddRows = false;
             this.Dgv_Timetable.AllowUserToDeleteRows = false;
+            this.Dgv_Timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Timetable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Timetable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -138,7 +140,7 @@
             // 
             this.CheckBoxColumn_Timetable.HeaderText = "";
             this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
-            this.CheckBoxColumn_Timetable.Width = 35;
+            this.CheckBoxColumn_Timetable.Width = 5;
             // 
             // Button_Clear
             // 
@@ -154,7 +156,7 @@
             this.Button_Clear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Clear.Name = "Button_Clear";
             this.Button_Clear.Size = new System.Drawing.Size(100, 40);
-            this.Button_Clear.TabIndex = 28;
+            this.Button_Clear.TabIndex = 3;
             this.Button_Clear.Text = "Clear";
             this.Button_Clear.UseVisualStyleBackColor = false;
             this.Button_Clear.Click += new System.EventHandler(this.Button_Clear_Click);
@@ -169,7 +171,7 @@
             this.groupBox1.Location = new System.Drawing.Point(523, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(408, 199);
-            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Postpone to";
             // 
@@ -187,7 +189,7 @@
             this.Button_Postpone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Postpone.Name = "Button_Postpone";
             this.Button_Postpone.Size = new System.Drawing.Size(100, 40);
-            this.Button_Postpone.TabIndex = 29;
+            this.Button_Postpone.TabIndex = 2;
             this.Button_Postpone.Text = "Postpone";
             this.Button_Postpone.UseVisualStyleBackColor = false;
             this.Button_Postpone.Click += new System.EventHandler(this.Button_Postpone_Click);
@@ -197,7 +199,7 @@
             this.DateTimePicker_NewDate.Location = new System.Drawing.Point(115, 54);
             this.DateTimePicker_NewDate.Name = "DateTimePicker_NewDate";
             this.DateTimePicker_NewDate.Size = new System.Drawing.Size(284, 22);
-            this.DateTimePicker_NewDate.TabIndex = 9;
+            this.DateTimePicker_NewDate.TabIndex = 0;
             // 
             // Combobox_NewSession
             // 
@@ -209,7 +211,7 @@
             this.Combobox_NewSession.Location = new System.Drawing.Point(115, 91);
             this.Combobox_NewSession.Name = "Combobox_NewSession";
             this.Combobox_NewSession.Size = new System.Drawing.Size(284, 25);
-            this.Combobox_NewSession.TabIndex = 8;
+            this.Combobox_NewSession.TabIndex = 1;
             // 
             // label8
             // 
@@ -243,7 +245,7 @@
             this.groupBox3.Location = new System.Drawing.Point(3, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(408, 199);
-            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search";
             // 
@@ -253,7 +255,7 @@
             this.Checkbox_Datewise.Location = new System.Drawing.Point(383, 159);
             this.Checkbox_Datewise.Name = "Checkbox_Datewise";
             this.Checkbox_Datewise.Size = new System.Drawing.Size(15, 14);
-            this.Checkbox_Datewise.TabIndex = 10;
+            this.Checkbox_Datewise.TabIndex = 3;
             this.Checkbox_Datewise.UseVisualStyleBackColor = true;
             this.Checkbox_Datewise.CheckedChanged += new System.EventHandler(this.Checkbox_Datewise_CheckedChanged);
             // 
@@ -263,7 +265,7 @@
             this.DateTimePicker_Date.Location = new System.Drawing.Point(113, 154);
             this.DateTimePicker_Date.Name = "DateTimePicker_Date";
             this.DateTimePicker_Date.Size = new System.Drawing.Size(263, 22);
-            this.DateTimePicker_Date.TabIndex = 9;
+            this.DateTimePicker_Date.TabIndex = 4;
             this.DateTimePicker_Date.ValueChanged += new System.EventHandler(this.DateTimePicker_Date_ValueChanged);
             // 
             // Textbox_SubCode
@@ -271,7 +273,7 @@
             this.Textbox_SubCode.Location = new System.Drawing.Point(113, 36);
             this.Textbox_SubCode.Name = "Textbox_SubCode";
             this.Textbox_SubCode.Size = new System.Drawing.Size(284, 22);
-            this.Textbox_SubCode.TabIndex = 7;
+            this.Textbox_SubCode.TabIndex = 0;
             this.Textbox_SubCode.TextChanged += new System.EventHandler(this.Textbox_SubCode_TextChanged);
             // 
             // Combobox_Semester
@@ -290,7 +292,7 @@
             this.Combobox_Semester.Location = new System.Drawing.Point(113, 114);
             this.Combobox_Semester.Name = "Combobox_Semester";
             this.Combobox_Semester.Size = new System.Drawing.Size(284, 25);
-            this.Combobox_Semester.TabIndex = 8;
+            this.Combobox_Semester.TabIndex = 2;
             this.Combobox_Semester.SelectedIndexChanged += new System.EventHandler(this.Combobox_Semester_SelectedIndexChanged);
             // 
             // label3
@@ -308,7 +310,7 @@
             this.Combobox_Branch.Location = new System.Drawing.Point(113, 74);
             this.Combobox_Branch.Name = "Combobox_Branch";
             this.Combobox_Branch.Size = new System.Drawing.Size(284, 25);
-            this.Combobox_Branch.TabIndex = 8;
+            this.Combobox_Branch.TabIndex = 1;
             this.Combobox_Branch.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_SelectedIndexChanged);
             // 
             // label4

@@ -56,6 +56,7 @@ namespace Exam_Cell
             {
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     Combobox_Branch_Search_Course.DataSource = null;
                     Combobox_Branch_Search_Timetable.DataSource = null;
 
@@ -99,41 +100,49 @@ namespace Exam_Cell
 
         void SearchCourses()
         {
-            if (!isFormReset)
+            try
             {
-                string branch = Combobox_Branch_Search_Course.SelectedItem.ToString();
-                string examcode = Textbox_ExamCode_Search_Course.Text;
-                string semester = Combobox_Semester.SelectedItem.ToString();
-                Dgv_Courses.DataSource = null;
-                HeaderCheckBox.Checked = false;
+                if (!isFormReset)
+                {
+                    string branch = Combobox_Branch_Search_Course.SelectedItem.ToString();
+                    string examcode = Textbox_ExamCode_Search_Course.Text;
+                    string semester = Combobox_Semester.SelectedItem.ToString();
+                    Dgv_Courses.DataSource = null;
+                    HeaderCheckBox.Checked = false;
 
-                string searchRecord = "";
+                    string searchRecord = "";
 
-                if (branch != "-Select-")
-                    searchRecord = string.Format("Branch like '%{0}%'", branch);
-                if (semester != "-Select-")
-                {
-                    if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Semester Like '%{0}%'", semester);
-                }
-                if (examcode != "")
-                {
-                    if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
-                }
-                if (searchRecord != "")
-                {
-                    string query = "Select * from Scheme where " + searchRecord;
-                    DataTable courseTable;
-                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    if (branch != "-Select-")
+                        searchRecord = string.Format("Branch like '%{0}%'", branch);
+                    if (semester != "-Select-")
                     {
-                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                        SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                        courseTable = new DataTable();
-                        dataAdapter.Fill(courseTable);
+                        if (searchRecord.Length > 0) searchRecord += " AND ";
+                        searchRecord += string.Format("Semester Like '%{0}%'", semester);
                     }
-                    Dgv_Courses.DataSource = courseTable;
+                    if (examcode != "")
+                    {
+                        if (searchRecord.Length > 0) searchRecord += " AND ";
+                        searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
+                    }
+                    if (searchRecord != "")
+                    {
+                        string query = "Select * from Scheme where " + searchRecord;
+                        DataTable courseTable;
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            dbConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                            courseTable = new DataTable();
+                            dataAdapter.Fill(courseTable);
+                        }
+                        Dgv_Courses.DataSource = courseTable;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -154,42 +163,50 @@ namespace Exam_Cell
 
         void SearchTimetable()
         {
-            if (!isFormReset)
+            try
             {
-                Dgv_Timetable.DataSource = null;
-                string searchRecord = "";
+                if (!isFormReset)
+                {
+                    Dgv_Timetable.DataSource = null;
+                    string searchRecord = "";
 
-                if (Radio_DateWiseSearch.Checked)
-                {
-                    string date = DateTimePicker_Search_Timetable.Text;
-                    searchRecord += string.Format("Date = '%{0}%'", date);
-                }
-                else
-                {
-                    string branch = Combobox_Branch_Search_Timetable.SelectedItem.ToString();
-                    string examcode = Textbox_ExamCode_Search_Timetable.Text;
-                    if (branch != "-Select-")
-                        searchRecord = string.Format("Branch like '%{0}%'", branch);
-                    if (examcode != "")
+                    if (Radio_DateWiseSearch.Checked)
                     {
-                        if (searchRecord.Length > 0) searchRecord += " AND ";
-                        searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
+                        string date = DateTimePicker_Search_Timetable.Text;
+                        searchRecord += string.Format("Date = '%{0}%'", date);
+                    }
+                    else
+                    {
+                        string branch = Combobox_Branch_Search_Timetable.SelectedItem.ToString();
+                        string examcode = Textbox_ExamCode_Search_Timetable.Text;
+                        if (branch != "-Select-")
+                            searchRecord = string.Format("Branch like '%{0}%'", branch);
+                        if (examcode != "")
+                        {
+                            if (searchRecord.Length > 0) searchRecord += " AND ";
+                            searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
+                        }
+                    }
+
+                    if (searchRecord != "")
+                    {
+                        string query = "Select * from Timetable where " + searchRecord;
+                        DataTable TimeTable;
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            dbConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                            TimeTable = new DataTable();
+                            dataAdapter.Fill(TimeTable);
+                        }
+                        Dgv_Timetable.DataSource = TimeTable;
                     }
                 }
-
-                if (searchRecord != "")
-                {
-                    string query = "Select * from Timetable where " + searchRecord;
-                    DataTable TimeTable;
-                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
-                    {
-                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                        SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                        TimeTable = new DataTable();
-                        dataAdapter.Fill(TimeTable);
-                    }
-                    Dgv_Timetable.DataSource = TimeTable;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -252,6 +269,7 @@ namespace Exam_Cell
                 ClearBackupList();
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     foreach (DataGridViewRow dr in Dgv_Courses.Rows)
                     {
                         bool checkboxselect = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Course"].Value);
@@ -308,6 +326,7 @@ namespace Exam_Cell
                     this.Enabled = false;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         string query = string.Format("Delete from Timetable where Date=@Date and Session=@Session and Course=@Course and Sub_Code=@Sub_Code and Semester=@Semester and Branch=@Branch");
                         SQLiteCommand comm = new SQLiteCommand(query,dbConnection);
                         for (int i = 0; i < DateList.Count; i++)
@@ -351,6 +370,7 @@ namespace Exam_Cell
                     int flag = 0;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         string query = string.Format("Delete from Timetable where Date=@Date and Session=@Session and Course=@Course and Sub_Code=@Sub_Code and Semester=@Semester and Branch=@Branch");
                         SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                         foreach(DataGridViewRow dr in Dgv_Timetable.Rows)
@@ -428,8 +448,6 @@ namespace Exam_Cell
         }
     }
 }
-
-// // // IN THE FINAL PROCESS OF THIS APPLICATION, TAB INDEX ALL THE FORMS  // // //
 // TESTING //
 // * headercheckbox is set to false in searchCourses after dgv set to null...check if it gives error....put it in tryCatch
 // * if ExamCode searching makes any error try to disable textbox before calling SearchFunction()

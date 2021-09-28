@@ -51,6 +51,7 @@ namespace Exam_Cell
             Combobox_Branch_updateCourseTab.SelectedIndex = 0;
             Combobox_Class.SelectedIndex = 0;
             Combobox_Semester.SelectedIndex = 0;
+            Combobox_Semester_updateCourse.SelectedIndex = 0;
             // clear all textboxes
             Textbox_Name.Clear();
             Textbox_ACode.Clear();
@@ -89,6 +90,7 @@ namespace Exam_Cell
             {
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     // Branch combobox
                     Combobox_Branch.DataSource = null;
                     Combobox_Branch_updateStudTab.DataSource = null;
@@ -103,13 +105,13 @@ namespace Exam_Cell
                     branchTop[0] = "-Select-";
                     branchDT.Rows.InsertAt(branchTop, 0);
                     
-                    Combobox_Branch.DataSource = branchDT;
                     Combobox_Branch.DisplayMember = "Branch";
                     Combobox_Branch.ValueMember = "Branch";
+                    Combobox_Branch.DataSource = branchDT;
                     
-                    Combobox_Branch_updateStudTab.DataSource = branchDT;
                     Combobox_Branch_updateStudTab.DisplayMember = "Branch";
                     Combobox_Branch_updateStudTab.ValueMember = "Branch";
+                    Combobox_Branch_updateStudTab.DataSource = branchDT;
                     
                     Combobox_Branch_updateCourseTab.DataSource = branchDT;
                     Combobox_Branch_updateCourseTab.DisplayMember = "Branch";
@@ -131,6 +133,8 @@ namespace Exam_Cell
                     Combobox_Class.DisplayMember = "Class";
                     Combobox_Class.ValueMember = "Class";
                 }
+                Combobox_Semester.SelectedIndex = 0;
+                Combobox_Semester_updateCourse.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -163,9 +167,9 @@ namespace Exam_Cell
         //Excel Select button click event
         void Select_ExcelFile()
         {
-            if (excelType == "StudentData") CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n RegisterNo ,Name, YOA, Class, Semester  ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
-            else CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n Scheme, Branch ,Semester, Sub_Code, Sub_Name, Acode  ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
-            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "Excel Files|*.xls|*xlsx|*.xlsm" }) //check if | is needed last?
+            if (excelType == "StudentData") CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n RegisterNo ,Name, YOA, Class, Semester \n\n\n\n ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
+            else CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n Scheme, Branch ,Semester, Sub_Code, Course, Acode \n\n\n\n ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
+            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "Excel Files|*.xls;*.xlsx;*.xlsm" }) //check if | is needed last?
             {
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
@@ -251,7 +255,7 @@ namespace Exam_Cell
                             Branch = dt.Rows[i]["Branch"].ToString(),
                             Semester = dt.Rows[i]["Semester"].ToString(),
                             Sub_Code = dt.Rows[i]["Sub_Code"].ToString(),
-                            Sub_Name = dt.Rows[i]["Sub_Name"].ToString(),
+                            Course = dt.Rows[i]["Course"].ToString(),
                             Acode = dt.Rows[i]["Acode"].ToString()
                         };
                         excelClassListBranch.Add(excelClassBranch);
@@ -303,10 +307,11 @@ namespace Exam_Cell
                         // add to db
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
+                            dbConnection.Open();
                             string query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Branch)");
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
                             {
-                                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                                 command.Parameters.AddWithValue("@Reg_No", dr.Cells["Reg_No"].Value);
                                 command.Parameters.AddWithValue("@Name", dr.Cells["Name"].Value);
                                 command.Parameters.AddWithValue("@YOA", dr.Cells["YOA"].Value);
@@ -332,6 +337,49 @@ namespace Exam_Cell
             }
         }
 
+        void AddToBranchPriorityDB()
+        {
+            string distinctBranchQuery = string.Format("Select distinct Branch from Scheme");
+            string branchPriorityQuery = string.Format("Select * from Branch_Priority");
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                SQLiteCommand branchCommand = new SQLiteCommand(distinctBranchQuery, dbConnection);
+                SQLiteDataAdapter branchAdapter = new SQLiteDataAdapter(branchCommand);
+                DataTable branchDT = new DataTable();
+                branchAdapter.Fill(branchDT);
+
+                SQLiteCommand priorityBranchCommand = new SQLiteCommand(branchPriorityQuery, dbConnection);
+                SQLiteDataAdapter priorityBranchAdapter = new SQLiteDataAdapter(priorityBranchCommand);
+                DataTable priorityBranchDT = new DataTable();
+                priorityBranchAdapter.Fill(priorityBranchDT);
+
+                bool isBranchExist = false;
+                int priorityCount = priorityBranchDT.Rows.Count + 1;
+                string query = string.Format("insert into Branch_Priority(Branch,Priority)Values(" + " @Branch,@Priority)");
+                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                foreach (DataRow branchRow in branchDT.Rows)
+                {
+                    foreach(DataRow priorityRow in priorityBranchDT.Rows)
+                    {
+                        if(priorityRow["Branch"].ToString() == branchRow["Branch"].ToString())
+                        {
+                            isBranchExist = true;
+                            break;
+                        }
+                    }
+                    if (!isBranchExist)
+                    {
+                        command.Parameters.AddWithValue("@Branch", branchRow["Branch"].ToString());
+                        command.Parameters.AddWithValue("@Priority", priorityCount.ToString());
+                        command.ExecuteNonQuery();
+                        priorityCount++;
+                    }
+                    else isBranchExist = false;
+                }
+            }
+        }
+
         void Add_BranchExcel()
         {
             CustomMessageBox.ShowMessageBox("Do you want to add Branch/Courses from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
@@ -343,27 +391,29 @@ namespace Exam_Cell
                     // add to db
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
-                        String[] newBranches = new string[20];
-                        string currBranch = "";
-                        string query = string.Format("insert into Scheme(Scheme,Branch,Semester,Sub_Name,Sub_Code,Acode)Values(" + " @Scheme,@Branch,@Semester,@Sub_Name,@Sub_Code,@Acode)");
+                        dbConnection.Open();
+                        //String[] newBranches = new string[20];
+                        //string currBranch = "";
+                        string query = string.Format("insert into Scheme(Scheme,Branch,Semester,Course,Sub_Code,Acode)Values(" + " @Scheme,@Branch,@Semester,@Course,@Sub_Code,@Acode)");
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
                         {
-                            if (currBranch != dr.Cells["Branch"].Value.ToString())
-                            {
-                                currBranch = dr.Cells["Branch"].Value.ToString();
-                                newBranches = newBranches.Concat(new string[] { currBranch }).ToArray();
-                            }
-                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            //if (currBranch != dr.Cells["Branch"].Value.ToString())
+                            //{
+                            //    currBranch = dr.Cells["Branch"].Value.ToString();
+                            //    newBranches = newBranches.Concat(new string[] { currBranch }).ToArray();
+                            //}
                             command.Parameters.AddWithValue("@Scheme", dr.Cells["Scheme"].Value.ToString());
                             command.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
                             command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
-                            command.Parameters.AddWithValue("@Sub_Name", dr.Cells["Sub_Name"].Value.ToString());
+                            command.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
                             command.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
                             command.Parameters.AddWithValue("@Acode", dr.Cells["Acode"].Value.ToString());
                             command.ExecuteNonQuery();
-                        }
+                        }                        
                     }
-
+                    // Add new branches to branch priority DB
+                    AddToBranchPriorityDB();
                     // reset
                     ComboboxesFill();
                     ResetAllFormDatas();
@@ -424,6 +474,7 @@ namespace Exam_Cell
             string query = "Select * from Students where " + searchRecord;
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
+                dbConnection.Open();
                 SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
                 DataTable studentRecord = new DataTable();
@@ -482,6 +533,7 @@ namespace Exam_Cell
                         int recordsAffected;
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
+                            dbConnection.Open();
                             string query = string.Format("Update Students set Reg_No=@Reg_No,Name=@Name,YOA=@YOA,Branch=@Branch,Semester=@Semester,Class=@Class where Reg_No=@SelectedReg_No and Name=@SelectedName and YOA=@SelectedYOA and Branch=@SelectedBranch and Semester=@SelectedSemester and Class=@SelectedClass");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             command.Parameters.AddWithValue("@Reg_No", Textbox_Regno.Text);
@@ -576,14 +628,15 @@ namespace Exam_Cell
                     bool deletedFlag = false;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         // delete selected records
+                        string query = string.Format("Delete from Students where Reg_No=@Reg_No and Name=@Name and YOA=@YOA and Branch=@Branch and Semester=@Semester and Class=@Class");
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_Student.Rows)
                         {
                             bool isSelected = Convert.ToBoolean(dr.Cells["CheckBoxColumn"].Value);
                             if (isSelected)
-                            {
-                                string query = string.Format("Delete from Students where Reg_No=@Reg_No and Name=@Name and YOA=@YOA and Branch=@Branch and Semester=@Semester and Class=@Class");
-                                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            {                                
                                 command.Parameters.AddWithValue("@Reg_No", dr.Cells["Reg_No"].Value.ToString());
                                 command.Parameters.AddWithValue("@Name", dr.Cells["Name"].Value.ToString());
                                 command.Parameters.AddWithValue("@YOA", dr.Cells["YOA"].Value.ToString());
@@ -623,6 +676,7 @@ namespace Exam_Cell
                 SetLoading(true);
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                     command.ExecuteNonQuery();
                 }                
@@ -693,7 +747,7 @@ namespace Exam_Cell
                 if (subname != "")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
-                    searchRecord += string.Format("Sub_Name Like '%{0}%'", subname);   //Put sql statement in searchRecord string
+                    searchRecord += string.Format("Course Like '%{0}%'", subname);   //Put sql statement in searchRecord string
                 }
                 if (acode != "")
                 {
@@ -702,8 +756,10 @@ namespace Exam_Cell
                 }
 
                 string query = "Select * from Scheme where " + searchRecord;
+                MessageBox.Show(query);
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                     SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
                     DataTable branchRecord = new DataTable();
@@ -719,19 +775,24 @@ namespace Exam_Cell
             }
         }        
 
-        string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;       
+        private void Form_Database_Management_Load(object sender, EventArgs e)
+        {
+            ComboboxesFill();
+        }
+
+        string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;
         private void Dgv_Course_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // fill the form
             Textbox_SubCode.Text = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Code"].Value.ToString();
-            Textbox_SubName.Text = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Name"].Value.ToString();
+            Textbox_SubName.Text = Dgv_Course.Rows[e.RowIndex].Cells["Course"].Value.ToString();
             Textbox_ACode.Text = Dgv_Course.Rows[e.RowIndex].Cells["Acode"].Value.ToString();
             Combobox_Branch_updateCourseTab.SelectedItem = Dgv_Course.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
             Combobox_Semester_updateCourse.SelectedItem = Dgv_Course.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
 
             // selected branch/course record to be updated
             selectedSubCode = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Code"].Value.ToString();
-            selectedSubName = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Name"].Value.ToString();
+            selectedSubName = Dgv_Course.Rows[e.RowIndex].Cells["Course"].Value.ToString();
             selectedAcode = Dgv_Course.Rows[e.RowIndex].Cells["Acode"].Value.ToString();
             selectedBranch_Course = Dgv_Course.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
             selectedSemester_Course = Dgv_Course.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
@@ -752,15 +813,16 @@ namespace Exam_Cell
                         int recordsAffected;
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
-                            string query = string.Format("Update Scheme set Sub_Code=@Sub_Code,Sub_Name=@Sub_Name,Acode=@Acode,Branch=@Branch,Semester=@Semester where Sub_Code=@SelectedSub_Code and Sub_Name=@SelectedSub_Name and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
+                            dbConnection.Open();
+                            string query = string.Format("Update Scheme set Sub_Code=@Sub_Code,Course=@Course,Acode=@Acode,Branch=@Branch,Semester=@Semester where Sub_Code=@SelectedSub_Code and Course=@SelectedCourse and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             command.Parameters.AddWithValue("@Sub_Code", Textbox_SubCode.Text);
-                            command.Parameters.AddWithValue("@Sub_Name", Textbox_Name.Text);
+                            command.Parameters.AddWithValue("@Course", Textbox_Name.Text);
                             command.Parameters.AddWithValue("@Acode", Textbox_ACode.Text);
                             command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateCourseTab.SelectedItem.ToString());
                             command.Parameters.AddWithValue("@Semester", Combobox_Semester_updateCourse.SelectedItem.ToString());
                             command.Parameters.AddWithValue("@SelectedSub_Code", selectedSubCode);
-                            command.Parameters.AddWithValue("@SelectedSub_Name", selectedName);
+                            command.Parameters.AddWithValue("@SelectedCourse", selectedSubName);
                             command.Parameters.AddWithValue("@SelectedAcode", selectedAcode);
                             command.Parameters.AddWithValue("@SelectedBranch", selectedBranch_Course);
                             command.Parameters.AddWithValue("@SelectedSemester", selectedSemester_Course);
@@ -836,16 +898,17 @@ namespace Exam_Cell
                     bool deletedFlag = false;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         // delete selected courses
+                        string query = string.Format("Delete from Scheme where Sub_Code=@SelectedSub_Code and Course=@SelectedCourse and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_Course.Rows)
                         {
                             bool isSelected = Convert.ToBoolean(dr.Cells["CheckboxColumn_CourseDgv"].Value);
                             if (isSelected)
-                            {
-                                string query = string.Format("Delete from Scheme where Sub_Code=@SelectedSub_Code and Sub_Name=@SelectedSub_Name and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
-                                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            {                                
                                 command.Parameters.AddWithValue("@SelectedSub_Code", dr.Cells["Sub_Code"].Value.ToString());
-                                command.Parameters.AddWithValue("@SelectedSub_Name", dr.Cells["Sub_Name"].Value.ToString());
+                                command.Parameters.AddWithValue("@SelectedCourse", dr.Cells["Course"].Value.ToString());
                                 command.Parameters.AddWithValue("@SelectedAcode", dr.Cells["Acode"].Value.ToString());
                                 command.Parameters.AddWithValue("@SelectedBranch", dr.Cells["Branch"].Value.ToString());
                                 command.Parameters.AddWithValue("@SelectedSemester", dr.Cells["Semester"].Value.ToString());
@@ -886,15 +949,14 @@ namespace Exam_Cell
 
 // // // // // // // // // // // FOR TESTING // // // // // // // // // // // //
 // *** check if we get error when reset form triggers, since headercheckbox = false is given last of resetForm function and dgv datasoure is null.
-// *** try make an error in try-catch which have function only.. eg: Search event in update student tab ***
+
 // *** is timer needed ? ***
 // *** fill semester combobox of Course tab as "1 & 2" or "1 and 2" whatever... ***
-// *** newBranches is not used in Add Branches event. newBranches is to add to branch priority table in db.
-//     (make sure branch going to insert does'nt exist in branch priority table) ***
+
 // 1. Branch combobox in all the tabs since we gave same datatable as DataSource of combobox
 // 2. open update student tab and try search without filling form and,
 //  click dgv cell to auto fill and try update button to check whether dgv cell click selectedItem in combobox changes the selectedIndex.
 // 3. update student with incorrect reg No
 // 4. headerCheckbox
 // 5. update without selecting dgv first time opening form for both student and course.
-// 6. select long sub_name and semester to check the Custom Message Box in Update Course Tab.
+// 6. select long Course and semester to check the Custom Message Box in Update Course Tab.

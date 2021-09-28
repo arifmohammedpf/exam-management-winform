@@ -66,7 +66,7 @@
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(910, 55);
-            this.Panel_Header.TabIndex = 3;
+            this.Panel_Header.TabIndex = 5;
             // 
             // Button_Close
             // 
@@ -77,7 +77,7 @@
             this.Button_Close.Location = new System.Drawing.Point(865, 9);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(40, 37);
-            this.Button_Close.TabIndex = 5;
+            this.Button_Close.TabIndex = 0;
             this.Button_Close.UseVisualStyleBackColor = true;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
@@ -99,7 +99,7 @@
             this.Groupbox_Registered.Location = new System.Drawing.Point(25, 95);
             this.Groupbox_Registered.Name = "Groupbox_Registered";
             this.Groupbox_Registered.Size = new System.Drawing.Size(235, 82);
-            this.Groupbox_Registered.TabIndex = 4;
+            this.Groupbox_Registered.TabIndex = 0;
             this.Groupbox_Registered.TabStop = false;
             this.Groupbox_Registered.Text = "Registered Students of";
             // 
@@ -109,7 +109,7 @@
             this.Radio_Series_Reg.Location = new System.Drawing.Point(153, 36);
             this.Radio_Series_Reg.Name = "Radio_Series_Reg";
             this.Radio_Series_Reg.Size = new System.Drawing.Size(61, 21);
-            this.Radio_Series_Reg.TabIndex = 5;
+            this.Radio_Series_Reg.TabIndex = 1;
             this.Radio_Series_Reg.TabStop = true;
             this.Radio_Series_Reg.Text = "Series";
             this.Radio_Series_Reg.UseVisualStyleBackColor = true;
@@ -121,7 +121,7 @@
             this.Radio_University_Reg.Location = new System.Drawing.Point(10, 36);
             this.Radio_University_Reg.Name = "Radio_University_Reg";
             this.Radio_University_Reg.Size = new System.Drawing.Size(83, 21);
-            this.Radio_University_Reg.TabIndex = 5;
+            this.Radio_University_Reg.TabIndex = 0;
             this.Radio_University_Reg.TabStop = true;
             this.Radio_University_Reg.Text = "University";
             this.Radio_University_Reg.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             this.Groupbox_Alloted.Location = new System.Drawing.Point(289, 95);
             this.Groupbox_Alloted.Name = "Groupbox_Alloted";
             this.Groupbox_Alloted.Size = new System.Drawing.Size(235, 82);
-            this.Groupbox_Alloted.TabIndex = 4;
+            this.Groupbox_Alloted.TabIndex = 1;
             this.Groupbox_Alloted.TabStop = false;
             this.Groupbox_Alloted.Text = "Alloted Students of";
             // 
@@ -144,7 +144,7 @@
             this.Radio_Series_Alloted.Location = new System.Drawing.Point(153, 36);
             this.Radio_Series_Alloted.Name = "Radio_Series_Alloted";
             this.Radio_Series_Alloted.Size = new System.Drawing.Size(61, 21);
-            this.Radio_Series_Alloted.TabIndex = 5;
+            this.Radio_Series_Alloted.TabIndex = 1;
             this.Radio_Series_Alloted.TabStop = true;
             this.Radio_Series_Alloted.Text = "Series";
             this.Radio_Series_Alloted.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             this.Radio_University_Alloted.Location = new System.Drawing.Point(10, 36);
             this.Radio_University_Alloted.Name = "Radio_University_Alloted";
             this.Radio_University_Alloted.Size = new System.Drawing.Size(83, 21);
-            this.Radio_University_Alloted.TabIndex = 5;
+            this.Radio_University_Alloted.TabIndex = 0;
             this.Radio_University_Alloted.TabStop = true;
             this.Radio_University_Alloted.Text = "University";
             this.Radio_University_Alloted.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             this.Textbox_RegNo.Location = new System.Drawing.Point(95, 23);
             this.Textbox_RegNo.Name = "Textbox_RegNo";
             this.Textbox_RegNo.Size = new System.Drawing.Size(257, 22);
-            this.Textbox_RegNo.TabIndex = 7;
+            this.Textbox_RegNo.TabIndex = 0;
             // 
             // label3
             // 
@@ -193,7 +193,7 @@
             this.Combobox_Branch.Location = new System.Drawing.Point(95, 53);
             this.Combobox_Branch.Name = "Combobox_Branch";
             this.Combobox_Branch.Size = new System.Drawing.Size(257, 25);
-            this.Combobox_Branch.TabIndex = 8;
+            this.Combobox_Branch.TabIndex = 1;
             // 
             // Combobox_Semester
             // 
@@ -201,7 +201,7 @@
             this.Combobox_Semester.Location = new System.Drawing.Point(95, 86);
             this.Combobox_Semester.Name = "Combobox_Semester";
             this.Combobox_Semester.Size = new System.Drawing.Size(257, 25);
-            this.Combobox_Semester.TabIndex = 8;
+            this.Combobox_Semester.TabIndex = 2;
             // 
             // label4
             // 
@@ -233,7 +233,7 @@
             this.groupBox3.Location = new System.Drawing.Point(547, 61);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(358, 172);
-            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search";
             // 
@@ -252,7 +252,7 @@
             this.Button_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Delete.Name = "Button_Delete";
             this.Button_Delete.Size = new System.Drawing.Size(100, 40);
-            this.Button_Delete.TabIndex = 15;
+            this.Button_Delete.TabIndex = 3;
             this.Button_Delete.Text = "Delete";
             this.Button_Delete.UseVisualStyleBackColor = false;
             this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
@@ -263,7 +263,7 @@
             this.HeaderCheckBox.Location = new System.Drawing.Point(53, 242);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckBox.TabIndex = 36;
+            this.HeaderCheckBox.TabIndex = 3;
             this.HeaderCheckBox.UseVisualStyleBackColor = true;
             this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
             // 
@@ -271,6 +271,8 @@
             // 
             this.Dgv_Students.AllowUserToAddRows = false;
             this.Dgv_Students.AllowUserToDeleteRows = false;
+            this.Dgv_Students.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Students.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Students.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Students.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -280,7 +282,7 @@
             this.Dgv_Students.Name = "Dgv_Students";
             this.Dgv_Students.RowTemplate.Height = 24;
             this.Dgv_Students.Size = new System.Drawing.Size(910, 427);
-            this.Dgv_Students.TabIndex = 35;
+            this.Dgv_Students.TabIndex = 4;
             this.Dgv_Students.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Students_CellEndEdit);
             this.Dgv_Students.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Students_CellMouseUp);
             // 
@@ -288,7 +290,7 @@
             // 
             this.CheckBoxColumn.HeaderText = "";
             this.CheckBoxColumn.Name = "CheckBoxColumn";
-            this.CheckBoxColumn.Width = 35;
+            this.CheckBoxColumn.Width = 5;
             // 
             // Label_Total
             // 

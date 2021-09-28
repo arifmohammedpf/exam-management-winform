@@ -42,6 +42,7 @@ namespace Exam_Cell
             
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
+                dbConnection.Open();
                 SQLiteCommand Roomscommand, Branchcommand;
                 // Rooms
                 Roomscommand = new SQLiteCommand(Rooms_query, dbConnection);
@@ -90,6 +91,7 @@ namespace Exam_Cell
             string A_Series_Capacity, B_Series_Capacity;
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
+                dbConnection.Open();
                 SQLiteCommand ASeriesCommand, BSeriesCommand;
 
                 // A_Series Capacity Fill
@@ -287,6 +289,7 @@ namespace Exam_Cell
                         // save to db
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
+                            dbConnection.Open();
                             //RoomsRecord.AcceptChanges();      // do we need this???
                             SQLiteCommand command = new SQLiteCommand("Select * from Rooms", dbConnection);
                             SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
@@ -408,6 +411,7 @@ namespace Exam_Cell
                         // save to db
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
+                            dbConnection.Open();
                             //RoomsRecord.AcceptChanges();      // do we need this???
                             SQLiteCommand command = new SQLiteCommand("Select * from Branch_Priority", dbConnection);
                             SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
@@ -434,6 +438,7 @@ namespace Exam_Cell
                 {
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         int recordsAffected;
                         string queryCheckRoomExist = string.Format("Select Room_No where Room_No=@Room_No");
                         SQLiteCommand command = new SQLiteCommand(queryCheckRoomExist, dbConnection);
@@ -480,6 +485,7 @@ namespace Exam_Cell
                     int recordsAffected;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         string query = string.Format("Update Rooms set Room_No=@Room_No, A_Series=@A_Series, B_Series=@B_Series where Room_No=@SelectedRoomNo");
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         command.Parameters.AddWithValue("@Room_No", Textbox_RoomNo.Text);
@@ -511,6 +517,7 @@ namespace Exam_Cell
                     bool deletedFlag = false;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         // delete selected rooms
                         foreach (DataGridViewRow dr in Dgv_Rooms.Rows)
                         {

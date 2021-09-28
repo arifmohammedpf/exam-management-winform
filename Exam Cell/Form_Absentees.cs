@@ -44,6 +44,7 @@ namespace Exam_Cell
         {
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
+                dbConnection.Open();
                 SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                 if (isRoom)
                 {
@@ -147,6 +148,7 @@ namespace Exam_Cell
                     else query = string.Format("select Seat,Reg_No,Status,Name,Branch,Sub_Code,Course,Date,Session,Room_No from University_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         command.Parameters.AddWithValue("@Date", Combobox_Marking_Date.SelectedItem.ToString());
                         command.Parameters.AddWithValue("@Session", Combobox_Marking_Session.SelectedItem.ToString());
@@ -194,6 +196,7 @@ namespace Exam_Cell
                     else query = string.Format("update University_Alloted Set Status=@Status where Reg_No=@Reg_No and Name=@Name and Date=@Date and Session=@Session and Room_No=@Room_No");
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
+                        dbConnection.Open();
                         SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow row in Dgv_Marking.Rows)
                         {
@@ -219,6 +222,7 @@ namespace Exam_Cell
         {
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
+                dbConnection.Open();
                 SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
                 DataTable table = new DataTable();
@@ -335,6 +339,7 @@ namespace Exam_Cell
                 else query = string.Format("select Reg_No,Name,Status,Class,Course,Sub_Code from Series_Alloted Where Date=@Date and Session=@Session and Class=@Class and Sub_Code=@Sub_Code order by Reg_No");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
+                    dbConnection.Open();
                     SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                     command.Parameters.AddWithValue("@Date", Combobox_Statement_Date.SelectedItem.ToString());
                     command.Parameters.AddWithValue("@Session", Combobox_Statement_Session.SelectedItem.ToString());
@@ -359,6 +364,7 @@ namespace Exam_Cell
             string savepath;
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
+                dbConnection.Open();
                 SQLiteCommand comm = new SQLiteCommand("Select Savepath from DBManagement where Savepath is not null");
                 savepath = (string)comm.ExecuteScalar();
             }
@@ -376,6 +382,7 @@ namespace Exam_Cell
                         string Yoa;
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
+                            dbConnection.Open();
                             SQLiteCommand command = new SQLiteCommand("select YOA from Students where Reg_No=@Reg_No", dbConnection);
                             command.Parameters.AddWithValue("@Reg_No", Dgv_Statement.Rows[0].Cells["Reg_No"].Value.ToString());
                             Yoa = (string)command.ExecuteScalar();
@@ -435,7 +442,7 @@ namespace Exam_Cell
                         worksheet.Cells[6, 1].Style.Font.Bold = true;
                         for (var i = 0; i < 3; i++)
                         {
-                            worksheet.Cells[6, i + 2].Value = Dgv_Statement.Columns[i].ToString();
+                            worksheet.Cells[6, i + 2].Value = Dgv_Statement.Columns[i].HeaderText.ToString();
                             worksheet.Cells[6, i + 2].Style.Font.Name = "Arial";
                             worksheet.Cells[6, i + 2].Style.Font.Size = 12;
                             worksheet.Cells[6, i + 2].Style.Font.Bold = true;

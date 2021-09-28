@@ -7,11 +7,7 @@ using System.Windows.Forms;
 namespace Exam_Cell
 {
     static class Program
-    {
-        // Custom Globals
-
-
-
+    {        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -20,7 +16,7 @@ namespace Exam_Cell
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_SplashScreen());
+            Application.Run(new Form_MainMenu());
         }
     }
 }

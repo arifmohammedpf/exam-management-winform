@@ -66,7 +66,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(989, 55);
-            this.panel1.TabIndex = 3;
+            this.panel1.TabIndex = 1;
             // 
             // Button_Close
             // 
@@ -77,7 +77,7 @@
             this.Button_Close.Location = new System.Drawing.Point(937, 9);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(40, 37);
-            this.Button_Close.TabIndex = 5;
+            this.Button_Close.TabIndex = 0;
             this.Button_Close.UseVisualStyleBackColor = true;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
             // 
@@ -115,7 +115,7 @@
             this.Panel_Body.Location = new System.Drawing.Point(0, 55);
             this.Panel_Body.Name = "Panel_Body";
             this.Panel_Body.Size = new System.Drawing.Size(989, 436);
-            this.Panel_Body.TabIndex = 4;
+            this.Panel_Body.TabIndex = 0;
             // 
             // HeaderCheckBox
             // 
@@ -123,7 +123,7 @@
             this.HeaderCheckBox.Location = new System.Drawing.Point(620, 6);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.HeaderCheckBox.TabIndex = 31;
+            this.HeaderCheckBox.TabIndex = 7;
             this.HeaderCheckBox.UseVisualStyleBackColor = true;
             this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
             // 
@@ -131,6 +131,8 @@
             // 
             this.Dgv_Rooms.AllowUserToAddRows = false;
             this.Dgv_Rooms.AllowUserToDeleteRows = false;
+            this.Dgv_Rooms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_Rooms.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Rooms.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_Rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Rooms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -139,7 +141,7 @@
             this.Dgv_Rooms.Name = "Dgv_Rooms";
             this.Dgv_Rooms.RowTemplate.Height = 24;
             this.Dgv_Rooms.Size = new System.Drawing.Size(419, 429);
-            this.Dgv_Rooms.TabIndex = 29;
+            this.Dgv_Rooms.TabIndex = 6;
             this.Dgv_Rooms.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Rooms_CellEndEdit);
             this.Dgv_Rooms.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Rooms_CellMouseUp);
             this.Dgv_Rooms.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Rooms_RowHeaderMouseDoubleClick);
@@ -152,20 +154,22 @@
             // 
             this.CheckBoxColumn.HeaderText = "";
             this.CheckBoxColumn.Name = "CheckBoxColumn";
-            this.CheckBoxColumn.Width = 35;
+            this.CheckBoxColumn.Width = 5;
             // 
             // Dgv_BranchPriority
             // 
             this.Dgv_BranchPriority.AllowDrop = true;
             this.Dgv_BranchPriority.AllowUserToAddRows = false;
             this.Dgv_BranchPriority.AllowUserToDeleteRows = false;
+            this.Dgv_BranchPriority.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_BranchPriority.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_BranchPriority.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
             this.Dgv_BranchPriority.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_BranchPriority.Location = new System.Drawing.Point(3, 134);
             this.Dgv_BranchPriority.Name = "Dgv_BranchPriority";
             this.Dgv_BranchPriority.RowTemplate.Height = 24;
             this.Dgv_BranchPriority.Size = new System.Drawing.Size(563, 298);
-            this.Dgv_BranchPriority.TabIndex = 29;
+            this.Dgv_BranchPriority.TabIndex = 8;
             this.Dgv_BranchPriority.DragDrop += new System.Windows.Forms.DragEventHandler(this.Dgv_BranchPriority_DragDrop);
             this.Dgv_BranchPriority.DragOver += new System.Windows.Forms.DragEventHandler(this.Dgv_BranchPriority_DragOver);
             this.Dgv_BranchPriority.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dgv_BranchPriority_MouseDown);
@@ -185,7 +189,7 @@
             this.Button_Update.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Update.Name = "Button_Update";
             this.Button_Update.Size = new System.Drawing.Size(100, 40);
-            this.Button_Update.TabIndex = 27;
+            this.Button_Update.TabIndex = 4;
             this.Button_Update.Text = "Update";
             this.Button_Update.UseVisualStyleBackColor = false;
             this.Button_Update.Click += new System.EventHandler(this.Button_Update_Click);
@@ -204,7 +208,7 @@
             this.Button_Add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Add.Name = "Button_Add";
             this.Button_Add.Size = new System.Drawing.Size(100, 40);
-            this.Button_Add.TabIndex = 28;
+            this.Button_Add.TabIndex = 3;
             this.Button_Add.Text = "Add";
             this.Button_Add.UseVisualStyleBackColor = false;
             this.Button_Add.Click += new System.EventHandler(this.Button_Add_Click);
@@ -224,7 +228,7 @@
             this.Button_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Delete.Name = "Button_Delete";
             this.Button_Delete.Size = new System.Drawing.Size(100, 40);
-            this.Button_Delete.TabIndex = 26;
+            this.Button_Delete.TabIndex = 5;
             this.Button_Delete.Text = "Delete";
             this.Button_Delete.UseVisualStyleBackColor = false;
             this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
@@ -234,14 +238,14 @@
             this.Numeric_B_Series.Location = new System.Drawing.Point(266, 39);
             this.Numeric_B_Series.Name = "Numeric_B_Series";
             this.Numeric_B_Series.Size = new System.Drawing.Size(63, 22);
-            this.Numeric_B_Series.TabIndex = 25;
+            this.Numeric_B_Series.TabIndex = 2;
             // 
             // Numeric_A_Series
             // 
             this.Numeric_A_Series.Location = new System.Drawing.Point(95, 39);
             this.Numeric_A_Series.Name = "Numeric_A_Series";
             this.Numeric_A_Series.Size = new System.Drawing.Size(63, 22);
-            this.Numeric_A_Series.TabIndex = 25;
+            this.Numeric_A_Series.TabIndex = 1;
             // 
             // Textbox_TotalRoom
             // 
@@ -308,7 +312,7 @@
             this.Textbox_RoomNo.Location = new System.Drawing.Point(95, 6);
             this.Textbox_RoomNo.Name = "Textbox_RoomNo";
             this.Textbox_RoomNo.Size = new System.Drawing.Size(234, 22);
-            this.Textbox_RoomNo.TabIndex = 24;
+            this.Textbox_RoomNo.TabIndex = 0;
             // 
             // label5
             // 
@@ -329,7 +333,6 @@
             this.ClientSize = new System.Drawing.Size(989, 491);
             this.Controls.Add(this.Panel_Body);
             this.Controls.Add(this.panel1);
-            this.Enabled = false;
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
