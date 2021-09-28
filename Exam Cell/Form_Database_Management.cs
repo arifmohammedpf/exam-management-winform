@@ -471,15 +471,18 @@ namespace Exam_Cell
                 if (searchRecord.Length > 0) searchRecord += " AND ";
                 searchRecord += string.Format("YOA Like '%{0}%'", yoa);
             }
-            string query = "Select * from Students where " + searchRecord;
-            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            if (searchRecord != "")
             {
-                dbConnection.Open();
-                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                DataTable studentRecord = new DataTable();
-                dataAdapter.Fill(studentRecord);
-                Dgv_Student.DataSource = studentRecord;
+                string query = "Select * from Students where " + searchRecord;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    dbConnection.Open();
+                    SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                    DataTable studentRecord = new DataTable();
+                    dataAdapter.Fill(studentRecord);
+                    Dgv_Student.DataSource = studentRecord;
+                }
             }
             SetLoading(false);
         }
@@ -755,16 +758,18 @@ namespace Exam_Cell
                     searchRecord += string.Format("Acode Like '%{0}%'", acode);
                 }
 
-                string query = "Select * from Scheme where " + searchRecord;
-                MessageBox.Show(query);
-                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                if (searchRecord != "")
                 {
-                    dbConnection.Open();
-                    SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                    DataTable branchRecord = new DataTable();
-                    dataAdapter.Fill(branchRecord);
-                    Dgv_Course.DataSource = branchRecord;
+                    string query = "Select * from Scheme where " + searchRecord;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        dbConnection.Open();
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                        SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                        DataTable branchRecord = new DataTable();
+                        dataAdapter.Fill(branchRecord);
+                        Dgv_Course.DataSource = branchRecord;
+                    }
                 }
                 SetLoading(false);
             }
@@ -817,7 +822,7 @@ namespace Exam_Cell
                             string query = string.Format("Update Scheme set Sub_Code=@Sub_Code,Course=@Course,Acode=@Acode,Branch=@Branch,Semester=@Semester where Sub_Code=@SelectedSub_Code and Course=@SelectedCourse and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             command.Parameters.AddWithValue("@Sub_Code", Textbox_SubCode.Text);
-                            command.Parameters.AddWithValue("@Course", Textbox_Name.Text);
+                            command.Parameters.AddWithValue("@Course", Textbox_SubName.Text);
                             command.Parameters.AddWithValue("@Acode", Textbox_ACode.Text);
                             command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateCourseTab.Text);
                             command.Parameters.AddWithValue("@Semester", Combobox_Semester_updateCourse.Text);
