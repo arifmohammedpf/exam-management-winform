@@ -525,7 +525,7 @@ namespace Exam_Cell
                 if (selectedRegNo == "" || Textbox_Regno.Text == "" || Textbox_Name.Text == "" || Textbox_Yoa.Text == "" || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of student to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
-                    string messageText = string.Format("Do you want to update record of '%{0}%' - '%{1}%' ?   ", selectedRegNo, selectedName);
+                    string messageText = string.Format("Do you want to update record of {0} - {1} ?   ", selectedRegNo, selectedName);
                     CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
                     string result = CustomMessageBox.UserChoice;
                     if (result == "Yes")
@@ -552,7 +552,7 @@ namespace Exam_Cell
                         }
                         if (recordsAffected == 0)
                         {
-                            messageText = string.Format("'%{0}%' - '%{1}%' does not exist, Try again    ", selectedRegNo, selectedName);
+                            messageText = string.Format("{0} - {1} does not exist, Try again    ", selectedRegNo, selectedName);
                             CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                             return;
                         }
@@ -805,7 +805,7 @@ namespace Exam_Cell
                 if (selectedSubCode == "" || Textbox_SubCode.Text == "" || Textbox_SubName.Text == "" || Textbox_ACode.Text == "" || Combobox_Branch_updateCourseTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of Branch/Course to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
-                    string messageText = string.Format("Do you want to update '%{0}%' - '%{1}%' of Semester '%{2}%' ?   ", selectedSubCode, selectedSubName, selectedSemester_Course);
+                    string messageText = string.Format("Do you want to update {0} - {1} of Semester {2} ?   ", selectedSubCode, selectedSubName, selectedSemester_Course);
                     CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
                     string result = CustomMessageBox.UserChoice;
                     if (result == "Yes")
@@ -830,7 +830,7 @@ namespace Exam_Cell
                         }
                         if (recordsAffected == 0)
                         {
-                            messageText = string.Format("'%{0}%' - '%{1}%' of Semester '%{2}%' does not exist, Try again ", selectedSubCode, selectedSubName,selectedSemester_Course);
+                            messageText = string.Format("{0} - {1} of Semester {2} does not exist, Try again ", selectedSubCode, selectedSubName,selectedSemester_Course);
                             CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                         }
                         ComboboxesFill();
