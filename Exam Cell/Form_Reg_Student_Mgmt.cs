@@ -168,16 +168,16 @@ namespace Exam_Cell
 
                 string searchRecord = "";
                 if (regno != "")
-                    searchRecord = string.Format("Reg_No like '%{0}%'", regno);
+                    searchRecord = string.Format("Reg_No like {0}", regno);
                 if (branch != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Branch Like '%{0}%'", branch);
+                    searchRecord += string.Format("Branch Like {0}", branch);
                 }
                 if (semester != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Semester Like '%{0}%'", semester);
+                    searchRecord += string.Format("Semester Like {0}", semester);
                 }
 
                 string query;

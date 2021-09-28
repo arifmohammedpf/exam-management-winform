@@ -163,16 +163,16 @@ namespace Exam_Cell
                 string searchRecord = "";
 
                 if (scheme != "-Select-")
-                    searchRecord = string.Format("Scheme like '%{0}%'", scheme);
+                    searchRecord = string.Format("Scheme like {0}", scheme);
                 if (branch != "")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Branch Like '%{0}%'", branch);
+                    searchRecord += string.Format("Branch Like {0}", branch);
                 }
                 if (semester != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Semester Like '%{0}%'", semester);
+                    searchRecord += string.Format("Semester Like {0}", semester);
                 }
                 if (searchRecord != "")
                 {
@@ -311,12 +311,12 @@ namespace Exam_Cell
 
                 if (branch != "-Select-")
                 {
-                    searchRecord += string.Format("Branch Like '%{0}%'", branch);
+                    searchRecord += string.Format("Branch Like {0}", branch);
                 }
                 if (yoa != "")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("YOA Like '%{0}%'", yoa);
+                    searchRecord += string.Format("YOA Like {0}", yoa);
                 }
                 if (searchRecord != "")
                 {
@@ -405,7 +405,7 @@ namespace Exam_Cell
                 string searchRecord = "";
 
                 if (studentClass != "-Select-")
-                    searchRecord += string.Format("Class Like '%{0}%'", studentClass);
+                    searchRecord += string.Format("Class Like {0}", studentClass);
                 if (searchRecord != "")
                 {
                     string query = "Select * from Students where " + searchRecord;

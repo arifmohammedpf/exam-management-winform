@@ -445,31 +445,31 @@ namespace Exam_Cell
 
             string searchRecord = "";        // string for sql statements to be written
             if (regno != "")
-                searchRecord = string.Format("Reg_No like '%{0}%'", regno);
+                searchRecord = string.Format("Reg_No like {0}", regno);
             if (name != "")
             {
                 if (searchRecord.Length > 0) searchRecord += " AND ";
-                searchRecord += string.Format("Name Like '%{0}%'", name);
+                searchRecord += string.Format("Name Like {0}", name);
             }
             if (branch != "-Select-")
             {
                 if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
-                searchRecord += string.Format("Branch Like '%{0}%'", branch);   //Put sql statement in searchRecord string
+                searchRecord += string.Format("Branch Like {0}", branch);   //Put sql statement in searchRecord string
             }
             if (semester != "-Select-")
             {
                 if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
-                searchRecord += string.Format("Semester Like '%{0}%'", semester);   //Put sql statement in searchRecord string
+                searchRecord += string.Format("Semester Like {0}", semester);   //Put sql statement in searchRecord string
             }
             if (studentClass != "-Select-")
             {
                 if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
-                searchRecord += string.Format("Class Like '%{0}%'", studentClass);   //Put sql statement in searchRecord string
+                searchRecord += string.Format("Class Like {0}", studentClass);   //Put sql statement in searchRecord string
             }
             if (yoa != "")
             {
                 if (searchRecord.Length > 0) searchRecord += " AND ";
-                searchRecord += string.Format("YOA Like '%{0}%'", yoa);
+                searchRecord += string.Format("YOA Like {0}", yoa);
             }
             string query = "Select * from Students where " + searchRecord;
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
@@ -525,7 +525,7 @@ namespace Exam_Cell
                 if (selectedRegNo == "" || Textbox_Regno.Text == "" || Textbox_Name.Text == "" || Textbox_Yoa.Text == "" || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of student to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
-                    string messageText = string.Format("Do you want to update record of '%{0}%' - '%{1}%' ?   ", selectedRegNo, selectedName);
+                    string messageText = string.Format("Do you want to update record of {0} - {1} ?   ", selectedRegNo, selectedName);
                     CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
                     string result = CustomMessageBox.UserChoice;
                     if (result == "Yes")
@@ -552,7 +552,7 @@ namespace Exam_Cell
                         }
                         if (recordsAffected == 0)
                         {
-                            messageText = string.Format("'%{0}%' - '%{1}%' does not exist, Try again    ", selectedRegNo, selectedName);
+                            messageText = string.Format("{0} - {1} does not exist, Try again    ", selectedRegNo, selectedName);
                             CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                             return;
                         }
@@ -732,27 +732,27 @@ namespace Exam_Cell
                 
                 if (branch != "-Select-")
                 {
-                    searchRecord = string.Format("Branch Like '%{0}%'", branch);   //Put sql statement in searchRecord string
+                    searchRecord = string.Format("Branch Like {0}", branch);   //Put sql statement in searchRecord string
                 }
                 if (semester != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
-                    searchRecord += string.Format("Semester Like '%{0}%'", semester);   //Put sql statement in searchRecord string
+                    searchRecord += string.Format("Semester Like {0}", semester);   //Put sql statement in searchRecord string
                 }
                 if (subcode != "")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
-                    searchRecord += string.Format("Sub_Code Like '%{0}%'", subcode);   //Put sql statement in searchRecord string
+                    searchRecord += string.Format("Sub_Code Like {0}", subcode);   //Put sql statement in searchRecord string
                 }
                 if (subname != "")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";                //Put AND if there is existing Sql statement in searchRecord string
-                    searchRecord += string.Format("Course Like '%{0}%'", subname);   //Put sql statement in searchRecord string
+                    searchRecord += string.Format("Course Like {0}", subname);   //Put sql statement in searchRecord string
                 }
                 if (acode != "")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Acode Like '%{0}%'", acode);
+                    searchRecord += string.Format("Acode Like {0}", acode);
                 }
 
                 string query = "Select * from Scheme where " + searchRecord;
@@ -805,7 +805,7 @@ namespace Exam_Cell
                 if (selectedSubCode == "" || Textbox_SubCode.Text == "" || Textbox_SubName.Text == "" || Textbox_ACode.Text == "" || Combobox_Branch_updateCourseTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of Branch/Course to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
-                    string messageText = string.Format("Do you want to update '%{0}%' - '%{1}%' of Semester '%{2}%' ?   ", selectedSubCode, selectedSubName, selectedSemester_Course);
+                    string messageText = string.Format("Do you want to update {0} - {1} of Semester {2} ?   ", selectedSubCode, selectedSubName, selectedSemester_Course);
                     CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
                     string result = CustomMessageBox.UserChoice;
                     if (result == "Yes")
@@ -817,7 +817,7 @@ namespace Exam_Cell
                             string query = string.Format("Update Scheme set Sub_Code=@Sub_Code,Course=@Course,Acode=@Acode,Branch=@Branch,Semester=@Semester where Sub_Code=@SelectedSub_Code and Course=@SelectedCourse and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             command.Parameters.AddWithValue("@Sub_Code", Textbox_SubCode.Text);
-                            command.Parameters.AddWithValue("@Course", Textbox_Name.Text);
+                            command.Parameters.AddWithValue("@Course", Textbox_SubName.Text);
                             command.Parameters.AddWithValue("@Acode", Textbox_ACode.Text);
                             command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateCourseTab.Text);
                             command.Parameters.AddWithValue("@Semester", Combobox_Semester_updateCourse.Text);
@@ -830,7 +830,7 @@ namespace Exam_Cell
                         }
                         if (recordsAffected == 0)
                         {
-                            messageText = string.Format("'%{0}%' - '%{1}%' of Semester '%{2}%' does not exist, Try again ", selectedSubCode, selectedSubName,selectedSemester_Course);
+                            messageText = string.Format("{0} - {1} of Semester {2} does not exist, Try again ", selectedSubCode, selectedSubName,selectedSemester_Course);
                             CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                         }
                         ComboboxesFill();

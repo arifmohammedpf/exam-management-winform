@@ -739,7 +739,7 @@ namespace Exam_Cell
             }
             else
             {
-                string messageText = string.Format("Room '%{0}%' does not exist in Alloted records  ", Combobox_To_RoomNo.Text);
+                string messageText = string.Format("Room {0} does not exist in Alloted records  ", Combobox_To_RoomNo.Text);
                 CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
             }
         }

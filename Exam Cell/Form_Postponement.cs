@@ -90,21 +90,21 @@ namespace Exam_Cell
                 string date = DateTimePicker_Date.Text;
 
                 if (Checkbox_Datewise.Checked)
-                    searchRecord += string.Format("Date = '%{0}%'", date);
+                    searchRecord += string.Format("Date = {0}", date);
                 if (branch != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord = string.Format("Branch like '%{0}%'", branch);
+                    searchRecord = string.Format("Branch like {0}", branch);
                 }
                 if (examcode != "")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
+                    searchRecord += string.Format("Sub_Code Like {0}", examcode);
                 }
                 if (semester != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Semester Like '%{0}%'", examcode);
+                    searchRecord += string.Format("Semester Like {0}", examcode);
                 }
                 if (searchRecord != "")
                 {
