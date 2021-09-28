@@ -477,7 +477,7 @@ namespace Exam_Cell
             if(selectedRoomNo == "" || Textbox_RoomNo.Text == "") CustomMessageBox.ShowMessageBox("Please select and fill Room No to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
             else
             {
-                string messageText = string.Format("Do you want to update Room {0} ?   ", selectedRoomNo);
+                string messageText = string.Format("Do you want to update Room '%{0}%' ?   ", selectedRoomNo);
                 CustomMessageBox.ShowMessageBox(messageText, "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
                 string result = CustomMessageBox.UserChoice;
                 if(result == "Yes")
@@ -496,7 +496,7 @@ namespace Exam_Cell
                     }
                     if (recordsAffected == 0)
                     {
-                        messageText = string.Format("Room {0} does not exist, Try again    ", selectedRoomNo);
+                        messageText = string.Format("Room '%{0}%' does not exist, Try again    ", selectedRoomNo);
                         CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                         return;
                     }
