@@ -61,13 +61,41 @@ namespace Exam_Cell
             Label_Total.Text = labelCountText + studentCount;
         }
 
+        void ComboboxFill()
+        {
+            try
+            {
+                Combobox_Branch.DataSource = null;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                {
+                    dbConnection.Open();
+                    string query = string.Format("Select Branch from Branch_Priority where Branch is not null");
+                    SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
+                    DataTable queryDatatable = new DataTable();
+                    adapter.Fill(queryDatatable);
+                    DataRow datatableTop = queryDatatable.NewRow();
+                    datatableTop[0] = "-Select-";
+                    queryDatatable.Rows.InsertAt(datatableTop, 0);
+                    Combobox_Branch.DataSource = queryDatatable;
+                    Combobox_Branch.DisplayMember = "Branch";
+                    Combobox_Branch.ValueMember = "Branch";
+                    Combobox_Semester.SelectedIndex = 0;
+                }                                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void Radio_University_Reg_CheckedChanged(object sender, EventArgs e)
         {
             if (Radio_University_Reg.Checked)
             {
                 Radio_University_Alloted.Checked = false;
                 Radio_Series_Alloted.Checked = false;
-                ResetForm();
+                ComboboxFill();
                 string query = "Select Count(*) from University_Candidates";
                 string labelCountText = "Total Students Registered : ";
                 TotalCount(query, labelCountText);
@@ -80,7 +108,8 @@ namespace Exam_Cell
             {
                 Radio_University_Alloted.Checked = false;
                 Radio_Series_Alloted.Checked = false;
-                ResetForm(); string query = "Select Count(*) from Series_Candidates";
+                ComboboxFill();
+                string query = "Select Count(*) from Series_Candidates";
                 string labelCountText = "Total Students Registered : ";
                 TotalCount(query, labelCountText);
             }
@@ -92,7 +121,7 @@ namespace Exam_Cell
             {
                 Radio_University_Reg.Checked = false;
                 Radio_Series_Reg.Checked = false;
-                ResetForm();
+                ComboboxFill();
                 string query = "Select Count(*) from University_Alloted";
                 string labelCountText = "Total Students Alloted : ";
                 TotalCount(query, labelCountText);
@@ -105,7 +134,7 @@ namespace Exam_Cell
             {
                 Radio_University_Reg.Checked = false;
                 Radio_Series_Reg.Checked = false;
-                ResetForm();
+                ComboboxFill();
                 string query = "Select Count(*) from Series_Alloted";
                 string labelCountText = "Total Students Alloted : ";
                 TotalCount(query, labelCountText);

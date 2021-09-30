@@ -204,6 +204,7 @@
             // 
             // Combobox_Branch
             // 
+            this.Combobox_Branch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch.FormattingEnabled = true;
             this.Combobox_Branch.Location = new System.Drawing.Point(119, 66);
             this.Combobox_Branch.Margin = new System.Windows.Forms.Padding(4);
@@ -213,7 +214,18 @@
             // 
             // Combobox_Semester
             // 
+            this.Combobox_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Semester.FormattingEnabled = true;
+            this.Combobox_Semester.Items.AddRange(new object[] {
+            "-Select-",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
             this.Combobox_Semester.Location = new System.Drawing.Point(119, 108);
             this.Combobox_Semester.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Semester.Name = "Combobox_Semester";
@@ -281,7 +293,7 @@
             // HeaderCheckBox
             // 
             this.HeaderCheckBox.AutoSize = true;
-            this.HeaderCheckBox.Location = new System.Drawing.Point(66, 302);
+            this.HeaderCheckBox.Location = new System.Drawing.Point(19, 302);
             this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(18, 17);
@@ -304,6 +316,7 @@
             this.Dgv_Students.Location = new System.Drawing.Point(0, 298);
             this.Dgv_Students.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Students.Name = "Dgv_Students";
+            this.Dgv_Students.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Students.RowTemplate.Height = 24;

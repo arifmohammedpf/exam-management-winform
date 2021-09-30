@@ -108,7 +108,7 @@
             this.Panel_Header.Controls.Add(this.label1);
             this.Panel_Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(1341, 69);
             this.Panel_Header.TabIndex = 2;
@@ -120,7 +120,7 @@
             this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Close.Image = global::Exam_Cell.Properties.Resources.cancel;
             this.Button_Close.Location = new System.Drawing.Point(1276, 11);
-            this.Button_Close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Button_Close.Margin = new System.Windows.Forms.Padding(4);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(50, 46);
             this.Button_Close.TabIndex = 0;
@@ -144,9 +144,9 @@
             this.Groupbox_SelectExam.Controls.Add(this.Radio_Series);
             this.Groupbox_SelectExam.Controls.Add(this.Radio_University);
             this.Groupbox_SelectExam.Location = new System.Drawing.Point(11, 78);
-            this.Groupbox_SelectExam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Groupbox_SelectExam.Margin = new System.Windows.Forms.Padding(4);
             this.Groupbox_SelectExam.Name = "Groupbox_SelectExam";
-            this.Groupbox_SelectExam.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Groupbox_SelectExam.Padding = new System.Windows.Forms.Padding(4);
             this.Groupbox_SelectExam.Size = new System.Drawing.Size(340, 96);
             this.Groupbox_SelectExam.TabIndex = 0;
             this.Groupbox_SelectExam.TabStop = false;
@@ -156,7 +156,7 @@
             // 
             this.Radio_Series.AutoSize = true;
             this.Radio_Series.Location = new System.Drawing.Point(206, 40);
-            this.Radio_Series.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Radio_Series.Margin = new System.Windows.Forms.Padding(4);
             this.Radio_Series.Name = "Radio_Series";
             this.Radio_Series.Size = new System.Drawing.Size(71, 24);
             this.Radio_Series.TabIndex = 1;
@@ -169,7 +169,7 @@
             // 
             this.Radio_University.AutoSize = true;
             this.Radio_University.Location = new System.Drawing.Point(39, 40);
-            this.Radio_University.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Radio_University.Margin = new System.Windows.Forms.Padding(4);
             this.Radio_University.Name = "Radio_University";
             this.Radio_University.Size = new System.Drawing.Size(100, 24);
             this.Radio_University.TabIndex = 0;
@@ -185,7 +185,7 @@
             this.TabPanel.Controls.Add(this.Tab_ShiftSwap);
             this.TabPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TabPanel.Location = new System.Drawing.Point(0, 181);
-            this.TabPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TabPanel.Margin = new System.Windows.Forms.Padding(4);
             this.TabPanel.Name = "TabPanel";
             this.TabPanel.SelectedIndex = 0;
             this.TabPanel.Size = new System.Drawing.Size(1341, 761);
@@ -208,9 +208,9 @@
             this.Tab_Allot.Controls.Add(this.Combobox_Session);
             this.Tab_Allot.Controls.Add(this.DateTimePicker_Date);
             this.Tab_Allot.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Allot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Allot.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_Allot.Name = "Tab_Allot";
-            this.Tab_Allot.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Allot.Padding = new System.Windows.Forms.Padding(4);
             this.Tab_Allot.Size = new System.Drawing.Size(1333, 728);
             this.Tab_Allot.TabIndex = 0;
             this.Tab_Allot.Text = "Allot Students";
@@ -226,8 +226,9 @@
             this.Dgv_Cand_in_AllotedRooms.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dgv_Cand_in_AllotedRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Cand_in_AllotedRooms.Location = new System.Drawing.Point(876, 95);
-            this.Dgv_Cand_in_AllotedRooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Cand_in_AllotedRooms.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Cand_in_AllotedRooms.Name = "Dgv_Cand_in_AllotedRooms";
+            this.Dgv_Cand_in_AllotedRooms.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Cand_in_AllotedRooms.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Cand_in_AllotedRooms.RowTemplate.Height = 24;
@@ -258,7 +259,7 @@
             // 
             this.Combobox_Alloted_Rooms.FormattingEnabled = true;
             this.Combobox_Alloted_Rooms.Location = new System.Drawing.Point(1075, 20);
-            this.Combobox_Alloted_Rooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Alloted_Rooms.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Alloted_Rooms.Name = "Combobox_Alloted_Rooms";
             this.Combobox_Alloted_Rooms.Size = new System.Drawing.Size(248, 28);
             this.Combobox_Alloted_Rooms.TabIndex = 4;
@@ -312,8 +313,9 @@
             this.Dgv_RegCourseWise_Count.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dgv_RegCourseWise_Count.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_RegCourseWise_Count.Location = new System.Drawing.Point(1, 374);
-            this.Dgv_RegCourseWise_Count.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_RegCourseWise_Count.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_RegCourseWise_Count.Name = "Dgv_RegCourseWise_Count";
+            this.Dgv_RegCourseWise_Count.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_RegCourseWise_Count.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_RegCourseWise_Count.RowTemplate.Height = 24;
@@ -330,8 +332,9 @@
             this.Dgv_Alloted_Rooms.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dgv_Alloted_Rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Alloted_Rooms.Location = new System.Drawing.Point(485, 95);
-            this.Dgv_Alloted_Rooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Alloted_Rooms.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Alloted_Rooms.Name = "Dgv_Alloted_Rooms";
+            this.Dgv_Alloted_Rooms.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Alloted_Rooms.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dgv_Alloted_Rooms.RowTemplate.Height = 24;
@@ -348,8 +351,9 @@
             this.Dgv_RegCandidates_List.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dgv_RegCandidates_List.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_RegCandidates_List.Location = new System.Drawing.Point(1, 95);
-            this.Dgv_RegCandidates_List.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_RegCandidates_List.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_RegCandidates_List.Name = "Dgv_RegCandidates_List";
+            this.Dgv_RegCandidates_List.RowHeadersVisible = false;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_RegCandidates_List.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv_RegCandidates_List.RowTemplate.Height = 24;
@@ -394,7 +398,7 @@
             "Forenoon",
             "Afternoon"});
             this.Combobox_Session.Location = new System.Drawing.Point(102, 52);
-            this.Combobox_Session.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Session.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Session.Name = "Combobox_Session";
             this.Combobox_Session.Size = new System.Drawing.Size(284, 28);
             this.Combobox_Session.TabIndex = 1;
@@ -403,7 +407,7 @@
             // DateTimePicker_Date
             // 
             this.DateTimePicker_Date.Location = new System.Drawing.Point(102, 12);
-            this.DateTimePicker_Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DateTimePicker_Date.Margin = new System.Windows.Forms.Padding(4);
             this.DateTimePicker_Date.Name = "DateTimePicker_Date";
             this.DateTimePicker_Date.Size = new System.Drawing.Size(284, 26);
             this.DateTimePicker_Date.TabIndex = 0;
@@ -420,9 +424,9 @@
             this.Tab_ExcelSheet.Controls.Add(this.Textbox_Filepath);
             this.Tab_ExcelSheet.Controls.Add(this.Textbox_ExamName);
             this.Tab_ExcelSheet.Location = new System.Drawing.Point(4, 29);
-            this.Tab_ExcelSheet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_ExcelSheet.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_ExcelSheet.Name = "Tab_ExcelSheet";
-            this.Tab_ExcelSheet.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_ExcelSheet.Padding = new System.Windows.Forms.Padding(4);
             this.Tab_ExcelSheet.Size = new System.Drawing.Size(1333, 728);
             this.Tab_ExcelSheet.TabIndex = 1;
             this.Tab_ExcelSheet.Text = "Generate Excel Sheets";
@@ -535,7 +539,7 @@
             // Textbox_Filepath
             // 
             this.Textbox_Filepath.Location = new System.Drawing.Point(8, 679);
-            this.Textbox_Filepath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_Filepath.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_Filepath.Name = "Textbox_Filepath";
             this.Textbox_Filepath.Size = new System.Drawing.Size(400, 26);
             this.Textbox_Filepath.TabIndex = 0;
@@ -543,7 +547,7 @@
             // Textbox_ExamName
             // 
             this.Textbox_ExamName.Location = new System.Drawing.Point(438, 166);
-            this.Textbox_ExamName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_ExamName.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_ExamName.Name = "Textbox_ExamName";
             this.Textbox_ExamName.Size = new System.Drawing.Size(400, 26);
             this.Textbox_ExamName.TabIndex = 0;
@@ -554,7 +558,7 @@
             this.Tab_ShiftSwap.Controls.Add(this.groupBox2);
             this.Tab_ShiftSwap.Controls.Add(this.label6);
             this.Tab_ShiftSwap.Location = new System.Drawing.Point(4, 29);
-            this.Tab_ShiftSwap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_ShiftSwap.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_ShiftSwap.Name = "Tab_ShiftSwap";
             this.Tab_ShiftSwap.Size = new System.Drawing.Size(1333, 728);
             this.Tab_ShiftSwap.TabIndex = 2;
@@ -572,9 +576,9 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Location = new System.Drawing.Point(715, 156);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(412, 269);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
@@ -622,7 +626,7 @@
             // 
             this.Combobox_To_Starting_Seat.FormattingEnabled = true;
             this.Combobox_To_Starting_Seat.Location = new System.Drawing.Point(226, 140);
-            this.Combobox_To_Starting_Seat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_To_Starting_Seat.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_To_Starting_Seat.Name = "Combobox_To_Starting_Seat";
             this.Combobox_To_Starting_Seat.Size = new System.Drawing.Size(134, 28);
             this.Combobox_To_Starting_Seat.TabIndex = 2;
@@ -635,7 +639,7 @@
             "A",
             "B"});
             this.Combobox_To_SeriesAB.Location = new System.Drawing.Point(226, 90);
-            this.Combobox_To_SeriesAB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_To_SeriesAB.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_To_SeriesAB.Name = "Combobox_To_SeriesAB";
             this.Combobox_To_SeriesAB.Size = new System.Drawing.Size(134, 28);
             this.Combobox_To_SeriesAB.TabIndex = 1;
@@ -655,7 +659,7 @@
             // 
             this.Combobox_To_RoomNo.FormattingEnabled = true;
             this.Combobox_To_RoomNo.Location = new System.Drawing.Point(226, 40);
-            this.Combobox_To_RoomNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_To_RoomNo.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_To_RoomNo.Name = "Combobox_To_RoomNo";
             this.Combobox_To_RoomNo.Size = new System.Drawing.Size(134, 28);
             this.Combobox_To_RoomNo.TabIndex = 0;
@@ -692,9 +696,9 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(190, 156);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(412, 269);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
@@ -704,7 +708,7 @@
             // 
             this.Combobox_From_Ending_Seat.FormattingEnabled = true;
             this.Combobox_From_Ending_Seat.Location = new System.Drawing.Point(231, 188);
-            this.Combobox_From_Ending_Seat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_From_Ending_Seat.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_From_Ending_Seat.Name = "Combobox_From_Ending_Seat";
             this.Combobox_From_Ending_Seat.Size = new System.Drawing.Size(134, 28);
             this.Combobox_From_Ending_Seat.TabIndex = 3;
@@ -714,7 +718,7 @@
             // 
             this.Combobox_From_Starting_Seat.FormattingEnabled = true;
             this.Combobox_From_Starting_Seat.Location = new System.Drawing.Point(231, 139);
-            this.Combobox_From_Starting_Seat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_From_Starting_Seat.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_From_Starting_Seat.Name = "Combobox_From_Starting_Seat";
             this.Combobox_From_Starting_Seat.Size = new System.Drawing.Size(134, 28);
             this.Combobox_From_Starting_Seat.TabIndex = 2;
@@ -728,7 +732,7 @@
             "A",
             "B"});
             this.Combobox_From_SeriesAB.Location = new System.Drawing.Point(231, 90);
-            this.Combobox_From_SeriesAB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_From_SeriesAB.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_From_SeriesAB.Name = "Combobox_From_SeriesAB";
             this.Combobox_From_SeriesAB.Size = new System.Drawing.Size(134, 28);
             this.Combobox_From_SeriesAB.TabIndex = 1;
@@ -748,7 +752,7 @@
             // 
             this.Combobox_From_RoomNo.FormattingEnabled = true;
             this.Combobox_From_RoomNo.Location = new System.Drawing.Point(231, 41);
-            this.Combobox_From_RoomNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_From_RoomNo.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_From_RoomNo.Name = "Combobox_From_RoomNo";
             this.Combobox_From_RoomNo.Size = new System.Drawing.Size(134, 28);
             this.Combobox_From_RoomNo.TabIndex = 0;
@@ -811,7 +815,7 @@
             this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.Panel_ProgressBar.Controls.Add(this.label4);
             this.Panel_ProgressBar.Location = new System.Drawing.Point(476, 478);
-            this.Panel_ProgressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel_ProgressBar.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_ProgressBar.Name = "Panel_ProgressBar";
             this.Panel_ProgressBar.Size = new System.Drawing.Size(388, 88);
             this.Panel_ProgressBar.TabIndex = 19;

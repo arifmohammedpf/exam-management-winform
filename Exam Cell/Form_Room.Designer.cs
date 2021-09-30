@@ -36,6 +36,7 @@
             this.Panel_Body = new System.Windows.Forms.Panel();
             this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
             this.Dgv_Rooms = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Dgv_BranchPriority = new System.Windows.Forms.DataGridView();
             this.Button_Update = new System.Windows.Forms.Button();
             this.Button_Add = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Textbox_RoomNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Rooms)).BeginInit();
@@ -64,7 +64,7 @@
             this.panel1.Controls.Add(this.Panel_Header);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1236, 69);
             this.panel1.TabIndex = 1;
@@ -76,7 +76,7 @@
             this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Close.Image = global::Exam_Cell.Properties.Resources.cancel;
             this.Button_Close.Location = new System.Drawing.Point(1171, 11);
-            this.Button_Close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Button_Close.Margin = new System.Windows.Forms.Padding(4);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(50, 46);
             this.Button_Close.TabIndex = 0;
@@ -114,7 +114,7 @@
             this.Panel_Body.Controls.Add(this.label5);
             this.Panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Body.Location = new System.Drawing.Point(0, 69);
-            this.Panel_Body.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel_Body.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_Body.Name = "Panel_Body";
             this.Panel_Body.Size = new System.Drawing.Size(1236, 545);
             this.Panel_Body.TabIndex = 0;
@@ -123,7 +123,7 @@
             // 
             this.HeaderCheckBox.AutoSize = true;
             this.HeaderCheckBox.Location = new System.Drawing.Point(771, 7);
-            this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(18, 17);
             this.HeaderCheckBox.TabIndex = 7;
@@ -143,7 +143,7 @@
             this.Dgv_Rooms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBoxColumn});
             this.Dgv_Rooms.Location = new System.Drawing.Point(709, 4);
-            this.Dgv_Rooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Rooms.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Rooms.Name = "Dgv_Rooms";
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Rooms.RowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -158,6 +158,13 @@
             this.Dgv_Rooms.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dgv_Rooms_MouseDown);
             this.Dgv_Rooms.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dgv_Rooms_MouseMove);
             // 
+            // CheckBoxColumn
+            // 
+            this.CheckBoxColumn.HeaderText = "";
+            this.CheckBoxColumn.MinimumWidth = 8;
+            this.CheckBoxColumn.Name = "CheckBoxColumn";
+            this.CheckBoxColumn.Width = 8;
+            // 
             // Dgv_BranchPriority
             // 
             this.Dgv_BranchPriority.AllowDrop = true;
@@ -169,8 +176,9 @@
             this.Dgv_BranchPriority.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dgv_BranchPriority.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_BranchPriority.Location = new System.Drawing.Point(4, 168);
-            this.Dgv_BranchPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_BranchPriority.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_BranchPriority.Name = "Dgv_BranchPriority";
+            this.Dgv_BranchPriority.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_BranchPriority.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_BranchPriority.RowTemplate.Height = 24;
@@ -242,7 +250,7 @@
             // Numeric_B_Series
             // 
             this.Numeric_B_Series.Location = new System.Drawing.Point(332, 49);
-            this.Numeric_B_Series.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Numeric_B_Series.Margin = new System.Windows.Forms.Padding(4);
             this.Numeric_B_Series.Name = "Numeric_B_Series";
             this.Numeric_B_Series.Size = new System.Drawing.Size(79, 26);
             this.Numeric_B_Series.TabIndex = 2;
@@ -251,7 +259,7 @@
             // Numeric_A_Series
             // 
             this.Numeric_A_Series.Location = new System.Drawing.Point(119, 49);
-            this.Numeric_A_Series.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Numeric_A_Series.Margin = new System.Windows.Forms.Padding(4);
             this.Numeric_A_Series.Name = "Numeric_A_Series";
             this.Numeric_A_Series.Size = new System.Drawing.Size(79, 26);
             this.Numeric_A_Series.TabIndex = 1;
@@ -304,7 +312,7 @@
             // Textbox_RoomNo
             // 
             this.Textbox_RoomNo.Location = new System.Drawing.Point(119, 8);
-            this.Textbox_RoomNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_RoomNo.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_RoomNo.Name = "Textbox_RoomNo";
             this.Textbox_RoomNo.Size = new System.Drawing.Size(292, 26);
             this.Textbox_RoomNo.TabIndex = 0;
@@ -319,13 +327,6 @@
             this.label5.Size = new System.Drawing.Size(84, 20);
             this.label5.TabIndex = 22;
             this.label5.Text = "Room No :";
-            // 
-            // CheckBoxColumn
-            // 
-            this.CheckBoxColumn.HeaderText = "";
-            this.CheckBoxColumn.MinimumWidth = 8;
-            this.CheckBoxColumn.Name = "CheckBoxColumn";
-            this.CheckBoxColumn.Width = 8;
             // 
             // Form_Room
             // 

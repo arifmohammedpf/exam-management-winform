@@ -115,7 +115,7 @@
             // HeaderCheckBox
             // 
             this.HeaderCheckBox.AutoSize = true;
-            this.HeaderCheckBox.Location = new System.Drawing.Point(70, 268);
+            this.HeaderCheckBox.Location = new System.Drawing.Point(16, 268);
             this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(18, 17);
@@ -138,6 +138,7 @@
             this.Dgv_Timetable.Location = new System.Drawing.Point(0, 263);
             this.Dgv_Timetable.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Timetable.Name = "Dgv_Timetable";
+            this.Dgv_Timetable.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Timetable.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Timetable.RowTemplate.Height = 24;

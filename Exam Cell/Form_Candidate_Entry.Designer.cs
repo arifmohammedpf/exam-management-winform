@@ -35,8 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Panel_Body = new System.Windows.Forms.Panel();
             this.Dgv_Course = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
             this.Dgv_Students = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Students = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Combobox_Semester = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -74,8 +76,6 @@
             this.Radio_University = new System.Windows.Forms.RadioButton();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.CheckBoxColumn_Students = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Course)).BeginInit();
@@ -162,16 +162,24 @@
             this.Dgv_Course.Location = new System.Drawing.Point(676, 306);
             this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Course.Name = "Dgv_Course";
+            this.Dgv_Course.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Course.RowTemplate.Height = 24;
             this.Dgv_Course.Size = new System.Drawing.Size(811, 516);
             this.Dgv_Course.TabIndex = 39;
             // 
+            // CheckBoxColumn_Course
+            // 
+            this.CheckBoxColumn_Course.HeaderText = "";
+            this.CheckBoxColumn_Course.MinimumWidth = 8;
+            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
+            this.CheckBoxColumn_Course.Width = 8;
+            // 
             // HeaderCheckBox
             // 
             this.HeaderCheckBox.AutoSize = true;
-            this.HeaderCheckBox.Location = new System.Drawing.Point(52, 310);
+            this.HeaderCheckBox.Location = new System.Drawing.Point(15, 310);
             this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(18, 17);
@@ -194,6 +202,7 @@
             this.Dgv_Students.Location = new System.Drawing.Point(0, 306);
             this.Dgv_Students.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Students.Name = "Dgv_Students";
+            this.Dgv_Students.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Students.RowTemplate.Height = 24;
@@ -201,6 +210,13 @@
             this.Dgv_Students.TabIndex = 37;
             this.Dgv_Students.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Students_CellEndEdit);
             this.Dgv_Students.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Students_CellMouseUp);
+            // 
+            // CheckBoxColumn_Students
+            // 
+            this.CheckBoxColumn_Students.HeaderText = "";
+            this.CheckBoxColumn_Students.MinimumWidth = 8;
+            this.CheckBoxColumn_Students.Name = "CheckBoxColumn_Students";
+            this.CheckBoxColumn_Students.Width = 8;
             // 
             // groupBox3
             // 
@@ -668,20 +684,6 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Please Wait !";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // CheckBoxColumn_Students
-            // 
-            this.CheckBoxColumn_Students.HeaderText = "";
-            this.CheckBoxColumn_Students.MinimumWidth = 8;
-            this.CheckBoxColumn_Students.Name = "CheckBoxColumn_Students";
-            this.CheckBoxColumn_Students.Width = 8;
-            // 
-            // CheckBoxColumn_Course
-            // 
-            this.CheckBoxColumn_Course.HeaderText = "";
-            this.CheckBoxColumn_Course.MinimumWidth = 8;
-            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
-            this.CheckBoxColumn_Course.Width = 8;
             // 
             // Form_Candidate_Entry
             // 

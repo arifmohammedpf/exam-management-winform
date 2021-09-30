@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Panel_Body = new System.Windows.Forms.Panel();
             this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
             this.Dgv_Timetable = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Timetable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Dgv_Courses = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Textbox_ExamCode_Search_Timetable = new System.Windows.Forms.TextBox();
             this.Radio_DateWiseSearch = new System.Windows.Forms.RadioButton();
@@ -61,8 +63,6 @@
             this.Button_Add = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CheckBoxColumn_Timetable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Timetable)).BeginInit();
@@ -135,7 +135,7 @@
             // HeaderCheckBox
             // 
             this.HeaderCheckBox.AutoSize = true;
-            this.HeaderCheckBox.Location = new System.Drawing.Point(53, 392);
+            this.HeaderCheckBox.Location = new System.Drawing.Point(19, 392);
             this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(18, 17);
@@ -158,13 +158,21 @@
             this.Dgv_Timetable.Location = new System.Drawing.Point(4, 390);
             this.Dgv_Timetable.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Timetable.Name = "Dgv_Timetable";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Timetable.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Dgv_Timetable.RowHeadersVisible = false;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Timetable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dgv_Timetable.RowTemplate.Height = 24;
             this.Dgv_Timetable.Size = new System.Drawing.Size(950, 423);
             this.Dgv_Timetable.TabIndex = 9;
             this.Dgv_Timetable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Timetable_CellEndEdit);
             this.Dgv_Timetable.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Timetable_CellMouseUp);
+            // 
+            // CheckBoxColumn_Timetable
+            // 
+            this.CheckBoxColumn_Timetable.HeaderText = "";
+            this.CheckBoxColumn_Timetable.MinimumWidth = 8;
+            this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
+            this.CheckBoxColumn_Timetable.Width = 8;
             // 
             // Dgv_Courses
             // 
@@ -181,11 +189,19 @@
             this.Dgv_Courses.Location = new System.Drawing.Point(471, 4);
             this.Dgv_Courses.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Courses.Name = "Dgv_Courses";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Courses.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.Dgv_Courses.RowHeadersVisible = false;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Courses.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv_Courses.RowTemplate.Height = 24;
             this.Dgv_Courses.Size = new System.Drawing.Size(940, 377);
             this.Dgv_Courses.TabIndex = 7;
+            // 
+            // CheckBoxColumn_Course
+            // 
+            this.CheckBoxColumn_Course.HeaderText = "";
+            this.CheckBoxColumn_Course.MinimumWidth = 8;
+            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
+            this.CheckBoxColumn_Course.Width = 8;
             // 
             // groupBox1
             // 
@@ -512,20 +528,6 @@
             this.label6.Size = new System.Drawing.Size(53, 20);
             this.label6.TabIndex = 6;
             this.label6.Text = "Date :";
-            // 
-            // CheckBoxColumn_Course
-            // 
-            this.CheckBoxColumn_Course.HeaderText = "";
-            this.CheckBoxColumn_Course.MinimumWidth = 8;
-            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
-            this.CheckBoxColumn_Course.Width = 8;
-            // 
-            // CheckBoxColumn_Timetable
-            // 
-            this.CheckBoxColumn_Timetable.HeaderText = "";
-            this.CheckBoxColumn_Timetable.MinimumWidth = 8;
-            this.CheckBoxColumn_Timetable.Name = "CheckBoxColumn_Timetable";
-            this.CheckBoxColumn_Timetable.Width = 8;
             // 
             // Form_Timetable
             // 

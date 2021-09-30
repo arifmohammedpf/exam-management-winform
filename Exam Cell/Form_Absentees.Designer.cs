@@ -83,7 +83,7 @@
             this.Panel_Header.Controls.Add(this.label1);
             this.Panel_Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(1125, 69);
             this.Panel_Header.TabIndex = 1;
@@ -95,7 +95,7 @@
             this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Close.Image = global::Exam_Cell.Properties.Resources.cancel;
             this.Button_Close.Location = new System.Drawing.Point(1060, 11);
-            this.Button_Close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Button_Close.Margin = new System.Windows.Forms.Padding(4);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(50, 46);
             this.Button_Close.TabIndex = 0;
@@ -120,7 +120,7 @@
             this.TabControl.Controls.Add(this.Tab_Statement);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 69);
-            this.TabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TabControl.Margin = new System.Windows.Forms.Padding(4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(1125, 633);
@@ -140,9 +140,9 @@
             this.Tab_Marking.Controls.Add(this.Button_Marking_Save);
             this.Tab_Marking.Controls.Add(this.Dgv_Marking);
             this.Tab_Marking.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Marking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Marking.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_Marking.Name = "Tab_Marking";
-            this.Tab_Marking.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Marking.Padding = new System.Windows.Forms.Padding(4);
             this.Tab_Marking.Size = new System.Drawing.Size(1117, 600);
             this.Tab_Marking.TabIndex = 0;
             this.Tab_Marking.Text = "Marking";
@@ -153,9 +153,9 @@
             this.groupBox2.Controls.Add(this.Radio_Series);
             this.groupBox2.Controls.Add(this.Radio_University);
             this.groupBox2.Location = new System.Drawing.Point(34, 40);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(408, 96);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
@@ -165,7 +165,7 @@
             // 
             this.Radio_Series.AutoSize = true;
             this.Radio_Series.Location = new System.Drawing.Point(258, 42);
-            this.Radio_Series.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Radio_Series.Margin = new System.Windows.Forms.Padding(4);
             this.Radio_Series.Name = "Radio_Series";
             this.Radio_Series.Size = new System.Drawing.Size(71, 24);
             this.Radio_Series.TabIndex = 1;
@@ -178,7 +178,7 @@
             // 
             this.Radio_University.AutoSize = true;
             this.Radio_University.Location = new System.Drawing.Point(66, 42);
-            this.Radio_University.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Radio_University.Margin = new System.Windows.Forms.Padding(4);
             this.Radio_University.Name = "Radio_University";
             this.Radio_University.Size = new System.Drawing.Size(100, 24);
             this.Radio_University.TabIndex = 0;
@@ -214,7 +214,7 @@
             "Forenoon",
             "Afternoon"});
             this.Combobox_Marking_Session.Location = new System.Drawing.Point(141, 218);
-            this.Combobox_Marking_Session.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Marking_Session.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Marking_Session.Name = "Combobox_Marking_Session";
             this.Combobox_Marking_Session.Size = new System.Drawing.Size(299, 28);
             this.Combobox_Marking_Session.TabIndex = 2;
@@ -224,7 +224,7 @@
             // 
             this.Combobox_Marking_RoomNo.FormattingEnabled = true;
             this.Combobox_Marking_RoomNo.Location = new System.Drawing.Point(141, 261);
-            this.Combobox_Marking_RoomNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Marking_RoomNo.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Marking_RoomNo.Name = "Combobox_Marking_RoomNo";
             this.Combobox_Marking_RoomNo.Size = new System.Drawing.Size(299, 28);
             this.Combobox_Marking_RoomNo.TabIndex = 3;
@@ -233,7 +233,7 @@
             // 
             this.Combobox_Marking_Date.FormattingEnabled = true;
             this.Combobox_Marking_Date.Location = new System.Drawing.Point(141, 174);
-            this.Combobox_Marking_Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Marking_Date.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Marking_Date.Name = "Combobox_Marking_Date";
             this.Combobox_Marking_Date.Size = new System.Drawing.Size(299, 28);
             this.Combobox_Marking_Date.TabIndex = 1;
@@ -299,8 +299,9 @@
             this.Dgv_Marking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Marking.Dock = System.Windows.Forms.DockStyle.Right;
             this.Dgv_Marking.Location = new System.Drawing.Point(483, 4);
-            this.Dgv_Marking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Marking.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Marking.Name = "Dgv_Marking";
+            this.Dgv_Marking.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Marking.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Marking.RowTemplate.Height = 24;
@@ -317,9 +318,9 @@
             this.Tab_Statement.Controls.Add(this.Textbox_Statement_ExamName);
             this.Tab_Statement.Controls.Add(this.label6);
             this.Tab_Statement.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Statement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Statement.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_Statement.Name = "Tab_Statement";
-            this.Tab_Statement.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Statement.Padding = new System.Windows.Forms.Padding(4);
             this.Tab_Statement.Size = new System.Drawing.Size(1117, 600);
             this.Tab_Statement.TabIndex = 1;
             this.Tab_Statement.Text = "Statement";
@@ -355,8 +356,9 @@
             this.Dgv_Statement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Statement.Dock = System.Windows.Forms.DockStyle.Right;
             this.Dgv_Statement.Location = new System.Drawing.Point(483, 4);
-            this.Dgv_Statement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Statement.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Statement.Name = "Dgv_Statement";
+            this.Dgv_Statement.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Statement.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Statement.RowTemplate.Height = 24;
@@ -378,9 +380,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(8, 52);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(466, 404);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -443,7 +445,7 @@
             "Forenoon",
             "Afternoon"});
             this.Combobox_Statement_Session.Location = new System.Drawing.Point(159, 90);
-            this.Combobox_Statement_Session.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Statement_Session.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Statement_Session.Name = "Combobox_Statement_Session";
             this.Combobox_Statement_Session.Size = new System.Drawing.Size(299, 28);
             this.Combobox_Statement_Session.TabIndex = 1;
@@ -452,7 +454,7 @@
             // 
             this.Combobox_Statement_SubCode.FormattingEnabled = true;
             this.Combobox_Statement_SubCode.Location = new System.Drawing.Point(159, 182);
-            this.Combobox_Statement_SubCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Statement_SubCode.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Statement_SubCode.Name = "Combobox_Statement_SubCode";
             this.Combobox_Statement_SubCode.Size = new System.Drawing.Size(299, 28);
             this.Combobox_Statement_SubCode.TabIndex = 3;
@@ -461,7 +463,7 @@
             // 
             this.Combobox_Statement_Date.FormattingEnabled = true;
             this.Combobox_Statement_Date.Location = new System.Drawing.Point(159, 44);
-            this.Combobox_Statement_Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Statement_Date.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Statement_Date.Name = "Combobox_Statement_Date";
             this.Combobox_Statement_Date.Size = new System.Drawing.Size(299, 28);
             this.Combobox_Statement_Date.TabIndex = 0;
@@ -470,7 +472,7 @@
             // 
             this.Combobox_Statement_BranchClass.FormattingEnabled = true;
             this.Combobox_Statement_BranchClass.Location = new System.Drawing.Point(159, 136);
-            this.Combobox_Statement_BranchClass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Statement_BranchClass.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Statement_BranchClass.Name = "Combobox_Statement_BranchClass";
             this.Combobox_Statement_BranchClass.Size = new System.Drawing.Size(299, 28);
             this.Combobox_Statement_BranchClass.TabIndex = 2;
@@ -536,7 +538,7 @@
             // Textbox_Statement_ExamName
             // 
             this.Textbox_Statement_ExamName.Location = new System.Drawing.Point(22, 490);
-            this.Textbox_Statement_ExamName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_Statement_ExamName.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_Statement_ExamName.Name = "Textbox_Statement_ExamName";
             this.Textbox_Statement_ExamName.Size = new System.Drawing.Size(443, 26);
             this.Textbox_Statement_ExamName.TabIndex = 2;

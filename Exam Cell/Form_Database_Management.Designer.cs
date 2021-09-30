@@ -55,6 +55,7 @@
             this.Button_Promote = new System.Windows.Forms.Button();
             this.Button_Demote = new System.Windows.Forms.Button();
             this.Dgv_Student = new System.Windows.Forms.DataGridView();
+            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Textbox_Yoa = new System.Windows.Forms.TextBox();
             this.Button_Clear_updateStudentTab = new System.Windows.Forms.Button();
@@ -75,6 +76,7 @@
             this.Tab_Update_Course = new System.Windows.Forms.TabPage();
             this.HeaderCheckbox_CourseDgv = new System.Windows.Forms.CheckBox();
             this.Dgv_Course = new System.Windows.Forms.DataGridView();
+            this.CheckboxColumn_CourseDgv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Button_Clear_updateCourseTab = new System.Windows.Forms.Button();
             this.Button_Search_updateCourseTab = new System.Windows.Forms.Button();
             this.Button_Update_updateCourseTab = new System.Windows.Forms.Button();
@@ -92,8 +94,6 @@
             this.ProgressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.CheckboxColumn_CourseDgv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
             this.TabPanel.SuspendLayout();
             this.Tab_Add.SuspendLayout();
@@ -116,7 +116,7 @@
             this.Panel_Header.Controls.Add(this.label1);
             this.Panel_Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(1219, 69);
             this.Panel_Header.TabIndex = 1;
@@ -128,7 +128,7 @@
             this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Close.Image = global::Exam_Cell.Properties.Resources.cancel;
             this.Button_Close.Location = new System.Drawing.Point(1154, 11);
-            this.Button_Close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Button_Close.Margin = new System.Windows.Forms.Padding(4);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(50, 46);
             this.Button_Close.TabIndex = 0;
@@ -154,7 +154,7 @@
             this.TabPanel.Controls.Add(this.Tab_Update_Course);
             this.TabPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabPanel.Location = new System.Drawing.Point(0, 69);
-            this.TabPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TabPanel.Margin = new System.Windows.Forms.Padding(4);
             this.TabPanel.Multiline = true;
             this.TabPanel.Name = "TabPanel";
             this.TabPanel.SelectedIndex = 0;
@@ -167,9 +167,9 @@
             this.Tab_Add.Controls.Add(this.groupBox1);
             this.Tab_Add.Controls.Add(this.groupBox3);
             this.Tab_Add.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Add.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_Add.Name = "Tab_Add";
-            this.Tab_Add.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Add.Padding = new System.Windows.Forms.Padding(4);
             this.Tab_Add.Size = new System.Drawing.Size(1211, 729);
             this.Tab_Add.TabIndex = 0;
             this.Tab_Add.Text = "Add to Database";
@@ -186,9 +186,10 @@
             this.Dgv_ExcelData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_ExcelData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Dgv_ExcelData.Location = new System.Drawing.Point(4, 293);
-            this.Dgv_ExcelData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_ExcelData.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_ExcelData.Name = "Dgv_ExcelData";
             this.Dgv_ExcelData.ReadOnly = true;
+            this.Dgv_ExcelData.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_ExcelData.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_ExcelData.RowTemplate.Height = 24;
@@ -202,9 +203,9 @@
             this.groupBox1.Controls.Add(this.Textbox_Filepath_BranchExcel);
             this.groupBox1.Controls.Add(this.Combobox_BranchSheets);
             this.groupBox1.Location = new System.Drawing.Point(680, 8);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(479, 274);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -253,7 +254,7 @@
             // 
             this.Textbox_Filepath_BranchExcel.Enabled = false;
             this.Textbox_Filepath_BranchExcel.Location = new System.Drawing.Point(59, 54);
-            this.Textbox_Filepath_BranchExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_Filepath_BranchExcel.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_Filepath_BranchExcel.Name = "Textbox_Filepath_BranchExcel";
             this.Textbox_Filepath_BranchExcel.ReadOnly = true;
             this.Textbox_Filepath_BranchExcel.Size = new System.Drawing.Size(354, 26);
@@ -264,7 +265,7 @@
             this.Combobox_BranchSheets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_BranchSheets.FormattingEnabled = true;
             this.Combobox_BranchSheets.Location = new System.Drawing.Point(59, 152);
-            this.Combobox_BranchSheets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_BranchSheets.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_BranchSheets.Name = "Combobox_BranchSheets";
             this.Combobox_BranchSheets.Size = new System.Drawing.Size(354, 28);
             this.Combobox_BranchSheets.TabIndex = 1;
@@ -278,9 +279,9 @@
             this.groupBox3.Controls.Add(this.Combobox_Branch);
             this.groupBox3.Controls.Add(this.Combobox_StudSheets);
             this.groupBox3.Location = new System.Drawing.Point(41, 8);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(479, 274);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
@@ -329,7 +330,7 @@
             // 
             this.Textbox_Filepath_StudentExcel.Enabled = false;
             this.Textbox_Filepath_StudentExcel.Location = new System.Drawing.Point(59, 34);
-            this.Textbox_Filepath_StudentExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_Filepath_StudentExcel.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_Filepath_StudentExcel.Name = "Textbox_Filepath_StudentExcel";
             this.Textbox_Filepath_StudentExcel.ReadOnly = true;
             this.Textbox_Filepath_StudentExcel.Size = new System.Drawing.Size(354, 26);
@@ -340,7 +341,7 @@
             this.Combobox_Branch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch.FormattingEnabled = true;
             this.Combobox_Branch.Location = new System.Drawing.Point(59, 169);
-            this.Combobox_Branch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Branch.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Branch.Name = "Combobox_Branch";
             this.Combobox_Branch.Size = new System.Drawing.Size(354, 28);
             this.Combobox_Branch.TabIndex = 2;
@@ -352,7 +353,7 @@
             this.Combobox_StudSheets.Items.AddRange(new object[] {
             "-Select-"});
             this.Combobox_StudSheets.Location = new System.Drawing.Point(59, 129);
-            this.Combobox_StudSheets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_StudSheets.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_StudSheets.Name = "Combobox_StudSheets";
             this.Combobox_StudSheets.Size = new System.Drawing.Size(354, 28);
             this.Combobox_StudSheets.TabIndex = 1;
@@ -365,9 +366,9 @@
             this.Tab_Update_Student.Controls.Add(this.Dgv_Student);
             this.Tab_Update_Student.Controls.Add(this.groupBox2);
             this.Tab_Update_Student.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Update_Student.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Update_Student.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_Update_Student.Name = "Tab_Update_Student";
-            this.Tab_Update_Student.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Update_Student.Padding = new System.Windows.Forms.Padding(4);
             this.Tab_Update_Student.Size = new System.Drawing.Size(1211, 729);
             this.Tab_Update_Student.TabIndex = 1;
             this.Tab_Update_Student.Text = "Update Student";
@@ -376,8 +377,8 @@
             // HeaderCheckbox
             // 
             this.HeaderCheckbox.AutoSize = true;
-            this.HeaderCheckbox.Location = new System.Drawing.Point(69, 260);
-            this.HeaderCheckbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HeaderCheckbox.Location = new System.Drawing.Point(21, 260);
+            this.HeaderCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckbox.Name = "HeaderCheckbox";
             this.HeaderCheckbox.Size = new System.Drawing.Size(18, 17);
             this.HeaderCheckbox.TabIndex = 1;
@@ -389,9 +390,9 @@
             this.groupBox4.Controls.Add(this.Button_Promote);
             this.groupBox4.Controls.Add(this.Button_Demote);
             this.groupBox4.Location = new System.Drawing.Point(929, 15);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(272, 230);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
@@ -448,8 +449,9 @@
             this.CheckBoxColumn});
             this.Dgv_Student.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Dgv_Student.Location = new System.Drawing.Point(4, 260);
-            this.Dgv_Student.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Student.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Student.Name = "Dgv_Student";
+            this.Dgv_Student.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Student.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Student.RowTemplate.Height = 24;
@@ -458,6 +460,13 @@
             this.Dgv_Student.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Student_CellEndEdit);
             this.Dgv_Student.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Student_CellMouseUp);
             this.Dgv_Student.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Student_RowHeaderMouseDoubleClick);
+            // 
+            // CheckBoxColumn
+            // 
+            this.CheckBoxColumn.HeaderText = "";
+            this.CheckBoxColumn.MinimumWidth = 8;
+            this.CheckBoxColumn.Name = "CheckBoxColumn";
+            this.CheckBoxColumn.Width = 8;
             // 
             // groupBox2
             // 
@@ -478,9 +487,9 @@
             this.groupBox2.Controls.Add(this.Combobox_Branch_updateStudTab);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Location = new System.Drawing.Point(8, 15);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(914, 230);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
@@ -489,7 +498,7 @@
             // Textbox_Yoa
             // 
             this.Textbox_Yoa.Location = new System.Drawing.Point(106, 119);
-            this.Textbox_Yoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_Yoa.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_Yoa.Name = "Textbox_Yoa";
             this.Textbox_Yoa.Size = new System.Drawing.Size(336, 26);
             this.Textbox_Yoa.TabIndex = 2;
@@ -516,7 +525,7 @@
             // Textbox_Name
             // 
             this.Textbox_Name.Location = new System.Drawing.Point(106, 76);
-            this.Textbox_Name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_Name.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_Name.Name = "Textbox_Name";
             this.Textbox_Name.Size = new System.Drawing.Size(336, 26);
             this.Textbox_Name.TabIndex = 1;
@@ -543,7 +552,7 @@
             // Textbox_Regno
             // 
             this.Textbox_Regno.Location = new System.Drawing.Point(106, 34);
-            this.Textbox_Regno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_Regno.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_Regno.Name = "Textbox_Regno";
             this.Textbox_Regno.Size = new System.Drawing.Size(336, 26);
             this.Textbox_Regno.TabIndex = 0;
@@ -572,7 +581,7 @@
             this.Combobox_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Class.FormattingEnabled = true;
             this.Combobox_Class.Location = new System.Drawing.Point(565, 116);
-            this.Combobox_Class.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Class.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Class.Name = "Combobox_Class";
             this.Combobox_Class.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Class.TabIndex = 5;
@@ -667,7 +676,7 @@
             "7",
             "8"});
             this.Combobox_Semester.Location = new System.Drawing.Point(565, 31);
-            this.Combobox_Semester.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Semester.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Semester.Name = "Combobox_Semester";
             this.Combobox_Semester.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Semester.TabIndex = 3;
@@ -677,7 +686,7 @@
             this.Combobox_Branch_updateStudTab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch_updateStudTab.FormattingEnabled = true;
             this.Combobox_Branch_updateStudTab.Location = new System.Drawing.Point(565, 74);
-            this.Combobox_Branch_updateStudTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Branch_updateStudTab.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Branch_updateStudTab.Name = "Combobox_Branch_updateStudTab";
             this.Combobox_Branch_updateStudTab.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Branch_updateStudTab.TabIndex = 4;
@@ -712,7 +721,7 @@
             this.Tab_Update_Course.Controls.Add(this.label10);
             this.Tab_Update_Course.Controls.Add(this.Combobox_Semester_updateCourse);
             this.Tab_Update_Course.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Update_Course.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Update_Course.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_Update_Course.Name = "Tab_Update_Course";
             this.Tab_Update_Course.Size = new System.Drawing.Size(1211, 729);
             this.Tab_Update_Course.TabIndex = 2;
@@ -722,8 +731,8 @@
             // HeaderCheckbox_CourseDgv
             // 
             this.HeaderCheckbox_CourseDgv.AutoSize = true;
-            this.HeaderCheckbox_CourseDgv.Location = new System.Drawing.Point(65, 204);
-            this.HeaderCheckbox_CourseDgv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HeaderCheckbox_CourseDgv.Location = new System.Drawing.Point(15, 204);
+            this.HeaderCheckbox_CourseDgv.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckbox_CourseDgv.Name = "HeaderCheckbox_CourseDgv";
             this.HeaderCheckbox_CourseDgv.Size = new System.Drawing.Size(18, 17);
             this.HeaderCheckbox_CourseDgv.TabIndex = 5;
@@ -743,8 +752,9 @@
             this.CheckboxColumn_CourseDgv});
             this.Dgv_Course.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Dgv_Course.Location = new System.Drawing.Point(0, 204);
-            this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Course.Name = "Dgv_Course";
+            this.Dgv_Course.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dgv_Course.RowTemplate.Height = 24;
@@ -753,6 +763,13 @@
             this.Dgv_Course.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Course_CellEndEdit);
             this.Dgv_Course.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Course_CellMouseUp);
             this.Dgv_Course.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Course_RowHeaderMouseDoubleClick);
+            // 
+            // CheckboxColumn_CourseDgv
+            // 
+            this.CheckboxColumn_CourseDgv.HeaderText = "";
+            this.CheckboxColumn_CourseDgv.MinimumWidth = 8;
+            this.CheckboxColumn_CourseDgv.Name = "CheckboxColumn_CourseDgv";
+            this.CheckboxColumn_CourseDgv.Width = 8;
             // 
             // Button_Clear_updateCourseTab
             // 
@@ -858,7 +875,7 @@
             this.Combobox_Branch_updateCourseTab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch_updateCourseTab.FormattingEnabled = true;
             this.Combobox_Branch_updateCourseTab.Location = new System.Drawing.Point(201, 29);
-            this.Combobox_Branch_updateCourseTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Branch_updateCourseTab.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Branch_updateCourseTab.Name = "Combobox_Branch_updateCourseTab";
             this.Combobox_Branch_updateCourseTab.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Branch_updateCourseTab.TabIndex = 0;
@@ -866,7 +883,7 @@
             // Textbox_ACode
             // 
             this.Textbox_ACode.Location = new System.Drawing.Point(984, 75);
-            this.Textbox_ACode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_ACode.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_ACode.Name = "Textbox_ACode";
             this.Textbox_ACode.Size = new System.Drawing.Size(84, 26);
             this.Textbox_ACode.TabIndex = 4;
@@ -874,7 +891,7 @@
             // Textbox_SubCode
             // 
             this.Textbox_SubCode.Location = new System.Drawing.Point(645, 75);
-            this.Textbox_SubCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_SubCode.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_SubCode.Name = "Textbox_SubCode";
             this.Textbox_SubCode.Size = new System.Drawing.Size(243, 26);
             this.Textbox_SubCode.TabIndex = 3;
@@ -882,7 +899,7 @@
             // Textbox_SubName
             // 
             this.Textbox_SubName.Location = new System.Drawing.Point(201, 75);
-            this.Textbox_SubName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_SubName.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_SubName.Name = "Textbox_SubName";
             this.Textbox_SubName.Size = new System.Drawing.Size(336, 26);
             this.Textbox_SubName.TabIndex = 1;
@@ -935,7 +952,7 @@
             "7",
             "8"});
             this.Combobox_Semester_updateCourse.Location = new System.Drawing.Point(645, 29);
-            this.Combobox_Semester_updateCourse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Semester_updateCourse.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Semester_updateCourse.Name = "Combobox_Semester_updateCourse";
             this.Combobox_Semester_updateCourse.Size = new System.Drawing.Size(243, 28);
             this.Combobox_Semester_updateCourse.TabIndex = 2;
@@ -953,7 +970,7 @@
             this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.Panel_ProgressBar.Controls.Add(this.label12);
             this.Panel_ProgressBar.Location = new System.Drawing.Point(409, 406);
-            this.Panel_ProgressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel_ProgressBar.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_ProgressBar.Name = "Panel_ProgressBar";
             this.Panel_ProgressBar.Size = new System.Drawing.Size(388, 88);
             this.Panel_ProgressBar.TabIndex = 5;
@@ -970,20 +987,6 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Please Wait !";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // CheckBoxColumn
-            // 
-            this.CheckBoxColumn.HeaderText = "";
-            this.CheckBoxColumn.MinimumWidth = 8;
-            this.CheckBoxColumn.Name = "CheckBoxColumn";
-            this.CheckBoxColumn.Width = 8;
-            // 
-            // CheckboxColumn_CourseDgv
-            // 
-            this.CheckboxColumn_CourseDgv.HeaderText = "";
-            this.CheckboxColumn_CourseDgv.MinimumWidth = 8;
-            this.CheckboxColumn_CourseDgv.Name = "CheckboxColumn_CourseDgv";
-            this.CheckboxColumn_CourseDgv.Width = 8;
             // 
             // Form_Database_Management
             // 
