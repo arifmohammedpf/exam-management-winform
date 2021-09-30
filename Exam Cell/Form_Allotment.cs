@@ -83,9 +83,9 @@ namespace Exam_Cell
             try
             {
                 Dgv_RegCourseWise_Count.DataSource = null;
-                string query, query_NoOfStudents;
-                if (Radio_University.Checked) query = string.Format("Select Distinct Sub_Code, Branch from University_Candidates where Sub_Code in ( Select Sub_Code from Timetable where Date=@Date and Session=@Session)");
-                else query = string.Format("Select Distinct SC.Sub_Code, SC.Branch from Series_Candidates as SC ,Timetable as TT where TT.Date=@Date and TT.Session=@Session and SC.Branch=TT.Branch and SC.Course=TT.Course ");
+                string query="", query_NoOfStudents;
+                if (Radio_University.Checked) query = string.Format("Select Distinct Course, Branch from University_Candidates where Course in ( Select Course from Timetable where Date=@Date and Session=@Session)");
+                else if (Radio_Series.Checked) query = string.Format("Select Distinct SC.Course, SC.Branch from Series_Candidates as SC ,Timetable as TT where TT.Date=@Date and TT.Session=@Session and SC.Branch=TT.Branch and SC.Course=TT.Course ");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -501,7 +501,7 @@ namespace Exam_Cell
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
                 dbConnection.Open();
-                SQLiteCommand comm = new SQLiteCommand("Select Savepath from DBManagement where Savepath is not null");
+                SQLiteCommand comm = new SQLiteCommand("Select Savepath from DBManagement where Savepath is not null",dbConnection);
                 string savepath = (string)comm.ExecuteScalar();
                 Textbox_Filepath.Text = savepath;
             }
@@ -522,10 +522,9 @@ namespace Exam_Cell
                     DataRow roomTableTop = roomDatatable.NewRow();
                     roomTableTop[0] = "-Select-";
                     roomDatatable.Rows.InsertAt(roomTableTop, 0);
-                    Combobox_From_RoomNo.DataSource = roomDatatable;
-                    Combobox_From_RoomNo.DisplayMember = "Room_No";
-                    Combobox_From_RoomNo.ValueMember = "Room_No";
-                    Combobox_From_RoomNo.SelectedIndex = 0;
+                    Combobox_To_RoomNo.DataSource = roomDatatable;
+                    Combobox_To_RoomNo.DisplayMember = "Room_No";
+                    Combobox_To_RoomNo.ValueMember = "Room_No";
                 }
             }
             catch (Exception ex)
@@ -539,6 +538,7 @@ namespace Exam_Cell
             DateTimePicker_Date.Format = DateTimePickerFormat.Custom;
             DateTimePicker_Date.CustomFormat = "dd-MM-yyyy";
             DateTimePicker_Date.Value = DateTime.Now;
+            Combobox_Session.SelectedIndex = 0;
             LoadFilepathToSaveExcel();
             // fill To_Room Shift/Swap
             GetRooms_ToShiftSwap();
@@ -562,7 +562,6 @@ namespace Exam_Cell
                 Combobox_From_RoomNo.DataSource = roomDatatable;
                 Combobox_From_RoomNo.DisplayMember = "Room_No";
                 Combobox_From_RoomNo.ValueMember = "Room_No";
-                Combobox_From_RoomNo.SelectedIndex = 0;
             }
         }
 
@@ -783,10 +782,11 @@ namespace Exam_Cell
                     dbConnection.Open();
                     string query = string.Format("Select @Series from Rooms where Room_No=@Room_No");
                     string selectedSeries = Combobox_To_SeriesAB.Text + "_Series";
+                    MessageBox.Show(selectedSeries);
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                     comm.Parameters.AddWithValue("@Series", selectedSeries);
                     comm.Parameters.AddWithValue("@Room_No", Combobox_To_RoomNo.Text);
-                    totalSeats_inToRoom = (int)comm.ExecuteScalar();
+                    totalSeats_inToRoom = Convert.ToInt32(comm.ExecuteScalar());
                 }
                 // fill start & end seat combobox
                 for (int i = 1; i <= totalSeats_inToRoom; i++)

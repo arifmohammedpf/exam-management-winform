@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -163,8 +163,8 @@
             this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Course.Name = "Dgv_Course";
             this.Dgv_Course.RowHeadersVisible = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle17;
             this.Dgv_Course.RowTemplate.Height = 24;
             this.Dgv_Course.Size = new System.Drawing.Size(811, 516);
             this.Dgv_Course.TabIndex = 39;
@@ -203,8 +203,8 @@
             this.Dgv_Students.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Students.Name = "Dgv_Students";
             this.Dgv_Students.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.Dgv_Students.RowTemplate.Height = 24;
             this.Dgv_Students.Size = new System.Drawing.Size(678, 516);
             this.Dgv_Students.TabIndex = 37;
@@ -439,6 +439,7 @@
             this.Button_Select_ExcelFile.TabIndex = 32;
             this.Button_Select_ExcelFile.Text = "Select Excel";
             this.Button_Select_ExcelFile.UseVisualStyleBackColor = false;
+            this.Button_Select_ExcelFile.Click += new System.EventHandler(this.Button_Select_ExcelFile_Click);
             // 
             // Button_Register_ExcelSheet
             // 
@@ -458,6 +459,7 @@
             this.Button_Register_ExcelSheet.TabIndex = 34;
             this.Button_Register_ExcelSheet.Text = "Register";
             this.Button_Register_ExcelSheet.UseVisualStyleBackColor = false;
+            this.Button_Register_ExcelSheet.Click += new System.EventHandler(this.Button_Register_ExcelSheet_Click);
             // 
             // Textbox_ExcelFilepath
             // 
@@ -477,6 +479,7 @@
             this.Combobox_ExcelSheets.Name = "Combobox_ExcelSheets";
             this.Combobox_ExcelSheets.Size = new System.Drawing.Size(354, 28);
             this.Combobox_ExcelSheets.TabIndex = 33;
+            this.Combobox_ExcelSheets.SelectedIndexChanged += new System.EventHandler(this.Combobox_ExcelSheets_SelectedIndexChanged);
             // 
             // Tab_Univeristy_Search
             // 
@@ -520,6 +523,7 @@
             this.Button_Register_University.TabIndex = 44;
             this.Button_Register_University.Text = "Register";
             this.Button_Register_University.UseVisualStyleBackColor = false;
+            this.Button_Register_University.Click += new System.EventHandler(this.Button_Register_University_Click);
             // 
             // Textbox_Yoa_SearchCand
             // 
@@ -528,6 +532,7 @@
             this.Textbox_Yoa_SearchCand.Name = "Textbox_Yoa_SearchCand";
             this.Textbox_Yoa_SearchCand.Size = new System.Drawing.Size(336, 26);
             this.Textbox_Yoa_SearchCand.TabIndex = 43;
+            this.Textbox_Yoa_SearchCand.TextChanged += new System.EventHandler(this.Textbox_Yoa_SearchCand_TextChanged);
             // 
             // label3
             // 
@@ -560,6 +565,7 @@
             this.Combobox_Branch_Cand_Register.Name = "Combobox_Branch_Cand_Register";
             this.Combobox_Branch_Cand_Register.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Branch_Cand_Register.TabIndex = 42;
+            this.Combobox_Branch_Cand_Register.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_Cand_Register_SelectedIndexChanged);
             // 
             // Tab_Series_Search
             // 
@@ -600,6 +606,7 @@
             this.Button_Register_Series.TabIndex = 45;
             this.Button_Register_Series.Text = "Register";
             this.Button_Register_Series.UseVisualStyleBackColor = false;
+            this.Button_Register_Series.Click += new System.EventHandler(this.Button_Register_Series_Click);
             // 
             // label2
             // 
@@ -621,6 +628,7 @@
             this.Combobox_Class.Name = "Combobox_Class";
             this.Combobox_Class.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Class.TabIndex = 44;
+            this.Combobox_Class.SelectedIndexChanged += new System.EventHandler(this.Combobox_Class_SelectedIndexChanged);
             // 
             // groupBox1
             // 

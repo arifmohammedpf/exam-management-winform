@@ -785,6 +785,60 @@ namespace Exam_Cell
             ComboboxesFill();
         }
 
+        void UpdateRegNo_StudentExcel()
+        {
+            CustomMessageBox.ShowMessageBox("Do you want to Update Students without Reg_No from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                try
+                {
+                    if (Combobox_Branch.SelectedIndex != 0)
+                    {
+                        // remove old records and add new to db
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            dbConnection.Open();
+                            string query = string.Format("Delete from Students where Reg_No=Null");
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            command.ExecuteNonQuery();
+                            query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Branch)");
+                            command = new SQLiteCommand(query, dbConnection);
+                            foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
+                            {
+                                command.Parameters.AddWithValue("@Reg_No", dr.Cells["Reg_No"].Value);
+                                command.Parameters.AddWithValue("@Name", dr.Cells["Name"].Value);
+                                command.Parameters.AddWithValue("@YOA", dr.Cells["YOA"].Value);
+                                command.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value);
+                                command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value);
+                                command.Parameters.AddWithValue("@Branch", Combobox_Branch.Text);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+
+                        // reset
+                        ComboboxesFill();
+                        ResetAllFormDatas();
+                        CustomMessageBox.ShowMessageBox("Student records from excel sheet updated with Reg_No   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }
+                    else CustomMessageBox.ShowMessageBox("Select Branch", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    ResetAllFormDatas();
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void Button_UpdateWithRegNo_Click(object sender, EventArgs e)
+        {
+            SetLoading(true);
+            timerAction = "UpdateRegNo_StudentExcel";
+            //ProgressBarTimer.Start();
+            UpdateRegNo_StudentExcel();
+        }
+
         string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;
         private void Dgv_Course_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {

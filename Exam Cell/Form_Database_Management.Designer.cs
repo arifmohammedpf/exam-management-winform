@@ -94,6 +94,7 @@
             this.ProgressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.Button_UpdateWithRegNo = new System.Windows.Forms.Button();
             this.Panel_Header.SuspendLayout();
             this.TabPanel.SuspendLayout();
             this.Tab_Add.SuspendLayout();
@@ -221,7 +222,7 @@
             this.Button_Select_ExcelBranch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Select_ExcelBranch.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Select_ExcelBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_Select_ExcelBranch.Location = new System.Drawing.Point(156, 92);
+            this.Button_Select_ExcelBranch.Location = new System.Drawing.Point(153, 92);
             this.Button_Select_ExcelBranch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Button_Select_ExcelBranch.Name = "Button_Select_ExcelBranch";
             this.Button_Select_ExcelBranch.Size = new System.Drawing.Size(166, 50);
@@ -241,10 +242,10 @@
             this.Button_Add_BranchExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Add_BranchExcel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Add_BranchExcel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Add_BranchExcel.Location = new System.Drawing.Point(182, 194);
+            this.Button_Add_BranchExcel.Location = new System.Drawing.Point(161, 194);
             this.Button_Add_BranchExcel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Button_Add_BranchExcel.Name = "Button_Add_BranchExcel";
-            this.Button_Add_BranchExcel.Size = new System.Drawing.Size(125, 50);
+            this.Button_Add_BranchExcel.Size = new System.Drawing.Size(150, 50);
             this.Button_Add_BranchExcel.TabIndex = 2;
             this.Button_Add_BranchExcel.Text = "Add";
             this.Button_Add_BranchExcel.UseVisualStyleBackColor = false;
@@ -273,6 +274,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.Button_UpdateWithRegNo);
             this.groupBox3.Controls.Add(this.Button_Select_ExcelStudent);
             this.groupBox3.Controls.Add(this.Button_Add_StudExcel);
             this.groupBox3.Controls.Add(this.Textbox_Filepath_StudentExcel);
@@ -317,10 +319,10 @@
             this.Button_Add_StudExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Add_StudExcel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Add_StudExcel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Add_StudExcel.Location = new System.Drawing.Point(176, 209);
+            this.Button_Add_StudExcel.Location = new System.Drawing.Point(59, 209);
             this.Button_Add_StudExcel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Button_Add_StudExcel.Name = "Button_Add_StudExcel";
-            this.Button_Add_StudExcel.Size = new System.Drawing.Size(125, 50);
+            this.Button_Add_StudExcel.Size = new System.Drawing.Size(150, 50);
             this.Button_Add_StudExcel.TabIndex = 3;
             this.Button_Add_StudExcel.Text = "Add";
             this.Button_Add_StudExcel.UseVisualStyleBackColor = false;
@@ -377,7 +379,7 @@
             // HeaderCheckbox
             // 
             this.HeaderCheckbox.AutoSize = true;
-            this.HeaderCheckbox.Location = new System.Drawing.Point(21, 260);
+            this.HeaderCheckbox.Location = new System.Drawing.Point(51, 260);
             this.HeaderCheckbox.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckbox.Name = "HeaderCheckbox";
             this.HeaderCheckbox.Size = new System.Drawing.Size(18, 17);
@@ -451,7 +453,6 @@
             this.Dgv_Student.Location = new System.Drawing.Point(4, 260);
             this.Dgv_Student.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Student.Name = "Dgv_Student";
-            this.Dgv_Student.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Student.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Student.RowTemplate.Height = 24;
@@ -731,7 +732,7 @@
             // HeaderCheckbox_CourseDgv
             // 
             this.HeaderCheckbox_CourseDgv.AutoSize = true;
-            this.HeaderCheckbox_CourseDgv.Location = new System.Drawing.Point(15, 204);
+            this.HeaderCheckbox_CourseDgv.Location = new System.Drawing.Point(49, 204);
             this.HeaderCheckbox_CourseDgv.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckbox_CourseDgv.Name = "HeaderCheckbox_CourseDgv";
             this.HeaderCheckbox_CourseDgv.Size = new System.Drawing.Size(18, 17);
@@ -754,7 +755,6 @@
             this.Dgv_Course.Location = new System.Drawing.Point(0, 204);
             this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Course.Name = "Dgv_Course";
-            this.Dgv_Course.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dgv_Course.RowTemplate.Height = 24;
@@ -988,6 +988,25 @@
             this.label12.Text = "Please Wait !";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Button_UpdateWithRegNo
+            // 
+            this.Button_UpdateWithRegNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_UpdateWithRegNo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_UpdateWithRegNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_UpdateWithRegNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_UpdateWithRegNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_UpdateWithRegNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_UpdateWithRegNo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_UpdateWithRegNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_UpdateWithRegNo.Location = new System.Drawing.Point(263, 209);
+            this.Button_UpdateWithRegNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_UpdateWithRegNo.Name = "Button_UpdateWithRegNo";
+            this.Button_UpdateWithRegNo.Size = new System.Drawing.Size(150, 50);
+            this.Button_UpdateWithRegNo.TabIndex = 7;
+            this.Button_UpdateWithRegNo.Text = "Update Reg_No";
+            this.Button_UpdateWithRegNo.UseVisualStyleBackColor = false;
+            this.Button_UpdateWithRegNo.Click += new System.EventHandler(this.Button_UpdateWithRegNo_Click);
+            // 
             // Form_Database_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -1092,5 +1111,6 @@
         private System.Windows.Forms.CheckBox HeaderCheckbox_CourseDgv;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckboxColumn_CourseDgv;
+        private System.Windows.Forms.Button Button_UpdateWithRegNo;
     }
 }
