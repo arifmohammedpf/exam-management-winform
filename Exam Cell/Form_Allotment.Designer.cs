@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -229,8 +229,8 @@
             this.Dgv_Cand_in_AllotedRooms.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Cand_in_AllotedRooms.Name = "Dgv_Cand_in_AllotedRooms";
             this.Dgv_Cand_in_AllotedRooms.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Cand_in_AllotedRooms.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Cand_in_AllotedRooms.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.Dgv_Cand_in_AllotedRooms.RowTemplate.Height = 24;
             this.Dgv_Cand_in_AllotedRooms.Size = new System.Drawing.Size(451, 573);
             this.Dgv_Cand_in_AllotedRooms.TabIndex = 34;
@@ -317,8 +317,8 @@
             this.Dgv_RegCourseWise_Count.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_RegCourseWise_Count.Name = "Dgv_RegCourseWise_Count";
             this.Dgv_RegCourseWise_Count.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_RegCourseWise_Count.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_RegCourseWise_Count.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.Dgv_RegCourseWise_Count.RowTemplate.Height = 24;
             this.Dgv_RegCourseWise_Count.Size = new System.Drawing.Size(481, 294);
             this.Dgv_RegCourseWise_Count.TabIndex = 3;
@@ -336,8 +336,8 @@
             this.Dgv_Alloted_Rooms.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Alloted_Rooms.Name = "Dgv_Alloted_Rooms";
             this.Dgv_Alloted_Rooms.RowHeadersVisible = false;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Alloted_Rooms.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Alloted_Rooms.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.Dgv_Alloted_Rooms.RowTemplate.Height = 24;
             this.Dgv_Alloted_Rooms.Size = new System.Drawing.Size(390, 573);
             this.Dgv_Alloted_Rooms.TabIndex = 3;
@@ -355,8 +355,8 @@
             this.Dgv_RegCandidates_List.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_RegCandidates_List.Name = "Dgv_RegCandidates_List";
             this.Dgv_RegCandidates_List.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_RegCandidates_List.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_RegCandidates_List.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.Dgv_RegCandidates_List.RowTemplate.Height = 24;
             this.Dgv_RegCandidates_List.Size = new System.Drawing.Size(481, 275);
             this.Dgv_RegCandidates_List.TabIndex = 3;
@@ -562,7 +562,7 @@
             this.Tab_ShiftSwap.Location = new System.Drawing.Point(4, 29);
             this.Tab_ShiftSwap.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_ShiftSwap.Name = "Tab_ShiftSwap";
-            this.Tab_ShiftSwap.Size = new System.Drawing.Size(1333, 728);
+            this.Tab_ShiftSwap.Size = new System.Drawing.Size(1333, 705);
             this.Tab_ShiftSwap.TabIndex = 2;
             this.Tab_ShiftSwap.Text = "Shift/Swap Students";
             this.Tab_ShiftSwap.UseVisualStyleBackColor = true;
@@ -668,6 +668,7 @@
             this.Combobox_To_RoomNo.Name = "Combobox_To_RoomNo";
             this.Combobox_To_RoomNo.Size = new System.Drawing.Size(134, 28);
             this.Combobox_To_RoomNo.TabIndex = 0;
+            this.Combobox_To_RoomNo.SelectedIndexChanged += new System.EventHandler(this.Combobox_To_RoomNo_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -765,6 +766,7 @@
             this.Combobox_From_RoomNo.Name = "Combobox_From_RoomNo";
             this.Combobox_From_RoomNo.Size = new System.Drawing.Size(134, 28);
             this.Combobox_From_RoomNo.TabIndex = 0;
+            this.Combobox_From_RoomNo.SelectedIndexChanged += new System.EventHandler(this.Combobox_From_RoomNo_SelectedIndexChanged);
             // 
             // Label_No_Of_Students_Selected
             // 

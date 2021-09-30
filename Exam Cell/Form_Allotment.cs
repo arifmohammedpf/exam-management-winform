@@ -743,25 +743,24 @@ namespace Exam_Cell
             }
         }
 
-        private void Combobox_From_SeriesAB_SelectedIndexChanged(object sender, EventArgs e)
+        void GetStartEndSeatOfFromRoom()
         {
             Combobox_From_Starting_Seat.Items.Clear();
             Combobox_From_Ending_Seat.Items.Clear();
-            if (Combobox_From_SeriesAB.SelectedIndex != 0)
+            if (Combobox_From_SeriesAB.SelectedIndex != 0 && Combobox_From_RoomNo.Text != "" && Combobox_From_RoomNo.SelectedIndex != 0)
             {
                 int noOfSeats;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
-                    string query = string.Format("Select @Series from Rooms where Room_No=@Room_No");
                     string selectedSeries = Combobox_From_SeriesAB.Text + "_Series";
+                    string query = string.Format("Select {0} from Rooms where Room_No=@Room_No", selectedSeries);
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
-                    comm.Parameters.AddWithValue("@Series", selectedSeries);
                     comm.Parameters.AddWithValue("@Room_No", Combobox_From_RoomNo.Text);
                     noOfSeats = (int)comm.ExecuteScalar();
                 }
                 // fill start & end seat combobox
-                for(int i=1; i<=noOfSeats; i++)
+                for (int i = 1; i <= noOfSeats; i++)
                 {
                     Combobox_From_Starting_Seat.Items.Add(i);
                     Combobox_From_Ending_Seat.Items.Add(i);
@@ -771,22 +770,25 @@ namespace Exam_Cell
             }
         }
 
+        private void Combobox_From_SeriesAB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetStartEndSeatOfFromRoom();
+        }        
+
         int totalSeats_inToRoom;
-        private void Combobox_To_SeriesAB_SelectedIndexChanged(object sender, EventArgs e)
+        void GetStartingSeatOfToRoom()
         {
             Combobox_To_Starting_Seat.Items.Clear();
-            if (Combobox_To_SeriesAB.SelectedIndex != 0)
-            {                
+            if (Combobox_To_SeriesAB.SelectedIndex != 0 && Combobox_To_RoomNo.SelectedIndex != 0)
+            {
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
-                    string query = string.Format("Select @Series from Rooms where Room_No=@Room_No");
                     string selectedSeries = Combobox_To_SeriesAB.Text + "_Series";
-                    MessageBox.Show(selectedSeries);
+                    string query = string.Format("Select {0} from Rooms where Room_No=@Room_No", selectedSeries);
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
-                    comm.Parameters.AddWithValue("@Series", selectedSeries);
                     comm.Parameters.AddWithValue("@Room_No", Combobox_To_RoomNo.Text);
-                    totalSeats_inToRoom = Convert.ToInt32(comm.ExecuteScalar());
+                    totalSeats_inToRoom = (int)comm.ExecuteScalar();
                 }
                 // fill start & end seat combobox
                 for (int i = 1; i <= totalSeats_inToRoom; i++)
@@ -795,6 +797,11 @@ namespace Exam_Cell
                 }
                 Combobox_To_Starting_Seat.SelectedIndex = 0;
             }
+        }
+
+        private void Combobox_To_SeriesAB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetStartingSeatOfToRoom();
         }
 
         int seatsSelectedInFromRoom;
@@ -1249,6 +1256,16 @@ namespace Exam_Cell
         private void Button_DisplaySheet_Click(object sender, EventArgs e)
         {
             Generate_Excel_Display_Sheet();
+        }
+
+        private void Combobox_From_RoomNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetStartEndSeatOfFromRoom();
+        }
+
+        private void Combobox_To_RoomNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetStartingSeatOfToRoom();
         }
     }
 }
