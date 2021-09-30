@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Panel_Body = new System.Windows.Forms.Panel();
             this.Dgv_Course = new System.Windows.Forms.DataGridView();
-            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.HeaderCheckBox = new System.Windows.Forms.CheckBox();
             this.Dgv_Students = new System.Windows.Forms.DataGridView();
-            this.CheckBoxColumn_Students = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Combobox_Semester = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,28 +52,30 @@
             this.label4 = new System.Windows.Forms.Label();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.Tab_Excel_Import = new System.Windows.Forms.TabPage();
-            this.Tab_Univeristy_Search = new System.Windows.Forms.TabPage();
-            this.Tab_Series_Search = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Radio_Series = new System.Windows.Forms.RadioButton();
-            this.Radio_University = new System.Windows.Forms.RadioButton();
-            this.Panel_ProgressBar = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
             this.Panel_Import_Excel = new System.Windows.Forms.Panel();
             this.Button_Select_ExcelFile = new System.Windows.Forms.Button();
             this.Button_Register_ExcelSheet = new System.Windows.Forms.Button();
             this.Textbox_ExcelFilepath = new System.Windows.Forms.TextBox();
             this.Combobox_ExcelSheets = new System.Windows.Forms.ComboBox();
+            this.Tab_Univeristy_Search = new System.Windows.Forms.TabPage();
             this.Panel_University_Search = new System.Windows.Forms.Panel();
             this.Button_Register_University = new System.Windows.Forms.Button();
             this.Textbox_Yoa_SearchCand = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.Combobox_Branch_Cand_Register = new System.Windows.Forms.ComboBox();
+            this.Tab_Series_Search = new System.Windows.Forms.TabPage();
             this.Panel_Series_Search = new System.Windows.Forms.Panel();
             this.Button_Register_Series = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.Combobox_Class = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Radio_Series = new System.Windows.Forms.RadioButton();
+            this.Radio_University = new System.Windows.Forms.RadioButton();
+            this.Panel_ProgressBar = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.CheckBoxColumn_Students = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CheckBoxColumn_Course = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Course)).BeginInit();
@@ -82,13 +84,13 @@
             this.Groupbox_ExtraCandidateRegister.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.Tab_Excel_Import.SuspendLayout();
+            this.Panel_Import_Excel.SuspendLayout();
             this.Tab_Univeristy_Search.SuspendLayout();
+            this.Panel_University_Search.SuspendLayout();
             this.Tab_Series_Search.SuspendLayout();
+            this.Panel_Series_Search.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.Panel_ProgressBar.SuspendLayout();
-            this.Panel_Import_Excel.SuspendLayout();
-            this.Panel_University_Search.SuspendLayout();
-            this.Panel_Series_Search.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Header
@@ -98,7 +100,7 @@
             this.Panel_Header.Controls.Add(this.label1);
             this.Panel_Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_Header.Name = "Panel_Header";
             this.Panel_Header.Size = new System.Drawing.Size(1489, 69);
             this.Panel_Header.TabIndex = 1;
@@ -110,7 +112,7 @@
             this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Close.Image = global::Exam_Cell.Properties.Resources.cancel;
             this.Button_Close.Location = new System.Drawing.Point(1424, 11);
-            this.Button_Close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Button_Close.Margin = new System.Windows.Forms.Padding(4);
             this.Button_Close.Name = "Button_Close";
             this.Button_Close.Size = new System.Drawing.Size(50, 46);
             this.Button_Close.TabIndex = 0;
@@ -140,7 +142,7 @@
             this.Panel_Body.Controls.Add(this.groupBox1);
             this.Panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Body.Location = new System.Drawing.Point(0, 69);
-            this.Panel_Body.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel_Body.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_Body.Name = "Panel_Body";
             this.Panel_Body.Size = new System.Drawing.Size(1489, 823);
             this.Panel_Body.TabIndex = 0;
@@ -149,31 +151,28 @@
             // 
             this.Dgv_Course.AllowUserToAddRows = false;
             this.Dgv_Course.AllowUserToDeleteRows = false;
-            this.Dgv_Course.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Dgv_Course.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Dgv_Course.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.Dgv_Course.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Course.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Course.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dgv_Course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Course.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBoxColumn_Course});
             this.Dgv_Course.Location = new System.Drawing.Point(676, 306);
-            this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Course.Name = "Dgv_Course";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Course.RowTemplate.Height = 24;
             this.Dgv_Course.Size = new System.Drawing.Size(811, 516);
             this.Dgv_Course.TabIndex = 39;
-            // 
-            // CheckBoxColumn_Course
-            // 
-            this.CheckBoxColumn_Course.HeaderText = "";
-            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
-            this.CheckBoxColumn_Course.Width = 5;
             // 
             // HeaderCheckBox
             // 
             this.HeaderCheckBox.AutoSize = true;
             this.HeaderCheckBox.Location = new System.Drawing.Point(52, 310);
-            this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(18, 17);
             this.HeaderCheckBox.TabIndex = 3;
@@ -184,40 +183,38 @@
             // 
             this.Dgv_Students.AllowUserToAddRows = false;
             this.Dgv_Students.AllowUserToDeleteRows = false;
-            this.Dgv_Students.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Dgv_Students.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Dgv_Students.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.Dgv_Students.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.Dgv_Students.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.Dgv_Students.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dgv_Students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Students.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBoxColumn_Students});
             this.Dgv_Students.Location = new System.Drawing.Point(0, 306);
-            this.Dgv_Students.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_Students.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Students.Name = "Dgv_Students";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Students.RowTemplate.Height = 24;
             this.Dgv_Students.Size = new System.Drawing.Size(678, 516);
             this.Dgv_Students.TabIndex = 37;
             this.Dgv_Students.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Students_CellEndEdit);
             this.Dgv_Students.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Students_CellMouseUp);
             // 
-            // CheckBoxColumn_Students
-            // 
-            this.CheckBoxColumn_Students.HeaderText = "";
-            this.CheckBoxColumn_Students.Name = "CheckBoxColumn_Students";
-            this.CheckBoxColumn_Students.Width = 5;
-            // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox3.Controls.Add(this.Combobox_Semester);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.Combobox_Scheme);
             this.groupBox3.Controls.Add(this.Combobox_Branch_SchemeSearch);
-            this.groupBox3.Location = new System.Drawing.Point(839, 113);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Location = new System.Drawing.Point(839, 110);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(494, 178);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
@@ -225,6 +222,7 @@
             // 
             // Combobox_Semester
             // 
+            this.Combobox_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Semester.FormattingEnabled = true;
             this.Combobox_Semester.Items.AddRange(new object[] {
             "-Select-",
@@ -237,7 +235,7 @@
             "7",
             "8"});
             this.Combobox_Semester.Location = new System.Drawing.Point(134, 125);
-            this.Combobox_Semester.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Semester.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Semester.Name = "Combobox_Semester";
             this.Combobox_Semester.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Semester.TabIndex = 2;
@@ -278,9 +276,10 @@
             // 
             // Combobox_Scheme
             // 
+            this.Combobox_Scheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Scheme.FormattingEnabled = true;
             this.Combobox_Scheme.Location = new System.Drawing.Point(134, 40);
-            this.Combobox_Scheme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Scheme.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Scheme.Name = "Combobox_Scheme";
             this.Combobox_Scheme.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Scheme.TabIndex = 0;
@@ -288,9 +287,10 @@
             // 
             // Combobox_Branch_SchemeSearch
             // 
+            this.Combobox_Branch_SchemeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch_SchemeSearch.FormattingEnabled = true;
             this.Combobox_Branch_SchemeSearch.Location = new System.Drawing.Point(134, 82);
-            this.Combobox_Branch_SchemeSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Combobox_Branch_SchemeSearch.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Branch_SchemeSearch.Name = "Combobox_Branch_SchemeSearch";
             this.Combobox_Branch_SchemeSearch.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Branch_SchemeSearch.TabIndex = 1;
@@ -305,9 +305,9 @@
             this.Groupbox_ExtraCandidateRegister.Controls.Add(this.label4);
             this.Groupbox_ExtraCandidateRegister.Enabled = false;
             this.Groupbox_ExtraCandidateRegister.Location = new System.Drawing.Point(391, 3);
-            this.Groupbox_ExtraCandidateRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Groupbox_ExtraCandidateRegister.Margin = new System.Windows.Forms.Padding(4);
             this.Groupbox_ExtraCandidateRegister.Name = "Groupbox_ExtraCandidateRegister";
-            this.Groupbox_ExtraCandidateRegister.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Groupbox_ExtraCandidateRegister.Padding = new System.Windows.Forms.Padding(4);
             this.Groupbox_ExtraCandidateRegister.Size = new System.Drawing.Size(1080, 84);
             this.Groupbox_ExtraCandidateRegister.TabIndex = 4;
             this.Groupbox_ExtraCandidateRegister.TabStop = false;
@@ -335,7 +335,7 @@
             // Textbox_ExtraCand_Name
             // 
             this.Textbox_ExtraCand_Name.Location = new System.Drawing.Point(539, 34);
-            this.Textbox_ExtraCand_Name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_ExtraCand_Name.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_ExtraCand_Name.Name = "Textbox_ExtraCand_Name";
             this.Textbox_ExtraCand_Name.Size = new System.Drawing.Size(336, 26);
             this.Textbox_ExtraCand_Name.TabIndex = 1;
@@ -343,7 +343,7 @@
             // Textbox_ExtraCand_RegNo
             // 
             this.Textbox_ExtraCand_RegNo.Location = new System.Drawing.Point(109, 34);
-            this.Textbox_ExtraCand_RegNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Textbox_ExtraCand_RegNo.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox_ExtraCand_RegNo.Name = "Textbox_ExtraCand_RegNo";
             this.Textbox_ExtraCand_RegNo.Size = new System.Drawing.Size(336, 26);
             this.Textbox_ExtraCand_RegNo.TabIndex = 0;
@@ -375,8 +375,8 @@
             this.TabControl.Controls.Add(this.Tab_Excel_Import);
             this.TabControl.Controls.Add(this.Tab_Univeristy_Search);
             this.TabControl.Controls.Add(this.Tab_Series_Search);
-            this.TabControl.Location = new System.Drawing.Point(48, 95);
-            this.TabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TabControl.Location = new System.Drawing.Point(48, 89);
+            this.TabControl.Margin = new System.Windows.Forms.Padding(4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(576, 209);
@@ -386,107 +386,21 @@
             // 
             this.Tab_Excel_Import.Controls.Add(this.Panel_Import_Excel);
             this.Tab_Excel_Import.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Excel_Import.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Excel_Import.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_Excel_Import.Name = "Tab_Excel_Import";
-            this.Tab_Excel_Import.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Excel_Import.Padding = new System.Windows.Forms.Padding(4);
             this.Tab_Excel_Import.Size = new System.Drawing.Size(568, 176);
             this.Tab_Excel_Import.TabIndex = 1;
             this.Tab_Excel_Import.Text = "Import from Excel";
             this.Tab_Excel_Import.UseVisualStyleBackColor = true;
             // 
-            // Tab_Univeristy_Search
-            // 
-            this.Tab_Univeristy_Search.Controls.Add(this.Panel_University_Search);
-            this.Tab_Univeristy_Search.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Univeristy_Search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Tab_Univeristy_Search.Name = "Tab_Univeristy_Search";
-            this.Tab_Univeristy_Search.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Tab_Univeristy_Search.Size = new System.Drawing.Size(568, 176);
-            this.Tab_Univeristy_Search.TabIndex = 0;
-            this.Tab_Univeristy_Search.Text = "Search Students";
-            this.Tab_Univeristy_Search.UseVisualStyleBackColor = true;
-            // 
-            // Tab_Series_Search
-            // 
-            this.Tab_Series_Search.Controls.Add(this.Panel_Series_Search);
-            this.Tab_Series_Search.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Series_Search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Tab_Series_Search.Name = "Tab_Series_Search";
-            this.Tab_Series_Search.Size = new System.Drawing.Size(568, 176);
-            this.Tab_Series_Search.TabIndex = 2;
-            this.Tab_Series_Search.Text = "Search Students";
-            this.Tab_Series_Search.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.Radio_Series);
-            this.groupBox1.Controls.Add(this.Radio_University);
-            this.groupBox1.Location = new System.Drawing.Point(19, 3);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(340, 84);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Select Exam";
-            // 
-            // Radio_Series
-            // 
-            this.Radio_Series.AutoSize = true;
-            this.Radio_Series.Location = new System.Drawing.Point(206, 37);
-            this.Radio_Series.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Radio_Series.Name = "Radio_Series";
-            this.Radio_Series.Size = new System.Drawing.Size(71, 24);
-            this.Radio_Series.TabIndex = 1;
-            this.Radio_Series.Text = "Series";
-            this.Radio_Series.UseVisualStyleBackColor = true;
-            this.Radio_Series.CheckedChanged += new System.EventHandler(this.Radio_Series_CheckedChanged);
-            // 
-            // Radio_University
-            // 
-            this.Radio_University.AutoSize = true;
-            this.Radio_University.Location = new System.Drawing.Point(39, 37);
-            this.Radio_University.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Radio_University.Name = "Radio_University";
-            this.Radio_University.Size = new System.Drawing.Size(100, 24);
-            this.Radio_University.TabIndex = 0;
-            this.Radio_University.Text = "University";
-            this.Radio_University.UseVisualStyleBackColor = true;
-            this.Radio_University.CheckedChanged += new System.EventHandler(this.Radio_University_CheckedChanged);
-            // 
-            // Panel_ProgressBar
-            // 
-            this.Panel_ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
-            this.Panel_ProgressBar.Controls.Add(this.label12);
-            this.Panel_ProgressBar.Location = new System.Drawing.Point(550, 418);
-            this.Panel_ProgressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Panel_ProgressBar.Name = "Panel_ProgressBar";
-            this.Panel_ProgressBar.Size = new System.Drawing.Size(388, 56);
-            this.Panel_ProgressBar.TabIndex = 18;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(122, 30);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(166, 30);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Please Wait !";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Panel_Import_Excel
             // 
+            this.Panel_Import_Excel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Panel_Import_Excel.Controls.Add(this.Button_Select_ExcelFile);
             this.Panel_Import_Excel.Controls.Add(this.Button_Register_ExcelSheet);
             this.Panel_Import_Excel.Controls.Add(this.Textbox_ExcelFilepath);
             this.Panel_Import_Excel.Controls.Add(this.Combobox_ExcelSheets);
-            this.Panel_Import_Excel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Import_Excel.Location = new System.Drawing.Point(4, 4);
             this.Panel_Import_Excel.Name = "Panel_Import_Excel";
             this.Panel_Import_Excel.Size = new System.Drawing.Size(560, 168);
@@ -540,12 +454,25 @@
             // 
             // Combobox_ExcelSheets
             // 
+            this.Combobox_ExcelSheets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_ExcelSheets.FormattingEnabled = true;
             this.Combobox_ExcelSheets.Location = new System.Drawing.Point(17, 97);
             this.Combobox_ExcelSheets.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_ExcelSheets.Name = "Combobox_ExcelSheets";
             this.Combobox_ExcelSheets.Size = new System.Drawing.Size(354, 28);
             this.Combobox_ExcelSheets.TabIndex = 33;
+            // 
+            // Tab_Univeristy_Search
+            // 
+            this.Tab_Univeristy_Search.Controls.Add(this.Panel_University_Search);
+            this.Tab_Univeristy_Search.Location = new System.Drawing.Point(4, 29);
+            this.Tab_Univeristy_Search.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab_Univeristy_Search.Name = "Tab_Univeristy_Search";
+            this.Tab_Univeristy_Search.Padding = new System.Windows.Forms.Padding(4);
+            this.Tab_Univeristy_Search.Size = new System.Drawing.Size(568, 176);
+            this.Tab_Univeristy_Search.TabIndex = 0;
+            this.Tab_Univeristy_Search.Text = "Search Students";
+            this.Tab_Univeristy_Search.UseVisualStyleBackColor = true;
             // 
             // Panel_University_Search
             // 
@@ -610,12 +537,24 @@
             // 
             // Combobox_Branch_Cand_Register
             // 
+            this.Combobox_Branch_Cand_Register.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch_Cand_Register.FormattingEnabled = true;
             this.Combobox_Branch_Cand_Register.Location = new System.Drawing.Point(160, 18);
             this.Combobox_Branch_Cand_Register.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Branch_Cand_Register.Name = "Combobox_Branch_Cand_Register";
             this.Combobox_Branch_Cand_Register.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Branch_Cand_Register.TabIndex = 42;
+            // 
+            // Tab_Series_Search
+            // 
+            this.Tab_Series_Search.Controls.Add(this.Panel_Series_Search);
+            this.Tab_Series_Search.Location = new System.Drawing.Point(4, 29);
+            this.Tab_Series_Search.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab_Series_Search.Name = "Tab_Series_Search";
+            this.Tab_Series_Search.Size = new System.Drawing.Size(568, 176);
+            this.Tab_Series_Search.TabIndex = 2;
+            this.Tab_Series_Search.Text = "Search Students";
+            this.Tab_Series_Search.UseVisualStyleBackColor = true;
             // 
             // Panel_Series_Search
             // 
@@ -659,12 +598,90 @@
             // 
             // Combobox_Class
             // 
+            this.Combobox_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Class.FormattingEnabled = true;
             this.Combobox_Class.Location = new System.Drawing.Point(158, 40);
             this.Combobox_Class.Margin = new System.Windows.Forms.Padding(4);
             this.Combobox_Class.Name = "Combobox_Class";
             this.Combobox_Class.Size = new System.Drawing.Size(336, 28);
             this.Combobox_Class.TabIndex = 44;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Radio_Series);
+            this.groupBox1.Controls.Add(this.Radio_University);
+            this.groupBox1.Location = new System.Drawing.Point(19, 3);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(340, 84);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Select Exam";
+            // 
+            // Radio_Series
+            // 
+            this.Radio_Series.AutoSize = true;
+            this.Radio_Series.Location = new System.Drawing.Point(206, 37);
+            this.Radio_Series.Margin = new System.Windows.Forms.Padding(4);
+            this.Radio_Series.Name = "Radio_Series";
+            this.Radio_Series.Size = new System.Drawing.Size(71, 24);
+            this.Radio_Series.TabIndex = 1;
+            this.Radio_Series.Text = "Series";
+            this.Radio_Series.UseVisualStyleBackColor = true;
+            this.Radio_Series.CheckedChanged += new System.EventHandler(this.Radio_Series_CheckedChanged);
+            // 
+            // Radio_University
+            // 
+            this.Radio_University.AutoSize = true;
+            this.Radio_University.Location = new System.Drawing.Point(39, 37);
+            this.Radio_University.Margin = new System.Windows.Forms.Padding(4);
+            this.Radio_University.Name = "Radio_University";
+            this.Radio_University.Size = new System.Drawing.Size(100, 24);
+            this.Radio_University.TabIndex = 0;
+            this.Radio_University.Text = "University";
+            this.Radio_University.UseVisualStyleBackColor = true;
+            this.Radio_University.CheckedChanged += new System.EventHandler(this.Radio_University_CheckedChanged);
+            // 
+            // Panel_ProgressBar
+            // 
+            this.Panel_ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
+            this.Panel_ProgressBar.Controls.Add(this.label12);
+            this.Panel_ProgressBar.Location = new System.Drawing.Point(550, 418);
+            this.Panel_ProgressBar.Margin = new System.Windows.Forms.Padding(4);
+            this.Panel_ProgressBar.Name = "Panel_ProgressBar";
+            this.Panel_ProgressBar.Size = new System.Drawing.Size(388, 56);
+            this.Panel_ProgressBar.TabIndex = 18;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(122, 30);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(166, 30);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Please Wait !";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CheckBoxColumn_Students
+            // 
+            this.CheckBoxColumn_Students.HeaderText = "";
+            this.CheckBoxColumn_Students.MinimumWidth = 8;
+            this.CheckBoxColumn_Students.Name = "CheckBoxColumn_Students";
+            this.CheckBoxColumn_Students.Width = 8;
+            // 
+            // CheckBoxColumn_Course
+            // 
+            this.CheckBoxColumn_Course.HeaderText = "";
+            this.CheckBoxColumn_Course.MinimumWidth = 8;
+            this.CheckBoxColumn_Course.Name = "CheckBoxColumn_Course";
+            this.CheckBoxColumn_Course.Width = 8;
             // 
             // Form_Candidate_Entry
             // 
@@ -694,18 +711,18 @@
             this.Groupbox_ExtraCandidateRegister.PerformLayout();
             this.TabControl.ResumeLayout(false);
             this.Tab_Excel_Import.ResumeLayout(false);
+            this.Panel_Import_Excel.ResumeLayout(false);
+            this.Panel_Import_Excel.PerformLayout();
             this.Tab_Univeristy_Search.ResumeLayout(false);
+            this.Panel_University_Search.ResumeLayout(false);
+            this.Panel_University_Search.PerformLayout();
             this.Tab_Series_Search.ResumeLayout(false);
+            this.Panel_Series_Search.ResumeLayout(false);
+            this.Panel_Series_Search.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.Panel_ProgressBar.ResumeLayout(false);
             this.Panel_ProgressBar.PerformLayout();
-            this.Panel_Import_Excel.ResumeLayout(false);
-            this.Panel_Import_Excel.PerformLayout();
-            this.Panel_University_Search.ResumeLayout(false);
-            this.Panel_University_Search.PerformLayout();
-            this.Panel_Series_Search.ResumeLayout(false);
-            this.Panel_Series_Search.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -740,9 +757,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox HeaderCheckBox;
         private System.Windows.Forms.DataGridView Dgv_Students;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Students;
         private System.Windows.Forms.DataGridView Dgv_Course;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Course;
         private System.Windows.Forms.Panel Panel_Import_Excel;
         private System.Windows.Forms.Button Button_Select_ExcelFile;
         private System.Windows.Forms.Button Button_Register_ExcelSheet;
@@ -758,5 +773,7 @@
         private System.Windows.Forms.Button Button_Register_Series;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox Combobox_Class;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Course;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Students;
     }
 }

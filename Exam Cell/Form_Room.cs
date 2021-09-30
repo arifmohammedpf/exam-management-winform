@@ -28,6 +28,8 @@ namespace Exam_Cell
         }
         private void Button_Close_Click(object sender, EventArgs e)
         {
+            if (dragDropRoomPriorityOccured) SaveRoomPriority();
+            if (dragDropBranchPriorityOccured) SaveBranchPriority();
             this.Close();
         }
 
@@ -119,6 +121,7 @@ namespace Exam_Cell
                     {
                         row.Cells["CheckBoxColumn"].Value = true;
                     }
+                    Fill_Full_Room_capacity();
                 }
                 else
                 {
@@ -126,10 +129,10 @@ namespace Exam_Cell
                     {
                         row.Cells["CheckBoxColumn"].Value = false;
                     }
-                }
-                Fill_Full_Room_capacity();
+                    Label_TotalRooms.Text = "Rooms : 0";
+                    Label_TotalCapacity.Text = "Capacity : A - 0 B - 0";
+                }                
             }                
-
             isCheckBoxColumn_ClickedEvent = false;
         }
 
@@ -286,17 +289,8 @@ namespace Exam_Cell
                             set_priority++;
                         }
 
-                        // save to db
-                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
-                        {
-                            dbConnection.Open();
-                            //RoomsRecord.AcceptChanges();      // do we need this???
-                            SQLiteCommand command = new SQLiteCommand("Select * from Rooms", dbConnection);
-                            SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
-                            //adapter.AcceptChangesDuringUpdate = true;     // do we need this???
-                            SQLiteCommandBuilder builder = new SQLiteCommandBuilder(adapter);
-                            adapter.Update(RoomsRecord);                            
-                        }
+                        //save to DB
+                        dragDropRoomPriorityOccured = true;
                     }
                 }
             }
@@ -305,6 +299,32 @@ namespace Exam_Cell
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        // Save Room priority to DB after drag and drop event
+        bool dragDropRoomPriorityOccured = false;
+        void SaveRoomPriority()
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                SQLiteCommand command = new SQLiteCommand("Delete from Rooms", dbConnection);
+                command.ExecuteNonQuery();
+                int setPriority = 1;
+                string queryAddRoom = string.Format("Insert into Rooms(Room_No,Priority,A_Series,B_Series)Values(" + "@Room_No,@Priority,@A_series,@B_series)");
+                command = new SQLiteCommand(queryAddRoom, dbConnection);
+                foreach (DataGridViewRow dr in Dgv_Rooms.Rows)
+                {
+                    command.Parameters.AddWithValue("@Room_No", dr.Cells["Room_No"].Value.ToString());
+                    command.Parameters.AddWithValue("@Priority", setPriority.ToString());
+                    command.Parameters.AddWithValue("@A_series", dr.Cells["A_series"].Value.ToString());
+                    command.Parameters.AddWithValue("@B_series", dr.Cells["B_series"].Value.ToString());
+                    command.ExecuteNonQuery();
+                    setPriority++;
+                }
+            }
+            dragDropRoomPriorityOccured = false;
+        }
+
         // Drag and Drop rows event to change Room priority --- End
 
         // Drag and Drop rows event to change Branch priority --- Start
@@ -409,16 +429,7 @@ namespace Exam_Cell
                         }
 
                         // save to db
-                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
-                        {
-                            dbConnection.Open();
-                            //RoomsRecord.AcceptChanges();      // do we need this???
-                            SQLiteCommand command = new SQLiteCommand("Select * from Branch_Priority", dbConnection);
-                            SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
-                            //adapter.AcceptChangesDuringUpdate = true;     // do we need this???
-                            SQLiteCommandBuilder builder = new SQLiteCommandBuilder(adapter);
-                            adapter.Update(BranchRecord);
-                        }
+                        dragDropBranchPriorityOccured = true;                                                    
                     }
                 }
             }
@@ -427,25 +438,50 @@ namespace Exam_Cell
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        // Save Branch priority to DB after drag and drop event
+        bool dragDropBranchPriorityOccured = false;
+        void SaveBranchPriority()
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                SQLiteCommand command = new SQLiteCommand("Delete from Branch_Priority", dbConnection);
+                command.ExecuteNonQuery();
+                int priorityCount = 1;
+                command = new SQLiteCommand("insert into Branch_Priority(Branch,Priority)Values(" + " @Branch,@Priority)", dbConnection);
+                foreach (DataGridViewRow dr in Dgv_BranchPriority.Rows)
+                {
+                    command.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
+                    command.Parameters.AddWithValue("@Priority", priorityCount.ToString());
+                    command.ExecuteNonQuery();
+                    priorityCount++;
+                }
+            }
+            dragDropBranchPriorityOccured = false;
+        }
+
         // Drag and Drop rows event to change Branch priority --- End
 
         private void Button_Add_Click(object sender, EventArgs e)
         {
             try
             {
+                if (dragDropRoomPriorityOccured) SaveRoomPriority();
+
                 if(Textbox_RoomNo.Text == "") CustomMessageBox.ShowMessageBox("Please fill the Room No ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
-                        int recordsAffected;
-                        string queryCheckRoomExist = string.Format("Select Room_No where Room_No=@Room_No");
+                        object recordsAffected;
+                        string queryCheckRoomExist = string.Format("Select Room_No from Rooms where Room_No=@Room_No");
                         SQLiteCommand command = new SQLiteCommand(queryCheckRoomExist, dbConnection);
                         command.Parameters.AddWithValue("@Room_No", Textbox_RoomNo.Text);
-                        recordsAffected = command.ExecuteNonQuery();
+                        recordsAffected = (object)command.ExecuteScalar();
 
-                        if(recordsAffected == 0)
+                        if(recordsAffected != null)
                         {
                             CustomMessageBox.ShowMessageBox("Room already exist, you may update existing or select new Room No", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                             return;
@@ -453,7 +489,7 @@ namespace Exam_Cell
                         else
                         {
                             int setPriority = Dgv_Rooms.Rows.Count + 1;
-                            string queryAddRoom = string.Format("Insert into Rooms(Room_No,Priority,A_Series,B_Series)Values(" + "@RoomNo,@Priority,@A_series,@B_series)");
+                            string queryAddRoom = string.Format("Insert into Rooms(Room_No,Priority,A_Series,B_Series)Values(" + "@Room_No,@Priority,@A_series,@B_series)");
                             SQLiteCommand commandAddRoom = new SQLiteCommand(queryAddRoom, dbConnection);
                             commandAddRoom.Parameters.AddWithValue("@Room_No", Textbox_RoomNo.Text);
                             commandAddRoom.Parameters.AddWithValue("@Priority", setPriority.ToString());
@@ -474,7 +510,9 @@ namespace Exam_Cell
 
         private void Button_Update_Click(object sender, EventArgs e)
         {
-            if(selectedRoomNo == "" || Textbox_RoomNo.Text == "") CustomMessageBox.ShowMessageBox("Please select and fill Room No to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            if (dragDropRoomPriorityOccured) SaveRoomPriority();
+
+            if (selectedRoomNo == "" || Textbox_RoomNo.Text == "") CustomMessageBox.ShowMessageBox("Please select and fill Room No to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
             else
             {
                 string messageText = string.Format("Do you want to update Room '%{0}%' ?   ", selectedRoomNo);
@@ -508,6 +546,8 @@ namespace Exam_Cell
 
         private void Button_Delete_Click(object sender, EventArgs e)
         {
+            if (dragDropRoomPriorityOccured) SaveRoomPriority();
+
             CustomMessageBox.ShowMessageBox("Do you really want to delete selected Rooms ?", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
             string result = CustomMessageBox.UserChoice;
             if (result == "Yes")

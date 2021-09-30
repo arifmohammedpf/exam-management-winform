@@ -216,7 +216,7 @@ namespace Exam_Cell
         {
             if (!isFormReset)
             {
-                string scheme = Combobox_Branch_SchemeSearch.Text;
+                string scheme = Combobox_Scheme.Text;
                 string branch = Combobox_Branch_SchemeSearch.Text;
                 string semester = Combobox_Semester.Text;
                 Dgv_Course.DataSource = null;
@@ -225,7 +225,7 @@ namespace Exam_Cell
 
                 if (scheme != "-Select-")
                     searchRecord = string.Format("Scheme like '%{0}%'", scheme);
-                if (branch != "")
+                if (branch != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
                     searchRecord += string.Format("Branch Like '%{0}%'", branch);
@@ -238,33 +238,32 @@ namespace Exam_Cell
                 if (searchRecord != "")
                 {
                     string query = "Select * from Scheme where " + searchRecord;
-                    DataTable courseTable;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                        courseTable = new DataTable();
+                        DataTable courseTable = new DataTable();
                         dataAdapter.Fill(courseTable);
+                        Dgv_Course.DataSource = courseTable;
                     }
-                    Dgv_Course.DataSource = courseTable;
                 }
             }
         }
 
         private void Combobox_Scheme_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SearchCourses();
+            if (Combobox_Scheme.SelectedIndex != 0) SearchCourses();
         }
 
         private void Combobox_Branch_SchemeSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SearchCourses();
+            if (Combobox_Branch_SchemeSearch.SelectedIndex != 0) SearchCourses();
         }
 
         private void Combobox_Semester_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SearchCourses();
+            if (Combobox_Semester.SelectedIndex != 0) SearchCourses();
         }
 
         // Register from Excel Sheet event --- Start

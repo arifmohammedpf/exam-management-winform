@@ -924,6 +924,8 @@ namespace Exam_Cell
                     }
                     if (deletedFlag)
                     {
+                        // delete from branch priority with sql query
+                        // delete from braprio not exist in ( select distinct branch from scheme)
                         ComboboxesFill();
                         ResetAllFormDatas();
                         CustomMessageBox.ShowMessageBox("Selected Courses deleted   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);

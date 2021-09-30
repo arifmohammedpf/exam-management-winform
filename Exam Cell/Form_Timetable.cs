@@ -50,34 +50,42 @@ namespace Exam_Cell
             isFormReset = false;
         }
 
-        void Branch_Combobox_Fill()
+        DataTable GetDataTable()
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                string query = string.Format("Select Branch from Branch_Priority where Branch is not null");
+                SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
+                DataTable queryDatatable = new DataTable();
+                adapter.Fill(queryDatatable);
+                DataRow datatableTop = queryDatatable.NewRow();
+                datatableTop[0] = "-Select-";
+                queryDatatable.Rows.InsertAt(datatableTop, 0);
+                return queryDatatable;
+            }
+        }
+
+        void ComboboxesFill()
         {
             try
             {
-                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
-                {
-                    dbConnection.Open();
-                    Combobox_Branch_Search_Course.DataSource = null;
-                    Combobox_Branch_Search_Timetable.DataSource = null;
+                Combobox_Branch_Search_Course.DataSource = null;
+                Combobox_Branch_Search_Timetable.DataSource = null;
 
-                    string branchQuery = string.Format("Select Branch from Branch_Priority where Branch is not null");
-                    SQLiteCommand branchCommand = new SQLiteCommand(branchQuery, dbConnection);
-                    SQLiteDataAdapter branchAdapter = new SQLiteDataAdapter(branchCommand);
-                    DataTable branchDT = new DataTable();
-                    branchAdapter.Fill(branchDT);
-                    DataRow branchTop = branchDT.NewRow();
-                    branchTop[0] = "-Select-";
-                    branchDT.Rows.InsertAt(branchTop, 0);
+                DataTable courseBranch = GetDataTable();
+                Combobox_Branch_Search_Course.DataSource = courseBranch;
+                Combobox_Branch_Search_Course.DisplayMember = "Branch";
+                Combobox_Branch_Search_Course.ValueMember = "Branch";
 
-                    Combobox_Branch_Search_Course.DataSource = branchDT;
-                    Combobox_Branch_Search_Course.DisplayMember = "Branch";
-                    Combobox_Branch_Search_Course.ValueMember = "Branch";
+                DataTable timetableBranch = GetDataTable();
+                Combobox_Branch_Search_Timetable.DataSource = timetableBranch;
+                Combobox_Branch_Search_Timetable.DisplayMember = "Branch";
+                Combobox_Branch_Search_Timetable.ValueMember = "Branch";
 
-                    Combobox_Branch_Search_Timetable.DataSource = branchDT;
-                    Combobox_Branch_Search_Timetable.DisplayMember = "Branch";
-                    Combobox_Branch_Search_Timetable.ValueMember = "Branch";                    
-                }
-                ResetForm();
+                Combobox_Semester.SelectedIndex = 0;
+                Combobox_Session.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -95,7 +103,7 @@ namespace Exam_Cell
             DateTimePicker_Search_Timetable.CustomFormat = "dd-MM-yyyy";
             DateTimePicker_Search_Timetable.Value = DateTime.Now;
 
-            Branch_Combobox_Fill();
+            ComboboxesFill();
         }
 
         void SearchCourses()
