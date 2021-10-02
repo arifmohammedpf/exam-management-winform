@@ -218,6 +218,7 @@
             // 
             // Combobox_NewSession
             // 
+            this.Combobox_NewSession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_NewSession.FormattingEnabled = true;
             this.Combobox_NewSession.Items.AddRange(new object[] {
             "-Optional-",
@@ -301,6 +302,7 @@
             // 
             // Combobox_Semester
             // 
+            this.Combobox_Semester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Semester.FormattingEnabled = true;
             this.Combobox_Semester.Items.AddRange(new object[] {
             "-Select-",
@@ -331,6 +333,7 @@
             // 
             // Combobox_Branch
             // 
+            this.Combobox_Branch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch.FormattingEnabled = true;
             this.Combobox_Branch.Location = new System.Drawing.Point(141, 92);
             this.Combobox_Branch.Margin = new System.Windows.Forms.Padding(4);

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.Textbox_Filepath_BranchExcel = new System.Windows.Forms.TextBox();
             this.Combobox_BranchSheets = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Button_UpdateWithRegNo = new System.Windows.Forms.Button();
             this.Button_Select_ExcelStudent = new System.Windows.Forms.Button();
             this.Button_Add_StudExcel = new System.Windows.Forms.Button();
             this.Textbox_Filepath_StudentExcel = new System.Windows.Forms.TextBox();
@@ -94,7 +95,8 @@
             this.ProgressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.Button_UpdateWithRegNo = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Textbox_RollNo = new System.Windows.Forms.TextBox();
             this.Panel_Header.SuspendLayout();
             this.TabPanel.SuspendLayout();
             this.Tab_Add.SuspendLayout();
@@ -191,8 +193,8 @@
             this.Dgv_ExcelData.Name = "Dgv_ExcelData";
             this.Dgv_ExcelData.ReadOnly = true;
             this.Dgv_ExcelData.RowHeadersVisible = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_ExcelData.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_ExcelData.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Dgv_ExcelData.RowTemplate.Height = 24;
             this.Dgv_ExcelData.Size = new System.Drawing.Size(1203, 432);
             this.Dgv_ExcelData.TabIndex = 29;
@@ -288,6 +290,25 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Add Students";
+            // 
+            // Button_UpdateWithRegNo
+            // 
+            this.Button_UpdateWithRegNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
+            this.Button_UpdateWithRegNo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_UpdateWithRegNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_UpdateWithRegNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
+            this.Button_UpdateWithRegNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
+            this.Button_UpdateWithRegNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_UpdateWithRegNo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_UpdateWithRegNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
+            this.Button_UpdateWithRegNo.Location = new System.Drawing.Point(263, 209);
+            this.Button_UpdateWithRegNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_UpdateWithRegNo.Name = "Button_UpdateWithRegNo";
+            this.Button_UpdateWithRegNo.Size = new System.Drawing.Size(150, 50);
+            this.Button_UpdateWithRegNo.TabIndex = 7;
+            this.Button_UpdateWithRegNo.Text = "Update Reg_No";
+            this.Button_UpdateWithRegNo.UseVisualStyleBackColor = false;
+            this.Button_UpdateWithRegNo.Click += new System.EventHandler(this.Button_UpdateWithRegNo_Click);
             // 
             // Button_Select_ExcelStudent
             // 
@@ -453,8 +474,8 @@
             this.Dgv_Student.Location = new System.Drawing.Point(4, 260);
             this.Dgv_Student.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Student.Name = "Dgv_Student";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Student.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Student.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv_Student.RowTemplate.Height = 24;
             this.Dgv_Student.Size = new System.Drawing.Size(1203, 465);
             this.Dgv_Student.TabIndex = 2;
@@ -471,6 +492,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Textbox_RollNo);
             this.groupBox2.Controls.Add(this.Textbox_Yoa);
             this.groupBox2.Controls.Add(this.Button_Clear_updateStudentTab);
             this.groupBox2.Controls.Add(this.Textbox_Name);
@@ -479,6 +501,7 @@
             this.groupBox2.Controls.Add(this.Button_Update_updateStudentTab);
             this.groupBox2.Controls.Add(this.Combobox_Class);
             this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.Button_Delete_Selected_updateStudentTab);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label5);
@@ -514,7 +537,7 @@
             this.Button_Clear_updateStudentTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Clear_updateStudentTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Clear_updateStudentTab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_Clear_updateStudentTab.Location = new System.Drawing.Point(458, 165);
+            this.Button_Clear_updateStudentTab.Location = new System.Drawing.Point(586, 165);
             this.Button_Clear_updateStudentTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Button_Clear_updateStudentTab.Name = "Button_Clear_updateStudentTab";
             this.Button_Clear_updateStudentTab.Size = new System.Drawing.Size(125, 50);
@@ -541,7 +564,7 @@
             this.Button_Search_updateStudentTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Search_updateStudentTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Search_updateStudentTab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_Search_updateStudentTab.Location = new System.Drawing.Point(192, 165);
+            this.Button_Search_updateStudentTab.Location = new System.Drawing.Point(320, 165);
             this.Button_Search_updateStudentTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Button_Search_updateStudentTab.Name = "Button_Search_updateStudentTab";
             this.Button_Search_updateStudentTab.Size = new System.Drawing.Size(125, 50);
@@ -568,7 +591,7 @@
             this.Button_Update_updateStudentTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Update_updateStudentTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Update_updateStudentTab.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Update_updateStudentTab.Location = new System.Drawing.Point(325, 165);
+            this.Button_Update_updateStudentTab.Location = new System.Drawing.Point(453, 165);
             this.Button_Update_updateStudentTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Button_Update_updateStudentTab.Name = "Button_Update_updateStudentTab";
             this.Button_Update_updateStudentTab.Size = new System.Drawing.Size(125, 50);
@@ -609,7 +632,7 @@
             this.Button_Delete_Selected_updateStudentTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Delete_Selected_updateStudentTab.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Delete_Selected_updateStudentTab.ForeColor = System.Drawing.Color.White;
-            this.Button_Delete_Selected_updateStudentTab.Location = new System.Drawing.Point(590, 165);
+            this.Button_Delete_Selected_updateStudentTab.Location = new System.Drawing.Point(718, 165);
             this.Button_Delete_Selected_updateStudentTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Button_Delete_Selected_updateStudentTab.Name = "Button_Delete_Selected_updateStudentTab";
             this.Button_Delete_Selected_updateStudentTab.Size = new System.Drawing.Size(188, 50);
@@ -755,8 +778,8 @@
             this.Dgv_Course.Location = new System.Drawing.Point(0, 204);
             this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Course.Name = "Dgv_Course";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.Dgv_Course.RowTemplate.Height = 24;
             this.Dgv_Course.Size = new System.Drawing.Size(1211, 525);
             this.Dgv_Course.TabIndex = 67;
@@ -988,24 +1011,24 @@
             this.label12.Text = "Please Wait !";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Button_UpdateWithRegNo
+            // label14
             // 
-            this.Button_UpdateWithRegNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.Button_UpdateWithRegNo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_UpdateWithRegNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_UpdateWithRegNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
-            this.Button_UpdateWithRegNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
-            this.Button_UpdateWithRegNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_UpdateWithRegNo.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_UpdateWithRegNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_UpdateWithRegNo.Location = new System.Drawing.Point(263, 209);
-            this.Button_UpdateWithRegNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Button_UpdateWithRegNo.Name = "Button_UpdateWithRegNo";
-            this.Button_UpdateWithRegNo.Size = new System.Drawing.Size(150, 50);
-            this.Button_UpdateWithRegNo.TabIndex = 7;
-            this.Button_UpdateWithRegNo.Text = "Update Reg_No";
-            this.Button_UpdateWithRegNo.UseVisualStyleBackColor = false;
-            this.Button_UpdateWithRegNo.Click += new System.EventHandler(this.Button_UpdateWithRegNo_Click);
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(9, 165);
+            this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(67, 20);
+            this.label14.TabIndex = 33;
+            this.label14.Text = "Roll No :";
+            // 
+            // Textbox_RollNo
+            // 
+            this.Textbox_RollNo.Location = new System.Drawing.Point(106, 162);
+            this.Textbox_RollNo.Margin = new System.Windows.Forms.Padding(4);
+            this.Textbox_RollNo.Name = "Textbox_RollNo";
+            this.Textbox_RollNo.Size = new System.Drawing.Size(206, 26);
+            this.Textbox_RollNo.TabIndex = 2;
             // 
             // Form_Database_Management
             // 
@@ -1112,5 +1135,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckboxColumn_CourseDgv;
         private System.Windows.Forms.Button Button_UpdateWithRegNo;
+        private System.Windows.Forms.TextBox Textbox_RollNo;
+        private System.Windows.Forms.Label label14;
     }
 }

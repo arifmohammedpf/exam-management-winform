@@ -144,7 +144,7 @@ namespace Exam_Cell
                 try
                 {
                     string query = "";
-                    if (Radio_Series.Checked) query = string.Format("select Seat,Reg_No,Status,Name,Class,Course,Sub_Code,Date,Session,Room_No from Series_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
+                    if (Radio_Series.Checked) query = string.Format("select Seat,Roll_No,Status,Name,Class,Course,Sub_Code,Date,Session,Room_No from Series_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
                     else query = string.Format("select Seat,Reg_No,Status,Name,Branch,Sub_Code,Course,Date,Session,Room_No from University_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
@@ -192,7 +192,7 @@ namespace Exam_Cell
                 try
                 {
                     string query = "";
-                    if (Radio_Series.Checked) query = string.Format("update Series_Alloted Set Status=@Status where Reg_No=@Reg_No and Name=@Name and Date=@Date and Session=@Session and Room_No=@Room_No");
+                    if (Radio_Series.Checked) query = string.Format("update Series_Alloted Set Status=@Status where Roll_No=@Roll_No and Name=@Name and Date=@Date and Session=@Session and Room_No=@Room_No");
                     else query = string.Format("update University_Alloted Set Status=@Status where Reg_No=@Reg_No and Name=@Name and Date=@Date and Session=@Session and Room_No=@Room_No");
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
@@ -200,7 +200,8 @@ namespace Exam_Cell
                         SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow row in Dgv_Marking.Rows)
                         {
-                            comm.Parameters.AddWithValue("@Reg_No", row.Cells["Reg_No"].Value);
+                            if(Radio_University.Checked) comm.Parameters.AddWithValue("@Reg_No", row.Cells["Reg_No"].Value);
+                            else comm.Parameters.AddWithValue("@Roll_No", row.Cells["Roll_No"].Value);
                             comm.Parameters.AddWithValue("@Name", row.Cells["Name"].Value);
                             comm.Parameters.AddWithValue("@Status", row.Cells["Status"].Value);
                             comm.Parameters.AddWithValue("@Date", row.Cells["Date"].Value);
@@ -336,7 +337,7 @@ namespace Exam_Cell
             {
                 string query;
                 if (Radio_University.Checked) query = string.Format("select Reg_No,Name,Status,Branch,Course,Sub_Code from University_Alloted Where Date=@Date and Session=@Session and Branch=@Branch and Sub_Code=@Sub_Code order by Reg_No");
-                else query = string.Format("select Reg_No,Name,Status,Class,Course,Sub_Code from Series_Alloted Where Date=@Date and Session=@Session and Class=@Class and Sub_Code=@Sub_Code order by Reg_No");
+                else query = string.Format("select Roll_No,Name,Status,Class,Course,Sub_Code from Series_Alloted Where Date=@Date and Session=@Session and Class=@Class and Sub_Code=@Sub_Code order by Roll_No");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -382,9 +383,17 @@ namespace Exam_Cell
                         string Yoa;
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
+                            string query;
+                            if (Radio_University.Checked) query = string.Format("select YOA from Students where Reg_No=@Reg_No");
+                            else query = string.Format("select YOA from Students where Class=@Class and Roll_No=@Roll_No");
                             dbConnection.Open();
-                            SQLiteCommand command = new SQLiteCommand("select YOA from Students where Reg_No=@Reg_No", dbConnection);
-                            command.Parameters.AddWithValue("@Reg_No", Dgv_Statement.Rows[0].Cells["Reg_No"].Value.ToString());
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            if(Radio_University.Checked) command.Parameters.AddWithValue("@Reg_No", Dgv_Statement.Rows[0].Cells["Reg_No"].Value.ToString());
+                            else
+                            {
+                                command.Parameters.AddWithValue("@Class", Dgv_Statement.Rows[0].Cells["Class"].Value.ToString());
+                                command.Parameters.AddWithValue("@Roll_No", Dgv_Statement.Rows[0].Cells["Roll_No"].Value.ToString());
+                            }
                             Yoa = (string)command.ExecuteScalar();
                         }
                         

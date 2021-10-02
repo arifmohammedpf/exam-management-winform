@@ -494,7 +494,7 @@ namespace Exam_Cell
             {
                 SetLoading(true);
                 bool isAnySelectionMade = false;
-                string query = string.Format("Insert into Series_Candidates(Name,Reg_No,Class,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Class,@Branch,@Semester,@Course)");
+                string query = string.Format("Insert into Series_Candidates(Name,Roll_No,Class,Branch,Semester,Course)Values(" + "@Name,@Roll_No,@Class,@Branch,@Semester,@Course)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -512,7 +512,7 @@ namespace Exam_Cell
                                 if (checkbox2selected)
                                 {
                                     isAnySelectionMade = true;
-                                    sqlcomm.Parameters.AddWithValue("@Reg_No", dr2.Cells["Reg_No"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Roll_No", dr2.Cells["Roll_No"].Value.ToString());
                                     sqlcomm.Parameters.AddWithValue("@Name", dr2.Cells["Name"].Value).ToString();
                                     sqlcomm.Parameters.AddWithValue("@Class", dr2.Cells["Class"].Value.ToString());
                                     sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());

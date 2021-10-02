@@ -14,5 +14,6 @@ namespace Exam_Cell
         public string Class { get; set; }
         public string YOA { get; set; }
         public string Semester { get; set; }        
+        public string Roll_No { get; set; }
     }
 }

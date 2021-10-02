@@ -225,7 +225,8 @@ namespace Exam_Cell
                             Reg_No = dt.Rows[i]["RegisterNo"].ToString(),
                             YOA = dt.Rows[i]["YOA"].ToString(),
                             Class = dt.Rows[i]["Class"].ToString(),
-                            Semester = dt.Rows[i]["Semester"].ToString()
+                            Semester = dt.Rows[i]["Semester"].ToString(),
+                            Roll_No = dt.Rows[i]["RollNo"].ToString()
                         };
                         excelClassList.Add(excelClass);
                     }
@@ -308,7 +309,7 @@ namespace Exam_Cell
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
                             dbConnection.Open();
-                            string query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Branch)");
+                            string query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch)");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
                             {
@@ -317,6 +318,7 @@ namespace Exam_Cell
                                 command.Parameters.AddWithValue("@YOA", dr.Cells["YOA"].Value);
                                 command.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value);
                                 command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value);
+                                command.Parameters.AddWithValue("@Roll_No", dr.Cells["Roll_No"].Value);
                                 command.Parameters.AddWithValue("@Branch", Combobox_Branch.Text);
                                 command.ExecuteNonQuery();
                             }
@@ -440,6 +442,7 @@ namespace Exam_Cell
             string name = Textbox_Name.Text;
             string branch = Combobox_Branch_updateStudTab.Text;
             string yoa = Textbox_Yoa.Text;
+            string rollno = Textbox_RollNo.Text;
             string semester = Combobox_Semester.Text;
             string studentClass = Combobox_Class.Text;
 
@@ -471,6 +474,11 @@ namespace Exam_Cell
                 if (searchRecord.Length > 0) searchRecord += " AND ";
                 searchRecord += string.Format("YOA Like '%{0}%'", yoa);
             }
+            if (rollno != "")
+            {
+                if (searchRecord.Length > 0) searchRecord += " AND ";
+                searchRecord += string.Format("Roll_No Like '%{0}%'", rollno);
+            }
             if (searchRecord != "")
             {
                 string query = "Select * from Students where " + searchRecord;
@@ -501,7 +509,7 @@ namespace Exam_Cell
             }
         }
         
-        string selectedRegNo, selectedName, selectedYoa, selectedSemester, selectedBranch, selectedClass;
+        string selectedRegNo, selectedName, selectedYoa, selectedSemester, selectedBranch, selectedClass, selectedRollNo;
         private void Dgv_Student_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // fill the form
@@ -511,6 +519,7 @@ namespace Exam_Cell
             Combobox_Semester.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
             Combobox_Branch_updateStudTab.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
             Combobox_Class.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Class"].Value.ToString();
+            Textbox_RollNo.Text = Dgv_Student.Rows[e.RowIndex].Cells["Roll_No"].Value.ToString();
 
             // selected student record to be updated
             selectedRegNo = Dgv_Student.Rows[e.RowIndex].Cells["Reg_No"].Value.ToString();
@@ -519,13 +528,14 @@ namespace Exam_Cell
             selectedSemester = Dgv_Student.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
             selectedBranch = Dgv_Student.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
             selectedClass = Dgv_Student.Rows[e.RowIndex].Cells["Class"].Value.ToString();
+            selectedRollNo = Dgv_Student.Rows[e.RowIndex].Cells["Roll_No"].Value.ToString();
         }
 
         private void Button_Update_updateStudentTab_Click(object sender, EventArgs e)
         {
             try
             {
-                if (selectedRegNo == "" || Textbox_Regno.Text == "" || Textbox_Name.Text == "" || Textbox_Yoa.Text == "" || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of student to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                if (selectedRegNo == "" || Textbox_Regno.Text == "" || Textbox_Name.Text == "" || Textbox_Yoa.Text == "" || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0 || Textbox_RollNo.Text == "") CustomMessageBox.ShowMessageBox("Please select and fill all info of student to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
                     string messageText = string.Format("Do you want to update record of {0} - {1} ?   ", selectedRegNo, selectedName);
@@ -537,17 +547,19 @@ namespace Exam_Cell
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
                             dbConnection.Open();
-                            string query = string.Format("Update Students set Reg_No=@Reg_No,Name=@Name,YOA=@YOA,Branch=@Branch,Semester=@Semester,Class=@Class where Reg_No=@SelectedReg_No and Name=@SelectedName and YOA=@SelectedYOA and Branch=@SelectedBranch and Semester=@SelectedSemester and Class=@SelectedClass");
+                            string query = string.Format("Update Students set Reg_No=@Reg_No,Name=@Name,YOA=@YOA,Branch=@Branch,Semester=@Semester,Class=@Class,Roll_No=@Roll_No where Reg_No=@SelectedReg_No and Name=@SelectedName and YOA=@SelectedYOA and Branch=@SelectedBranch and Semester=@SelectedSemester and Class=@SelectedClass and Roll_No=@SelectedRoll_No");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             command.Parameters.AddWithValue("@Reg_No", Textbox_Regno.Text);
                             command.Parameters.AddWithValue("@Name", Textbox_Name.Text);
                             command.Parameters.AddWithValue("@YOA", Textbox_Yoa.Text);
+                            command.Parameters.AddWithValue("@Roll_No", Textbox_RollNo.Text);
                             command.Parameters.AddWithValue("@Branch", Combobox_Branch_updateStudTab.Text);
                             command.Parameters.AddWithValue("@Semester", Combobox_Semester.Text);
                             command.Parameters.AddWithValue("@Class", Combobox_Class.Text);
                             command.Parameters.AddWithValue("@SelectedReg_No", selectedRegNo);
                             command.Parameters.AddWithValue("@SelectedName", selectedName);
                             command.Parameters.AddWithValue("@SelectedYOA", selectedYoa);
+                            command.Parameters.AddWithValue("@SelectedRoll_No", selectedRollNo);
                             command.Parameters.AddWithValue("@SelectedBranch", selectedBranch);
                             command.Parameters.AddWithValue("@SelectedSemester", selectedSemester);
                             command.Parameters.AddWithValue("@SelectedClass", selectedClass);
@@ -633,7 +645,7 @@ namespace Exam_Cell
                     {
                         dbConnection.Open();
                         // delete selected records
-                        string query = string.Format("Delete from Students where Reg_No=@Reg_No and Name=@Name and YOA=@YOA and Branch=@Branch and Semester=@Semester and Class=@Class");
+                        string query = string.Format("Delete from Students where Reg_No=@Reg_No and Name=@Name and YOA=@YOA and Branch=@Branch and Semester=@Semester and Class=@Class and Roll_No=@Roll_No");
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_Student.Rows)
                         {
@@ -646,6 +658,7 @@ namespace Exam_Cell
                                 command.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
                                 command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
                                 command.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value.ToString());
+                                command.Parameters.AddWithValue("@Roll_No", dr.Cells["Roll_No"].Value.ToString());
                                 command.ExecuteNonQuery();
                                 deletedFlag = true;
                             }
@@ -799,10 +812,10 @@ namespace Exam_Cell
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
                             dbConnection.Open();
-                            string query = string.Format("Delete from Students where Reg_No=Null");
+                            string query = string.Format("Delete from Students where Reg_No is Null");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             command.ExecuteNonQuery();
-                            query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Branch)");
+                            query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch)");
                             command = new SQLiteCommand(query, dbConnection);
                             foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
                             {
@@ -811,11 +824,11 @@ namespace Exam_Cell
                                 command.Parameters.AddWithValue("@YOA", dr.Cells["YOA"].Value);
                                 command.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value);
                                 command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value);
+                                command.Parameters.AddWithValue("@Roll_No", dr.Cells["Roll_No"].Value);
                                 command.Parameters.AddWithValue("@Branch", Combobox_Branch.Text);
                                 command.ExecuteNonQuery();
                             }
                         }
-
                         // reset
                         ComboboxesFill();
                         ResetAllFormDatas();
@@ -945,6 +958,17 @@ namespace Exam_Cell
             isCourseDgvChekboxColumn_ClickedEvent = false;
         }
 
+        void DeleteNotExistedBranchPriority()
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                string query = string.Format("Delete from Branch_Priority where Branch Not In (Select Distinct Branch from Scheme where Branch is not Null)");
+                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                command.ExecuteNonQuery();
+            }
+        }
+
         private void Button_Delete_updateCourseTab_Click(object sender, EventArgs e)
         {
             CustomMessageBox.ShowMessageBox("Do you really want to delete selected Courses ?", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
@@ -978,8 +1002,8 @@ namespace Exam_Cell
                     }
                     if (deletedFlag)
                     {
-                        // delete from branch priority with sql query
-                        // delete from braprio not exist in ( select distinct branch from scheme)
+                        // delete branches that dont exist anymore from branch priority
+                        DeleteNotExistedBranchPriority();
                         ComboboxesFill();
                         ResetAllFormDatas();
                         CustomMessageBox.ShowMessageBox("Selected Courses deleted   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);

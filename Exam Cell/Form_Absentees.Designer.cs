@@ -208,6 +208,7 @@
             // 
             // Combobox_Marking_Session
             // 
+            this.Combobox_Marking_Session.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Marking_Session.FormattingEnabled = true;
             this.Combobox_Marking_Session.Items.AddRange(new object[] {
             "-Select-",
@@ -222,6 +223,7 @@
             // 
             // Combobox_Marking_RoomNo
             // 
+            this.Combobox_Marking_RoomNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Marking_RoomNo.FormattingEnabled = true;
             this.Combobox_Marking_RoomNo.Location = new System.Drawing.Point(141, 261);
             this.Combobox_Marking_RoomNo.Margin = new System.Windows.Forms.Padding(4);
@@ -231,6 +233,7 @@
             // 
             // Combobox_Marking_Date
             // 
+            this.Combobox_Marking_Date.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Marking_Date.FormattingEnabled = true;
             this.Combobox_Marking_Date.Location = new System.Drawing.Point(141, 174);
             this.Combobox_Marking_Date.Margin = new System.Windows.Forms.Padding(4);
@@ -439,6 +442,7 @@
             // 
             // Combobox_Statement_Session
             // 
+            this.Combobox_Statement_Session.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Statement_Session.FormattingEnabled = true;
             this.Combobox_Statement_Session.Items.AddRange(new object[] {
             "-Select-",
@@ -452,6 +456,7 @@
             // 
             // Combobox_Statement_SubCode
             // 
+            this.Combobox_Statement_SubCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Statement_SubCode.FormattingEnabled = true;
             this.Combobox_Statement_SubCode.Location = new System.Drawing.Point(159, 182);
             this.Combobox_Statement_SubCode.Margin = new System.Windows.Forms.Padding(4);
@@ -461,6 +466,7 @@
             // 
             // Combobox_Statement_Date
             // 
+            this.Combobox_Statement_Date.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Statement_Date.FormattingEnabled = true;
             this.Combobox_Statement_Date.Location = new System.Drawing.Point(159, 44);
             this.Combobox_Statement_Date.Margin = new System.Windows.Forms.Padding(4);
@@ -470,6 +476,7 @@
             // 
             // Combobox_Statement_BranchClass
             // 
+            this.Combobox_Statement_BranchClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Statement_BranchClass.FormattingEnabled = true;
             this.Combobox_Statement_BranchClass.Location = new System.Drawing.Point(159, 136);
             this.Combobox_Statement_BranchClass.Margin = new System.Windows.Forms.Padding(4);
