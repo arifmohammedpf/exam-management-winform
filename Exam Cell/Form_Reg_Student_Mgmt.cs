@@ -69,7 +69,9 @@ namespace Exam_Cell
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
-                    string query = string.Format("Select Branch from Branch_Priority where Branch is not null");
+                    string query;
+                    if(Radio_University_Alloted.Checked || Radio_University_Reg.Checked) query = string.Format("Select Branch from Branch_Priority where Branch is not null");
+                    else query = string.Format("Select Distinct Class from Students where Class is not null");
                     SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                     SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
                     DataTable queryDatatable = new DataTable();
@@ -78,8 +80,18 @@ namespace Exam_Cell
                     datatableTop[0] = "-Select-";
                     queryDatatable.Rows.InsertAt(datatableTop, 0);
                     Combobox_Branch.DataSource = queryDatatable;
-                    Combobox_Branch.DisplayMember = "Branch";
-                    Combobox_Branch.ValueMember = "Branch";
+                    if(Radio_University_Alloted.Checked || Radio_University_Reg.Checked)
+                    {
+                        Label_BranchClassSearch.Text = "Branch :";
+                        Combobox_Branch.DisplayMember = "Branch";
+                        Combobox_Branch.ValueMember = "Branch";
+                    }
+                    else
+                    {
+                        Label_BranchClassSearch.Text = "Class :";
+                        Combobox_Branch.DisplayMember = "Class";
+                        Combobox_Branch.ValueMember = "Class";
+                    }
                     Combobox_Semester.SelectedIndex = 0;
                 }                                
             }
@@ -201,7 +213,8 @@ namespace Exam_Cell
                 if (branch != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Branch Like '%{0}%'", branch);
+                    if(Radio_University_Alloted.Checked || Radio_University_Reg.Checked) searchRecord += string.Format("Branch Like '%{0}%'", branch);
+                    else searchRecord += string.Format("Class Like '%{0}%'", branch);
                 }
                 if (semester != "-Select-")
                 {
@@ -284,8 +297,23 @@ namespace Exam_Cell
                 }
             }
         }
+
+        private void Textbox_RegNo_TextChanged(object sender, EventArgs e)
+        {
+            SearchStudentRecord();
+        }
+
+        private void Combobox_Branch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchStudentRecord();
+        }
+
+        private void Combobox_Semester_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchStudentRecord();
+        }
     }
 }
 
 // TESTING //
-// check for error, if we remove if condition for dataSource in dgv for headercheckbox event (line 119)
+// check for error, if we remove if condition for dataSource in dgv for headercheckbox event (line 162)

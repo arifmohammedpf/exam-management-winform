@@ -1275,6 +1275,148 @@ namespace Exam_Cell
         {
             GetStartingSeatOfToRoom();
         }
+
+        DataTable Get_SubCode_Rooms_TableData(string selectQuery,string date, string session)
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                SQLiteCommand command = new SQLiteCommand(selectQuery, dbConnection);
+                command.Parameters.AddWithValue("@Date", date);
+                command.Parameters.AddWithValue("@Session", session);
+                SQLiteDataAdapter adptr = new SQLiteDataAdapter(command);
+                DataTable dataTableSubCode = new DataTable();
+                adptr.Fill(dataTableSubCode);
+                return dataTableSubCode;
+            }
+        }
+
+        private void Button_SummarySheet_Click(object sender, EventArgs e)
+        {
+            if (Combobox_Session.SelectedIndex != 0 && Textbox_Filepath.Text != "Select Filepath")
+            {
+                bool isStudentsAlloted = CheckStudentsAlloted();
+                if (!isStudentsAlloted) return;
+                try
+                {
+                    string createSummaryPath = Textbox_Filepath.Text + @"\Summary Sheets";
+                    Directory.CreateDirectory(createSummaryPath);
+
+                    string selectQuery = "", date = DateTimePicker_Date.Text, session = Combobox_Session.Text;
+
+                    if (Radio_University.Checked) selectQuery = string.Format("SELECT Distinct Sub_Code from University_Alloted Where Date=@Date and Session=@Session");
+                    else selectQuery = string.Format("SELECT Distinct Sub_Code from Series_Alloted Where Date=@Date and Session=@Session");
+                    DataTable dataTableSubCode = Get_SubCode_Rooms_TableData(selectQuery, date, session);
+                    if (Radio_University.Checked) selectQuery = string.Format("SELECT Distinct Room_No from University_Alloted Where Date=@Date and Session=@Session");
+                    else selectQuery = string.Format("SELECT Distinct Room_No from Series_Alloted Where Date=@Date and Session=@Session");
+                    DataTable dataTableRooms = Get_SubCode_Rooms_TableData(selectQuery, date, session);
+
+                    int noOfRooms = dataTableRooms.Rows.Count, noOfCourses = dataTableSubCode.Rows.Count;
+                    using (var package = new ExcelPackage())
+                    {                        
+                        //Add a new worksheet to the empty workbook
+                        var worksheet = package.Workbook.Worksheets.Add("Summary");
+                        //Insert Items to ExcelSheet
+                        worksheet.Cells["A1"].Value = "SUMMARY";
+                        worksheet.Cells[noOfRooms / 2, 1].Value = date;
+                        worksheet.Cells[noOfRooms + 2, 1].Value = session;
+                        worksheet.Cells["A3"].Value = "CODE/ROOM";
+                        using (var range = worksheet.Cells["A1"])
+                        {
+                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Size = 14;
+                            range.Style.Font.Bold = true;
+                        }
+                        using (var range = worksheet.Cells[noOfRooms / 2, 1])
+                        {
+                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Size = 14;
+                            range.Style.Font.Bold = true;
+                            //range.Merge = true;
+                            //range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        }
+                        using (var range = worksheet.Cells[noOfRooms + 2, 1])
+                        {
+                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Size = 14;
+                            range.Style.Font.Bold = true;
+                            //range.Merge = true;
+                            //range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        }
+                        
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            dbConnection.Open();
+                            //excel table format
+                            int rowStart = 4, columnStart = 2, noOfPapers = 0, totalPapersInRoom = 0, totalPaperCount = 0;
+                            string query;
+                            if (Radio_University.Checked) query = string.Format("Select Count(Sub_Code) from University_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No and Sub_Code=@Sub_Code");
+                            else query = string.Format("Select Count(Sub_Code) from Series_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No and Sub_Code=@Sub_Code");
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            worksheet.Cells[dataTableSubCode.Rows.Count + 5, 1].Value = "TOTAL";
+                            worksheet.Cells[3, dataTableRooms.Rows.Count + 2].Value = "TOTAL";
+                            bool firstWrite = true;
+                            foreach (DataRow roomRow in dataTableRooms.Rows)
+                            {
+                                totalPapersInRoom = 0;
+                                command.Parameters.AddWithValue("@Room_No", roomRow["Room_No"].ToString());
+                                worksheet.Cells[3, columnStart].Value = roomRow["Room_No"].ToString();
+                                foreach (DataRow courseRow in dataTableSubCode.Rows)
+                                {
+                                    command.Parameters.AddWithValue("@Sub_Code", courseRow["Sub_Code"].ToString());
+                                    noOfPapers = (int)command.ExecuteScalar();
+                                    totalPapersInRoom += noOfPapers;
+                                    if (firstWrite)
+                                    {
+                                        string countQ;
+                                        if (Radio_University.Checked) countQ = string.Format("Select Count(Sub_Code) from University_Alloted where Date=@Date and Session=@Session and Sub_Code=@Sub_Code");
+                                        else countQ = string.Format("Select Count(Sub_Code) from Series_Alloted where Date=@Date and Session=@Session and Sub_Code=@Sub_Code");
+                                        SQLiteCommand sQ = new SQLiteCommand(countQ, dbConnection);
+                                        int totalPapers = (int)sQ.ExecuteScalar();
+                                        worksheet.Cells[rowStart, 1].Value = courseRow["Sub_Code"].ToString();
+                                        worksheet.Cells[rowStart, dataTableRooms.Rows.Count + 2].Value = totalPapers;
+                                    }
+                                    if (noOfPapers != 0) worksheet.Cells[rowStart, columnStart].Value = noOfPapers;
+                                    rowStart++;
+                                }
+                                worksheet.Cells[dataTableSubCode.Rows.Count + 5, columnStart].Value = totalPapersInRoom;
+                                totalPaperCount += totalPapersInRoom;
+                                rowStart = 4;
+                                columnStart++;
+                                firstWrite = false;
+                            }
+                            worksheet.Cells[dataTableSubCode.Rows.Count + 5, dataTableRooms.Rows.Count + 2].Value = totalPaperCount;
+                            using (var range = worksheet.Cells[3, 1, 3, dataTableRooms.Rows.Count + 2])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 14;
+                                range.Style.Font.Bold = true;
+                                //range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                            using (var range = worksheet.Cells[dataTableSubCode.Rows.Count + 5, 1, dataTableSubCode.Rows.Count + 5, dataTableRooms.Rows.Count + 2])
+                            {
+                                range.Style.Font.Name = "Arial";
+                                range.Style.Font.Size = 14;
+                                range.Style.Font.Bold = true;
+                                //range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                            }
+                        }
+                        worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                        //Save Excel File
+                        string path = createSummaryPath + @"\Summary Sheet " + date + " " + session + ".xlsx";
+                        Stream stream = File.Create(path);
+                        package.SaveAs(stream);
+                        stream.Close();
+                    }
+                    CustomMessageBox.ShowMessageBox("Summary sheet is generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else CustomMessageBox.ShowMessageBox("Check whether Session and filepath is selected or not   ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+        }
     }
 }
 // TESTING //
