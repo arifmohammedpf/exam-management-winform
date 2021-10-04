@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,7 +17,15 @@ namespace Exam_Cell
         public Form_MainMenu()
         {
             InitializeComponent();
-        }        
+        }
+
+        Form_Message_Box CustomMessageBox = new Form_Message_Box();
+
+        // getting connection string from app.config
+        private static string LoadConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+        }
 
         private void Label_Copyright_Click(object sender, EventArgs e)
         {
@@ -81,6 +91,40 @@ namespace Exam_Cell
         {
             using (Form_Credits form_Credits = new Form_Credits())
                 form_Credits.ShowDialog();
+        }
+
+        void DeleteQuery(string query)
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void Button_ClearSession_Click(object sender, EventArgs e)
+        {
+            CustomMessageBox.ShowMessageBox("Are you sure to clear all the sessions ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                try
+                {
+                    DeleteQuery("Delete from Timetable");
+                    DeleteQuery("Delete from Series_Alloted");
+                    DeleteQuery("Delete from University_Alloted");
+                    DeleteQuery("Delete from Series_Candidates");
+                    DeleteQuery("Delete from University_Candidates");
+                    DeleteQuery("Delete from Series_Alloted");
+                    DeleteQuery("Delete from Students where Semester > 9");
+                    CustomMessageBox.ShowMessageBox("All sessions cleared    ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
     }
 }
