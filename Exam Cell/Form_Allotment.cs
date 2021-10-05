@@ -41,13 +41,13 @@ namespace Exam_Cell
             {
                 TabPanel.Enabled = false;
                 Groupbox_SelectExam.Enabled = false;
-                Panel_ProgressBar.BringToFront();
+                Panel_ProgressBar.Visible = true;
             }
             else
             {
                 TabPanel.Enabled = true;
                 Groupbox_SelectExam.Enabled = true;
-                Panel_ProgressBar.SendToBack();
+                Panel_ProgressBar.Visible = false;
             }
         }
 
@@ -250,6 +250,7 @@ namespace Exam_Cell
                     roomAdapter.Fill(table_rooms);
                     if (table_rooms.Rows.Count == 0)
                     {
+                        SetLoading(false);
                         CustomMessageBox.ShowMessageBox("Create any room to allot", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                         return;
                     }
@@ -268,6 +269,7 @@ namespace Exam_Cell
                     studentAdapter.Fill(table_students);
                     if (table_students.Rows.Count == 0)
                     {
+                        SetLoading(false);
                         CustomMessageBox.ShowMessageBox("No candidates registered or Timetable set to allot", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                         return;
                     }
@@ -589,6 +591,7 @@ namespace Exam_Cell
                     {
                         try
                         {
+                            SetLoading(true);
                             int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.Text);
                             int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.Text);
                             int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.Text);
@@ -617,10 +620,12 @@ namespace Exam_Cell
                                     toRoomStartSeat++;
                                 }
                             }
+                            SetLoading(false);
                             CustomMessageBox.ShowMessageBox("Students shifted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
+                            SetLoading(false);
                             MessageBox.Show(ex.ToString());
                         }
                     }
@@ -664,6 +669,7 @@ namespace Exam_Cell
                         {
                             try
                             {
+                                SetLoading(true);
                                 int fromRoomStartSeat = int.Parse(Combobox_From_Starting_Seat.Text);
                                 int fromRoomEndSeat = int.Parse(Combobox_From_Ending_Seat.Text);
                                 int toRoomStartSeat = int.Parse(Combobox_To_Starting_Seat.Text);
@@ -733,10 +739,12 @@ namespace Exam_Cell
                                         toRoomStartSeat++;
                                     }
                                 }
+                                SetLoading(false);
                                 CustomMessageBox.ShowMessageBox("Students swapped  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                             }
                             catch (Exception ex)
                             {
+                                SetLoading(false);
                                 MessageBox.Show(ex.ToString());
                             }
                         }
@@ -890,6 +898,7 @@ namespace Exam_Cell
                 if (!isStudentsAlloted) return;
                 try
                 {
+                    SetLoading(true);
                     string createRoomPath = Textbox_Filepath.Text + @"\Room Sheets";
                     string createSignaturePath = Textbox_Filepath.Text + @"\Signature Sheets";
                     Directory.CreateDirectory(createRoomPath);
@@ -1048,10 +1057,12 @@ namespace Exam_Cell
                         package.SaveAs(stream);
                         stream.Close();
                     }
+                    SetLoading(false);
                     CustomMessageBox.ShowMessageBox("Excel sheets generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
+                    SetLoading(false);
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -1076,6 +1087,7 @@ namespace Exam_Cell
                 if (!isStudentsAlloted) return;
                 try
                 {
+                    SetLoading(true);
                     string createDisplayPath = Textbox_Filepath.Text + @"\Display Sheets";
                     Directory.CreateDirectory(createDisplayPath);
 
@@ -1252,10 +1264,12 @@ namespace Exam_Cell
                         package.SaveAs(stream);
                         stream.Close();
                     }
+                    SetLoading(false);
                     CustomMessageBox.ShowMessageBox("Display sheets generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
+                    SetLoading(false);
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -1299,6 +1313,7 @@ namespace Exam_Cell
                 if (!isStudentsAlloted) return;
                 try
                 {
+                    SetLoading(true);
                     string createSummaryPath = Textbox_Filepath.Text + @"\Summary Sheets";
                     Directory.CreateDirectory(createSummaryPath);
 
@@ -1408,10 +1423,12 @@ namespace Exam_Cell
                         package.SaveAs(stream);
                         stream.Close();
                     }
+                    SetLoading(false);
                     CustomMessageBox.ShowMessageBox("Summary sheet is generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
+                    SetLoading(false);
                     MessageBox.Show(ex.ToString());
                 }
             }

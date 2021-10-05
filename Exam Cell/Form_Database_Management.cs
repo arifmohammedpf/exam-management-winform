@@ -34,13 +34,18 @@ namespace Exam_Cell
             if (loading)
             {
                 TabPanel.Enabled = false;
-                Panel_ProgressBar.BringToFront();
+                Panel_ProgressBar.Visible = true;
             }
             else
             {
                 TabPanel.Enabled = true;
-                Panel_ProgressBar.SendToBack();
+                Panel_ProgressBar.Visible = false;
             }
+        }
+
+        private void Form_Database_Management_Load(object sender, EventArgs e)
+        {
+            ComboboxesFill();
         }
 
         void ResetAllFormDatas()
@@ -66,6 +71,7 @@ namespace Exam_Cell
             // disable add buttons
             Button_Add_BranchExcel.Enabled = false;
             Button_Add_StudExcel.Enabled = false;
+            Button_UpdateWithRegNo.Enabled = false;
             // clear selected record variables
             selectedRegNo = "";
             selectedName = "";
@@ -167,9 +173,9 @@ namespace Exam_Cell
         //Excel Select button click event
         void Select_ExcelFile()
         {
-            if (excelType == "StudentData") CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n RegisterNo ,Name, YOA, Class, Semester \n\n\n\n ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
+            if (excelType == "StudentData") CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n RegisterNo ,Name, RollNo, YOA, Class, Semester \n\n\n\n ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
             else CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n Scheme, Branch ,Semester, Sub_Code, Course, Acode \n\n\n\n ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
-            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "Excel Files|*.xls;*.xlsx;*.xlsm" }) //check if | is needed last?
+            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "Excel Files|*.xls;*.xlsx;*.xlsm" })
             {
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
@@ -231,7 +237,9 @@ namespace Exam_Cell
                         excelClassList.Add(excelClass);
                     }
                     Dgv_ExcelData.DataSource = excelClassList;
-                    Button_Add_StudExcel.Enabled = true; // move this code to "branch index change", if branch index != 0 enable else disable
+                    Button_UpdateWithRegNo.Enabled = true;
+                    Button_Add_StudExcel.Enabled = true;
+                    Button_Add_BranchExcel.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -263,6 +271,8 @@ namespace Exam_Cell
                     }
                     Dgv_ExcelData.DataSource = excelClassListBranch;
                     Button_Add_BranchExcel.Enabled = true;
+                    Button_UpdateWithRegNo.Enabled = false;
+                    Button_Add_StudExcel.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -270,41 +280,28 @@ namespace Exam_Cell
                 CustomMessageBox.ShowMessageBox(ex.ToString(), "Exception Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
             }
         }
-
-        string timerAction;
+        
         private void Button_Add_StudExcel_Click(object sender, EventArgs e)
         {
-            SetLoading(true);
-            timerAction = "Add_StudentExcel";
-            //ProgressBarTimer.Start();
             Add_StudentExcel();
         }
 
         private void Button_Add_BranchExcel_Click(object sender, EventArgs e)
         {
-            SetLoading(true);
-            timerAction = "Add_BranchExcel";
-            //ProgressBarTimer.Start();
             Add_BranchExcel();
-        }
-
-        private void ProgressBarTimer_Tick(object sender, EventArgs e)
-        {
-            ProgressBarTimer.Stop();
-            if (timerAction == "Add_StudentExcel") Add_StudentExcel();
-            else if (timerAction == "Add_BranchExcel") Add_BranchExcel();
         }
 
         void Add_StudentExcel()
         {
-            CustomMessageBox.ShowMessageBox("Do you want to add Student records from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
-            string result = CustomMessageBox.UserChoice;
-            if (result == "Yes")
+            if (Combobox_Branch.SelectedIndex != 0)
             {
-                try
+                CustomMessageBox.ShowMessageBox("Do you want to add Student records from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+                string result = CustomMessageBox.UserChoice;
+                if (result == "Yes")
                 {
-                    if (Combobox_Branch.SelectedIndex != 0)
+                    try
                     {
+                        SetLoading(true);
                         // add to db
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
@@ -329,14 +326,18 @@ namespace Exam_Cell
                         ResetAllFormDatas();
                         CustomMessageBox.ShowMessageBox("Student records from excel sheet added   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                     }
-                    else CustomMessageBox.ShowMessageBox("Select Branch", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    ResetAllFormDatas();
-                    MessageBox.Show(ex.ToString());
+                    catch (Exception ex)
+                    {
+                        ResetAllFormDatas();
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
             }
+            else
+            {
+                SetLoading(false);
+                CustomMessageBox.ShowMessageBox("Select Branch", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            }            
         }
 
         void AddToBranchPriorityDB()
@@ -390,6 +391,7 @@ namespace Exam_Cell
             {
                 try
                 {
+                    SetLoading(true);
                     // add to db
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
@@ -427,6 +429,58 @@ namespace Exam_Cell
                     MessageBox.Show(ex.ToString());
                 }
             }
+        }
+
+        void UpdateRegNo_StudentExcel()
+        {
+            CustomMessageBox.ShowMessageBox("Do you want to update students having no Reg_No from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            string result = CustomMessageBox.UserChoice;
+            if (result == "Yes")
+            {
+                if (Combobox_Branch.SelectedIndex != 0)
+                {
+                    try
+                    {
+                        SetLoading(true);
+                        // remove old records and add new to db
+                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                        {
+                            dbConnection.Open();
+                            string query = string.Format("Delete from Students where Reg_No is Null");
+                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            command.ExecuteNonQuery();
+                            query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch)");
+                            command = new SQLiteCommand(query, dbConnection);
+                            foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
+                            {
+                                command.Parameters.AddWithValue("@Reg_No", dr.Cells["Reg_No"].Value);
+                                command.Parameters.AddWithValue("@Name", dr.Cells["Name"].Value);
+                                command.Parameters.AddWithValue("@YOA", dr.Cells["YOA"].Value);
+                                command.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value);
+                                command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value);
+                                command.Parameters.AddWithValue("@Roll_No", dr.Cells["Roll_No"].Value);
+                                command.Parameters.AddWithValue("@Branch", Combobox_Branch.Text);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        // reset
+                        ComboboxesFill();
+                        ResetAllFormDatas();
+                        CustomMessageBox.ShowMessageBox("Student records from excel sheet updated with Reg_No   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        ResetAllFormDatas();
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else CustomMessageBox.ShowMessageBox("Select Branch", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+            }
+        }
+
+        private void Button_UpdateWithRegNo_Click(object sender, EventArgs e)
+        {
+            UpdateRegNo_StudentExcel();
         }
 
         // // // // // // // // // // // // // "Add to Database" Tab - End // // // // // // // // // // // // //
@@ -701,8 +755,8 @@ namespace Exam_Cell
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
                 ResetAllFormDatas();
+                MessageBox.Show(ex.ToString());
             }
         }
         private void Button_Promote_Click(object sender, EventArgs e)
@@ -791,66 +845,7 @@ namespace Exam_Cell
                 ResetAllFormDatas();
                 MessageBox.Show(ex.ToString());
             }
-        }        
-
-        private void Form_Database_Management_Load(object sender, EventArgs e)
-        {
-            ComboboxesFill();
-        }
-
-        void UpdateRegNo_StudentExcel()
-        {
-            CustomMessageBox.ShowMessageBox("Do you want to Update Students without Reg_No from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
-            string result = CustomMessageBox.UserChoice;
-            if (result == "Yes")
-            {
-                try
-                {
-                    if (Combobox_Branch.SelectedIndex != 0)
-                    {
-                        // remove old records and add new to db
-                        using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
-                        {
-                            dbConnection.Open();
-                            string query = string.Format("Delete from Students where Reg_No is Null");
-                            SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                            command.ExecuteNonQuery();
-                            query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch)");
-                            command = new SQLiteCommand(query, dbConnection);
-                            foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
-                            {
-                                command.Parameters.AddWithValue("@Reg_No", dr.Cells["Reg_No"].Value);
-                                command.Parameters.AddWithValue("@Name", dr.Cells["Name"].Value);
-                                command.Parameters.AddWithValue("@YOA", dr.Cells["YOA"].Value);
-                                command.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value);
-                                command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value);
-                                command.Parameters.AddWithValue("@Roll_No", dr.Cells["Roll_No"].Value);
-                                command.Parameters.AddWithValue("@Branch", Combobox_Branch.Text);
-                                command.ExecuteNonQuery();
-                            }
-                        }
-                        // reset
-                        ComboboxesFill();
-                        ResetAllFormDatas();
-                        CustomMessageBox.ShowMessageBox("Student records from excel sheet updated with Reg_No   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
-                    }
-                    else CustomMessageBox.ShowMessageBox("Select Branch", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    ResetAllFormDatas();
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-        }
-
-        private void Button_UpdateWithRegNo_Click(object sender, EventArgs e)
-        {
-            SetLoading(true);
-            timerAction = "UpdateRegNo_StudentExcel";
-            //ProgressBarTimer.Start();
-            UpdateRegNo_StudentExcel();
-        }
+        }                        
 
         string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;
         private void Dgv_Course_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

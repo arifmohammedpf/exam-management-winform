@@ -164,6 +164,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Resources\CreditsPage.jpg" />
     <Content Include="Resources\KmeaBg.jpg" />
+    <Content Include="Resources\ProgressPanel.jpg" />
     <EmbeddedResource Include="Form_Absentees.resx">
       <DependentUpon>Form_Absentees.cs</DependentUpon>
     </EmbeddedResource>

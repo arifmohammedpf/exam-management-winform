@@ -111,6 +111,7 @@ namespace Exam_Cell
             {
                 try
                 {
+                    Panel_ProgressBar.Visible = true;
                     DeleteQuery("Delete from Timetable");
                     DeleteQuery("Delete from Series_Alloted");
                     DeleteQuery("Delete from University_Alloted");
@@ -118,10 +119,12 @@ namespace Exam_Cell
                     DeleteQuery("Delete from University_Candidates");
                     DeleteQuery("Delete from Series_Alloted");
                     DeleteQuery("Delete from Students where Semester > 9");
+                    Panel_ProgressBar.Visible = false;
                     CustomMessageBox.ShowMessageBox("All sessions cleared    ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
+                    Panel_ProgressBar.Visible = false;
                     MessageBox.Show(ex.ToString());
                 }
             }

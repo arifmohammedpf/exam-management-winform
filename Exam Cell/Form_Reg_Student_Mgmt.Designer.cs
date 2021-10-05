@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,6 +51,7 @@
             this.Dgv_Students = new System.Windows.Forms.DataGridView();
             this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Label_Total = new System.Windows.Forms.Label();
+            this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.Panel_Header.SuspendLayout();
             this.Groupbox_Registered.SuspendLayout();
             this.Groupbox_Alloted.SuspendLayout();
@@ -178,7 +179,7 @@
             this.Textbox_RegNo.Name = "Textbox_RegNo";
             this.Textbox_RegNo.Size = new System.Drawing.Size(257, 22);
             this.Textbox_RegNo.TabIndex = 0;
-            this.Textbox_RegNo.TextChanged += new System.EventHandler(this.Textbox_RegNo_TextChanged);
+            this.Textbox_RegNo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Textbox_RegNo_KeyUp);
             // 
             // label3
             // 
@@ -298,8 +299,8 @@
             this.Dgv_Students.Location = new System.Drawing.Point(0, 239);
             this.Dgv_Students.Name = "Dgv_Students";
             this.Dgv_Students.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Students.RowTemplate.Height = 24;
             this.Dgv_Students.Size = new System.Drawing.Size(910, 427);
             this.Dgv_Students.TabIndex = 4;
@@ -322,12 +323,27 @@
             this.Label_Total.TabIndex = 6;
             this.Label_Total.Text = "Total :";
             // 
+            // Panel_ProgressBar
+            // 
+            this.Panel_ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
+            this.Panel_ProgressBar.BackgroundImage = global::Exam_Cell.Properties.Resources.ProgressPanel;
+            this.Panel_ProgressBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Panel_ProgressBar.Location = new System.Drawing.Point(300, 298);
+            this.Panel_ProgressBar.Name = "Panel_ProgressBar";
+            this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 70);
+            this.Panel_ProgressBar.TabIndex = 7;
+            this.Panel_ProgressBar.Visible = false;
+            // 
             // Form_Reg_Student_Mgmt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(910, 666);
+            this.Controls.Add(this.Panel_ProgressBar);
             this.Controls.Add(this.HeaderCheckBox);
             this.Controls.Add(this.Dgv_Students);
             this.Controls.Add(this.groupBox3);
@@ -381,5 +397,6 @@
         private System.Windows.Forms.DataGridView Dgv_Students;
         private System.Windows.Forms.Label Label_Total;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn;
+        private System.Windows.Forms.Panel Panel_ProgressBar;
     }
 }

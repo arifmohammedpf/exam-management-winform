@@ -160,12 +160,12 @@ namespace Exam_Cell
             if (loading)
             {
                 Panel_Body.Enabled = false;
-                Panel_ProgressBar.BringToFront();
+                Panel_ProgressBar.Visible = true;
             }
             else
             {
                 Panel_Body.Enabled = true;
-                Panel_ProgressBar.SendToBack();
+                Panel_ProgressBar.Visible = false;
             }
         }
 
@@ -327,6 +327,7 @@ namespace Exam_Cell
             {
                 try
                 {
+                    SetLoading(true);
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
@@ -349,12 +350,15 @@ namespace Exam_Cell
                 {
                     MessageBox.Show(ex.ToString());
                 }
+                finally
+                {
+                    SetLoading(false);
+                }
             }
         }
 
         private void Button_Register_ExcelSheet_Click(object sender, EventArgs e)
         {
-            SetLoading(true);
             Register_University_Students_From_ExcelSheet();
         }
 
@@ -400,9 +404,9 @@ namespace Exam_Cell
             SearchStudentRecord();
         }
 
-        private void Textbox_Yoa_SearchCand_TextChanged(object sender, EventArgs e)
+        private void Textbox_Yoa_SearchCand_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchStudentRecord();
+            if (e.KeyCode == Keys.Enter) SearchStudentRecord();
         }
 
         private void Button_Register_University_Click(object sender, EventArgs e)
@@ -451,6 +455,10 @@ namespace Exam_Cell
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                SetLoading(false);
             }
         }
 
@@ -536,6 +544,10 @@ namespace Exam_Cell
             {
                 MessageBox.Show(ex.ToString());
             }
+            finally
+            {
+                SetLoading(false);
+            }
         }
 
         private void Button_ExtraCand_Register_Click(object sender, EventArgs e)
@@ -579,6 +591,10 @@ namespace Exam_Cell
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
+            finally
+            {
+                SetLoading(false);
+            }
+        }        
     }
 }

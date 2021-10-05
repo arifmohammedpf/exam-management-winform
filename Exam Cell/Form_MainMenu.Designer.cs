@@ -30,6 +30,7 @@
         {
             this.Label_Copyright = new System.Windows.Forms.Label();
             this.Panel_Menu = new System.Windows.Forms.Panel();
+            this.Button_ClearSession = new System.Windows.Forms.Button();
             this.Button_Credits = new System.Windows.Forms.Button();
             this.Button_DatabaseMgmt = new System.Windows.Forms.Button();
             this.Button_Postponement = new System.Windows.Forms.Button();
@@ -39,7 +40,7 @@
             this.Button_Room = new System.Windows.Forms.Button();
             this.Button_CandidateEntry = new System.Windows.Forms.Button();
             this.Button_Timetable = new System.Windows.Forms.Button();
-            this.Button_ClearSession = new System.Windows.Forms.Button();
+            this.Panel_ProgressBar = new System.Windows.Forms.Panel();
             this.Panel_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +80,22 @@
             this.Panel_Menu.Name = "Panel_Menu";
             this.Panel_Menu.Size = new System.Drawing.Size(1483, 49);
             this.Panel_Menu.TabIndex = 0;
+            // 
+            // Button_ClearSession
+            // 
+            this.Button_ClearSession.BackColor = System.Drawing.Color.Transparent;
+            this.Button_ClearSession.FlatAppearance.BorderSize = 0;
+            this.Button_ClearSession.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(120)))), ((int)(((byte)(95)))));
+            this.Button_ClearSession.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(107)))), ((int)(((byte)(98)))));
+            this.Button_ClearSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_ClearSession.ForeColor = System.Drawing.Color.White;
+            this.Button_ClearSession.Location = new System.Drawing.Point(1175, 5);
+            this.Button_ClearSession.Name = "Button_ClearSession";
+            this.Button_ClearSession.Size = new System.Drawing.Size(153, 39);
+            this.Button_ClearSession.TabIndex = 8;
+            this.Button_ClearSession.Text = "Clear All Session";
+            this.Button_ClearSession.UseVisualStyleBackColor = false;
+            this.Button_ClearSession.Click += new System.EventHandler(this.Button_ClearSession_Click);
             // 
             // Button_Credits
             // 
@@ -217,21 +234,17 @@
             this.Button_Timetable.UseVisualStyleBackColor = true;
             this.Button_Timetable.Click += new System.EventHandler(this.Button_Timetable_Click);
             // 
-            // Button_ClearSession
+            // Panel_ProgressBar
             // 
-            this.Button_ClearSession.BackColor = System.Drawing.Color.Transparent;
-            this.Button_ClearSession.FlatAppearance.BorderSize = 0;
-            this.Button_ClearSession.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(120)))), ((int)(((byte)(95)))));
-            this.Button_ClearSession.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(107)))), ((int)(((byte)(98)))));
-            this.Button_ClearSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button_ClearSession.ForeColor = System.Drawing.Color.White;
-            this.Button_ClearSession.Location = new System.Drawing.Point(1175, 5);
-            this.Button_ClearSession.Name = "Button_ClearSession";
-            this.Button_ClearSession.Size = new System.Drawing.Size(153, 39);
-            this.Button_ClearSession.TabIndex = 8;
-            this.Button_ClearSession.Text = "Clear All Session";
-            this.Button_ClearSession.UseVisualStyleBackColor = false;
-            this.Button_ClearSession.Click += new System.EventHandler(this.Button_ClearSession_Click);
+            this.Panel_ProgressBar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
+            this.Panel_ProgressBar.BackgroundImage = global::Exam_Cell.Properties.Resources.ProgressPanel;
+            this.Panel_ProgressBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Panel_ProgressBar.Location = new System.Drawing.Point(612, 183);
+            this.Panel_ProgressBar.Name = "Panel_ProgressBar";
+            this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 70);
+            this.Panel_ProgressBar.TabIndex = 6;
+            this.Panel_ProgressBar.Visible = false;
             // 
             // Form_MainMenu
             // 
@@ -240,6 +253,7 @@
             this.BackgroundImage = global::Exam_Cell.Properties.Resources.KmeaBg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1483, 551);
+            this.Controls.Add(this.Panel_ProgressBar);
             this.Controls.Add(this.Panel_Menu);
             this.Controls.Add(this.Label_Copyright);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -267,5 +281,6 @@
         private System.Windows.Forms.Button Button_CandidateEntry;
         private System.Windows.Forms.Button Button_Timetable;
         private System.Windows.Forms.Button Button_ClearSession;
+        private System.Windows.Forms.Panel Panel_ProgressBar;
     }
 }

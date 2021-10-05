@@ -32,6 +32,12 @@ namespace Exam_Cell
             this.Close();
         }
 
+        void SetLoading(bool loading)
+        {
+            if (loading) Panel_ProgressBar.Visible = true;
+            else Panel_ProgressBar.Visible = false;
+        }
+
         bool isFormReset = false;
         void ResetForm()
         {
@@ -164,9 +170,9 @@ namespace Exam_Cell
             SearchCourses();
         }
 
-        private void Textbox_ExamCode_Search_Course_TextChanged(object sender, EventArgs e)
+        private void Textbox_ExamCode_Search_Course_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchCourses();
+            if (e.KeyCode == Keys.Enter) SearchCourses();
         }
 
         void SearchTimetable()
@@ -244,9 +250,9 @@ namespace Exam_Cell
             SearchTimetable();
         }
 
-        private void Textbox_ExamCode_Search_Timetable_TextChanged(object sender, EventArgs e)
+        private void Textbox_ExamCode_Search_Timetable_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchTimetable();
+            if (e.KeyCode == Keys.Enter) SearchTimetable();
         }
 
         // List to backup undo action
@@ -272,7 +278,7 @@ namespace Exam_Cell
         {
             try
             {
-                this.Enabled = false;
+                SetLoading(true);
                 int flag = 0;
                 ClearBackupList();
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
@@ -313,13 +319,15 @@ namespace Exam_Cell
                     Button_Undo.Enabled = true;
                     SearchTimetable();
                 }
-                else CustomMessageBox.ShowMessageBox("Select any Course to Add timetable", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-                this.Enabled = true;
+                else CustomMessageBox.ShowMessageBox("Select any Course to Add timetable", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);                
             }
             catch (Exception ex)
             {
-                this.Enabled = true;
                 MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                SetLoading(false);
             }
         }
 
@@ -331,7 +339,7 @@ namespace Exam_Cell
             {
                 try
                 {
-                    this.Enabled = false;
+                    SetLoading(true);
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
@@ -349,14 +357,16 @@ namespace Exam_Cell
                         }
                     }
                     ClearBackupList();
-                    SearchTimetable();
-                    this.Enabled = true;
+                    SearchTimetable();                    
                     CustomMessageBox.ShowMessageBox("Last action has been undone  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    this.Enabled = true;
                     MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    SetLoading(false);
                 }
             }
         }
@@ -374,7 +384,7 @@ namespace Exam_Cell
             {
                 try
                 {
-                    this.Enabled = false;
+                    SetLoading(true);
                     int flag = 0;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
@@ -403,13 +413,15 @@ namespace Exam_Cell
                         SearchTimetable();
                         CustomMessageBox.ShowMessageBox("Selected records deleted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                     }
-                    else CustomMessageBox.ShowMessageBox("Select any timetable to delete  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-                    this.Enabled = true;
+                    else CustomMessageBox.ShowMessageBox("Select any timetable to delete  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);                    
                 }
                 catch (Exception ex)
                 {
-                    this.Enabled = true;
                     MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    SetLoading(false);
                 }
             }
         }

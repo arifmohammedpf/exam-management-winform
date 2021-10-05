@@ -32,6 +32,12 @@ namespace Exam_Cell
             this.Close();
         }
 
+        void SetLoading(bool loading)
+        {
+            if (loading) Panel_ProgressBar.Visible = true;
+            else Panel_ProgressBar.Visible = false;
+        }
+
         bool isFormReset = false; // to avoid searchEvent when resetting form triggers event actions
         void ResetForm()
         {
@@ -81,6 +87,7 @@ namespace Exam_Cell
         {
             if (!isFormReset)
             {
+                SetLoading(true);
                 HeaderCheckBox.Checked = false;
                 Dgv_Timetable.DataSource = null;
                 string searchRecord = "";
@@ -120,12 +127,13 @@ namespace Exam_Cell
                     }
                     Dgv_Timetable.DataSource = TimeTable;
                 }
+                SetLoading(false);
             }
         }
 
-        private void Textbox_SubCode_TextChanged(object sender, EventArgs e)
+        private void Textbox_SubCode_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchTimetable();
+            if (e.KeyCode == Keys.Enter) SearchTimetable();
         }
 
         private void Combobox_Branch_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,6 +171,7 @@ namespace Exam_Cell
             {
                 try
                 {
+                    SetLoading(true);
                     int flag = 0;
                     bool isPostponWithSession = false;
                     if (Combobox_NewSession.Text != "-Optional-") isPostponWithSession = true;
@@ -202,7 +211,11 @@ namespace Exam_Cell
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-                }                
+                }
+                finally
+                {
+                    SetLoading(false);
+                }
             }
         }
 
@@ -258,7 +271,7 @@ namespace Exam_Cell
                     HeaderCheckBox.Checked = false;
                 }
             }
-        }
+        }        
     }
 }
 

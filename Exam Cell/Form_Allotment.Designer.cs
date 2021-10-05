@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,6 +55,7 @@
             this.Combobox_Session = new System.Windows.Forms.ComboBox();
             this.DateTimePicker_Date = new System.Windows.Forms.DateTimePicker();
             this.Tab_ExcelSheet = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
             this.Button_FilepathChange = new System.Windows.Forms.Button();
             this.Button_RoomSheet = new System.Windows.Forms.Button();
             this.Button_SummarySheet = new System.Windows.Forms.Button();
@@ -85,8 +86,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.Panel_Header.SuspendLayout();
             this.Groupbox_SelectExam.SuspendLayout();
             this.TabPanel.SuspendLayout();
@@ -99,7 +98,6 @@
             this.Tab_ShiftSwap.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.Panel_ProgressBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Header
@@ -202,7 +200,7 @@
             this.Tab_Allot.Controls.Add(this.DateTimePicker_Date);
             this.Tab_Allot.Location = new System.Drawing.Point(4, 26);
             this.Tab_Allot.Name = "Tab_Allot";
-            this.Tab_Allot.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Tab_Allot.Padding = new System.Windows.Forms.Padding(3);
             this.Tab_Allot.Size = new System.Drawing.Size(1065, 560);
             this.Tab_Allot.TabIndex = 0;
             this.Tab_Allot.Text = "Allot Students";
@@ -220,8 +218,8 @@
             this.Dgv_Cand_in_AllotedRooms.Location = new System.Drawing.Point(701, 76);
             this.Dgv_Cand_in_AllotedRooms.Name = "Dgv_Cand_in_AllotedRooms";
             this.Dgv_Cand_in_AllotedRooms.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Cand_in_AllotedRooms.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Cand_in_AllotedRooms.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Cand_in_AllotedRooms.RowTemplate.Height = 24;
             this.Dgv_Cand_in_AllotedRooms.Size = new System.Drawing.Size(361, 458);
             this.Dgv_Cand_in_AllotedRooms.TabIndex = 34;
@@ -304,8 +302,8 @@
             this.Dgv_RegCourseWise_Count.Location = new System.Drawing.Point(1, 299);
             this.Dgv_RegCourseWise_Count.Name = "Dgv_RegCourseWise_Count";
             this.Dgv_RegCourseWise_Count.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_RegCourseWise_Count.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_RegCourseWise_Count.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_RegCourseWise_Count.RowTemplate.Height = 24;
             this.Dgv_RegCourseWise_Count.Size = new System.Drawing.Size(385, 235);
             this.Dgv_RegCourseWise_Count.TabIndex = 3;
@@ -322,8 +320,8 @@
             this.Dgv_Alloted_Rooms.Location = new System.Drawing.Point(388, 76);
             this.Dgv_Alloted_Rooms.Name = "Dgv_Alloted_Rooms";
             this.Dgv_Alloted_Rooms.RowHeadersVisible = false;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Alloted_Rooms.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Alloted_Rooms.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dgv_Alloted_Rooms.RowTemplate.Height = 24;
             this.Dgv_Alloted_Rooms.Size = new System.Drawing.Size(312, 458);
             this.Dgv_Alloted_Rooms.TabIndex = 3;
@@ -340,8 +338,8 @@
             this.Dgv_RegCandidates_List.Location = new System.Drawing.Point(1, 76);
             this.Dgv_RegCandidates_List.Name = "Dgv_RegCandidates_List";
             this.Dgv_RegCandidates_List.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_RegCandidates_List.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_RegCandidates_List.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv_RegCandidates_List.RowTemplate.Height = 24;
             this.Dgv_RegCandidates_List.Size = new System.Drawing.Size(385, 220);
             this.Dgv_RegCandidates_List.TabIndex = 3;
@@ -408,11 +406,20 @@
             this.Tab_ExcelSheet.Controls.Add(this.Textbox_ExamName);
             this.Tab_ExcelSheet.Location = new System.Drawing.Point(4, 26);
             this.Tab_ExcelSheet.Name = "Tab_ExcelSheet";
-            this.Tab_ExcelSheet.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Tab_ExcelSheet.Padding = new System.Windows.Forms.Padding(3);
             this.Tab_ExcelSheet.Size = new System.Drawing.Size(1065, 560);
             this.Tab_ExcelSheet.TabIndex = 1;
             this.Tab_ExcelSheet.Text = "Generate Excel Sheets";
             this.Tab_ExcelSheet.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(347, 28);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(339, 17);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Note : Select Date and Session from \"Allot Students\" Tab";
             // 
             // Button_FilepathChange
             // 
@@ -781,32 +788,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
-            this.Panel_ProgressBar.Controls.Add(this.label4);
-            this.Panel_ProgressBar.Location = new System.Drawing.Point(381, 382);
+            this.Panel_ProgressBar.BackgroundImage = global::Exam_Cell.Properties.Resources.ProgressPanel;
+            this.Panel_ProgressBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Panel_ProgressBar.Location = new System.Drawing.Point(385, 382);
             this.Panel_ProgressBar.Name = "Panel_ProgressBar";
-            this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 37);
+            this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 67);
             this.Panel_ProgressBar.TabIndex = 19;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(98, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 22);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Please Wait !";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(347, 28);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(339, 17);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Note : Select Date and Session from \"Allot Students\" Tab";
+            this.Panel_ProgressBar.Visible = false;
             // 
             // Form_Allotment
             // 
@@ -814,10 +802,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(1073, 720);
+            this.Controls.Add(this.Panel_ProgressBar);
             this.Controls.Add(this.TabPanel);
             this.Controls.Add(this.Groupbox_SelectExam);
             this.Controls.Add(this.Panel_Header);
-            this.Controls.Add(this.Panel_ProgressBar);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -844,8 +832,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.Panel_ProgressBar.ResumeLayout(false);
-            this.Panel_ProgressBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -896,7 +882,6 @@
         private System.Windows.Forms.Button Button_FilepathChange;
         private System.Windows.Forms.TextBox Textbox_Filepath;
         private System.Windows.Forms.Panel Panel_ProgressBar;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox Combobox_To_Starting_Seat;
         private System.Windows.Forms.ComboBox Combobox_To_SeriesAB;
         private System.Windows.Forms.Label label11;

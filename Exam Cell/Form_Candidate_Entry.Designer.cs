@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,7 +75,6 @@
             this.Radio_Series = new System.Windows.Forms.RadioButton();
             this.Radio_University = new System.Windows.Forms.RadioButton();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Course)).BeginInit();
@@ -90,7 +89,6 @@
             this.Tab_Series_Search.SuspendLayout();
             this.Panel_Series_Search.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.Panel_ProgressBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Header
@@ -100,9 +98,8 @@
             this.Panel_Header.Controls.Add(this.label1);
             this.Panel_Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel_Header.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Header.Margin = new System.Windows.Forms.Padding(4);
             this.Panel_Header.Name = "Panel_Header";
-            this.Panel_Header.Size = new System.Drawing.Size(1489, 69);
+            this.Panel_Header.Size = new System.Drawing.Size(1191, 55);
             this.Panel_Header.TabIndex = 1;
             // 
             // Button_Close
@@ -111,10 +108,9 @@
             this.Button_Close.FlatAppearance.BorderSize = 0;
             this.Button_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Close.Image = global::Exam_Cell.Properties.Resources.cancel;
-            this.Button_Close.Location = new System.Drawing.Point(1424, 11);
-            this.Button_Close.Margin = new System.Windows.Forms.Padding(4);
+            this.Button_Close.Location = new System.Drawing.Point(1139, 9);
             this.Button_Close.Name = "Button_Close";
-            this.Button_Close.Size = new System.Drawing.Size(50, 46);
+            this.Button_Close.Size = new System.Drawing.Size(40, 37);
             this.Button_Close.TabIndex = 0;
             this.Button_Close.UseVisualStyleBackColor = true;
             this.Button_Close.Click += new System.EventHandler(this.Button_Close_Click);
@@ -124,10 +120,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 13.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(14, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(11, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 25);
+            this.label1.Size = new System.Drawing.Size(157, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Candidate Entry";
             // 
@@ -141,10 +136,9 @@
             this.Panel_Body.Controls.Add(this.TabControl);
             this.Panel_Body.Controls.Add(this.groupBox1);
             this.Panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel_Body.Location = new System.Drawing.Point(0, 69);
-            this.Panel_Body.Margin = new System.Windows.Forms.Padding(4);
+            this.Panel_Body.Location = new System.Drawing.Point(0, 55);
             this.Panel_Body.Name = "Panel_Body";
-            this.Panel_Body.Size = new System.Drawing.Size(1489, 823);
+            this.Panel_Body.Size = new System.Drawing.Size(1191, 659);
             this.Panel_Body.TabIndex = 0;
             // 
             // Dgv_Course
@@ -159,14 +153,13 @@
             this.Dgv_Course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Course.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBoxColumn_Course});
-            this.Dgv_Course.Location = new System.Drawing.Point(676, 306);
-            this.Dgv_Course.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_Course.Location = new System.Drawing.Point(541, 245);
             this.Dgv_Course.Name = "Dgv_Course";
             this.Dgv_Course.RowHeadersVisible = false;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Course.RowTemplate.Height = 24;
-            this.Dgv_Course.Size = new System.Drawing.Size(811, 516);
+            this.Dgv_Course.Size = new System.Drawing.Size(649, 413);
             this.Dgv_Course.TabIndex = 39;
             // 
             // CheckBoxColumn_Course
@@ -179,10 +172,9 @@
             // HeaderCheckBox
             // 
             this.HeaderCheckBox.AutoSize = true;
-            this.HeaderCheckBox.Location = new System.Drawing.Point(15, 310);
-            this.HeaderCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.HeaderCheckBox.Location = new System.Drawing.Point(12, 248);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
-            this.HeaderCheckBox.Size = new System.Drawing.Size(18, 17);
+            this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
             this.HeaderCheckBox.TabIndex = 3;
             this.HeaderCheckBox.UseVisualStyleBackColor = true;
             this.HeaderCheckBox.CheckedChanged += new System.EventHandler(this.HeaderCheckBox_CheckedChanged);
@@ -199,14 +191,13 @@
             this.Dgv_Students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Students.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBoxColumn_Students});
-            this.Dgv_Students.Location = new System.Drawing.Point(0, 306);
-            this.Dgv_Students.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_Students.Location = new System.Drawing.Point(0, 245);
             this.Dgv_Students.Name = "Dgv_Students";
             this.Dgv_Students.RowHeadersVisible = false;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv_Students.RowTemplate.Height = 24;
-            this.Dgv_Students.Size = new System.Drawing.Size(678, 516);
+            this.Dgv_Students.Size = new System.Drawing.Size(542, 413);
             this.Dgv_Students.TabIndex = 37;
             this.Dgv_Students.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Students_CellEndEdit);
             this.Dgv_Students.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Students_CellMouseUp);
@@ -227,11 +218,9 @@
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.Combobox_Scheme);
             this.groupBox3.Controls.Add(this.Combobox_Branch_SchemeSearch);
-            this.groupBox3.Location = new System.Drawing.Point(839, 110);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Location = new System.Drawing.Point(671, 88);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(494, 178);
+            this.groupBox3.Size = new System.Drawing.Size(395, 142);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search Course";
@@ -250,10 +239,9 @@
             "6",
             "7",
             "8"});
-            this.Combobox_Semester.Location = new System.Drawing.Point(134, 125);
-            this.Combobox_Semester.Margin = new System.Windows.Forms.Padding(4);
+            this.Combobox_Semester.Location = new System.Drawing.Point(107, 100);
             this.Combobox_Semester.Name = "Combobox_Semester";
-            this.Combobox_Semester.Size = new System.Drawing.Size(336, 28);
+            this.Combobox_Semester.Size = new System.Drawing.Size(270, 25);
             this.Combobox_Semester.TabIndex = 2;
             this.Combobox_Semester.SelectedIndexChanged += new System.EventHandler(this.Combobox_Semester_SelectedIndexChanged);
             // 
@@ -261,10 +249,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(21, 130);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Location = new System.Drawing.Point(17, 104);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 20);
+            this.label6.Size = new System.Drawing.Size(70, 17);
             this.label6.TabIndex = 41;
             this.label6.Text = "Semester :";
             // 
@@ -272,10 +260,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(21, 45);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Location = new System.Drawing.Point(17, 36);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 20);
+            this.label7.Size = new System.Drawing.Size(63, 17);
             this.label7.TabIndex = 39;
             this.label7.Text = "Scheme :";
             // 
@@ -283,10 +271,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(21, 88);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Location = new System.Drawing.Point(17, 70);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 20);
+            this.label8.Size = new System.Drawing.Size(55, 17);
             this.label8.TabIndex = 40;
             this.label8.Text = "Branch :";
             // 
@@ -294,10 +282,9 @@
             // 
             this.Combobox_Scheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Scheme.FormattingEnabled = true;
-            this.Combobox_Scheme.Location = new System.Drawing.Point(134, 40);
-            this.Combobox_Scheme.Margin = new System.Windows.Forms.Padding(4);
+            this.Combobox_Scheme.Location = new System.Drawing.Point(107, 32);
             this.Combobox_Scheme.Name = "Combobox_Scheme";
-            this.Combobox_Scheme.Size = new System.Drawing.Size(336, 28);
+            this.Combobox_Scheme.Size = new System.Drawing.Size(270, 25);
             this.Combobox_Scheme.TabIndex = 0;
             this.Combobox_Scheme.SelectedIndexChanged += new System.EventHandler(this.Combobox_Scheme_SelectedIndexChanged);
             // 
@@ -305,10 +292,9 @@
             // 
             this.Combobox_Branch_SchemeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch_SchemeSearch.FormattingEnabled = true;
-            this.Combobox_Branch_SchemeSearch.Location = new System.Drawing.Point(134, 82);
-            this.Combobox_Branch_SchemeSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.Combobox_Branch_SchemeSearch.Location = new System.Drawing.Point(107, 66);
             this.Combobox_Branch_SchemeSearch.Name = "Combobox_Branch_SchemeSearch";
-            this.Combobox_Branch_SchemeSearch.Size = new System.Drawing.Size(336, 28);
+            this.Combobox_Branch_SchemeSearch.Size = new System.Drawing.Size(270, 25);
             this.Combobox_Branch_SchemeSearch.TabIndex = 1;
             this.Combobox_Branch_SchemeSearch.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_SchemeSearch_SelectedIndexChanged);
             // 
@@ -320,11 +306,9 @@
             this.Groupbox_ExtraCandidateRegister.Controls.Add(this.label5);
             this.Groupbox_ExtraCandidateRegister.Controls.Add(this.label4);
             this.Groupbox_ExtraCandidateRegister.Enabled = false;
-            this.Groupbox_ExtraCandidateRegister.Location = new System.Drawing.Point(391, 3);
-            this.Groupbox_ExtraCandidateRegister.Margin = new System.Windows.Forms.Padding(4);
+            this.Groupbox_ExtraCandidateRegister.Location = new System.Drawing.Point(313, 2);
             this.Groupbox_ExtraCandidateRegister.Name = "Groupbox_ExtraCandidateRegister";
-            this.Groupbox_ExtraCandidateRegister.Padding = new System.Windows.Forms.Padding(4);
-            this.Groupbox_ExtraCandidateRegister.Size = new System.Drawing.Size(1080, 84);
+            this.Groupbox_ExtraCandidateRegister.Size = new System.Drawing.Size(864, 67);
             this.Groupbox_ExtraCandidateRegister.TabIndex = 4;
             this.Groupbox_ExtraCandidateRegister.TabStop = false;
             this.Groupbox_ExtraCandidateRegister.Text = "Extra Candidate Registration";
@@ -339,10 +323,10 @@
             this.Button_ExtraCand_Register.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_ExtraCand_Register.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_ExtraCand_Register.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_ExtraCand_Register.Location = new System.Drawing.Point(894, 21);
-            this.Button_ExtraCand_Register.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_ExtraCand_Register.Location = new System.Drawing.Point(715, 17);
+            this.Button_ExtraCand_Register.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_ExtraCand_Register.Name = "Button_ExtraCand_Register";
-            this.Button_ExtraCand_Register.Size = new System.Drawing.Size(162, 50);
+            this.Button_ExtraCand_Register.Size = new System.Drawing.Size(130, 40);
             this.Button_ExtraCand_Register.TabIndex = 2;
             this.Button_ExtraCand_Register.Text = "Register";
             this.Button_ExtraCand_Register.UseVisualStyleBackColor = false;
@@ -350,28 +334,26 @@
             // 
             // Textbox_ExtraCand_Name
             // 
-            this.Textbox_ExtraCand_Name.Location = new System.Drawing.Point(539, 34);
-            this.Textbox_ExtraCand_Name.Margin = new System.Windows.Forms.Padding(4);
+            this.Textbox_ExtraCand_Name.Location = new System.Drawing.Point(431, 27);
             this.Textbox_ExtraCand_Name.Name = "Textbox_ExtraCand_Name";
-            this.Textbox_ExtraCand_Name.Size = new System.Drawing.Size(336, 26);
+            this.Textbox_ExtraCand_Name.Size = new System.Drawing.Size(270, 22);
             this.Textbox_ExtraCand_Name.TabIndex = 1;
             // 
             // Textbox_ExtraCand_RegNo
             // 
-            this.Textbox_ExtraCand_RegNo.Location = new System.Drawing.Point(109, 34);
-            this.Textbox_ExtraCand_RegNo.Margin = new System.Windows.Forms.Padding(4);
+            this.Textbox_ExtraCand_RegNo.Location = new System.Drawing.Point(87, 27);
             this.Textbox_ExtraCand_RegNo.Name = "Textbox_ExtraCand_RegNo";
-            this.Textbox_ExtraCand_RegNo.Size = new System.Drawing.Size(336, 26);
+            this.Textbox_ExtraCand_RegNo.Size = new System.Drawing.Size(270, 22);
             this.Textbox_ExtraCand_RegNo.TabIndex = 0;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(454, 37);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Location = new System.Drawing.Point(363, 30);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 20);
+            this.label5.Size = new System.Drawing.Size(50, 17);
             this.label5.TabIndex = 44;
             this.label5.Text = "Name :";
             // 
@@ -379,10 +361,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 37);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label4.Location = new System.Drawing.Point(9, 30);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 20);
+            this.label4.Size = new System.Drawing.Size(57, 17);
             this.label4.TabIndex = 44;
             this.label4.Text = "Reg No :";
             // 
@@ -391,21 +373,19 @@
             this.TabControl.Controls.Add(this.Tab_Excel_Import);
             this.TabControl.Controls.Add(this.Tab_Univeristy_Search);
             this.TabControl.Controls.Add(this.Tab_Series_Search);
-            this.TabControl.Location = new System.Drawing.Point(48, 89);
-            this.TabControl.Margin = new System.Windows.Forms.Padding(4);
+            this.TabControl.Location = new System.Drawing.Point(38, 71);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(576, 209);
+            this.TabControl.Size = new System.Drawing.Size(461, 167);
             this.TabControl.TabIndex = 1;
             // 
             // Tab_Excel_Import
             // 
             this.Tab_Excel_Import.Controls.Add(this.Panel_Import_Excel);
-            this.Tab_Excel_Import.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Excel_Import.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab_Excel_Import.Location = new System.Drawing.Point(4, 26);
             this.Tab_Excel_Import.Name = "Tab_Excel_Import";
-            this.Tab_Excel_Import.Padding = new System.Windows.Forms.Padding(4);
-            this.Tab_Excel_Import.Size = new System.Drawing.Size(568, 176);
+            this.Tab_Excel_Import.Padding = new System.Windows.Forms.Padding(3);
+            this.Tab_Excel_Import.Size = new System.Drawing.Size(453, 137);
             this.Tab_Excel_Import.TabIndex = 1;
             this.Tab_Excel_Import.Text = "Import from Excel";
             this.Tab_Excel_Import.UseVisualStyleBackColor = true;
@@ -417,9 +397,10 @@
             this.Panel_Import_Excel.Controls.Add(this.Button_Register_ExcelSheet);
             this.Panel_Import_Excel.Controls.Add(this.Textbox_ExcelFilepath);
             this.Panel_Import_Excel.Controls.Add(this.Combobox_ExcelSheets);
-            this.Panel_Import_Excel.Location = new System.Drawing.Point(4, 4);
+            this.Panel_Import_Excel.Location = new System.Drawing.Point(3, 3);
+            this.Panel_Import_Excel.Margin = new System.Windows.Forms.Padding(2);
             this.Panel_Import_Excel.Name = "Panel_Import_Excel";
-            this.Panel_Import_Excel.Size = new System.Drawing.Size(560, 168);
+            this.Panel_Import_Excel.Size = new System.Drawing.Size(448, 134);
             this.Panel_Import_Excel.TabIndex = 0;
             // 
             // Button_Select_ExcelFile
@@ -432,10 +413,10 @@
             this.Button_Select_ExcelFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Select_ExcelFile.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Select_ExcelFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.Button_Select_ExcelFile.Location = new System.Drawing.Point(382, 29);
-            this.Button_Select_ExcelFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_Select_ExcelFile.Location = new System.Drawing.Point(306, 23);
+            this.Button_Select_ExcelFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Select_ExcelFile.Name = "Button_Select_ExcelFile";
-            this.Button_Select_ExcelFile.Size = new System.Drawing.Size(162, 50);
+            this.Button_Select_ExcelFile.Size = new System.Drawing.Size(130, 40);
             this.Button_Select_ExcelFile.TabIndex = 32;
             this.Button_Select_ExcelFile.Text = "Select Excel";
             this.Button_Select_ExcelFile.UseVisualStyleBackColor = false;
@@ -452,10 +433,10 @@
             this.Button_Register_ExcelSheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Register_ExcelSheet.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Register_ExcelSheet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Register_ExcelSheet.Location = new System.Drawing.Point(382, 89);
-            this.Button_Register_ExcelSheet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_Register_ExcelSheet.Location = new System.Drawing.Point(306, 71);
+            this.Button_Register_ExcelSheet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Register_ExcelSheet.Name = "Button_Register_ExcelSheet";
-            this.Button_Register_ExcelSheet.Size = new System.Drawing.Size(162, 50);
+            this.Button_Register_ExcelSheet.Size = new System.Drawing.Size(130, 40);
             this.Button_Register_ExcelSheet.TabIndex = 34;
             this.Button_Register_ExcelSheet.Text = "Register";
             this.Button_Register_ExcelSheet.UseVisualStyleBackColor = false;
@@ -464,31 +445,28 @@
             // Textbox_ExcelFilepath
             // 
             this.Textbox_ExcelFilepath.Enabled = false;
-            this.Textbox_ExcelFilepath.Location = new System.Drawing.Point(17, 38);
-            this.Textbox_ExcelFilepath.Margin = new System.Windows.Forms.Padding(4);
+            this.Textbox_ExcelFilepath.Location = new System.Drawing.Point(14, 30);
             this.Textbox_ExcelFilepath.Name = "Textbox_ExcelFilepath";
-            this.Textbox_ExcelFilepath.Size = new System.Drawing.Size(354, 26);
+            this.Textbox_ExcelFilepath.Size = new System.Drawing.Size(284, 22);
             this.Textbox_ExcelFilepath.TabIndex = 35;
             // 
             // Combobox_ExcelSheets
             // 
             this.Combobox_ExcelSheets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_ExcelSheets.FormattingEnabled = true;
-            this.Combobox_ExcelSheets.Location = new System.Drawing.Point(17, 97);
-            this.Combobox_ExcelSheets.Margin = new System.Windows.Forms.Padding(4);
+            this.Combobox_ExcelSheets.Location = new System.Drawing.Point(14, 78);
             this.Combobox_ExcelSheets.Name = "Combobox_ExcelSheets";
-            this.Combobox_ExcelSheets.Size = new System.Drawing.Size(354, 28);
+            this.Combobox_ExcelSheets.Size = new System.Drawing.Size(284, 25);
             this.Combobox_ExcelSheets.TabIndex = 33;
             this.Combobox_ExcelSheets.SelectedIndexChanged += new System.EventHandler(this.Combobox_ExcelSheets_SelectedIndexChanged);
             // 
             // Tab_Univeristy_Search
             // 
             this.Tab_Univeristy_Search.Controls.Add(this.Panel_University_Search);
-            this.Tab_Univeristy_Search.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Univeristy_Search.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab_Univeristy_Search.Location = new System.Drawing.Point(4, 26);
             this.Tab_Univeristy_Search.Name = "Tab_Univeristy_Search";
-            this.Tab_Univeristy_Search.Padding = new System.Windows.Forms.Padding(4);
-            this.Tab_Univeristy_Search.Size = new System.Drawing.Size(568, 176);
+            this.Tab_Univeristy_Search.Padding = new System.Windows.Forms.Padding(3);
+            this.Tab_Univeristy_Search.Size = new System.Drawing.Size(453, 137);
             this.Tab_Univeristy_Search.TabIndex = 0;
             this.Tab_Univeristy_Search.Text = "Search Students";
             this.Tab_Univeristy_Search.UseVisualStyleBackColor = true;
@@ -501,9 +479,10 @@
             this.Panel_University_Search.Controls.Add(this.label9);
             this.Panel_University_Search.Controls.Add(this.Combobox_Branch_Cand_Register);
             this.Panel_University_Search.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel_University_Search.Location = new System.Drawing.Point(4, 4);
+            this.Panel_University_Search.Location = new System.Drawing.Point(3, 3);
+            this.Panel_University_Search.Margin = new System.Windows.Forms.Padding(2);
             this.Panel_University_Search.Name = "Panel_University_Search";
-            this.Panel_University_Search.Size = new System.Drawing.Size(560, 168);
+            this.Panel_University_Search.Size = new System.Drawing.Size(447, 131);
             this.Panel_University_Search.TabIndex = 0;
             // 
             // Button_Register_University
@@ -516,10 +495,10 @@
             this.Button_Register_University.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Register_University.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Register_University.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Register_University.Location = new System.Drawing.Point(225, 101);
-            this.Button_Register_University.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_Register_University.Location = new System.Drawing.Point(180, 81);
+            this.Button_Register_University.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Register_University.Name = "Button_Register_University";
-            this.Button_Register_University.Size = new System.Drawing.Size(162, 50);
+            this.Button_Register_University.Size = new System.Drawing.Size(130, 40);
             this.Button_Register_University.TabIndex = 44;
             this.Button_Register_University.Text = "Register";
             this.Button_Register_University.UseVisualStyleBackColor = false;
@@ -527,21 +506,20 @@
             // 
             // Textbox_Yoa_SearchCand
             // 
-            this.Textbox_Yoa_SearchCand.Location = new System.Drawing.Point(160, 61);
-            this.Textbox_Yoa_SearchCand.Margin = new System.Windows.Forms.Padding(4);
+            this.Textbox_Yoa_SearchCand.Location = new System.Drawing.Point(128, 49);
             this.Textbox_Yoa_SearchCand.Name = "Textbox_Yoa_SearchCand";
-            this.Textbox_Yoa_SearchCand.Size = new System.Drawing.Size(336, 26);
+            this.Textbox_Yoa_SearchCand.Size = new System.Drawing.Size(270, 22);
             this.Textbox_Yoa_SearchCand.TabIndex = 43;
-            this.Textbox_Yoa_SearchCand.TextChanged += new System.EventHandler(this.Textbox_Yoa_SearchCand_TextChanged);
+            this.Textbox_Yoa_SearchCand.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Textbox_Yoa_SearchCand_KeyUp);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(65, 65);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Location = new System.Drawing.Point(52, 52);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 20);
+            this.label3.Size = new System.Drawing.Size(40, 17);
             this.label3.TabIndex = 46;
             this.label3.Text = "YOA :";
             // 
@@ -549,10 +527,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(65, 23);
-            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label9.Location = new System.Drawing.Point(52, 18);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 20);
+            this.label9.Size = new System.Drawing.Size(55, 17);
             this.label9.TabIndex = 45;
             this.label9.Text = "Branch :";
             // 
@@ -560,20 +538,18 @@
             // 
             this.Combobox_Branch_Cand_Register.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch_Cand_Register.FormattingEnabled = true;
-            this.Combobox_Branch_Cand_Register.Location = new System.Drawing.Point(160, 18);
-            this.Combobox_Branch_Cand_Register.Margin = new System.Windows.Forms.Padding(4);
+            this.Combobox_Branch_Cand_Register.Location = new System.Drawing.Point(128, 14);
             this.Combobox_Branch_Cand_Register.Name = "Combobox_Branch_Cand_Register";
-            this.Combobox_Branch_Cand_Register.Size = new System.Drawing.Size(336, 28);
+            this.Combobox_Branch_Cand_Register.Size = new System.Drawing.Size(270, 25);
             this.Combobox_Branch_Cand_Register.TabIndex = 42;
             this.Combobox_Branch_Cand_Register.SelectedIndexChanged += new System.EventHandler(this.Combobox_Branch_Cand_Register_SelectedIndexChanged);
             // 
             // Tab_Series_Search
             // 
             this.Tab_Series_Search.Controls.Add(this.Panel_Series_Search);
-            this.Tab_Series_Search.Location = new System.Drawing.Point(4, 29);
-            this.Tab_Series_Search.Margin = new System.Windows.Forms.Padding(4);
+            this.Tab_Series_Search.Location = new System.Drawing.Point(4, 26);
             this.Tab_Series_Search.Name = "Tab_Series_Search";
-            this.Tab_Series_Search.Size = new System.Drawing.Size(568, 176);
+            this.Tab_Series_Search.Size = new System.Drawing.Size(453, 137);
             this.Tab_Series_Search.TabIndex = 2;
             this.Tab_Series_Search.Text = "Search Students";
             this.Tab_Series_Search.UseVisualStyleBackColor = true;
@@ -585,8 +561,9 @@
             this.Panel_Series_Search.Controls.Add(this.Combobox_Class);
             this.Panel_Series_Search.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Series_Search.Location = new System.Drawing.Point(0, 0);
+            this.Panel_Series_Search.Margin = new System.Windows.Forms.Padding(2);
             this.Panel_Series_Search.Name = "Panel_Series_Search";
-            this.Panel_Series_Search.Size = new System.Drawing.Size(568, 176);
+            this.Panel_Series_Search.Size = new System.Drawing.Size(453, 137);
             this.Panel_Series_Search.TabIndex = 0;
             // 
             // Button_Register_Series
@@ -599,10 +576,10 @@
             this.Button_Register_Series.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Register_Series.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Register_Series.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Register_Series.Location = new System.Drawing.Point(229, 86);
-            this.Button_Register_Series.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Button_Register_Series.Location = new System.Drawing.Point(183, 69);
+            this.Button_Register_Series.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Register_Series.Name = "Button_Register_Series";
-            this.Button_Register_Series.Size = new System.Drawing.Size(162, 50);
+            this.Button_Register_Series.Size = new System.Drawing.Size(130, 40);
             this.Button_Register_Series.TabIndex = 45;
             this.Button_Register_Series.Text = "Register";
             this.Button_Register_Series.UseVisualStyleBackColor = false;
@@ -612,10 +589,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(74, 45);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(59, 36);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 20);
+            this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 46;
             this.label2.Text = "Class :";
             // 
@@ -623,10 +600,9 @@
             // 
             this.Combobox_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Class.FormattingEnabled = true;
-            this.Combobox_Class.Location = new System.Drawing.Point(158, 40);
-            this.Combobox_Class.Margin = new System.Windows.Forms.Padding(4);
+            this.Combobox_Class.Location = new System.Drawing.Point(126, 32);
             this.Combobox_Class.Name = "Combobox_Class";
-            this.Combobox_Class.Size = new System.Drawing.Size(336, 28);
+            this.Combobox_Class.Size = new System.Drawing.Size(270, 25);
             this.Combobox_Class.TabIndex = 44;
             this.Combobox_Class.SelectedIndexChanged += new System.EventHandler(this.Combobox_Class_SelectedIndexChanged);
             // 
@@ -634,11 +610,9 @@
             // 
             this.groupBox1.Controls.Add(this.Radio_Series);
             this.groupBox1.Controls.Add(this.Radio_University);
-            this.groupBox1.Location = new System.Drawing.Point(19, 3);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(15, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(340, 84);
+            this.groupBox1.Size = new System.Drawing.Size(272, 67);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Exam";
@@ -646,10 +620,9 @@
             // Radio_Series
             // 
             this.Radio_Series.AutoSize = true;
-            this.Radio_Series.Location = new System.Drawing.Point(206, 37);
-            this.Radio_Series.Margin = new System.Windows.Forms.Padding(4);
+            this.Radio_Series.Location = new System.Drawing.Point(165, 30);
             this.Radio_Series.Name = "Radio_Series";
-            this.Radio_Series.Size = new System.Drawing.Size(71, 24);
+            this.Radio_Series.Size = new System.Drawing.Size(61, 21);
             this.Radio_Series.TabIndex = 1;
             this.Radio_Series.Text = "Series";
             this.Radio_Series.UseVisualStyleBackColor = true;
@@ -658,10 +631,9 @@
             // Radio_University
             // 
             this.Radio_University.AutoSize = true;
-            this.Radio_University.Location = new System.Drawing.Point(39, 37);
-            this.Radio_University.Margin = new System.Windows.Forms.Padding(4);
+            this.Radio_University.Location = new System.Drawing.Point(31, 30);
             this.Radio_University.Name = "Radio_University";
-            this.Radio_University.Size = new System.Drawing.Size(100, 24);
+            this.Radio_University.Size = new System.Drawing.Size(83, 21);
             this.Radio_University.TabIndex = 0;
             this.Radio_University.Text = "University";
             this.Radio_University.UseVisualStyleBackColor = true;
@@ -673,38 +645,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
-            this.Panel_ProgressBar.Controls.Add(this.label12);
-            this.Panel_ProgressBar.Location = new System.Drawing.Point(550, 418);
-            this.Panel_ProgressBar.Margin = new System.Windows.Forms.Padding(4);
+            this.Panel_ProgressBar.BackgroundImage = global::Exam_Cell.Properties.Resources.ProgressPanel;
+            this.Panel_ProgressBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Panel_ProgressBar.Location = new System.Drawing.Point(440, 334);
             this.Panel_ProgressBar.Name = "Panel_ProgressBar";
-            this.Panel_ProgressBar.Size = new System.Drawing.Size(388, 56);
+            this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 64);
             this.Panel_ProgressBar.TabIndex = 18;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(122, 30);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(166, 30);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Please Wait !";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Panel_ProgressBar.Visible = false;
             // 
             // Form_Candidate_Entry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
-            this.ClientSize = new System.Drawing.Size(1489, 892);
+            this.ClientSize = new System.Drawing.Size(1191, 714);
+            this.Controls.Add(this.Panel_ProgressBar);
             this.Controls.Add(this.Panel_Body);
             this.Controls.Add(this.Panel_Header);
-            this.Controls.Add(this.Panel_ProgressBar);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form_Candidate_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Candidate_Entry";
@@ -731,8 +691,6 @@
             this.Panel_Series_Search.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.Panel_ProgressBar.ResumeLayout(false);
-            this.Panel_ProgressBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -764,7 +722,6 @@
         private System.Windows.Forms.RadioButton Radio_Series;
         private System.Windows.Forms.RadioButton Radio_University;
         private System.Windows.Forms.Panel Panel_ProgressBar;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox HeaderCheckBox;
         private System.Windows.Forms.DataGridView Dgv_Students;
         private System.Windows.Forms.DataGridView Dgv_Course;

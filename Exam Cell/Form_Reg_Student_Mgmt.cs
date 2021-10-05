@@ -37,6 +37,12 @@ namespace Exam_Cell
             this.Close();
         }
 
+        void SetLoading(bool loading)
+        {
+            if (loading) Panel_ProgressBar.Visible = true;
+            else Panel_ProgressBar.Visible = false;
+        }
+
         bool isReset = false;
         void ResetForm()
         {
@@ -79,7 +85,6 @@ namespace Exam_Cell
                     DataRow datatableTop = queryDatatable.NewRow();
                     datatableTop[0] = "-Select-";
                     queryDatatable.Rows.InsertAt(datatableTop, 0);
-                    Combobox_Branch.DataSource = queryDatatable;
                     if(Radio_University_Alloted.Checked || Radio_University_Reg.Checked)
                     {
                         Label_BranchClassSearch.Text = "Branch :";
@@ -92,6 +97,7 @@ namespace Exam_Cell
                         Combobox_Branch.DisplayMember = "Class";
                         Combobox_Branch.ValueMember = "Class";
                     }
+                    Combobox_Branch.DataSource = queryDatatable;
                     Combobox_Semester.SelectedIndex = 0;
                 }                                
             }
@@ -201,6 +207,7 @@ namespace Exam_Cell
         {
             if (!isReset)
             {
+                SetLoading(true);
                 Dgv_Students.DataSource = null;
                 string regno = Textbox_RegNo.Text;
                 string branch = Combobox_Branch.Text;
@@ -227,16 +234,20 @@ namespace Exam_Cell
                 else if (Radio_University_Alloted.Checked) query = "Select * from University_Alloted where " + searchRecord;
                 else if (Radio_Series_Reg.Checked) query = "Select * from Series_Candidates where " + searchRecord;
                 else query = "Select * from Series_Alloted where " + searchRecord;
-                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                if(searchRecord != "")
                 {
-                    dbConnection.Open();
-                    SQLiteCommand command = new SQLiteCommand(query, dbConnection);
-                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                    DataTable studentRecord = new DataTable();
-                    dataAdapter.Fill(studentRecord);
-                    Dgv_Students.DataSource = studentRecord;
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        dbConnection.Open();
+                        SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                        SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+                        DataTable studentRecord = new DataTable();
+                        dataAdapter.Fill(studentRecord);
+                        Dgv_Students.DataSource = studentRecord;
+                    }
+                    Label_NoOfStudents.Text = "No of Students : " + Dgv_Students.Rows.Count.ToString();
                 }
-                Label_NoOfStudents.Text = "No of Students : " + Dgv_Students.Rows.Count.ToString();
+                SetLoading(false);
             }
         }
 
@@ -248,7 +259,7 @@ namespace Exam_Cell
             {
                 try
                 {
-                    this.Enabled = false;
+                    SetLoading(true);
                     int flag = 0;
                     string query;
                     if (Radio_University_Reg.Checked) query = string.Format("Delete from University_Candidates where Reg_No=@Reg_No and Name=@Name and Branch=@Branch and Course=@Course");
@@ -286,21 +297,23 @@ namespace Exam_Cell
                             ResetForm();
                             CustomMessageBox.ShowMessageBox("Selected students deleted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                         }
-                        else CustomMessageBox.ShowMessageBox("Select any student to delete  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-                        this.Enabled = true;
+                        else CustomMessageBox.ShowMessageBox("Select any student to delete  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);                        
                     }
                 }
                 catch (Exception ex)
-                {
-                    this.Enabled = true;
+                {                    
                     MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    SetLoading(false);
                 }
             }
         }
 
-        private void Textbox_RegNo_TextChanged(object sender, EventArgs e)
+        private void Textbox_RegNo_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchStudentRecord();
+            if (e.KeyCode == Keys.Enter) SearchStudentRecord();
         }
 
         private void Combobox_Branch_SelectedIndexChanged(object sender, EventArgs e)
@@ -311,7 +324,7 @@ namespace Exam_Cell
         private void Combobox_Semester_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchStudentRecord();
-        }
+        }        
     }
 }
 

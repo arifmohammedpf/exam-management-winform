@@ -35,6 +35,12 @@ namespace Exam_Cell
             this.Close();
         }
 
+        void SetLoading(bool loading)
+        {
+            if (loading) Panel_ProgressBar.Visible = true;
+            else Panel_ProgressBar.Visible = false;
+        }
+
         private void Form_Absentees_Load(object sender, EventArgs e)
         {
             Radio_University.Checked = true;
@@ -143,6 +149,7 @@ namespace Exam_Cell
             {
                 try
                 {
+                    SetLoading(true);
                     string query = "";
                     if (Radio_Series.Checked) query = string.Format("select Seat,Roll_No,Status,Name,Class,Course,Sub_Code,Date,Session,Room_No from Series_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
                     else query = string.Format("select Seat,Reg_No,Status,Name,Branch,Sub_Code,Course,Date,Session,Room_No from University_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
@@ -158,9 +165,11 @@ namespace Exam_Cell
                         adapter.Fill(table);
                         Dgv_Marking.DataSource = table;
                     }
+                    SetLoading(false);
                 }
                 catch (Exception ex)
                 {
+                    SetLoading(false);
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -191,6 +200,7 @@ namespace Exam_Cell
             {
                 try
                 {
+                    SetLoading(true);
                     string query = "";
                     if (Radio_Series.Checked) query = string.Format("update Series_Alloted Set Status=@Status where Roll_No=@Roll_No and Name=@Name and Date=@Date and Session=@Session and Room_No=@Room_No");
                     else query = string.Format("update University_Alloted Set Status=@Status where Reg_No=@Reg_No and Name=@Name and Date=@Date and Session=@Session and Room_No=@Room_No");
@@ -210,10 +220,12 @@ namespace Exam_Cell
                             comm.ExecuteNonQuery();
                         }
                     }
+                    SetLoading(false);
                     CustomMessageBox.ShowMessageBox("Status saved  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
+                    SetLoading(false);
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -335,6 +347,7 @@ namespace Exam_Cell
         {
             try
             {
+                SetLoading(true);
                 string query;
                 if (Radio_University.Checked) query = string.Format("select Reg_No,Name,Status,Branch,Course,Sub_Code from University_Alloted Where Date=@Date and Session=@Session and Branch=@Branch and Sub_Code=@Sub_Code order by Reg_No");
                 else query = string.Format("select Roll_No,Name,Status,Class,Course,Sub_Code from Series_Alloted Where Date=@Date and Session=@Session and Class=@Class and Sub_Code=@Sub_Code order by Roll_No");
@@ -353,9 +366,11 @@ namespace Exam_Cell
                     Dgv_Statement.DataSource = table;                    
                 }
                 FillCandidatesInfoLabel();
+                SetLoading(false);
             }
             catch (Exception ex)
             {
+                SetLoading(false);
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -373,6 +388,7 @@ namespace Exam_Cell
             {
                 try
                 {
+                    SetLoading(true);
                     string createStatePath = savepath + @"\Attendance Sheets";
                     Directory.CreateDirectory(createStatePath);
 
@@ -497,11 +513,13 @@ namespace Exam_Cell
                         Label_NoOfPresent.ResetText();
                         Label_NoOfAbsent.ResetText();
                         Dgv_Statement.DataSource = null;
+                        SetLoading(false);
                         CustomMessageBox.ShowMessageBox("Absentees Statement generated  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
                 {
+                    SetLoading(false);
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -509,3 +527,6 @@ namespace Exam_Cell
         }
     }
 }
+
+
+// need loadingPanel for tab selectIndex change ????
