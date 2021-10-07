@@ -151,8 +151,8 @@ namespace Exam_Cell
                 {
                     SetLoading(true);
                     string query = "";
-                    if (Radio_Series.Checked) query = string.Format("select Seat,Roll_No,Status,Name,Class,Course,Sub_Code,Date,Session,Room_No from Series_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
-                    else query = string.Format("select Seat,Reg_No,Status,Name,Branch,Sub_Code,Course,Date,Session,Room_No from University_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
+                    if (Radio_Series.Checked) query = string.Format("select Seat,Roll_No,Status,Name,Class,Course,Sub_Code,Date,Session,Room_No from Series_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by length(Seat),Seat");
+                    else query = string.Format("select Seat,Reg_No,Status,Name,Branch,Sub_Code,Course,Date,Session,Room_No from University_Alloted Where Date=@Date and Session=@Session and Room_No=@Room_No order by length(Seat),Seat");
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
@@ -165,6 +165,7 @@ namespace Exam_Cell
                         adapter.Fill(table);
                         Dgv_Marking.DataSource = table;
                     }
+                    SetAbsenteesColor();
                     SetLoading(false);
                 }
                 catch (Exception ex)
@@ -174,6 +175,14 @@ namespace Exam_Cell
                 }
             }
             else CustomMessageBox.ShowMessageBox("Select Date, Session and Room No  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+        }
+        
+        void SetAbsenteesColor()
+        {
+            foreach(DataGridViewRow dr in Dgv_Marking.Rows)
+            {
+                if (dr.Cells["Status"].Value.ToString() == "Absent") dr.Cells["Status"].Style.ForeColor = Color.Red;
+            }
         }
 
         private void ChangeStudentStatus(object sender, DataGridViewCellEventArgs e)
@@ -350,7 +359,7 @@ namespace Exam_Cell
                 SetLoading(true);
                 string query;
                 if (Radio_University.Checked) query = string.Format("select Reg_No,Name,Status,Branch,Course,Sub_Code from University_Alloted Where Date=@Date and Session=@Session and Branch=@Branch and Sub_Code=@Sub_Code order by Reg_No");
-                else query = string.Format("select Roll_No,Name,Status,Class,Course,Sub_Code from Series_Alloted Where Date=@Date and Session=@Session and Class=@Class and Sub_Code=@Sub_Code order by Roll_No");
+                else query = string.Format("select Roll_No,Name,Status,Class,Course,Sub_Code from Series_Alloted Where Date=@Date and Session=@Session and Class=@Class and Sub_Code=@Sub_Code order by cast(Roll_No as int)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -381,7 +390,7 @@ namespace Exam_Cell
             using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
             {
                 dbConnection.Open();
-                SQLiteCommand comm = new SQLiteCommand("Select Savepath from DBManagement where Savepath is not null");
+                SQLiteCommand comm = new SQLiteCommand("Select Savepath from DBManagement where Savepath is not null",dbConnection);
                 savepath = (string)comm.ExecuteScalar();
             }
             if (Dgv_Statement.Rows.Count != 0 && savepath != "Select Filepath")

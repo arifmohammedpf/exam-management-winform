@@ -229,6 +229,7 @@ namespace Exam_Cell
             DateTimePicker_NewDate.Value = DateTime.Now;
 
             Branch_Combobox_Fill();
+            Combobox_NewSession.SelectedIndex = 0;
         }
 
         // Checkbox click event

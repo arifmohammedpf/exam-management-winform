@@ -393,7 +393,7 @@ namespace Exam_Cell
                         SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                         foreach(DataGridViewRow dr in Dgv_Timetable.Rows)
                         {
-                            bool checkboxselect = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Course"].Value);
+                            bool checkboxselect = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Timetable"].Value);
                             if (checkboxselect)
                             {
                                 flag = 1;

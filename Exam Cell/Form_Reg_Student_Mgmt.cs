@@ -275,9 +275,9 @@ namespace Exam_Cell
                     int flag = 0;
                     string query;
                     if (Radio_University_Reg.Checked) query = string.Format("Delete from University_Candidates where Reg_No=@Reg_No and Name=@Name and Branch=@Branch and Course=@Course");
-                    else if (Radio_University_Alloted.Checked) query = string.Format("Delete from University_Alloted where Reg_No=@Reg_No and Name=@Name and Branch=@Branch and Course=@Course");
+                    else if (Radio_University_Alloted.Checked) query = string.Format("Delete from University_Alloted where Reg_No=@Reg_No and Name=@Name and Branch=@Branch and Course=@Course and Date=@Date and Session=@Session and Room_No=@Room_No and Seat=@Seat");
                     else if (Radio_Series_Reg.Checked) query = string.Format("Delete from Series_Candidates where Roll_No=@Roll_No and Name=@Name and Class=@Class and Course=@Course");
-                    else query = string.Format("Delete from Series_Alloted where Roll_No=@Roll_No and Name=@Name and Class=@Class and Course=@Course");
+                    else query = string.Format("Delete from Series_Alloted where Roll_No=@Roll_No and Name=@Name and Class=@Class and Course=@Course and Date=@Date and Session=@Session and Room_No=@Room_No and Seat=@Seat");
 
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
@@ -306,7 +306,7 @@ namespace Exam_Cell
                                     comm.Parameters.AddWithValue("@Date", dr.Cells["Date"].Value.ToString());
                                     comm.Parameters.AddWithValue("@Session", dr.Cells["Session"].Value.ToString());
                                     comm.Parameters.AddWithValue("@Room_No", dr.Cells["Room_No"].Value.ToString());
-                                    comm.Parameters.AddWithValue("@Seat_No", dr.Cells["Seat_No"].Value.ToString());
+                                    comm.Parameters.AddWithValue("@Seat", dr.Cells["Seat"].Value.ToString());
                                 }
                                 comm.ExecuteNonQuery();
                             }
@@ -316,6 +316,30 @@ namespace Exam_Cell
                             Dgv_Students.DataSource = null;
                             HeaderCheckBox.Checked = false;
                             SearchStudentRecord();
+                            if (Radio_Series_Alloted.Checked)
+                            {                                
+                                string countQuery = "Select Count(*) from Series_Alloted";
+                                string labelCountText = "Total Students Alloted : ";
+                                TotalCount(countQuery, labelCountText);
+                            }
+                            else if (Radio_University_Alloted.Checked)
+                            {
+                                string countQuery = "Select Count(*) from University_Alloted";
+                                string labelCountText = "Total Students Alloted : ";
+                                TotalCount(countQuery, labelCountText);
+                            }
+                            else if (Radio_Series_Reg.Checked)
+                            {
+                                string countQuery = "Select Count(*) from Series_Candidates";
+                                string labelCountText = "Total Students Registered : ";
+                                TotalCount(countQuery, labelCountText);
+                            }
+                            else
+                            {
+                                string countQuery = "Select Count(*) from University_Candidates";
+                                string labelCountText = "Total Students Registered : ";
+                                TotalCount(countQuery, labelCountText);
+                            }
                             CustomMessageBox.ShowMessageBox("Selected students deleted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                         }
                         else CustomMessageBox.ShowMessageBox("Select any student to delete  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);                        

@@ -280,25 +280,45 @@ namespace Exam_Cell
                     DataTable table_branchPriority = new DataTable();
                     adapter.Fill(table_branchPriority);
 
-                    //sort table_students according to branch priority                
-                    table_students.Columns.Add("BranchPriority");
+                    //sort table_students according to branch priority     
+                    DataColumn priorityCol = new DataColumn("BranchPriority");
+                    priorityCol.DataType = System.Type.GetType("System.Int32");
+                    table_students.Columns.Add(priorityCol);
                     foreach (DataRow branchDr in table_branchPriority.Rows)
                     {
                         foreach (DataRow studDr in table_students.Rows)
                         {
-                            if (studDr["Branch"] == branchDr["Branch"])
+                            if (studDr["Branch"].ToString() == branchDr["Branch"].ToString())
                             {
                                 studDr["BranchPriority"] = branchDr["Priority"];
                             }
                         }
                     }
-                    if (Radio_University.Checked) table_students.DefaultView.Sort = "BranchPriority,Course,Reg_No";
-                    else table_students.DefaultView.Sort = "BranchPriority,Course,Class,cast(Roll_No as int)";
-                    table_students = table_students.DefaultView.ToTable();
+                    if (Radio_University.Checked)
+                    {
+                        table_students.DefaultView.Sort = "BranchPriority,Course,Reg_No";
+                        table_students = table_students.DefaultView.ToTable();
+                        //Allot
+                        if (isSingleAllot) Single_Allotment(table_students, table_rooms);
+                        else Multi_Allotment(table_students, table_rooms);
+                    }                   
+                    else
+                    {                        
+                        // sort RollNo as int32
+                        DataTable studentTable_Clone = table_students.Clone();
+                        studentTable_Clone.Columns["Roll_No"].DataType = Type.GetType("System.Int32");
 
-                    //Allot
-                    if (isSingleAllot) Single_Allotment(table_students, table_rooms);
-                    else Multi_Allotment(table_students, table_rooms);
+                        foreach (DataRow dr in table_students.Rows)
+                        {
+                            studentTable_Clone.ImportRow(dr);
+                        }
+                        studentTable_Clone.AcceptChanges();
+                        studentTable_Clone.DefaultView.Sort = "BranchPriority,Class,Roll_No";
+                        studentTable_Clone = studentTable_Clone.DefaultView.ToTable();
+                        //Allot
+                        if (isSingleAllot) Single_Allotment(studentTable_Clone, table_rooms);
+                        else Multi_Allotment(studentTable_Clone, table_rooms);
+                    }                                      
                 }                    
             }
             catch (Exception ex)
@@ -1227,7 +1247,7 @@ namespace Exam_Cell
                                     int sheet_row = 6;
                                     foreach (DataRow dataRow in coursedata.Rows)
                                     {
-                                        worksheet.Cells[sheet_row, 1].Value = dataRow["Course"].ToString() + " " + dataRow["Exam_code"].ToString();
+                                        worksheet.Cells[sheet_row, 1].Value = dataRow["Course"].ToString() + " " + dataRow["Sub_Code"].ToString();
                                         using (var range = worksheet.Cells[sheet_row, 1])
                                         {
                                             range.Style.Font.Name = "Arial";
@@ -1238,7 +1258,7 @@ namespace Exam_Cell
                                         SQLiteCommand coursecmd = new SQLiteCommand("SELECT Roll_No,Room_No,Seat,Class from Series_Alloted Where Date=@Date and Session=@Session and Course=@Course order by Class,cast(Roll_No as int)", dbConnection);
                                         coursecmd.Parameters.AddWithValue("@Date", date);
                                         coursecmd.Parameters.AddWithValue("@Session", session);
-                                        coursecommand.Parameters.AddWithValue("@Course", dataRow["Course"].ToString());
+                                        coursecmd.Parameters.AddWithValue("@Course", dataRow["Course"].ToString());
                                         DataTable coursedt = new DataTable();
                                         SQLiteDataAdapter courseadptr = new SQLiteDataAdapter(coursecmd);
                                         courseadptr.Fill(coursedt);
@@ -1376,6 +1396,8 @@ namespace Exam_Cell
                             if (Radio_University.Checked) query = string.Format("Select Count(Sub_Code) from University_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No and Sub_Code=@Sub_Code");
                             else query = string.Format("Select Count(Sub_Code) from Series_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No and Sub_Code=@Sub_Code");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            command.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
+                            command.Parameters.AddWithValue("@Session", Combobox_Session.Text);
                             worksheet.Cells[dataTableSubCode.Rows.Count + 5, 1].Value = "TOTAL";
                             worksheet.Cells[3, dataTableRooms.Rows.Count + 2].Value = "TOTAL";
                             bool firstWrite = true;
@@ -1387,7 +1409,7 @@ namespace Exam_Cell
                                 foreach (DataRow courseRow in dataTableSubCode.Rows)
                                 {
                                     command.Parameters.AddWithValue("@Sub_Code", courseRow["Sub_Code"].ToString());
-                                    noOfPapers = (int)command.ExecuteScalar();
+                                    noOfPapers = Convert.ToInt32(command.ExecuteScalar());
                                     totalPapersInRoom += noOfPapers;
                                     if (firstWrite)
                                     {
@@ -1395,7 +1417,10 @@ namespace Exam_Cell
                                         if (Radio_University.Checked) countQ = string.Format("Select Count(Sub_Code) from University_Alloted where Date=@Date and Session=@Session and Sub_Code=@Sub_Code");
                                         else countQ = string.Format("Select Count(Sub_Code) from Series_Alloted where Date=@Date and Session=@Session and Sub_Code=@Sub_Code");
                                         SQLiteCommand sQ = new SQLiteCommand(countQ, dbConnection);
-                                        int totalPapers = (int)sQ.ExecuteScalar();
+                                        sQ.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
+                                        sQ.Parameters.AddWithValue("@Session", Combobox_Session.Text);
+                                        sQ.Parameters.AddWithValue("@Sub_Code", courseRow["Sub_Code"].ToString());
+                                        int totalPapers = Convert.ToInt32(sQ.ExecuteScalar());
                                         worksheet.Cells[rowStart, 1].Value = courseRow["Sub_Code"].ToString();
                                         worksheet.Cells[rowStart, dataTableRooms.Rows.Count + 2].Value = totalPapers;
                                     }
