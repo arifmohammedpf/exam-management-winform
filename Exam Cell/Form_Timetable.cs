@@ -187,7 +187,7 @@ namespace Exam_Cell
                     if (Radio_DateWiseSearch.Checked)
                     {
                         string date = DateTimePicker_Search_Timetable.Text;
-                        searchRecord += string.Format("Date = '%{0}%'", date);
+                        searchRecord += string.Format("Date like '%{0}%'", date);
                     }
                     else
                     {
@@ -315,9 +315,9 @@ namespace Exam_Cell
                 }
                 if (flag == 1)
                 {
-                    CustomMessageBox.ShowMessageBox("New Timetable added  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                     Button_Undo.Enabled = true;
                     SearchTimetable();
+                    CustomMessageBox.ShowMessageBox("New Timetable added  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 else CustomMessageBox.ShowMessageBox("Select any Course to Add timetable", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);                
             }

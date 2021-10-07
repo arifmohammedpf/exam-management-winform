@@ -44,16 +44,16 @@ namespace Exam_Cell
         }
 
         bool isReset = false;
-        void ResetForm()
-        {
-            isReset = true;
-            Dgv_Students.DataSource = null;
-            Textbox_RegNo.ResetText();
-            Combobox_Branch.SelectedIndex = 0;
-            Combobox_Semester.SelectedIndex = 0;
-            HeaderCheckBox.Checked = false;
-            isReset = false;
-        }
+        //void ResetForm()
+        //{
+        //    isReset = true;
+        //    Dgv_Students.DataSource = null;
+        //    Textbox_RegNo.ResetText();
+        //    if (Radio_University_Alloted.Checked || Radio_University_Reg.Checked) Combobox_Branch.SelectedIndex = 0;
+        //    Combobox_Semester.SelectedIndex = 0;
+        //    HeaderCheckBox.Checked = false;
+        //    isReset = false;
+        //}
         
         string studentCount;
         void TotalCount(string query, string labelCountText)
@@ -67,6 +67,21 @@ namespace Exam_Cell
             Label_Total.Text = labelCountText + studentCount;
         }
 
+        DataTable GetComboboxData(string query)
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
+                DataTable queryDatatable = new DataTable();
+                adapter.Fill(queryDatatable);
+                DataRow datatableTop = queryDatatable.NewRow();
+                datatableTop[0] = "-Select-";
+                queryDatatable.Rows.InsertAt(datatableTop, 0);
+                return queryDatatable;
+            }
+        }
+
         void ComboboxFill()
         {
             try
@@ -74,30 +89,20 @@ namespace Exam_Cell
                 Combobox_Branch.DataSource = null;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
-                    dbConnection.Open();
-                    string query;
-                    if(Radio_University_Alloted.Checked || Radio_University_Reg.Checked) query = string.Format("Select Branch from Branch_Priority where Branch is not null");
-                    else query = string.Format("Select Distinct Class from Students where Class is not null");
-                    SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
-                    DataTable queryDatatable = new DataTable();
-                    adapter.Fill(queryDatatable);
-                    DataRow datatableTop = queryDatatable.NewRow();
-                    datatableTop[0] = "-Select-";
-                    queryDatatable.Rows.InsertAt(datatableTop, 0);
+                    dbConnection.Open();                                       
                     if(Radio_University_Alloted.Checked || Radio_University_Reg.Checked)
                     {
+                        string query = string.Format("Select Branch from Branch_Priority where Branch is not null");
+                        DataTable dataTableBranch = GetComboboxData(query);
                         Label_BranchClassSearch.Text = "Branch :";
                         Combobox_Branch.DisplayMember = "Branch";
                         Combobox_Branch.ValueMember = "Branch";
+                        Combobox_Branch.DataSource = dataTableBranch;
                     }
                     else
                     {
                         Label_BranchClassSearch.Text = "Class :";
-                        Combobox_Branch.DisplayMember = "Class";
-                        Combobox_Branch.ValueMember = "Class";
-                    }
-                    Combobox_Branch.DataSource = queryDatatable;
+                    }                    
                     Combobox_Semester.SelectedIndex = 0;
                 }                                
             }
@@ -163,7 +168,7 @@ namespace Exam_Cell
         bool isCheckBoxColumn_ClickedEvent = false;
         private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isCheckBoxColumn_ClickedEvent || !isReset)
+            if (!isCheckBoxColumn_ClickedEvent && !isReset)
             {
                 if(Dgv_Students.DataSource != null)
                 {
@@ -183,6 +188,7 @@ namespace Exam_Cell
                     }
                 }
             }
+            isCheckBoxColumn_ClickedEvent = false;
         }
 
         private void Dgv_Students_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -210,30 +216,36 @@ namespace Exam_Cell
                 SetLoading(true);
                 Dgv_Students.DataSource = null;
                 string regno = Textbox_RegNo.Text;
-                string branch = Combobox_Branch.Text;
+                string branch_class = Combobox_Branch.Text;
                 string semester = Combobox_Semester.Text;
+                string examcode = Textbox_ExamCode.Text;
                 HeaderCheckBox.Checked = false;
 
                 string searchRecord = "";
                 if (regno != "")
                     searchRecord = string.Format("Reg_No like '%{0}%'", regno);
-                if (branch != "-Select-")
+                if (examcode != "")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    if(Radio_University_Alloted.Checked || Radio_University_Reg.Checked) searchRecord += string.Format("Branch Like '%{0}%'", branch);
-                    else searchRecord += string.Format("Class Like '%{0}%'", branch);
+                    searchRecord += string.Format("Sub_Code Like '%{0}%'", examcode);
                 }
-                if (semester != "-Select-")
+                if ((Radio_University_Alloted.Checked || Radio_University_Reg.Checked) && semester != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
                     searchRecord += string.Format("Semester Like '%{0}%'", semester);
                 }
+                if (Combobox_Branch.DataSource != null && branch_class != "-Select-")
+                {
+                    if (searchRecord.Length > 0) searchRecord += " AND ";
+                    if(Radio_University_Alloted.Checked || Radio_University_Reg.Checked) searchRecord += string.Format("Branch Like '%{0}%'", branch_class);
+                    else searchRecord += string.Format("Semester Like '%{0}%' and Class = '{1}'",semester, branch_class);
+                }                
 
                 string query;
-                if (Radio_University_Reg.Checked) query = "Select * from University_Candidates where " + searchRecord;
-                else if (Radio_University_Alloted.Checked) query = "Select * from University_Alloted where " + searchRecord;
-                else if (Radio_Series_Reg.Checked) query = "Select * from Series_Candidates where " + searchRecord;
-                else query = "Select * from Series_Alloted where " + searchRecord;
+                if (Radio_University_Reg.Checked) query = "Select * from University_Candidates where " + searchRecord + " order by Semester,Branch,Sub_Code";
+                else if (Radio_University_Alloted.Checked) query = "Select * from University_Alloted where " + searchRecord + " order by Date,Session,Room_No,length(Seat),Seat";
+                else if (Radio_Series_Reg.Checked) query = "Select * from Series_Candidates where " + searchRecord + " order by Semester,Class,Sub_Code";
+                else query = "Select * from Series_Alloted where " + searchRecord + " order by Date,Session,Room_No,length(Seat),Seat";
                 if(searchRecord != "")
                 {
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
@@ -264,8 +276,8 @@ namespace Exam_Cell
                     string query;
                     if (Radio_University_Reg.Checked) query = string.Format("Delete from University_Candidates where Reg_No=@Reg_No and Name=@Name and Branch=@Branch and Course=@Course");
                     else if (Radio_University_Alloted.Checked) query = string.Format("Delete from University_Alloted where Reg_No=@Reg_No and Name=@Name and Branch=@Branch and Course=@Course");
-                    else if (Radio_Series_Reg.Checked) query = string.Format("Delete from Series_Candidates where Reg_No=@Reg_No and Name=@Name and Class=@Class and Course=@Course");
-                    else query = string.Format("Delete from Series_Alloted where Reg_No=@Reg_No and Name=@Name and Class=@Class and Course=@Course");
+                    else if (Radio_Series_Reg.Checked) query = string.Format("Delete from Series_Candidates where Roll_No=@Roll_No and Name=@Name and Class=@Class and Course=@Course");
+                    else query = string.Format("Delete from Series_Alloted where Roll_No=@Roll_No and Name=@Name and Class=@Class and Course=@Course");
 
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
@@ -276,12 +288,19 @@ namespace Exam_Cell
                             bool checkboxselect = Convert.ToBoolean(dr.Cells["CheckBoxColumn"].Value);
                             if (checkboxselect)
                             {
-                                flag = 1;
-                                comm.Parameters.AddWithValue("@Reg_No", dr.Cells["Reg_No"].Value.ToString());
+                                flag = 1;                                
                                 comm.Parameters.AddWithValue("@Name", dr.Cells["Name"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
-                                if (Radio_Series_Reg.Checked || Radio_Series_Alloted.Checked) comm.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value.ToString());
-                                else comm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
+                                if (Radio_Series_Reg.Checked || Radio_Series_Alloted.Checked)
+                                {
+                                    comm.Parameters.AddWithValue("@Roll_No", dr.Cells["Roll_No"].Value.ToString());
+                                    comm.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value.ToString());
+                                }
+                                else
+                                {
+                                    comm.Parameters.AddWithValue("@Reg_No", dr.Cells["Reg_No"].Value.ToString());
+                                    comm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
+                                }
                                 if (Radio_Series_Alloted.Checked || Radio_University_Alloted.Checked)
                                 {
                                     comm.Parameters.AddWithValue("@Date", dr.Cells["Date"].Value.ToString());
@@ -294,7 +313,9 @@ namespace Exam_Cell
                         }
                         if (flag == 1)
                         {
-                            ResetForm();
+                            Dgv_Students.DataSource = null;
+                            HeaderCheckBox.Checked = false;
+                            SearchStudentRecord();
                             CustomMessageBox.ShowMessageBox("Selected students deleted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                         }
                         else CustomMessageBox.ShowMessageBox("Select any student to delete  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);                        
@@ -323,8 +344,20 @@ namespace Exam_Cell
 
         private void Combobox_Semester_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (Radio_Series_Alloted.Checked || Radio_Series_Reg.Checked)
+            {
+                if (Combobox_Semester.SelectedIndex != 0)
+                {
+                    string query = string.Format("Select Distinct Class from Students where Semester={0} and Class is not null",Combobox_Semester.Text);
+                    DataTable dataTableClass = GetComboboxData(query);
+                    Combobox_Branch.DisplayMember = "Class";
+                    Combobox_Branch.ValueMember = "Class";
+                    Combobox_Branch.DataSource = dataTableClass;
+                }
+                else Combobox_Branch.DataSource = null;
+            }
             SearchStudentRecord();
-        }        
+        }
     }
 }
 

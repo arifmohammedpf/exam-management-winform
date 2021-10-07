@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Header = new System.Windows.Forms.Panel();
             this.Button_Close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,11 +70,13 @@
             this.Panel_Series_Search = new System.Windows.Forms.Panel();
             this.Button_Register_Series = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.Combobox_Class = new System.Windows.Forms.ComboBox();
+            this.Combobox_Semester_ClassSearch = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Radio_Series = new System.Windows.Forms.RadioButton();
             this.Radio_University = new System.Windows.Forms.RadioButton();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
+            this.Combobox_Class = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Course)).BeginInit();
@@ -156,8 +158,8 @@
             this.Dgv_Course.Location = new System.Drawing.Point(541, 245);
             this.Dgv_Course.Name = "Dgv_Course";
             this.Dgv_Course.RowHeadersVisible = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Course.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Dgv_Course.RowTemplate.Height = 24;
             this.Dgv_Course.Size = new System.Drawing.Size(649, 413);
             this.Dgv_Course.TabIndex = 39;
@@ -194,8 +196,8 @@
             this.Dgv_Students.Location = new System.Drawing.Point(0, 245);
             this.Dgv_Students.Name = "Dgv_Students";
             this.Dgv_Students.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.Dgv_Students.RowTemplate.Height = 24;
             this.Dgv_Students.Size = new System.Drawing.Size(542, 413);
             this.Dgv_Students.TabIndex = 37;
@@ -495,7 +497,7 @@
             this.Button_Register_University.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Register_University.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Register_University.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Register_University.Location = new System.Drawing.Point(180, 81);
+            this.Button_Register_University.Location = new System.Drawing.Point(268, 81);
             this.Button_Register_University.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Register_University.Name = "Button_Register_University";
             this.Button_Register_University.Size = new System.Drawing.Size(130, 40);
@@ -557,8 +559,10 @@
             // Panel_Series_Search
             // 
             this.Panel_Series_Search.Controls.Add(this.Button_Register_Series);
+            this.Panel_Series_Search.Controls.Add(this.label10);
             this.Panel_Series_Search.Controls.Add(this.label2);
             this.Panel_Series_Search.Controls.Add(this.Combobox_Class);
+            this.Panel_Series_Search.Controls.Add(this.Combobox_Semester_ClassSearch);
             this.Panel_Series_Search.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Series_Search.Location = new System.Drawing.Point(0, 0);
             this.Panel_Series_Search.Margin = new System.Windows.Forms.Padding(2);
@@ -576,7 +580,7 @@
             this.Button_Register_Series.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Register_Series.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Register_Series.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Register_Series.Location = new System.Drawing.Point(183, 69);
+            this.Button_Register_Series.Location = new System.Drawing.Point(249, 86);
             this.Button_Register_Series.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Register_Series.Name = "Button_Register_Series";
             this.Button_Register_Series.Size = new System.Drawing.Size(130, 40);
@@ -589,22 +593,32 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(59, 36);
+            this.label2.Location = new System.Drawing.Point(32, 22);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 17);
+            this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 46;
-            this.label2.Text = "Class :";
+            this.label2.Text = "Semester :";
             // 
-            // Combobox_Class
+            // Combobox_Semester_ClassSearch
             // 
-            this.Combobox_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Combobox_Class.FormattingEnabled = true;
-            this.Combobox_Class.Location = new System.Drawing.Point(126, 32);
-            this.Combobox_Class.Name = "Combobox_Class";
-            this.Combobox_Class.Size = new System.Drawing.Size(270, 25);
-            this.Combobox_Class.TabIndex = 44;
-            this.Combobox_Class.SelectedIndexChanged += new System.EventHandler(this.Combobox_Class_SelectedIndexChanged);
+            this.Combobox_Semester_ClassSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Combobox_Semester_ClassSearch.FormattingEnabled = true;
+            this.Combobox_Semester_ClassSearch.Items.AddRange(new object[] {
+            "-Select-",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.Combobox_Semester_ClassSearch.Location = new System.Drawing.Point(109, 18);
+            this.Combobox_Semester_ClassSearch.Name = "Combobox_Semester_ClassSearch";
+            this.Combobox_Semester_ClassSearch.Size = new System.Drawing.Size(270, 25);
+            this.Combobox_Semester_ClassSearch.TabIndex = 44;
+            this.Combobox_Semester_ClassSearch.SelectedIndexChanged += new System.EventHandler(this.Combobox_Semester_ClassSearch_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -652,6 +666,27 @@
             this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 64);
             this.Panel_ProgressBar.TabIndex = 18;
             this.Panel_ProgressBar.Visible = false;
+            // 
+            // Combobox_Class
+            // 
+            this.Combobox_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Combobox_Class.FormattingEnabled = true;
+            this.Combobox_Class.Location = new System.Drawing.Point(109, 54);
+            this.Combobox_Class.Name = "Combobox_Class";
+            this.Combobox_Class.Size = new System.Drawing.Size(270, 25);
+            this.Combobox_Class.TabIndex = 44;
+            this.Combobox_Class.SelectedIndexChanged += new System.EventHandler(this.Combobox_Class_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(32, 58);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 17);
+            this.label10.TabIndex = 46;
+            this.label10.Text = "Class :";
             // 
             // Form_Candidate_Entry
             // 
@@ -739,8 +774,10 @@
         private System.Windows.Forms.Panel Panel_Series_Search;
         private System.Windows.Forms.Button Button_Register_Series;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox Combobox_Class;
+        private System.Windows.Forms.ComboBox Combobox_Semester_ClassSearch;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Course;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Students;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox Combobox_Class;
     }
 }

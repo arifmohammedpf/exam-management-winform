@@ -52,6 +52,8 @@
             this.CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Label_Total = new System.Windows.Forms.Label();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Textbox_ExamCode = new System.Windows.Forms.TextBox();
             this.Panel_Header.SuspendLayout();
             this.Groupbox_Registered.SuspendLayout();
             this.Groupbox_Alloted.SuspendLayout();
@@ -98,7 +100,7 @@
             // 
             this.Groupbox_Registered.Controls.Add(this.Radio_Series_Reg);
             this.Groupbox_Registered.Controls.Add(this.Radio_University_Reg);
-            this.Groupbox_Registered.Location = new System.Drawing.Point(25, 95);
+            this.Groupbox_Registered.Location = new System.Drawing.Point(25, 114);
             this.Groupbox_Registered.Name = "Groupbox_Registered";
             this.Groupbox_Registered.Size = new System.Drawing.Size(235, 82);
             this.Groupbox_Registered.TabIndex = 0;
@@ -133,7 +135,7 @@
             // 
             this.Groupbox_Alloted.Controls.Add(this.Radio_Series_Alloted);
             this.Groupbox_Alloted.Controls.Add(this.Radio_University_Alloted);
-            this.Groupbox_Alloted.Location = new System.Drawing.Point(289, 95);
+            this.Groupbox_Alloted.Location = new System.Drawing.Point(289, 114);
             this.Groupbox_Alloted.Name = "Groupbox_Alloted";
             this.Groupbox_Alloted.Size = new System.Drawing.Size(235, 82);
             this.Groupbox_Alloted.TabIndex = 1;
@@ -167,7 +169,7 @@
             // Label_NoOfStudents
             // 
             this.Label_NoOfStudents.AutoSize = true;
-            this.Label_NoOfStudents.Location = new System.Drawing.Point(22, 216);
+            this.Label_NoOfStudents.Location = new System.Drawing.Point(22, 251);
             this.Label_NoOfStudents.Name = "Label_NoOfStudents";
             this.Label_NoOfStudents.Size = new System.Drawing.Size(101, 17);
             this.Label_NoOfStudents.TabIndex = 6;
@@ -194,7 +196,7 @@
             // 
             this.Combobox_Branch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combobox_Branch.FormattingEnabled = true;
-            this.Combobox_Branch.Location = new System.Drawing.Point(95, 53);
+            this.Combobox_Branch.Location = new System.Drawing.Point(95, 86);
             this.Combobox_Branch.Name = "Combobox_Branch";
             this.Combobox_Branch.Size = new System.Drawing.Size(257, 25);
             this.Combobox_Branch.TabIndex = 1;
@@ -214,7 +216,7 @@
             "6",
             "7",
             "8"});
-            this.Combobox_Semester.Location = new System.Drawing.Point(95, 86);
+            this.Combobox_Semester.Location = new System.Drawing.Point(95, 53);
             this.Combobox_Semester.Name = "Combobox_Semester";
             this.Combobox_Semester.Size = new System.Drawing.Size(257, 25);
             this.Combobox_Semester.TabIndex = 2;
@@ -223,7 +225,7 @@
             // Label_BranchClassSearch
             // 
             this.Label_BranchClassSearch.AutoSize = true;
-            this.Label_BranchClassSearch.Location = new System.Drawing.Point(6, 57);
+            this.Label_BranchClassSearch.Location = new System.Drawing.Point(6, 90);
             this.Label_BranchClassSearch.Name = "Label_BranchClassSearch";
             this.Label_BranchClassSearch.Size = new System.Drawing.Size(55, 17);
             this.Label_BranchClassSearch.TabIndex = 6;
@@ -232,7 +234,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 90);
+            this.label5.Location = new System.Drawing.Point(6, 57);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 17);
             this.label5.TabIndex = 6;
@@ -241,15 +243,17 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.Button_Delete);
+            this.groupBox3.Controls.Add(this.Textbox_ExamCode);
             this.groupBox3.Controls.Add(this.Textbox_RegNo);
             this.groupBox3.Controls.Add(this.Combobox_Semester);
             this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.Combobox_Branch);
             this.groupBox3.Controls.Add(this.Label_BranchClassSearch);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(547, 61);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(358, 172);
+            this.groupBox3.Size = new System.Drawing.Size(358, 206);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search";
@@ -265,7 +269,7 @@
             this.Button_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Delete.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Delete.ForeColor = System.Drawing.Color.White;
-            this.Button_Delete.Location = new System.Drawing.Point(252, 120);
+            this.Button_Delete.Location = new System.Drawing.Point(252, 154);
             this.Button_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Delete.Name = "Button_Delete";
             this.Button_Delete.Size = new System.Drawing.Size(100, 40);
@@ -277,7 +281,7 @@
             // HeaderCheckBox
             // 
             this.HeaderCheckBox.AutoSize = true;
-            this.HeaderCheckBox.Location = new System.Drawing.Point(15, 242);
+            this.HeaderCheckBox.Location = new System.Drawing.Point(15, 273);
             this.HeaderCheckBox.Name = "HeaderCheckBox";
             this.HeaderCheckBox.Size = new System.Drawing.Size(15, 14);
             this.HeaderCheckBox.TabIndex = 3;
@@ -296,13 +300,13 @@
             this.Dgv_Students.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckBoxColumn});
             this.Dgv_Students.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Dgv_Students.Location = new System.Drawing.Point(0, 239);
+            this.Dgv_Students.Location = new System.Drawing.Point(0, 273);
             this.Dgv_Students.Name = "Dgv_Students";
             this.Dgv_Students.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dgv_Students.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv_Students.RowTemplate.Height = 24;
-            this.Dgv_Students.Size = new System.Drawing.Size(910, 427);
+            this.Dgv_Students.Size = new System.Drawing.Size(910, 393);
             this.Dgv_Students.TabIndex = 4;
             this.Dgv_Students.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Students_CellEndEdit);
             this.Dgv_Students.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Students_CellMouseUp);
@@ -317,7 +321,7 @@
             // Label_Total
             // 
             this.Label_Total.AutoSize = true;
-            this.Label_Total.Location = new System.Drawing.Point(286, 216);
+            this.Label_Total.Location = new System.Drawing.Point(286, 251);
             this.Label_Total.Name = "Label_Total";
             this.Label_Total.Size = new System.Drawing.Size(43, 17);
             this.Label_Total.TabIndex = 6;
@@ -331,11 +335,28 @@
             this.Panel_ProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.Panel_ProgressBar.BackgroundImage = global::Exam_Cell.Properties.Resources.ProgressPanel;
             this.Panel_ProgressBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Panel_ProgressBar.Location = new System.Drawing.Point(300, 298);
+            this.Panel_ProgressBar.Location = new System.Drawing.Point(297, 358);
             this.Panel_ProgressBar.Name = "Panel_ProgressBar";
             this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 70);
             this.Panel_ProgressBar.TabIndex = 7;
             this.Panel_ProgressBar.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Exam Code :";
+            // 
+            // Textbox_ExamCode
+            // 
+            this.Textbox_ExamCode.Location = new System.Drawing.Point(95, 120);
+            this.Textbox_ExamCode.Name = "Textbox_ExamCode";
+            this.Textbox_ExamCode.Size = new System.Drawing.Size(257, 22);
+            this.Textbox_ExamCode.TabIndex = 0;
+            this.Textbox_ExamCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Textbox_RegNo_KeyUp);
             // 
             // Form_Reg_Student_Mgmt
             // 
@@ -398,5 +419,7 @@
         private System.Windows.Forms.Label Label_Total;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn;
         private System.Windows.Forms.Panel Panel_ProgressBar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox Textbox_ExamCode;
     }
 }

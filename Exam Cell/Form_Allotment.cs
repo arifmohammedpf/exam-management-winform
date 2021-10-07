@@ -57,8 +57,8 @@ namespace Exam_Cell
             {
                 Dgv_RegCandidates_List.DataSource = null;
                 string query;
-                if (Radio_University.Checked) query = string.Format("Select * from University_Candidates where Course in ( Select Course from Timetable where Date=@Date and Session=@Session)");
-                else query = string.Format("Select SC.* from Series_Candidates as SC ,Timetable as TT where TT.Date=@Date and TT.Session=@Session and SC.Branch=TT.Branch and SC.Course=TT.Course ");
+                if (Radio_University.Checked) query = string.Format("Select * from University_Candidates where Course in ( Select Course from Timetable where Date=@Date and Session=@Session) order by Branch, Reg_No");
+                else query = string.Format("Select SC.* from Series_Candidates as SC ,Timetable as TT where TT.Date=@Date and TT.Session=@Session and SC.Branch=TT.Branch and SC.Course=TT.Course order by Class,cast(Roll_No as int)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -121,8 +121,8 @@ namespace Exam_Cell
             {
                 Dgv_Alloted_Rooms.DataSource = null;
                 string query = "";
-                if (Radio_University.Checked) query = string.Format("select distinct R.Room_No,R.A_Series,R.B_Series from Rooms as R, University_Alloted as UA where UA.Date=@Date and UA.Session=@Session and R.Room_No=UA.Room_No order by R.Room_No");
-                else query = string.Format("select distinct R.Room_No,R.A_Series,R.B_Series from Rooms as R, Series_Alloted as SA where SA.Date=@Date and SA.Session=@Session and R.Room_No=SA.Room_No order by R.Room_No");
+                if (Radio_University.Checked) query = string.Format("select distinct R.Room_No,R.A_Series,R.B_Series from Rooms as R, University_Alloted as UA where UA.Date=@Date and UA.Session=@Session and R.Room_No=UA.Room_No order by R.Priority");
+                else query = string.Format("select distinct R.Room_No,R.A_Series,R.B_Series from Rooms as R, Series_Alloted as SA where SA.Date=@Date and SA.Session=@Session and R.Room_No=SA.Room_No order by R.Priority");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -148,8 +148,8 @@ namespace Exam_Cell
             if (Combobox_Alloted_Rooms.SelectedIndex != 0)
             {
                 string query = "";
-                if (Radio_University.Checked) query = string.Format("select Reg_No,Name,Sub_Code,Room_No,Seat from University_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
-                else query = string.Format("select Roll_No,Name,Sub_Code,Room_No,Seat,Class from Series_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by Class,Roll_No");
+                if (Radio_University.Checked) query = string.Format("select Reg_No,Name,Sub_Code,Room_No,Seat from University_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by length(Seat),Seat");
+                else query = string.Format("select Roll_No,Name,Sub_Code,Room_No,Seat,Class from Series_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by Class,cast(Roll_No as int)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -256,9 +256,9 @@ namespace Exam_Cell
                     }
                     string commandQuery = "";
                     if (Radio_University.Checked)
-                        commandQuery = string.Format("select RC.Reg_No,RC.Name,RC.Branch,TT.Sub_Code,TT.Course from University_Candidates as RC,Timetable as TT where TT.Date=@Date and TT.Session=@Session and RC.Branch=TT.Branch and RC.Course=TT.Course order by TT.Branch, TT.Course,RC.Reg_No");
+                        commandQuery = string.Format("select RC.Reg_No,RC.Name,RC.Branch,RC.Semester,TT.Sub_Code,TT.Course from University_Candidates as RC,Timetable as TT where TT.Date=@Date and TT.Session=@Session and RC.Branch=TT.Branch and RC.Course=TT.Course order by TT.Branch, TT.Course,RC.Reg_No");
                     else
-                        commandQuery = string.Format("select SC.Roll_No,SC.Name,SC.Class,SC.Branch,TT.Sub_Code,TT.Course from Series_Candidates as SC,Timetable as TT where TT.Date=@Date and TT.Session=@Session and SC.Branch=TT.Branch and SC.Course=TT.Course order by TT.Branch, TT.Course,SC.Class,SC.Roll_No");
+                        commandQuery = string.Format("select SC.Roll_No,SC.Name,SC.Class,SC.Branch,SC.Semester,TT.Sub_Code,TT.Course from Series_Candidates as SC,Timetable as TT where TT.Date=@Date and TT.Session=@Session and SC.Branch=TT.Branch and SC.Course=TT.Course order by TT.Branch, TT.Course,SC.Class,cast(SC.Roll_No as int)");
 
                     //get registered students details
                     SQLiteCommand studentCommand = new SQLiteCommand(commandQuery,dbConnection);
@@ -293,7 +293,7 @@ namespace Exam_Cell
                         }
                     }
                     if (Radio_University.Checked) table_students.DefaultView.Sort = "BranchPriority,Course,Reg_No";
-                    else table_students.DefaultView.Sort = "BranchPriority,Course,Class,Roll_No";
+                    else table_students.DefaultView.Sort = "BranchPriority,Course,Class,cast(Roll_No as int)";
                     table_students = table_students.DefaultView.ToTable();
 
                     //Allot
@@ -317,8 +317,8 @@ namespace Exam_Cell
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
-                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Status)");
-                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Roll_No,Name,Class,Sub_Code,Course,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Roll_No,@Name,@Class,@Sub_Code,@Course,@Status)");
+                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Semester,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Semester,@Status)");
+                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Roll_No,Name,Class,Sub_Code,Course,Semester,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Roll_No,@Name,@Class,@Sub_Code,@Course,@Semester,@Status)");
                     SQLiteCommand comm = new SQLiteCommand(insertQuery, dbConnection);
 
                     foreach (DataRow roomrow in table_rooms.Rows)
@@ -339,6 +339,7 @@ namespace Exam_Cell
                                 else comm.Parameters.AddWithValue("@Class", table_students.Rows[currentStudentCount]["Class"].ToString());
                                 comm.Parameters.AddWithValue("@Sub_Code", table_students.Rows[currentStudentCount]["Sub_Code"].ToString());
                                 comm.Parameters.AddWithValue("@Course", table_students.Rows[currentStudentCount]["Course"].ToString());
+                                comm.Parameters.AddWithValue("@Semester", table_students.Rows[currentStudentCount]["Semester"].ToString());
                                 comm.Parameters.AddWithValue("@Status", "Present");
                                 comm.ExecuteNonQuery();
 
@@ -381,8 +382,8 @@ namespace Exam_Cell
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
-                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Status)");
-                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Roll_No,Name,Class,Sub_Code,Course,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Roll_No,@Name,@Class,@Sub_Code,@Course,@Status)");
+                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Semester,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Semester,@Status)");
+                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Roll_No,Name,Class,Sub_Code,Course,Semester,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Roll_No,@Name,@Class,@Sub_Code,@Course,@Semester,@Status)");
                     SQLiteCommand command4 = new SQLiteCommand(insertQuery, dbConnection);
                     
                     //allot for A series
@@ -404,6 +405,7 @@ namespace Exam_Cell
                                 else command4.Parameters.AddWithValue("@Class", Students_Aseries.Rows[currentStudentsCount]["Class"].ToString());
                                 command4.Parameters.AddWithValue("@Sub_Code", Students_Aseries.Rows[currentStudentsCount]["Sub_Code"].ToString());
                                 command4.Parameters.AddWithValue("@Course", Students_Aseries.Rows[currentStudentsCount]["Course"].ToString());
+                                command4.Parameters.AddWithValue("@Semester", Students_Aseries.Rows[currentStudentsCount]["Semester"].ToString());
                                 command4.Parameters.AddWithValue("@Status", "Present");
                                 command4.ExecuteNonQuery();
 
@@ -439,6 +441,7 @@ namespace Exam_Cell
                                 else command4.Parameters.AddWithValue("@Class", Students_Bseries.Rows[currentStudentsCount]["Class"].ToString());
                                 command4.Parameters.AddWithValue("@Sub_Code", Students_Bseries.Rows[currentStudentsCount]["Sub_Code"].ToString());
                                 command4.Parameters.AddWithValue("@Course", Students_Bseries.Rows[currentStudentsCount]["Course"].ToString());
+                                command4.Parameters.AddWithValue("@Semester", Students_Bseries.Rows[currentStudentsCount]["Semester"].ToString());
                                 command4.Parameters.AddWithValue("@Status", "Present");
                                 command4.ExecuteNonQuery();
 
@@ -608,7 +611,6 @@ namespace Exam_Cell
                                 SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                                 for (int i = fromRoomStartSeat; i <= fromRoomEndSeat; i++)
                                 {
-                                    MessageBox.Show(toRoomSeries + toRoomStartSeat); // testing msg box.........delete after testing
                                     comm.Parameters.AddWithValue("@Room_No", toRoomNo);
                                     comm.Parameters.AddWithValue("@Seat", toRoomSeries + toRoomStartSeat);
                                     comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
@@ -620,6 +622,9 @@ namespace Exam_Cell
                                     toRoomStartSeat++;
                                 }
                             }
+                            SearchAllotedRooms();
+                            AllotedRoomComboboxFill();
+                            ShiftOrSwap_FormReset();
                             SetLoading(false);
                             CustomMessageBox.ShowMessageBox("Students shifted  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                         }
@@ -629,7 +634,7 @@ namespace Exam_Cell
                             MessageBox.Show(ex.ToString());
                         }
                     }
-                    else CustomMessageBox.ShowMessageBox("Not enough seats to shift", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                    else CustomMessageBox.ShowMessageBox("Not enough seats to shift, Check all info are correct or not     ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 }                    
             }
         }
@@ -647,7 +652,7 @@ namespace Exam_Cell
                 comm.Parameters.AddWithValue("@SelectedDate", DateTimePicker_Date.Text);
                 comm.Parameters.AddWithValue("@SelectedSession", Combobox_Session.Text);
                 comm.Parameters.AddWithValue("@SelectedRoom_No", Combobox_To_RoomNo.Text);
-                roomCount = (int)comm.ExecuteScalar();
+                roomCount = Convert.ToInt32(comm.ExecuteScalar());
             }
             if (roomCount > 0) return true;
             return false;
@@ -681,8 +686,8 @@ namespace Exam_Cell
                                 {
                                     dbConnection.Open();
                                     string query, secondQuery;
-                                    if (Radio_University.Checked) query = string.Format("Select Room_No,Seat,Reg_No from University_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
-                                    else query = string.Format("Select Room_No,Seat,Roll_No,Name from Series_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by Seat");
+                                    if (Radio_University.Checked) query = string.Format("Select Room_No,Seat,Reg_No from University_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by length(Seat),Seat");
+                                    else query = string.Format("Select Room_No,Seat,Roll_No,Name from Series_Alloted where Date=@Date and Session=@Session and Room_No=@Room_No order by length(Seat),Seat");
                                     SQLiteCommand selectCommand = new SQLiteCommand(query, dbConnection);
                                     selectCommand.Parameters.AddWithValue("@Date", DateTimePicker_Date.Text);
                                     selectCommand.Parameters.AddWithValue("@Session", Combobox_Session.Text);
@@ -739,6 +744,9 @@ namespace Exam_Cell
                                         toRoomStartSeat++;
                                     }
                                 }
+                                SearchAllotedRooms();
+                                AllotedRoomComboboxFill();
+                                ShiftOrSwap_FormReset();
                                 SetLoading(false);
                                 CustomMessageBox.ShowMessageBox("Students swapped  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                             }
@@ -754,7 +762,7 @@ namespace Exam_Cell
             }
             else
             {
-                string messageText = string.Format("Room '%{0}%' does not exist in Alloted records  ", Combobox_To_RoomNo.Text);
+                string messageText = string.Format("No students are alloted in Room {0} starting seat {1}   ", Combobox_To_RoomNo.Text, Combobox_To_Starting_Seat.Text);
                 CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
             }
         }
@@ -826,11 +834,11 @@ namespace Exam_Cell
             try
             {
                 Label_No_Of_Students_Selected.Text = "No of students selected : ";
-                if (Combobox_From_Starting_Seat.SelectedIndex != 0 && Combobox_From_Ending_Seat.SelectedIndex != 0)
+                if (Combobox_From_Starting_Seat.SelectedIndex != -1 && Combobox_From_Ending_Seat.SelectedIndex != -1)
                 {
                     int startSeat, endSeat;
-                    startSeat = int.Parse(Combobox_From_Ending_Seat.Text);
-                    endSeat = int.Parse(Combobox_From_Starting_Seat.Text);
+                    startSeat = int.Parse(Combobox_From_Starting_Seat.Text);
+                    endSeat = int.Parse(Combobox_From_Ending_Seat.Text);
                     if (startSeat <= endSeat)
                     {
                         seatsSelectedInFromRoom = (endSeat - startSeat) + 1;
@@ -1227,7 +1235,7 @@ namespace Exam_Cell
                                             range.Style.Font.Bold = true;
                                         }
                                         sheet_row++;
-                                        SQLiteCommand coursecmd = new SQLiteCommand("SELECT Roll_No,Room_No,Seat,Class from Series_Alloted Where Date=@Date and Session=@Session and Course=@Course order by Class,Roll_No", dbConnection);
+                                        SQLiteCommand coursecmd = new SQLiteCommand("SELECT Roll_No,Room_No,Seat,Class from Series_Alloted Where Date=@Date and Session=@Session and Course=@Course order by Class,cast(Roll_No as int)", dbConnection);
                                         coursecmd.Parameters.AddWithValue("@Date", date);
                                         coursecmd.Parameters.AddWithValue("@Session", session);
                                         coursecommand.Parameters.AddWithValue("@Course", dataRow["Course"].ToString());

@@ -71,11 +71,11 @@ namespace Exam_Cell
                     branchTop[0] = "-Select-";
                     branchDT.Rows.InsertAt(branchTop, 0);
 
-                    Combobox_Branch.DataSource = branchDT;
                     Combobox_Branch.DisplayMember = "Branch";
                     Combobox_Branch.ValueMember = "Branch";
+                    Combobox_Branch.DataSource = branchDT;
                 }
-                ResetForm();
+                Combobox_Semester.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -97,7 +97,7 @@ namespace Exam_Cell
                 string date = DateTimePicker_Date.Text;
 
                 if (Checkbox_Datewise.Checked)
-                    searchRecord += string.Format("Date = '%{0}%'", date);
+                    searchRecord += string.Format("Date = '{0}'", date);
                 if (branch != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
@@ -111,21 +111,20 @@ namespace Exam_Cell
                 if (semester != "-Select-")
                 {
                     if (searchRecord.Length > 0) searchRecord += " AND ";
-                    searchRecord += string.Format("Semester Like '%{0}%'", examcode);
+                    searchRecord += string.Format("Semester Like '%{0}%'", semester);
                 }
                 if (searchRecord != "")
                 {
-                    string query = "Select * from Timetable where " + searchRecord;
-                    DataTable TimeTable;
+                    string query = "Select * from Timetable where " + searchRecord + " order by Date, Session, Sub_Code";
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
-                        TimeTable = new DataTable();
+                        DataTable TimeTable = new DataTable();
                         dataAdapter.Fill(TimeTable);
+                        Dgv_Timetable.DataSource = TimeTable;
                     }
-                    Dgv_Timetable.DataSource = TimeTable;
                 }
                 SetLoading(false);
             }
@@ -228,13 +227,15 @@ namespace Exam_Cell
             DateTimePicker_NewDate.Format = DateTimePickerFormat.Custom;
             DateTimePicker_NewDate.CustomFormat = "dd-MM-yyyy";
             DateTimePicker_NewDate.Value = DateTime.Now;
+
+            Branch_Combobox_Fill();
         }
 
         // Checkbox click event
         bool isCheckBoxColumn_ClickedEvent = false;
         private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isCheckBoxColumn_ClickedEvent || !isFormReset)
+            if (!isCheckBoxColumn_ClickedEvent && !isFormReset)
             {
                 if (HeaderCheckBox.Checked)
                 {

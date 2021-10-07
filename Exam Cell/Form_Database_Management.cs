@@ -48,6 +48,21 @@ namespace Exam_Cell
             ComboboxesFill();
         }
 
+        void ClearSelectedRecord()
+        {
+            selectedRegNo = "";
+            selectedName = "";
+            selectedYoa = "";
+            selectedSemester = "";
+            selectedBranch = "";
+            selectedClass = "";
+            selectedSubCode = "";
+            selectedSubName = "";
+            selectedAcode = "";
+            selectedBranch_Course = "";
+            selectedSemester_Course = "";
+        }
+
         void ResetAllFormDatas()
         {
             // all combobox set to 0th index
@@ -64,6 +79,7 @@ namespace Exam_Cell
             Textbox_SubCode.Clear();
             Textbox_SubName.Clear();
             Textbox_Yoa.Clear();
+            Textbox_RollNo.Clear();
             // remove dgv datasource
             Dgv_ExcelData.DataSource = null;
             Dgv_Course.DataSource = null;
@@ -73,72 +89,61 @@ namespace Exam_Cell
             Button_Add_StudExcel.Enabled = false;
             Button_UpdateWithRegNo.Enabled = false;
             // clear selected record variables
-            selectedRegNo = "";
-            selectedName = "";
-            selectedYoa = "";
-            selectedSemester = "";
-            selectedBranch = "";
-            selectedClass = "";
-            selectedSubCode = "";
-            selectedSubName = "";
-            selectedAcode = "";
-            selectedBranch_Course = "";
-            selectedSemester_Course = "";
+            ClearSelectedRecord();
             HeaderCheckbox.Checked = false;
             HeaderCheckbox_CourseDgv.Checked = false;
             // set loading to false
             SetLoading(false);
         }
 
+        DataTable GetComboboxDatas(string query)
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+            {
+                dbConnection.Open();
+                SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                DataTable comboboxData = new DataTable();
+                adapter.Fill(comboboxData);
+                DataRow tableTop = comboboxData.NewRow();
+                tableTop[0] = "-Select-";
+                comboboxData.Rows.InsertAt(tableTop, 0);
+                return comboboxData;
+            }                
+        }
+
         void ComboboxesFill()
         {
             try
             {
-                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
-                {
-                    dbConnection.Open();
-                    // Branch combobox
-                    Combobox_Branch.DataSource = null;
-                    Combobox_Branch_updateStudTab.DataSource = null;
-                    Combobox_Branch_updateCourseTab.DataSource = null;
+                // Branch combobox
+                Combobox_Branch.DataSource = null;
+                Combobox_Branch_updateStudTab.DataSource = null;
+                Combobox_Branch_updateCourseTab.DataSource = null;
 
-                    string branchQuery = string.Format("Select Branch from Branch_Priority where Branch is not null");
-                    SQLiteCommand branchCommand = new SQLiteCommand(branchQuery, dbConnection);
-                    SQLiteDataAdapter branchAdapter = new SQLiteDataAdapter(branchCommand);
-                    DataTable branchDT = new DataTable();
-                    branchAdapter.Fill(branchDT);
-                    DataRow branchTop = branchDT.NewRow();
-                    branchTop[0] = "-Select-";
-                    branchDT.Rows.InsertAt(branchTop, 0);
-                    
-                    Combobox_Branch.DataSource = branchDT;
-                    Combobox_Branch.DisplayMember = "Branch";
-                    Combobox_Branch.ValueMember = "Branch";
-                    
-                    Combobox_Branch_updateStudTab.DataSource = branchDT;
-                    Combobox_Branch_updateStudTab.DisplayMember = "Branch";
-                    Combobox_Branch_updateStudTab.ValueMember = "Branch";
-                    
-                    Combobox_Branch_updateCourseTab.DataSource = branchDT;
-                    Combobox_Branch_updateCourseTab.DisplayMember = "Branch";
-                    Combobox_Branch_updateCourseTab.ValueMember = "Branch";
+                DataTable branchDT = GetComboboxDatas("Select Branch from Branch_Priority where Branch is not null");
+                Combobox_Branch.DisplayMember = "Branch";
+                Combobox_Branch.ValueMember = "Branch";
+                Combobox_Branch.DataSource = branchDT;
 
-                    // Class combobox
-                    Combobox_Class.DataSource = null;
+                DataTable updateStudBranch = GetComboboxDatas("Select Branch from Branch_Priority where Branch is not null");
+                Combobox_Branch_updateStudTab.DisplayMember = "Branch";
+                Combobox_Branch_updateStudTab.ValueMember = "Branch";
+                Combobox_Branch_updateStudTab.DataSource = updateStudBranch;
 
-                    string classQuery = string.Format("Select distinct Class from Students where Class is not null");
-                    SQLiteCommand classCommand = new SQLiteCommand(classQuery, dbConnection);
-                    SQLiteDataAdapter classAdapter = new SQLiteDataAdapter(classCommand);
-                    DataTable classDT = new DataTable();
-                    classAdapter.Fill(classDT);
-                    DataRow classTop = classDT.NewRow();
-                    classTop[0] = "-Select-";
-                    classDT.Rows.InsertAt(classTop, 0);
+                DataTable updateCourseBranch = GetComboboxDatas("Select Branch from Branch_Priority where Branch is not null");
+                Combobox_Branch_updateCourseTab.DisplayMember = "Branch";
+                Combobox_Branch_updateCourseTab.ValueMember = "Branch";
+                Combobox_Branch_updateCourseTab.DataSource = updateCourseBranch;
 
-                    Combobox_Class.DataSource = classDT;
-                    Combobox_Class.DisplayMember = "Class";
-                    Combobox_Class.ValueMember = "Class";
-                }
+                // Class combobox
+                Combobox_Class.DataSource = null;
+
+                DataTable classDT = GetComboboxDatas("Select distinct Class from Students where Class is not null");
+                Combobox_Class.DisplayMember = "Class";
+                Combobox_Class.ValueMember = "Class";
+                Combobox_Class.DataSource = classDT;
+
                 Combobox_Semester.SelectedIndex = 0;
                 Combobox_Semester_updateCourse.SelectedIndex = 0;
             }
@@ -531,7 +536,7 @@ namespace Exam_Cell
             if (rollno != "")
             {
                 if (searchRecord.Length > 0) searchRecord += " AND ";
-                searchRecord += string.Format("Roll_No Like '%{0}%'", rollno);
+                searchRecord += string.Format("Roll_No = '{0}'", rollno);
             }
             if (searchRecord != "")
             {
@@ -562,17 +567,19 @@ namespace Exam_Cell
                 MessageBox.Show(ex.ToString());
             }
         }
-        
+
+        bool isStudentSelectionMade = false;
         string selectedRegNo, selectedName, selectedYoa, selectedSemester, selectedBranch, selectedClass, selectedRollNo;
         private void Dgv_Student_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            isStudentSelectionMade = true;
             // fill the form
             Textbox_Regno.Text = Dgv_Student.Rows[e.RowIndex].Cells["Reg_No"].Value.ToString();
             Textbox_Name.Text = Dgv_Student.Rows[e.RowIndex].Cells["Name"].Value.ToString();
             Textbox_Yoa.Text = Dgv_Student.Rows[e.RowIndex].Cells["YOA"].Value.ToString();
-            Combobox_Semester.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
-            Combobox_Branch_updateStudTab.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
-            Combobox_Class.SelectedItem = Dgv_Student.Rows[e.RowIndex].Cells["Class"].Value.ToString();
+            Combobox_Semester.Text = Dgv_Student.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
+            Combobox_Branch_updateStudTab.Text = Dgv_Student.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
+            Combobox_Class.Text = Dgv_Student.Rows[e.RowIndex].Cells["Class"].Value.ToString();
             Textbox_RollNo.Text = Dgv_Student.Rows[e.RowIndex].Cells["Roll_No"].Value.ToString();
 
             // selected student record to be updated
@@ -589,7 +596,7 @@ namespace Exam_Cell
         {
             try
             {
-                if (selectedRegNo == "" || Textbox_Regno.Text == "" || Textbox_Name.Text == "" || Textbox_Yoa.Text == "" || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0 || Textbox_RollNo.Text == "") CustomMessageBox.ShowMessageBox("Please select and fill all info of student to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                if (!isStudentSelectionMade || Combobox_Semester.SelectedIndex == 0 || Combobox_Class.SelectedIndex == 0 || Combobox_Branch_updateStudTab.SelectedIndex == 0 || Textbox_RollNo.Text == "") CustomMessageBox.ShowMessageBox("Please select and fill the info. \n RollNo, Class, Branch and Semester are required.   ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
                     string messageText = string.Format("Do you want to update record of {0} - {1} ?   ", selectedRegNo, selectedName);
@@ -625,8 +632,8 @@ namespace Exam_Cell
                             CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                             return;
                         }
-                        ComboboxesFill();
-                        ResetAllFormDatas();
+                        ClearSelectedRecord();
+                        SearchStudentRecord();
                         CustomMessageBox.ShowMessageBox("Student record updated   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                     }                    
                 }
@@ -786,7 +793,7 @@ namespace Exam_Cell
 
         // // // // // // // // // // // // // "Update Course" Tab - Start // // // // // // // // // // // // //
 
-        private void Button_Search_updateCourseTab_Click(object sender, EventArgs e)
+        void SearchCourseRecord()
         {
             try
             {
@@ -799,7 +806,7 @@ namespace Exam_Cell
                 Dgv_Course.DataSource = null;
 
                 string searchRecord = "";        // string for sql statements to be written
-                
+
                 if (branch != "-Select-")
                 {
                     searchRecord = string.Format("Branch Like '%{0}%'", branch);   //Put sql statement in searchRecord string
@@ -845,17 +852,24 @@ namespace Exam_Cell
                 ResetAllFormDatas();
                 MessageBox.Show(ex.ToString());
             }
-        }                        
+        }
 
+        private void Button_Search_updateCourseTab_Click(object sender, EventArgs e)
+        {
+            SearchCourseRecord();
+        }
+
+        bool isCourseSelectionMade = false;
         string selectedSubCode, selectedSubName, selectedAcode, selectedBranch_Course, selectedSemester_Course;
         private void Dgv_Course_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            isCourseSelectionMade = true;
             // fill the form
             Textbox_SubCode.Text = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Code"].Value.ToString();
             Textbox_SubName.Text = Dgv_Course.Rows[e.RowIndex].Cells["Course"].Value.ToString();
             Textbox_ACode.Text = Dgv_Course.Rows[e.RowIndex].Cells["Acode"].Value.ToString();
-            Combobox_Branch_updateCourseTab.SelectedItem = Dgv_Course.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
-            Combobox_Semester_updateCourse.SelectedItem = Dgv_Course.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
+            Combobox_Branch_updateCourseTab.Text = Dgv_Course.Rows[e.RowIndex].Cells["Branch"].Value.ToString();
+            Combobox_Semester_updateCourse.Text = Dgv_Course.Rows[e.RowIndex].Cells["Semester"].Value.ToString();
 
             // selected branch/course record to be updated
             selectedSubCode = Dgv_Course.Rows[e.RowIndex].Cells["Sub_Code"].Value.ToString();
@@ -869,7 +883,7 @@ namespace Exam_Cell
         {
             try
             {
-                if (selectedSubCode == "" || Textbox_SubCode.Text == "" || Textbox_SubName.Text == "" || Textbox_ACode.Text == "" || Combobox_Branch_updateCourseTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of Branch/Course to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                if (!isCourseSelectionMade || Textbox_SubCode.Text == "" || Textbox_SubName.Text == "" || Textbox_ACode.Text == "" || Combobox_Branch_updateCourseTab.SelectedIndex == 0) CustomMessageBox.ShowMessageBox("Please select and fill all info of Branch/Course to be updated ", "Error", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 else
                 {
                     string messageText = string.Format("Do you want to update {0} - {1} of Semester {2} ?   ", selectedSubCode, selectedSubName, selectedSemester_Course);
@@ -900,8 +914,8 @@ namespace Exam_Cell
                             messageText = string.Format("{0} - {1} of Semester {2} does not exist, Try again ", selectedSubCode, selectedSubName,selectedSemester_Course);
                             CustomMessageBox.ShowMessageBox(messageText, "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                         }
-                        ComboboxesFill();
-                        ResetAllFormDatas();
+                        ClearSelectedRecord();
+                        SearchCourseRecord();
                         CustomMessageBox.ShowMessageBox("Branch/Course updated   ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                     }
                 }

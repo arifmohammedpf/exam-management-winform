@@ -62,7 +62,7 @@ namespace Exam_Cell
                 string query;
                 if (choice == "Branch") query = string.Format("Select Branch from Branch_Priority where Branch is not null");
                 else if (choice == "Scheme") query = string.Format("Select distinct Scheme from Scheme where Scheme is not null");
-                else query= string.Format("Select distinct Class from Students where Class is not null");
+                else query = string.Format("Select distinct Class from Students where Semester={0} and Class is not null", Combobox_Semester_ClassSearch.Text);
                 SQLiteCommand comm = new SQLiteCommand(query, dbConnection);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(comm);
                 DataTable queryDatatable = new DataTable();
@@ -81,7 +81,6 @@ namespace Exam_Cell
                 Combobox_Branch_Cand_Register.DataSource = null;
                 Combobox_Branch_SchemeSearch.DataSource = null;
                 Combobox_Scheme.DataSource = null;
-                Combobox_Class.DataSource = null;
 
                 // Branch
                 DataTable candBranch = GetDataTable("Branch");
@@ -100,12 +99,7 @@ namespace Exam_Cell
                 Combobox_Scheme.DisplayMember = "Scheme";
                 Combobox_Scheme.ValueMember = "Scheme";
 
-                // Class
-                DataTable classDT = GetDataTable("Class");
-                Combobox_Class.DataSource = classDT;
-                Combobox_Class.DisplayMember = "Class";
-                Combobox_Class.ValueMember = "Class";
-
+                Combobox_Semester_ClassSearch.SelectedIndex = 0;
                 Combobox_Semester.SelectedIndex = 0;
             }
             catch (Exception ex)
@@ -146,11 +140,11 @@ namespace Exam_Cell
             {
                 Textbox_ExcelFilepath.ResetText();
                 Combobox_ExcelSheets.SelectedItem = null;
-                Button_Register_University.Enabled = false;
+                Button_Register_ExcelSheet.Enabled = false;
                 Combobox_Branch_Cand_Register.SelectedIndex = 0;
                 Textbox_Yoa_SearchCand.ResetText();
             }
-            else Combobox_Class.SelectedIndex = 0;
+            else Combobox_Semester_ClassSearch.SelectedIndex = 0;
             isFormReset = false;
             SetLoading(false);
         }
@@ -270,7 +264,7 @@ namespace Exam_Cell
         DataTableCollection tableCollection;
         private void Button_Select_ExcelFile_Click(object sender, EventArgs e)
         {
-            CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n RegisterNo ,Name, Semester, Branch, Course  ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
+            CustomMessageBox.ShowMessageBox(" ExcelSheet must only contains Table data.  \n ExcelSheet Header Naming Must Be as follows and    \n exact ordering not required :  \n RegisterNo ,Name, Semester, Branch, Course, ExamCode  ", "Warning", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Warning);
             using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "Excel Files|*.xls|*xlsx|*.xlsm" })
             {
                 if (openFile.ShowDialog() == DialogResult.OK)
@@ -310,6 +304,7 @@ namespace Exam_Cell
                         excclass.Branch = dt.Rows[i]["Branch"].ToString();
                         excclass.Semester = dt.Rows[i]["Semester"].ToString();
                         excclass.Course = dt.Rows[i]["Course"].ToString();
+                        excclass.Sub_Code = dt.Rows[i]["ExamCode"].ToString();
 
                         excst.Add(excclass);
                     }
@@ -331,7 +326,7 @@ namespace Exam_Cell
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
-                        string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
+                        string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code)");
                         SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_Students.Rows)
                         {
@@ -340,10 +335,12 @@ namespace Exam_Cell
                             sqlcomm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
                             sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
                             sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
+                            sqlcomm.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
                             sqlcomm.ExecuteNonQuery();
                         }
                     }
-                    ResetForm();
+                    Dgv_Students.DataSource = null;
+                    Button_Register_ExcelSheet.Enabled = false;
                     CustomMessageBox.ShowMessageBox("University candidates registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -415,7 +412,17 @@ namespace Exam_Cell
             {
                 SetLoading(true);
                 bool isAnySelectionMade = false;
-                string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
+                foreach (DataGridViewRow dr in Dgv_Students.Rows)
+                {
+                    bool checkboxselected = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Students"].Value);
+                    if (checkboxselected && dr.Cells["Reg_No"].Value.ToString() == "")
+                    {
+                        SetLoading(false);
+                        CustomMessageBox.ShowMessageBox("RegisterNo is needed for students to register, Please update RegisterNo  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -435,8 +442,9 @@ namespace Exam_Cell
                                     isAnySelectionMade = true;
                                     sqlcomm.Parameters.AddWithValue("@Reg_No", dr2.Cells["Reg_No"].Value.ToString());
                                     sqlcomm.Parameters.AddWithValue("@Name", dr2.Cells["Name"].Value).ToString();
-                                    sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Semester", dr2.Cells["Semester"].Value.ToString());
                                     sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
                                     sqlcomm.Parameters.AddWithValue("@Branch", dr2.Cells["Branch"].Value.ToString());
                                     sqlcomm.ExecuteNonQuery();
                                 }
@@ -446,7 +454,8 @@ namespace Exam_Cell
                 }                
                 if (isAnySelectionMade)
                 {
-                    ResetForm();
+                    HeaderCheckBox.Checked = false;
+                    Dgv_Students.DataSource = null;
                     CustomMessageBox.ShowMessageBox("University candidates registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 else
@@ -469,14 +478,9 @@ namespace Exam_Cell
                 Dgv_Students.DataSource = null;
                 HeaderCheckBox.Checked = false;
                 string studentClass = Combobox_Class.Text;
-
-                string searchRecord = "";
-
-                if (studentClass != "-Select-")
-                    searchRecord += string.Format("Class Like '%{0}%'", studentClass);
-                if (searchRecord != "")
+                if (studentClass != "-Select-" && Combobox_Class.DataSource!=null)
                 {
-                    string query = "Select * from Students where " + searchRecord;
+                    string query = string.Format("Select * from Students where Class='{0}' and Semester = {1}", studentClass, Combobox_Semester_ClassSearch.Text);
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
@@ -491,6 +495,19 @@ namespace Exam_Cell
             }
         }
 
+        private void Combobox_Semester_ClassSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Combobox_Class.DataSource = null;
+            if (Combobox_Semester_ClassSearch.SelectedIndex != 0)
+            {
+                // Class
+                DataTable classDT = GetDataTable("Class");
+                Combobox_Class.DisplayMember = "Class";
+                Combobox_Class.ValueMember = "Class";
+                Combobox_Class.DataSource = classDT;
+            }            
+        }
+
         private void Combobox_Class_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchClassStudentRecord();
@@ -502,7 +519,7 @@ namespace Exam_Cell
             {
                 SetLoading(true);
                 bool isAnySelectionMade = false;
-                string query = string.Format("Insert into Series_Candidates(Name,Roll_No,Class,Branch,Semester,Course)Values(" + "@Name,@Roll_No,@Class,@Branch,@Semester,@Course)");
+                string query = string.Format("Insert into Series_Candidates(Name,Roll_No,Class,Branch,Semester,Course,Sub_Code)Values(" + "@Name,@Roll_No,@Class,@Branch,@Semester,@Course,@Sub_Code)");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -523,8 +540,9 @@ namespace Exam_Cell
                                     sqlcomm.Parameters.AddWithValue("@Roll_No", dr2.Cells["Roll_No"].Value.ToString());
                                     sqlcomm.Parameters.AddWithValue("@Name", dr2.Cells["Name"].Value).ToString();
                                     sqlcomm.Parameters.AddWithValue("@Class", dr2.Cells["Class"].Value.ToString());
-                                    sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Semester", dr2.Cells["Semester"].Value.ToString());
                                     sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
+                                    sqlcomm.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
                                     sqlcomm.Parameters.AddWithValue("@Branch", dr2.Cells["Branch"].Value.ToString());
                                     sqlcomm.ExecuteNonQuery();
                                 }
@@ -534,7 +552,8 @@ namespace Exam_Cell
                 }
                 if (isAnySelectionMade)
                 {
-                    ResetForm();
+                    HeaderCheckBox.Checked = false;
+                    Dgv_Students.DataSource = null;
                     CustomMessageBox.ShowMessageBox("Series candidates registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
                 }
                 else
@@ -552,49 +571,55 @@ namespace Exam_Cell
 
         private void Button_ExtraCand_Register_Click(object sender, EventArgs e)
         {
-            try
+            if(Textbox_ExtraCand_RegNo.Text!="" && Textbox_ExtraCand_Name.Text != "")
             {
-                SetLoading(true);
-                bool isAnySelectionMade = false;
-                string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course)");
-                using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
+                try
                 {
-                    dbConnection.Open();
-                    SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
-                    //select checkbox from course dgv
-                    foreach (DataGridViewRow dr in Dgv_Course.Rows)
+                    SetLoading(true);
+                    bool isAnySelectionMade = false;
+                    string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code)");
+                    using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
-                        bool chkboxselected = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Course"].Value);
-                        if (chkboxselected)
+                        dbConnection.Open();
+                        SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
+                        //select checkbox from course dgv
+                        foreach (DataGridViewRow dr in Dgv_Course.Rows)
                         {
-                            isAnySelectionMade = true;
-                            sqlcomm.Parameters.AddWithValue("@Reg_No", Textbox_ExtraCand_RegNo.Text);
-                            sqlcomm.Parameters.AddWithValue("@Name", Textbox_ExtraCand_Name.Text);
-                            sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
-                            sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
-                            sqlcomm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
-                            sqlcomm.ExecuteNonQuery();
+                            bool chkboxselected = Convert.ToBoolean(dr.Cells["CheckBoxColumn_Course"].Value);
+                            if (chkboxselected)
+                            {
+                                isAnySelectionMade = true;
+                                sqlcomm.Parameters.AddWithValue("@Reg_No", Textbox_ExtraCand_RegNo.Text);
+                                sqlcomm.Parameters.AddWithValue("@Name", Textbox_ExtraCand_Name.Text);
+                                sqlcomm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
+                                sqlcomm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
+                                sqlcomm.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
+                                sqlcomm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
+                                sqlcomm.ExecuteNonQuery();
+                            }
                         }
                     }
+                    if (isAnySelectionMade)
+                    {
+                        Textbox_ExtraCand_Name.ResetText();
+                        Textbox_ExtraCand_RegNo.ResetText();
+                        SetLoading(false);
+                        CustomMessageBox.ShowMessageBox("Extra Candidate for University exam registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    }
+                    else
+                        CustomMessageBox.ShowMessageBox("Select any Course to register  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
                 }
-                if (isAnySelectionMade)
+                catch (Exception ex)
                 {
-                    Textbox_ExtraCand_Name.ResetText();
-                    Textbox_ExtraCand_RegNo.ResetText();
-                    SetLoading(false);
-                    CustomMessageBox.ShowMessageBox("Extra Candidate for University exam registered  ", "Success", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Information);
+                    MessageBox.Show(ex.ToString());
                 }
-                else
-                    CustomMessageBox.ShowMessageBox("Select any Course to register  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
+                finally
+                {
+                    SetLoading(false);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                SetLoading(false);
-            }
+            else
+                CustomMessageBox.ShowMessageBox("Enter Reg_No and Name to register  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
         }        
     }
 }
