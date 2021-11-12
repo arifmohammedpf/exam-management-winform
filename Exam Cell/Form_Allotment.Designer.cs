@@ -63,7 +63,6 @@
             this.Button_SignatureSheet = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.Textbox_Filepath = new System.Windows.Forms.TextBox();
-            this.Textbox_ExamName = new System.Windows.Forms.TextBox();
             this.Tab_ShiftSwap = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Button_Swap = new System.Windows.Forms.Button();
@@ -86,6 +85,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
+            this.Combobox_ExamName = new System.Windows.Forms.ComboBox();
             this.Panel_Header.SuspendLayout();
             this.Groupbox_SelectExam.SuspendLayout();
             this.TabPanel.SuspendLayout();
@@ -395,6 +395,7 @@
             // 
             // Tab_ExcelSheet
             // 
+            this.Tab_ExcelSheet.Controls.Add(this.Combobox_ExamName);
             this.Tab_ExcelSheet.Controls.Add(this.label15);
             this.Tab_ExcelSheet.Controls.Add(this.Button_FilepathChange);
             this.Tab_ExcelSheet.Controls.Add(this.Button_RoomSheet);
@@ -403,7 +404,6 @@
             this.Tab_ExcelSheet.Controls.Add(this.Button_SignatureSheet);
             this.Tab_ExcelSheet.Controls.Add(this.label12);
             this.Tab_ExcelSheet.Controls.Add(this.Textbox_Filepath);
-            this.Tab_ExcelSheet.Controls.Add(this.Textbox_ExamName);
             this.Tab_ExcelSheet.Location = new System.Drawing.Point(4, 26);
             this.Tab_ExcelSheet.Name = "Tab_ExcelSheet";
             this.Tab_ExcelSheet.Padding = new System.Windows.Forms.Padding(3);
@@ -415,7 +415,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(347, 28);
+            this.label15.Location = new System.Drawing.Point(341, 28);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(339, 17);
             this.label15.TabIndex = 6;
@@ -519,7 +519,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(346, 113);
+            this.label12.Location = new System.Drawing.Point(342, 113);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(125, 17);
             this.label12.TabIndex = 1;
@@ -531,13 +531,6 @@
             this.Textbox_Filepath.Name = "Textbox_Filepath";
             this.Textbox_Filepath.Size = new System.Drawing.Size(321, 22);
             this.Textbox_Filepath.TabIndex = 0;
-            // 
-            // Textbox_ExamName
-            // 
-            this.Textbox_ExamName.Location = new System.Drawing.Point(350, 133);
-            this.Textbox_ExamName.Name = "Textbox_ExamName";
-            this.Textbox_ExamName.Size = new System.Drawing.Size(321, 22);
-            this.Textbox_ExamName.TabIndex = 0;
             // 
             // Tab_ShiftSwap
             // 
@@ -796,6 +789,18 @@
             this.Panel_ProgressBar.TabIndex = 19;
             this.Panel_ProgressBar.Visible = false;
             // 
+            // Combobox_ExamName
+            // 
+            this.Combobox_ExamName.FormattingEnabled = true;
+            this.Combobox_ExamName.Items.AddRange(new object[] {
+            "SERIES EXAMINATION",
+            "KTU BTECH UNIVERSITY EXAMINATION",
+            "KTU MTECH UNIVERSITY EXAMINATION"});
+            this.Combobox_ExamName.Location = new System.Drawing.Point(342, 133);
+            this.Combobox_ExamName.Name = "Combobox_ExamName";
+            this.Combobox_ExamName.Size = new System.Drawing.Size(336, 25);
+            this.Combobox_ExamName.TabIndex = 7;
+            // 
             // Form_Allotment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -870,7 +875,6 @@
         private System.Windows.Forms.Button Button_DisplaySheet;
         private System.Windows.Forms.Button Button_SignatureSheet;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox Textbox_ExamName;
         private System.Windows.Forms.Button Button_MultiAllot;
         private System.Windows.Forms.Button Button_SingleAllot;
         private System.Windows.Forms.Button Button_Swap;
@@ -892,5 +896,6 @@
         private System.Windows.Forms.Label Label_No_Of_Students_Selected;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox Combobox_ExamName;
     }
 }

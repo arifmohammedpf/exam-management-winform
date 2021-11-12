@@ -424,7 +424,7 @@ namespace Exam_Cell
                         
                         //Insert Items to ExcelSheet
                         worksheet.Cells["A1"].Value = "KMEA ENGINEERING COLLEGE";
-                        worksheet.Cells["A2"].Value = Textbox_Statement_ExamName.Text;
+                        worksheet.Cells["A2"].Value = Combobox_ExamName.Text;
                         worksheet.Cells["A3"].Value = "ATTENDANCE STATEMENT";
                         worksheet.Cells["A4"].Value = Combobox_Statement_Date.Text;
                         worksheet.Cells["D4"].Value = Combobox_Statement_Session.Text;
@@ -436,7 +436,7 @@ namespace Exam_Cell
                         {
                             range.Merge = true;
                             range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Name = "Times New Roman";
                             range.Style.Font.Size = 16;
                             range.Style.Font.Bold = true;
                         }
@@ -444,7 +444,7 @@ namespace Exam_Cell
                         {
                             range.Merge = true;
                             range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Name = "Times New Roman";
                             range.Style.Font.Size = 14;
                             range.Style.Font.Bold = true;
                         }
@@ -452,32 +452,32 @@ namespace Exam_Cell
                         {
                             range.Merge = true;
                             range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Name = "Times New Roman";
                             range.Style.Font.Size = 12;
                             range.Style.Font.Bold = true;
                         }
                         using (var range = worksheet.Cells["A4:D4"])
                         {
-                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Name = "Times New Roman";
                             range.Style.Font.Size = 11;
                             range.Style.Font.Bold = true;
                         }
                         using (var range = worksheet.Cells["A5:D5"])
                         {
-                            range.Style.Font.Name = "Arial";
+                            range.Style.Font.Name = "Times New Roman";
                             range.Style.Font.Size = 11;
                             range.Style.Font.Bold = true;
                         }
 
                         // column headings
                         worksheet.Cells[6, 1].Value = "Sl.No";
-                        worksheet.Cells[6, 1].Style.Font.Name = "Arial";
+                        worksheet.Cells[6, 1].Style.Font.Name = "Times New Roman";
                         worksheet.Cells[6, 1].Style.Font.Size = 12;
                         worksheet.Cells[6, 1].Style.Font.Bold = true;
                         for (var i = 0; i < 3; i++)
                         {
                             worksheet.Cells[6, i + 2].Value = Dgv_Statement.Columns[i].HeaderText.ToString();
-                            worksheet.Cells[6, i + 2].Style.Font.Name = "Arial";
+                            worksheet.Cells[6, i + 2].Style.Font.Name = "Times New Roman";
                             worksheet.Cells[6, i + 2].Style.Font.Size = 12;
                             worksheet.Cells[6, i + 2].Style.Font.Bold = true;
                         }

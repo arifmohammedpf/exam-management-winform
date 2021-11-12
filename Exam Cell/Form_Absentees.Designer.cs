@@ -63,10 +63,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Textbox_Statement_ExamName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
+            this.Combobox_ExamName = new System.Windows.Forms.ComboBox();
             this.Panel_Header.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.Tab_Marking.SuspendLayout();
@@ -138,7 +137,7 @@
             this.Tab_Marking.Controls.Add(this.Dgv_Marking);
             this.Tab_Marking.Location = new System.Drawing.Point(4, 26);
             this.Tab_Marking.Name = "Tab_Marking";
-            this.Tab_Marking.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Tab_Marking.Padding = new System.Windows.Forms.Padding(3);
             this.Tab_Marking.Size = new System.Drawing.Size(892, 477);
             this.Tab_Marking.TabIndex = 0;
             this.Tab_Marking.Text = "Marking";
@@ -299,15 +298,14 @@
             // 
             // Tab_Statement
             // 
+            this.Tab_Statement.Controls.Add(this.Combobox_ExamName);
             this.Tab_Statement.Controls.Add(this.Button_Prepare_Statement);
             this.Tab_Statement.Controls.Add(this.Dgv_Statement);
             this.Tab_Statement.Controls.Add(this.groupBox1);
-            this.Tab_Statement.Controls.Add(this.button1);
-            this.Tab_Statement.Controls.Add(this.Textbox_Statement_ExamName);
             this.Tab_Statement.Controls.Add(this.label6);
             this.Tab_Statement.Location = new System.Drawing.Point(4, 26);
             this.Tab_Statement.Name = "Tab_Statement";
-            this.Tab_Statement.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Tab_Statement.Padding = new System.Windows.Forms.Padding(3);
             this.Tab_Statement.Size = new System.Drawing.Size(892, 477);
             this.Tab_Statement.TabIndex = 1;
             this.Tab_Statement.Text = "Statement";
@@ -323,7 +321,7 @@
             this.Button_Prepare_Statement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_Prepare_Statement.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_Prepare_Statement.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Button_Prepare_Statement.Location = new System.Drawing.Point(105, 427);
+            this.Button_Prepare_Statement.Location = new System.Drawing.Point(105, 414);
             this.Button_Prepare_Statement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Button_Prepare_Statement.Name = "Button_Prepare_Statement";
             this.Button_Prepare_Statement.Size = new System.Drawing.Size(180, 40);
@@ -365,7 +363,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(6, 42);
+            this.groupBox1.Location = new System.Drawing.Point(6, 22);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(373, 323);
             this.groupBox1.TabIndex = 1;
@@ -494,35 +492,10 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Exam Code :";
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(245)))), ((int)(((byte)(252)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(251)))), ((int)(((byte)(253)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(73)))), ((int)(((byte)(171)))));
-            this.button1.Location = new System.Drawing.Point(6, 8);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(373, 28);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "re-load datas button needed ?";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // Textbox_Statement_ExamName
-            // 
-            this.Textbox_Statement_ExamName.Location = new System.Drawing.Point(18, 392);
-            this.Textbox_Statement_ExamName.Name = "Textbox_Statement_ExamName";
-            this.Textbox_Statement_ExamName.Size = new System.Drawing.Size(355, 22);
-            this.Textbox_Statement_ExamName.TabIndex = 2;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 369);
+            this.label6.Location = new System.Drawing.Point(14, 354);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(140, 17);
             this.label6.TabIndex = 8;
@@ -539,6 +512,18 @@
             this.Panel_ProgressBar.Size = new System.Drawing.Size(310, 70);
             this.Panel_ProgressBar.TabIndex = 7;
             this.Panel_ProgressBar.Visible = false;
+            // 
+            // Combobox_ExamName
+            // 
+            this.Combobox_ExamName.FormattingEnabled = true;
+            this.Combobox_ExamName.Items.AddRange(new object[] {
+            "SERIES EXAMINATION",
+            "KTU BTECH UNIVERSITY EXAMINATION",
+            "KTU MTECH UNIVERSITY EXAMINATION"});
+            this.Combobox_ExamName.Location = new System.Drawing.Point(17, 375);
+            this.Combobox_ExamName.Name = "Combobox_ExamName";
+            this.Combobox_ExamName.Size = new System.Drawing.Size(336, 25);
+            this.Combobox_ExamName.TabIndex = 17;
             // 
             // Form_Absentees
             // 
@@ -590,7 +575,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox Textbox_Statement_ExamName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView Dgv_Statement;
         private System.Windows.Forms.Label Label_NoOfAbsent;
@@ -610,7 +594,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton Radio_Series;
         private System.Windows.Forms.RadioButton Radio_University;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel Panel_ProgressBar;
+        private System.Windows.Forms.ComboBox Combobox_ExamName;
     }
 }
