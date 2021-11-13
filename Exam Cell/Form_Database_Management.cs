@@ -311,7 +311,7 @@ namespace Exam_Cell
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
                             dbConnection.Open();
-                            string query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch)");
+                            string query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch) Select @Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch where not exists(select Name from Students where Reg_No=@Reg_No and Name=@Name and YOA=@YOA and Class=@Class and Semester=@Semester and Roll_No=@Roll_No and Branch=@Branch) limit 1");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                             foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
                             {
@@ -403,7 +403,7 @@ namespace Exam_Cell
                         dbConnection.Open();
                         //String[] newBranches = new string[20];
                         //string currBranch = "";
-                        string query = string.Format("insert into Scheme(Scheme,Branch,Semester,Course,Sub_Code,Acode)Values(" + " @Scheme,@Branch,@Semester,@Course,@Sub_Code,@Acode)");
+                        string query = string.Format("insert into Scheme(Scheme,Branch,Semester,Course,Sub_Code,Acode) Select @Scheme,@Branch,@Semester,@Course,@Sub_Code,@Acode where not exists(Select Course from Scheme where Scheme=@Scheme and Branch=@Branch and Semester=@Semester and Course=@Course and Sub_Code=@Sub_Code and Acode=@Acode) limit 1");
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
                         {
@@ -456,7 +456,7 @@ namespace Exam_Cell
                             command.Parameters.AddWithValue("@Reg_No", "");
                             command.Parameters.AddWithValue("@Branch", Combobox_Branch.Text);
                             command.ExecuteNonQuery();
-                            query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch)");
+                            query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch) Select @Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch where not exists(select Name from Students where Reg_No=@Reg_No and Name=@Name and YOA=@YOA and Class=@Class and Semester=@Semester and Roll_No=@Roll_No and Branch=@Branch) limit 1");
                             command = new SQLiteCommand(query, dbConnection);
                             foreach (DataGridViewRow dr in Dgv_ExcelData.Rows)
                             {
@@ -722,7 +722,7 @@ namespace Exam_Cell
                                 command.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
                                 command.Parameters.AddWithValue("@Class", dr.Cells["Class"].Value.ToString());
                                 command.Parameters.AddWithValue("@Roll_No", dr.Cells["Roll_No"].Value.ToString());
-                                command.ExecuteNonQuery();
+                                command.ExecuteScalar();
                                 deletedFlag = true;
                             }
                         }
@@ -994,19 +994,20 @@ namespace Exam_Cell
                     {
                         dbConnection.Open();
                         // delete selected courses
-                        string query = string.Format("Delete from Scheme where Sub_Code=@SelectedSub_Code and Course=@SelectedCourse and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
+                        string query = string.Format("Delete from Scheme where Sub_Code=@SelectedSub_Code and Scheme=@SelectedScheme and Course=@SelectedCourse and Acode=@SelectedAcode and Branch=@SelectedBranch and Semester=@SelectedSemester");
                         SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_Course.Rows)
                         {
                             bool isSelected = Convert.ToBoolean(dr.Cells["CheckboxColumn_CourseDgv"].Value);
                             if (isSelected)
                             {                                
+                                command.Parameters.AddWithValue("@SelectedScheme", dr.Cells["Scheme"].Value.ToString());
                                 command.Parameters.AddWithValue("@SelectedSub_Code", dr.Cells["Sub_Code"].Value.ToString());
                                 command.Parameters.AddWithValue("@SelectedCourse", dr.Cells["Course"].Value.ToString());
                                 command.Parameters.AddWithValue("@SelectedAcode", dr.Cells["Acode"].Value.ToString());
                                 command.Parameters.AddWithValue("@SelectedBranch", dr.Cells["Branch"].Value.ToString());
                                 command.Parameters.AddWithValue("@SelectedSemester", dr.Cells["Semester"].Value.ToString());
-                                command.ExecuteNonQuery();
+                                command.ExecuteScalar();
                                 deletedFlag = true;
                             }
                         }

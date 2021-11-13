@@ -326,7 +326,7 @@ namespace Exam_Cell
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
-                        string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code)");
+                        string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code) Select @Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code where not exists(select Name from University_Candidates where Name=@Name and Reg_No=@Reg_No and Branch=@Branch and Semester=@Semester and Course=@Course and Sub_Code=@Sub_Code) limit 1");
                         SQLiteCommand sqlcomm = new SQLiteCommand(query, dbConnection);
                         foreach (DataGridViewRow dr in Dgv_Students.Rows)
                         {
@@ -422,7 +422,7 @@ namespace Exam_Cell
                         return;
                     }
                 }
-                string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code)");
+                string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code) Select @Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code where not exists(Select Name from University_Candidates where Name=@Name and Reg_No=@Reg_No and Branch=@Branch and Semester=@Semester and Course=@Course and Sub_Code=@Sub_Code) limit 1");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -519,7 +519,8 @@ namespace Exam_Cell
             {
                 SetLoading(true);
                 bool isAnySelectionMade = false;
-                string query = string.Format("Insert into Series_Candidates(Name,Roll_No,Class,Branch,Semester,Course,Sub_Code)Values(" + "@Name,@Roll_No,@Class,@Branch,@Semester,@Course,@Sub_Code)");
+                
+                string query = string.Format("Insert into Series_Candidates(Name,Roll_No,Class,Branch,Semester,Course,Sub_Code) Select @Name,@Roll_No,@Class,@Branch,@Semester,@Course,@Sub_Code Where not exists(Select Name from Series_Candidates where Name=@Name and Roll_No=@Roll_No and Class=@Class and Branch=@Branch and Semester=@Semester and Course=@Course and Sub_Code=@Sub_Code) Limit 1");
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
@@ -577,7 +578,7 @@ namespace Exam_Cell
                 {
                     SetLoading(true);
                     bool isAnySelectionMade = false;
-                    string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code)Values(" + "@Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code)");
+                    string query = string.Format("Insert into University_Candidates(Name,Reg_No,Branch,Semester,Course,Sub_Code) Select @Name,@Reg_No,@Branch,@Semester,@Course,@Sub_Code where not exists(Select Name from University_Candidates where Name=@Name and Reg_No=@Reg_No and Branch=@Branch and Semester=@Semester and Course=@Course and Sub_Code=@Sub_Code) limit 1");
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();

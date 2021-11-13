@@ -293,7 +293,7 @@ namespace Exam_Cell
                         if (checkboxselect)
                         {
                             flag = 1;
-                            string query = string.Format("Insert into Timetable(Date,Session,Scheme,Sub_Code,Course,Semester,Branch)Values(" + "@Date,@Session,@Scheme,@Sub_Code,@Course,@Semester,@Branch)");
+                            string query = string.Format("Insert into Timetable(Date,Session,Scheme,Sub_Code,Course,Semester,Branch) Select @Date,@Session,@Scheme,@Sub_Code,@Course,@Semester,@Branch where not exists(select Course from Timetable where Date=@Date and Session=@Session and Scheme=@Scheme and Sub_Code=@Sub_Code and Course=@Course and Semester=@Semester and Branch=@Branch) limit 1");
                             SQLiteCommand comm = new SQLiteCommand(query,dbConnection);
                             comm.Parameters.AddWithValue("@Date", DateTimePicker_Add_Timetable.Text);
                             comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
@@ -359,7 +359,7 @@ namespace Exam_Cell
                             comm.Parameters.AddWithValue("@Course", SubNameList[i]);
                             comm.Parameters.AddWithValue("@Semester", SemesterList[i]);
                             comm.Parameters.AddWithValue("@Branch", BranchList[i]);
-                            comm.ExecuteNonQuery();
+                            comm.ExecuteScalar();
                         }
                     }
                     ClearBackupList();
@@ -409,7 +409,7 @@ namespace Exam_Cell
                                 comm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
                                 comm.Parameters.AddWithValue("@Branch", dr.Cells["Branch"].Value.ToString());
-                                comm.ExecuteNonQuery();
+                                comm.ExecuteScalar();
                             }                                
                         }
                     }

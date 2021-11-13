@@ -308,7 +308,7 @@ namespace Exam_Cell
                                     comm.Parameters.AddWithValue("@Room_No", dr.Cells["Room_No"].Value.ToString());
                                     comm.Parameters.AddWithValue("@Seat", dr.Cells["Seat"].Value.ToString());
                                 }
-                                comm.ExecuteNonQuery();
+                                comm.ExecuteScalar();
                             }
                         }
                         if (flag == 1)

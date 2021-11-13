@@ -337,8 +337,8 @@ namespace Exam_Cell
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
-                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Semester,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Semester,@Status)");
-                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Roll_No,Name,Class,Sub_Code,Course,Semester,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Roll_No,@Name,@Class,@Sub_Code,@Course,@Semester,@Status)");
+                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Semester,Status) Select @Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Semester,@Status where not exists (Select Name from University_Alloted where Date=@Date and Room_No=@Room_No and Seat=@Seat and Session=@Session and Reg_No=@Reg_No and Name=@Name and Branch=@Branch and Sub_Code=@Sub_Code and Course=@Course and Semester=@Semester and Status=@Status) limit 1");
+                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Roll_No,Name,Class,Sub_Code,Course,Semester,Status) Select @Date,@Room_No,@Seat,@Session,@Roll_No,@Name,@Class,@Sub_Code,@Course,@Semester,@Status where not exists (Select Name from Series_Alloted where Date=@Date and Room_No=@Room_No and Seat=@Seat and Session=@Session and Roll_No=@Roll_No and Name=@Name and Class=@Class and Sub_Code=@Sub_Code and Course=@Course and Semester=@Semester and Status=@Status) limit 1");
                     SQLiteCommand comm = new SQLiteCommand(insertQuery, dbConnection);
 
                     foreach (DataRow roomrow in table_rooms.Rows)
@@ -402,8 +402,8 @@ namespace Exam_Cell
                 using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                 {
                     dbConnection.Open();
-                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Semester,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Semester,@Status)");
-                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Roll_No,Name,Class,Sub_Code,Course,Semester,Status)Values(" + "@Date,@Room_No,@Seat,@Session,@Roll_No,@Name,@Class,@Sub_Code,@Course,@Semester,@Status)");
+                    if (Radio_University.Checked) insertQuery = string.Format("insert into University_Alloted(Date,Room_No,Seat,Session,Reg_No,Name,Branch,Sub_Code,Course,Semester,Status) Select @Date,@Room_No,@Seat,@Session,@Reg_No,@Name,@Branch,@Sub_Code,@Course,@Semester,@Status where not exists(select Name from University_Alloted where Date=@Date and Room_No=@Room_No and Seat=@Seat and Session=@Session and Reg_No=@Reg_No and Name=@Name and Branch=@Branch and Sub_Code=@Sub_Code and Course=@Course and Semester=@Semester and Status=@Status) limit 1");
+                    else insertQuery = string.Format("insert into Series_Alloted(Date,Room_No,Seat,Session,Roll_No,Name,Class,Sub_Code,Course,Semester,Status) Select @Date,@Room_No,@Seat,@Session,@Roll_No,@Name,@Class,@Sub_Code,@Course,@Semester,@Status where not exists(select Name from Series_Alloted where Date=@Date and Room_No=@Room_No and Seat=@Seat and Session=@Session and Roll_No=@Roll_No and Name=@Name and Class=@Class and Sub_Code=@Sub_Code and Course=@Course and Semester=@Semester and Status=@Status) limit 1");
                     SQLiteCommand command4 = new SQLiteCommand(insertQuery, dbConnection);
                     
                     //allot for A series
@@ -1035,7 +1035,7 @@ namespace Exam_Cell
                                 }
                             }
 
-                            // rows
+                            // add row values to excel
                             int rowCount = 0;
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
@@ -1044,7 +1044,7 @@ namespace Exam_Cell
                                     worksheet.Cells[rowCount + 6, 1].Value = rowCount + 1;    //Sl.No Filling
                                     for (int j = 0; j < dt.Columns.Count; j++)
                                     {
-                                        if(dt.Columns[i].ColumnName.ToString() != "Room_No") worksheet.Cells[rowCount + 6, j + 2].Value = dt.Rows[i][j];
+                                        if(dt.Columns[j].ColumnName.ToString() != "Room_No") worksheet.Cells[rowCount + 6, j + 2].Value = dt.Rows[i][j];
                                     }
                                     rowCount++;
                                 }

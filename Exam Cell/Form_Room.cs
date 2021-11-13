@@ -567,7 +567,7 @@ namespace Exam_Cell
                                 string query = string.Format("Delete from Rooms where Room_No=@Room_No");
                                 SQLiteCommand command = new SQLiteCommand(query, dbConnection);
                                 command.Parameters.AddWithValue("@Room_No", dr.Cells["Room_No"].Value.ToString());
-                                command.ExecuteNonQuery();
+                                command.ExecuteScalar();
                                 deletedFlag = true;
                             }
                         }
