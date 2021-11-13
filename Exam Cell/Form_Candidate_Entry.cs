@@ -185,7 +185,7 @@ namespace Exam_Cell
 
         private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isCheckBoxColumn_ClickedEvent || !isFormReset)
+            if (!isCheckBoxColumn_ClickedEvent && !isFormReset)
             {
                 if (HeaderCheckBox.Checked)
                 {
@@ -231,7 +231,7 @@ namespace Exam_Cell
                 }
                 if (searchRecord != "")
                 {
-                    string query = "Select * from Scheme where " + searchRecord;
+                    string query = "Select * from Timetable where " + searchRecord;
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
@@ -620,6 +620,48 @@ namespace Exam_Cell
             }
             else
                 CustomMessageBox.ShowMessageBox("Enter Reg_No and Name to register  ", "Failed", Form_Message_Box.MessageBoxButtons.OK, Form_Message_Box.MessageBoxIcon.Error);
-        }        
+        }
+
+        // Course Checkbox click event
+        bool isCourseCheckBoxColumn_ClickedEvent = false;
+        private void HeaderCheckBoxCourse_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isCourseCheckBoxColumn_ClickedEvent && !isFormReset)
+            {
+                if (HeaderCheckBoxCourse.Checked)
+                {
+                    foreach (DataGridViewRow row in Dgv_Course.Rows)
+                    {
+                        row.Cells["CheckBoxColumn_Course"].Value = true;
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in Dgv_Course.Rows)
+                    {
+                        row.Cells["CheckBoxColumn_Course"].Value = false;
+                    }
+                }
+            }
+            isCourseCheckBoxColumn_ClickedEvent = false;
+        }
+
+        private void Dgv_Course_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Course.Columns["CheckBoxColumn_Course"].Index)
+                Dgv_Course.EndEdit();
+        }
+
+        private void Dgv_Course_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Course.Columns["CheckBoxColumn_Course"].Index)
+            {
+                if (HeaderCheckBoxCourse.Checked)
+                {
+                    isCourseCheckBoxColumn_ClickedEvent = true;
+                    HeaderCheckBoxCourse.Checked = false;
+                }
+            }
+        }
     }
 }

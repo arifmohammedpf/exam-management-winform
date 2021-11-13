@@ -38,6 +38,21 @@ namespace Exam_Cell
             Label_Message.Text = message;
             Label_Title.Text = title;
 
+            // resize form according to text
+            int maxright = 0;
+            int maxbottom = 0;
+            foreach (Control ctl in this.Controls)
+            {
+                maxright = (ctl.Right > maxright ? ctl.Right : maxright);
+                maxbottom = (ctl.Bottom > maxbottom ? ctl.Bottom : maxbottom);
+            }
+            int deltabottom = this.Bottom - (this.Top + maxbottom);
+            int deltaright = this.Right - (this.Left + maxright);
+            this.SuspendLayout();
+            this.Height = this.Height - deltabottom;
+            this.Width = this.Width - deltaright;
+            this.ResumeLayout();
+
             if (MessageBoxButtons.OK == button)
             {
                 Button_Ok.Visible = true;

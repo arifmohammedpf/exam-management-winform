@@ -438,7 +438,7 @@ namespace Exam_Cell
 
         void UpdateRegNo_StudentExcel()
         {
-            CustomMessageBox.ShowMessageBox("Do you want to update students having no Reg_No from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
+            CustomMessageBox.ShowMessageBox("Are you sure to update students having no Reg_No from selected excel sheet ?   ", "Confirmation", Form_Message_Box.MessageBoxButtons.YesNo, Form_Message_Box.MessageBoxIcon.Question);
             string result = CustomMessageBox.UserChoice;
             if (result == "Yes")
             {
@@ -451,8 +451,10 @@ namespace Exam_Cell
                         using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                         {
                             dbConnection.Open();
-                            string query = string.Format("Delete from Students where Reg_No is Null");
+                            string query = string.Format("Delete from Students where Reg_No=@Reg_No and Branch=@Branch");
                             SQLiteCommand command = new SQLiteCommand(query, dbConnection);
+                            command.Parameters.AddWithValue("@Reg_No", "");
+                            command.Parameters.AddWithValue("@Branch", Combobox_Branch.Text);
                             command.ExecuteNonQuery();
                             query = string.Format("insert into Students(Reg_No,Name,YOA,Class,Semester,Roll_No,Branch)Values(" + "@Reg_No,@Name,@YOA,@Class,@Semester,@Roll_No,@Branch)");
                             command = new SQLiteCommand(query, dbConnection);

@@ -64,6 +64,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Panel_ProgressBar = new System.Windows.Forms.Panel();
+            this.HeaderCheckBoxCourse = new System.Windows.Forms.CheckBox();
             this.Panel_Header.SuspendLayout();
             this.Panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Timetable)).BeginInit();
@@ -111,6 +112,7 @@
             // 
             // Panel_Body
             // 
+            this.Panel_Body.Controls.Add(this.HeaderCheckBoxCourse);
             this.Panel_Body.Controls.Add(this.HeaderCheckBox);
             this.Panel_Body.Controls.Add(this.Dgv_Timetable);
             this.Panel_Body.Controls.Add(this.Dgv_Courses);
@@ -189,6 +191,8 @@
             this.Dgv_Courses.RowTemplate.Height = 24;
             this.Dgv_Courses.Size = new System.Drawing.Size(752, 302);
             this.Dgv_Courses.TabIndex = 7;
+            this.Dgv_Courses.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Courses_CellEndEdit);
+            this.Dgv_Courses.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_Courses_CellMouseUp);
             // 
             // CheckBoxColumn_Course
             // 
@@ -527,6 +531,16 @@
             this.Panel_ProgressBar.TabIndex = 7;
             this.Panel_ProgressBar.Visible = false;
             // 
+            // HeaderCheckBoxCourse
+            // 
+            this.HeaderCheckBoxCourse.AutoSize = true;
+            this.HeaderCheckBoxCourse.Location = new System.Drawing.Point(388, 6);
+            this.HeaderCheckBoxCourse.Name = "HeaderCheckBoxCourse";
+            this.HeaderCheckBoxCourse.Size = new System.Drawing.Size(15, 14);
+            this.HeaderCheckBoxCourse.TabIndex = 11;
+            this.HeaderCheckBoxCourse.UseVisualStyleBackColor = true;
+            this.HeaderCheckBoxCourse.CheckedChanged += new System.EventHandler(this.HeaderCheckBoxCourse_CheckedChanged);
+            // 
             // Form_Timetable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -592,5 +606,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Timetable;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxColumn_Course;
         private System.Windows.Forms.Panel Panel_ProgressBar;
+        private System.Windows.Forms.CheckBox HeaderCheckBoxCourse;
     }
 }

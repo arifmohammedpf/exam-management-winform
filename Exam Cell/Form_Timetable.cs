@@ -51,6 +51,7 @@ namespace Exam_Cell
             DateTimePicker_Search_Timetable.Value = DateTime.Now;
             DateTimePicker_Add_Timetable.Value = DateTime.Now;
             HeaderCheckBox.Checked = false;
+            HeaderCheckBoxCourse.Checked = false;
             Dgv_Courses.DataSource = null;
             Dgv_Timetable.DataSource = null;
             isFormReset = false;
@@ -258,6 +259,7 @@ namespace Exam_Cell
         // List to backup undo action
         List<string> DateList = new List<string>();
         List<string> SessionList = new List<string>();
+        List<string> SchemeList = new List<string>();
         List<string> SubCodeList = new List<string>();
         List<string> SubNameList = new List<string>();
         List<string> SemesterList = new List<string>();
@@ -267,6 +269,7 @@ namespace Exam_Cell
         {
             DateList.Clear();
             SessionList.Clear();
+            SchemeList.Clear();
             SubCodeList.Clear();
             SubNameList.Clear();
             SessionList.Clear();
@@ -290,10 +293,11 @@ namespace Exam_Cell
                         if (checkboxselect)
                         {
                             flag = 1;
-                            string query = string.Format("Insert into Timetable(Date,Session,Sub_Code,Course,Semester,Branch)Values(" + "@Date,@Session,@Sub_Code,@Course,@Semester,@Branch)");
+                            string query = string.Format("Insert into Timetable(Date,Session,Scheme,Sub_Code,Course,Semester,Branch)Values(" + "@Date,@Session,@Scheme,@Sub_Code,@Course,@Semester,@Branch)");
                             SQLiteCommand comm = new SQLiteCommand(query,dbConnection);
                             comm.Parameters.AddWithValue("@Date", DateTimePicker_Add_Timetable.Text);
                             comm.Parameters.AddWithValue("@Session", Combobox_Session.Text);
+                            comm.Parameters.AddWithValue("@Scheme", dr.Cells["Scheme"].Value.ToString());
                             comm.Parameters.AddWithValue("@Sub_Code", dr.Cells["Sub_Code"].Value.ToString());
                             comm.Parameters.AddWithValue("@Course", dr.Cells["Course"].Value.ToString());
                             comm.Parameters.AddWithValue("@Semester", dr.Cells["Semester"].Value.ToString());
@@ -303,6 +307,7 @@ namespace Exam_Cell
                             // backup for undo
                             DateList.Add(DateTimePicker_Add_Timetable.Text);
                             SessionList.Add(Combobox_Session.Text);
+                            SchemeList.Add(dr.Cells["Scheme"].Value.ToString());
                             SubCodeList.Add(dr.Cells["Sub_Code"].Value.ToString());
                             SubNameList.Add(dr.Cells["Course"].Value.ToString());
                             SemesterList.Add(dr.Cells["Semester"].Value.ToString());
@@ -343,12 +348,13 @@ namespace Exam_Cell
                     using (SQLiteConnection dbConnection = new SQLiteConnection(LoadConnectionString()))
                     {
                         dbConnection.Open();
-                        string query = string.Format("Delete from Timetable where Date=@Date and Session=@Session and Course=@Course and Sub_Code=@Sub_Code and Semester=@Semester and Branch=@Branch");
+                        string query = string.Format("Delete from Timetable where Date=@Date and Scheme=@Scheme and Session=@Session and Course=@Course and Sub_Code=@Sub_Code and Semester=@Semester and Branch=@Branch");
                         SQLiteCommand comm = new SQLiteCommand(query,dbConnection);
                         for (int i = 0; i < DateList.Count; i++)
                         {
                             comm.Parameters.AddWithValue("@Date", DateList[i]);
                             comm.Parameters.AddWithValue("@Session", SessionList[i]);
+                            comm.Parameters.AddWithValue("@Scheme", SchemeList[i]);
                             comm.Parameters.AddWithValue("@Sub_Code", SubCodeList[i]);
                             comm.Parameters.AddWithValue("@Course", SubNameList[i]);
                             comm.Parameters.AddWithValue("@Semester", SemesterList[i]);
@@ -430,7 +436,7 @@ namespace Exam_Cell
         bool isCheckBoxColumn_ClickedEvent = false;
         private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!isCheckBoxColumn_ClickedEvent || !isFormReset)
+            if (!isCheckBoxColumn_ClickedEvent && !isFormReset)
             {
                 if (HeaderCheckBox.Checked)
                 {
@@ -447,6 +453,7 @@ namespace Exam_Cell
                     }
                 }
             }
+            isCheckBoxColumn_ClickedEvent = false;
         }
 
         private void Dgv_Timetable_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -463,6 +470,48 @@ namespace Exam_Cell
                 {
                     isCheckBoxColumn_ClickedEvent = true;
                     HeaderCheckBox.Checked = false;
+                }
+            }
+        }
+
+        // course checkbox click event
+        bool isCourseCheckBoxColumn_ClickedEvent = false;
+        private void HeaderCheckBoxCourse_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isCourseCheckBoxColumn_ClickedEvent && !isFormReset)
+            {
+                if (HeaderCheckBoxCourse.Checked)
+                {
+                    foreach (DataGridViewRow row in Dgv_Courses.Rows)
+                    {
+                        row.Cells["CheckBoxColumn_Course"].Value = true;
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in Dgv_Courses.Rows)
+                    {
+                        row.Cells["CheckBoxColumn_Course"].Value = false;
+                    }
+                }
+            }
+            isCourseCheckBoxColumn_ClickedEvent = false;
+        }
+
+        private void Dgv_Courses_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Courses.Columns["CheckBoxColumn_Course"].Index)
+                Dgv_Courses.EndEdit();
+        }
+
+        private void Dgv_Courses_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == Dgv_Courses.Columns["CheckBoxColumn_Course"].Index)
+            {
+                if (HeaderCheckBoxCourse.Checked)
+                {
+                    isCourseCheckBoxColumn_ClickedEvent = true;
+                    HeaderCheckBoxCourse.Checked = false;
                 }
             }
         }
